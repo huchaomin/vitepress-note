@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitepress'
+import packageJson from '../../package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: packageJson.productName,
+  description: packageJson.description,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -24,5 +25,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
-  }
+  },
+  srcDir: './src',
+  cleanUrls: true, // TODO 查看托管平添是否支持
 })

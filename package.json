@@ -1,4 +1,8 @@
 {
+	"name": "note",
+	"version": "1.0.0",
+	"description": "木林子的笔记-记住自己的点滴",
+	"productName": "木林子的笔记空间",
 	"devDependencies": {
 		"vitepress": "^1.3.1",
 		"vue": "^3.4.33"
@@ -15,5 +19,9 @@
 		"dev": "vitepress dev docs",
 		"build": "vitepress build docs",
 		"preview": "vitepress preview docs"
+	},
+	"engines": {
+		"node": ">= 18.20.2",
+		"pnpm": ">= 9.1.4"
 	}
 }
