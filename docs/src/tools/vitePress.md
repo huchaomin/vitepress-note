@@ -92,3 +92,4 @@ api
 - rewrites 路由重写
 - 动态路由：根据一md文件生成多个页面
 - 渲染原始内容
+- [inter 字体的使用](https://rsms.me/inter/)

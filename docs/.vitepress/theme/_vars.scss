@@ -8,7 +8,7 @@
  *
  * Each colors have exact same color scale system with 3 levels of solid
  * colors with different brightness, and 1 soft color.
- * 
+ *
  * - `XXX-1`: The most solid color used mainly for colored text. It must
  *   satisfy the contrast ratio against when used on top of `XXX-soft`.
  *
@@ -42,6 +42,25 @@
  * - `danger`: Used to show error, or dangerous message to the users. Used
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
+
+/**
+ * Typography TODO 更换字体
+ * -------------------------------------------------------------------------- */
+:root {
+  --vp-font-family-base: 'Inter', sans-serif;
+  --vp-font-family-mono: ui-monospace, 'Menlo', 'Monaco', 'Consolas',
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+/* :root:where(:lang(zh)) {
+  --vp-font-family-base: 'Punctuation SC', 'Inter', ui-sans-serif, system-ui,
+    'PingFang SC', 'Noto Sans CJK SC', 'Noto Sans SC', 'Heiti SC',
+    'Microsoft YaHei', 'DengXian', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+} */
+@supports (font-variation-settings: normal) {
+  :root { --vp-font-family-base: "InterVariable", sans-serif; font-optical-sizing: auto; }
+}
 
  :root {
   --vp-c-default-1: var(--vp-c-gray-1);
@@ -136,4 +155,3 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
-

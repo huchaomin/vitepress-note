@@ -6,3 +6,4 @@
 - [whyframe](https://whyframe.dev/)
 - [shiki.style](https://shiki.style/)
 - [tsconfig](https://github.com/vuejs/tsconfig)
+- 中文字体

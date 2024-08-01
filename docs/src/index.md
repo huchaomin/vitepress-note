@@ -32,6 +32,3 @@ Wraps in a
 <<< @/tools/vite.md{2-8}
 
 <<< ../../readme.md{2-3}
-
-<button :class="$style.button" @click="count++">Increment</button>
-</style>

@@ -1,7 +1,5 @@
 import { defineConfig } from 'vitepress'
 import packageJson from '../../package.json'
-import markdownItAnchor from 'markdown-it-anchor'
-import markdownItFoo from 'markdown-it-foo'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
