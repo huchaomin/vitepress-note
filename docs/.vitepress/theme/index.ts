@@ -2,14 +2,14 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : huchaomin peter@qingcongai.com
- * @LastEditTime : 2024-08-01 18:33:09
+ * @LastEditTime : 2024-08-02 09:25:21
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme-without-fonts'
-import './fonts/inter.css'
+import './fonts/_font.scss'
 import './_vars.scss'
 import './_others.scss'
 
