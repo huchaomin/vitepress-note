@@ -93,3 +93,7 @@ api
 - 动态路由：根据一md文件生成多个页面
 - 渲染原始内容
 - [inter 字体的使用](https://rsms.me/inter/)
+- [可替换内部组件](https://vitepress.dev/zh/guide/extending-default-theme#overriding-internal-components)
+- [构建时数据加载](https://vitepress.dev/zh/guide/data-loading#build-time-data-loading)
+- SSR
+- [生成 sitemap](https://vitepress.dev/zh/guide/sitemap-generation#sitemap-generation)

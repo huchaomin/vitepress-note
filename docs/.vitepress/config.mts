@@ -3,7 +3,8 @@ import packageJson from '../../package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: packageJson.productName,
+  lang: 'zh-CN',
+  title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
   description: packageJson.description,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -28,6 +29,8 @@ export default defineConfig({
   },
   base: '/', // 终以斜杠开头和结尾
   srcDir: './src',
+  // srcExclude
+  // outDir
   cleanUrls: true, // TODO 查看托管平添是否支持
   markdown: {
     container: {
