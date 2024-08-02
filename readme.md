@@ -10,4 +10,6 @@
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
 - [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
 - 添加百度统计
-- 生成 favicon.ico
+- [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
+- typescript.tsdk
+- env parse

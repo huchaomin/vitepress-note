@@ -98,9 +98,10 @@ export default defineConfig({
     return [...interLinks, ...JetBrainsMonoLinks]
   },
   vite:{
+    envDir: '../env', // 自定义env目录
     plugins:[
       AutoImport({
-        dts: '../../types/auto-imports.d.ts',
+        dts: '../types/auto-imports.d.ts',
         imports: [
           // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
           'vue',
