@@ -32,7 +32,7 @@ export default defineConfig({
   srcDir: './src',
   // srcExclude
   outDir: './docs',
-  cacheDir: './.cache',
+  cacheDir: './.cache/vitepress',
   cleanUrls: true, // TODO 查看托管平添是否支持
   markdown: {
     container: {

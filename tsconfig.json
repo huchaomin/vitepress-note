@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // 最新es6
+    "useDefineForClassFields": true, // 使用 Object.defineProperty 定义 class 中的属性，而非使用 obj.key = value 的形式定义属性
+    "module": "ESNext",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ], // 引入 ES 最新特性和 DOM 接口的类型定义
+    "skipLibCheck": true, // 跳过对 .d.ts 文件的类型检查
+    /* Bundler mode */
+    "moduleResolution": "bundler", // 模块解析策略
+    "allowImportingTsExtensions": true, // 允许 TypeScript 文件使用特定于 TypeScript 的扩展名（如 .ts、.mts 或 .tsx）相互导入
+    "resolveJsonModule": true, // 允许引入 JSON 文件
+    "isolatedModules": true, // 隔离模块解析时的上下文环境，即不允许在模块中导入其它非声明模块的内容
+    "noEmit": true, // 不生成输出文件
+    "jsx": "preserve", // 保留 JSX 语法
+    "jsxImportSource": "vue", // 要指示 TypeScript 使用 Vue 的 JSX 类型定义(https://vuejs.org/guide/extras/render-function.html#jsx-type-inference)
+    /* Linting */
+    "strict": true, // 启用所有严格类型检查选项(strictNullChecks)
+    "noUnusedLocals": true, // 不允许有未使用的局部变量
+    "noUnusedParameters": true, // 不允许有未使用的参数
+    "noFallthroughCasesInSwitch": true, // 不允许 switch 语句的 case 子句贯穿
+    "forceConsistentCasingInFileNames": true, //要求所有文件名均使用同一种风格：只有大写字母、小写字母、数字和下划线
+    "incremental": true, //增量编译
+    "esModuleInterop": true, //允许使用es6的模块化语法,引入非ES模块
+    "tsBuildInfoFile": ".cache/tsBuildInfo",
+    "allowJs": false,
+    "types": [
+      "vite/client",
+    ], // /// <reference types="vite/client" />
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "img/*": [
+        "src/assets/images/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    ".vitepress/**/*",
+    ".types/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ],
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.node.json"
+  //   }
+  // ]
+}

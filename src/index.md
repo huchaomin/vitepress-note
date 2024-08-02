@@ -32,3 +32,8 @@ Wraps in a
 <<< @/tools/vite.md{2-8}
 
 <<< ../readme.md{2-3}
+
+<script setup lang="ts">
+  const a = import.meta.env.SSR
+</script>
+{{ a }}
