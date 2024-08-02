@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import packageJson from '../../package.json'
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -94,5 +95,24 @@ export default defineConfig({
       ]
     })
     return [...interLinks, ...JetBrainsMonoLinks]
+  },
+  vite:{
+    plugins:[
+      AutoImport({
+        dts: '../../types/auto-imports.d.ts',
+        imports: [
+          // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
+          'vue',
+          '@vueuse/core',
+        ],
+        // defaultExportByFilename: true,
+        // dirs: ['src/plugins/autoImport'],
+        // eslintrc: {
+        //   enabled: true,
+        //   globalsPropValue: 'readonly',
+        //   filepath: 'eslintrc-auto-import.json',
+        // },
+      }),
+    ]
   }
 })
