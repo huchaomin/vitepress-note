@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import packageJson from '../../package.json'
+import packageJson from '../package.json'
 import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitepress.dev/reference/site-config
@@ -31,7 +31,8 @@ export default defineConfig({
   base: '/', // 终以斜杠开头和结尾
   srcDir: './src',
   // srcExclude
-  // outDir
+  outDir: './docs',
+  cacheDir: './.cache',
   cleanUrls: true, // TODO 查看托管平添是否支持
   markdown: {
     container: {

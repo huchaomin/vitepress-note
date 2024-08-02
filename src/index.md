@@ -31,4 +31,4 @@ Wraps in a
 
 <<< @/tools/vite.md{2-8}
 
-<<< ../../readme.md{2-3}
+<<< ../readme.md{2-3}
