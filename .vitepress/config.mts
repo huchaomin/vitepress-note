@@ -46,6 +46,7 @@ export default defineConfig(({ command, mode }) => {
     outDir: resolveCwd('docs'),
     cacheDir: resolveCwd('.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
+    lastUpdated: true,
     markdown: {
       container: {
         tipLabel: '提示',
