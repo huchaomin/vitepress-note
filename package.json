@@ -2,7 +2,7 @@
 	"name": "note",
 	"version": "1.0.0",
 	"description": "木林子的笔记-记住自己的点滴",
-	"productName": "木林子的笔记空间",
+	"productName": "vite",
 	"devDependencies": {
 		"@types/node": "^22.1.0",
 		"markdown-it-anchor": "^9.0.1",

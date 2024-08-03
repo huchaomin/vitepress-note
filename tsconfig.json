@@ -46,9 +46,9 @@
     "types/**/*",
   ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.js"
+    "/node_modules",
+    "/docs",
+    "/.cache",
   ],
   // "references": [
   //   {

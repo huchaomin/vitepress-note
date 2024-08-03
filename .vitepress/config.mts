@@ -5,11 +5,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 
 
-console.log(__dirname, process.cwd());
-
+function resolveCwd(p: string): string {
+  return path.resolve(process.cwd(), p)
+}
 
 // https://vitepress.dev/reference/site-config
-const envDir = path.resolve(__dirname, '../env')
+const envDir = resolveCwd('env')
 // @ts-expect-error vitepress 的类型定义错误
 export default defineConfig(({ command, mode }) => {
   const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
@@ -40,10 +41,10 @@ export default defineConfig(({ command, mode }) => {
       ]
     },
     base: VITE_BASE_URL, // 终以斜杠开头和结尾
-    srcDir: path.resolve(__dirname, '../src'),
+    srcDir: resolveCwd('src/pages'),
     // srcExclude
-    outDir: path.resolve(__dirname, '../docs'),
-    cacheDir: path.resolve(__dirname, '../.cache/vitepress'),
+    outDir: resolveCwd('docs'),
+    cacheDir: resolveCwd('.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
     markdown: {
       container: {
@@ -111,10 +112,10 @@ export default defineConfig(({ command, mode }) => {
       envDir,
       plugins: [
         envParse({
-          dtsPath: path.resolve(__dirname, '../types/env.d.ts'),
+          dtsPath: resolveCwd('types/env.d.ts'),
         }),
         AutoImport({
-          dts: path.resolve(__dirname, '../types/auto-imports.d.ts'),
+          dts: resolveCwd('types/auto-imports.d.ts'),
           imports: [
             // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
             'vue',
@@ -128,7 +129,13 @@ export default defineConfig(({ command, mode }) => {
           //   filepath: 'eslintrc-auto-import.json',
           // },
         }),
-      ]
+      ],
+      resolve: {
+        alias: {
+          '@': resolveCwd('src'),
+          img: resolveCwd('src/static/images'),
+        },
+      },
     }
   }
 })

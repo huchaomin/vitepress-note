@@ -31,9 +31,9 @@ Wraps in a
 
 <<< @/tools/vite.md{2-8}
 
-<<< ../readme.md{2-3}
+<<< @/api-examples.md{2-3}
 
 <script setup lang="ts">
-  const a = import.meta.env.SSR
+  const a = import.meta.env.VITE_BASE_URL
 </script>
 {{ a }}
