@@ -91,7 +91,7 @@ export default defineConfig({
           as: 'font',
           type: 'font/woff2',
           crossorigin: '',
-          media: obj[key]
+          media: obj[key as keyof typeof obj]
         }
       ]
     })
