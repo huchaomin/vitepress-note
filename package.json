@@ -6,7 +6,9 @@
 	"devDependencies": {
 		"@types/node": "^22.1.0",
 		"markdown-it-anchor": "^9.0.1",
+		"only-allow": "^1.2.1",
 		"sass": "^1.77.8",
+		"typescript": "^5.5.4",
 		"unplugin-auto-import": "^0.18.2",
 		"vite": "^5.3.5",
 		"vite-plugin-env-parse": "^1.0.15",
@@ -24,7 +26,8 @@
 	"scripts": {
 		"dev": "vitepress dev .",
 		"build": "vitepress build .",
-		"preview": "vitepress preview ."
+		"preview": "vitepress preview .",
+		"preinstall": "only-allow pnpm"
 	},
 	"engines": {
 		"node": ">= 18.20.2",

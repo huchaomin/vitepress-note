@@ -11,5 +11,4 @@
 - [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
 - 添加百度统计
 - [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
-- typescript.tsdk
 - [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
