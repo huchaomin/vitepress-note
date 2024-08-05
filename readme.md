@@ -12,3 +12,4 @@
 - 添加百度统计
 - [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
 - [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
+- gsap
