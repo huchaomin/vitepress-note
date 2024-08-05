@@ -13,3 +13,10 @@
 - [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
 - gsap
 - vite-plugin-checker
+- unplugin-vue-router
+- vite-plugin-vue-layouts
+- vite-plugin-pwa
+- unplugin-vue-markdown
+- vite-plugin-webfont-dl
+- ite-ssg
+- vite-ssg-sitemap
