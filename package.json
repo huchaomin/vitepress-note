@@ -4,7 +4,9 @@
 	"description": "木林子的笔记-记住自己的点滴",
 	"productName": "vite",
 	"devDependencies": {
+		"@tsconfig/node20": "^20.1.4",
 		"@types/node": "^22.1.0",
+		"@vue/tsconfig": "^0.5.1",
 		"markdown-it-anchor": "^9.0.1",
 		"only-allow": "^1.2.1",
 		"sass": "^1.77.8",

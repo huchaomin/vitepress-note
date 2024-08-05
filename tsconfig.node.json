@@ -1,17 +1,18 @@
 {
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "composite": true, // 是否编译构建引用项目, 对于引用项目必须设置该属性
-    // composite 设定了的情况下默认为true, 其他默认为false
-    // "declaration": true, // 生成声明文件.d.ts，开启后会自动生成声明文件(使用 composite 选项必须开启 declaration, 和allowJs不能同时设为true)
-    "skipLibCheck": true,
+    "composite": true,
+    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true, // 只生成声明文件, 不生成js文件。配合 allowImportingTsExtensions 使用
+    "moduleResolution": "Bundler",
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "build/**/*.ts",
-    "vite.config.ts"
-  ] // 专门用于 vite.config.ts 这一文件的 TypeScript 配置文件
+    "build/**/*",
+    "vite.config.*",
+    ".vitepress/config.*",
+  ]
 }
