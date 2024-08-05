@@ -1,9 +1,8 @@
 import path from 'node:path'
 import { defineConfig, loadEnv } from 'vitepress'
-import packageJson from '../package.json'
 import AutoImport from 'unplugin-auto-import/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
-
+import packageJson from '../package.json'
 
 function resolveCwd(p: string): string {
   return path.resolve(process.cwd(), p)
@@ -23,7 +22,7 @@ export default defineConfig(({ command, mode }) => {
       // https://vitepress.dev/reference/default-theme-config
       nav: [
         { text: 'Home', link: '/' },
-        { text: 'Examples', link: '/markdown-examples' }
+        { text: 'Examples', link: '/markdown-examples' },
       ],
 
       sidebar: [
@@ -31,14 +30,14 @@ export default defineConfig(({ command, mode }) => {
           text: 'Examples',
           items: [
             { text: 'Markdown Examples', link: '/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/api-examples' }
-          ]
-        }
+            { text: 'Runtime API Examples', link: '/api-examples' },
+          ],
+        },
       ],
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-      ]
+        { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      ],
     },
     base: VITE_BASE_URL, // 终以斜杠开头和结尾
     srcDir: resolveCwd('src/pages'),
@@ -53,10 +52,10 @@ export default defineConfig(({ command, mode }) => {
         warningLabel: '警告',
         dangerLabel: '危险',
         infoLabel: '信息',
-        detailsLabel: '详细信息'
+        detailsLabel: '详细信息',
       },
       image: {
-        lazyLoading: true
+        lazyLoading: true,
       },
       // markdown-it-anchor 的选项
       // https://github.com/valeriangalliat/markdown-it-anchor#usage
@@ -72,7 +71,7 @@ export default defineConfig(({ command, mode }) => {
       // }
     },
     transformHead({ assets }: { assets: string[] }) {
-      const interFontFileArr = assets.filter((str: string) => /InterVariable(\w|-|\.)+\.woff2/.test(str))
+      const interFontFileArr = assets.filter((str: string) => /InterVariable([\w\-.])+\.woff2/.test(str))
       const interLinks = interFontFileArr.map((href: string) => {
         return [
           'link',
@@ -81,18 +80,18 @@ export default defineConfig(({ command, mode }) => {
             href,
             as: 'font',
             type: 'font/woff2',
-            crossorigin: ''
-          }
+            crossorigin: '',
+          },
         ]
       })
-      const JetBrainsMonoFontFileArr = assets.filter(str => /JetBrainsMono(\w|-|\.)+\.woff2/.test(str))
+      const JetBrainsMonoFontFileArr = assets.filter(str => /JetBrainsMono([\w\-.])+\.woff2/.test(str))
       const obj = {
         Medium: 'screen and (max-width: 480px)',
         SemiBold: 'screen and (min-width: 481px) and (max-width: 768px)',
         Bold: 'screen and (min-width: 769px) and (max-width: 1024px)',
         ExtraBold: 'screen and (min-width: 1025px) and (max-width: 1280px)',
       }
-      const JetBrainsMonoLinks = JetBrainsMonoFontFileArr.map(href => {
+      const JetBrainsMonoLinks = JetBrainsMonoFontFileArr.map((href) => {
         const result = href.match(/JetBrainsMono-(\w+)\.((?:\w|-)+)\.woff2/)![1]
         const key = result.endsWith('Italic') ? result.slice(0, -6) : result
         return [
@@ -103,8 +102,8 @@ export default defineConfig(({ command, mode }) => {
             as: 'font',
             type: 'font/woff2',
             crossorigin: '',
-            media: obj[key as keyof typeof obj]
-          }
+            media: obj[key as keyof typeof obj],
+          },
         ]
       })
       return [...interLinks, ...JetBrainsMonoLinks]
@@ -134,9 +133,9 @@ export default defineConfig(({ command, mode }) => {
       resolve: {
         alias: {
           '@': resolveCwd('src'),
-          img: resolveCwd('src/static/images'),
+          'img': resolveCwd('src/static/images'),
         },
       },
-    }
+    },
   }
 })

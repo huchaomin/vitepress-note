@@ -35,5 +35,13 @@ Wraps in a
 
 <script setup lang="ts">
   const a = import.meta.env.VITE_BASE_URL
+  const a = test
 </script>
 {{ a }}
+
+```js
+const a = test
+console.log('hello')
+```
+
+```ts

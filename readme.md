@@ -1,5 +1,10 @@
 # readme
 
+## 实线
+
+- tsconfig 参考 create-vue
+- eslint config 参考 antfu
+
 ## todo
 
 - 部署到GitHub Pages
@@ -20,3 +25,10 @@
 - vite-plugin-webfont-dl
 - ite-ssg
 - vite-ssg-sitemap
+- eslint-plugin-format
+- eslint-plugin-markdown [继续配置](https://eslint.org/docs/latest/use/configure/plugins)
+- vite-plugin-markdown-preview | vitepress-demo-preview
+- vitepress-sidebar | vite-plugin-vitepress-auto-sidebar
+- vitepress-plugin-sandpack
+- vitepress-plugin-comment-with-giscus
+- "prettier.enable": false,
