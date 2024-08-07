@@ -11,10 +11,7 @@
       "img/*": [
         "src/assets/images/*"
       ]
-    },
-    "types": [
-      "vite/client"
-    ]
+    }
   },
   "include": [
     "src/**/*",

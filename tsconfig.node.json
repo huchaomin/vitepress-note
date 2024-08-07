@@ -13,6 +13,9 @@
   "include": [
     "build/**/*",
     "vite.config.*",
-    ".vitepress/config.*"
+    "eslint.config.*",
+    "prettier.config.*",
+    ".vitepress/config.*",
+    "types/**/*"
   ]
 }

@@ -25,7 +25,6 @@
 - vite-plugin-webfont-dl
 - ite-ssg
 - vite-ssg-sitemap
-- eslint-plugin-format
 - eslint-plugin-markdown [继续配置](https://eslint.org/docs/latest/use/configure/plugins)
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-sidebar | vite-plugin-vitepress-auto-sidebar

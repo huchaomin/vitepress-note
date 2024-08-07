@@ -1,4 +1,5 @@
 import path from 'node:path'
+import process from 'node:process'
 import { defineConfig, loadEnv } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
@@ -11,7 +12,11 @@ function resolveCwd(p: string): string {
 // https://vitepress.dev/reference/site-config
 const envDir = resolveCwd('env')
 // @ts-expect-error vitepress 的类型定义错误
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode }: {
+  command: string
+  mode: string
+}) => {
+  console.log(command, mode)
   const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
   const { VITE_BASE_URL } = env
   return {
@@ -71,7 +76,7 @@ export default defineConfig(({ command, mode }) => {
       // }
     },
     transformHead({ assets }: { assets: string[] }) {
-      const interFontFileArr = assets.filter((str: string) => /InterVariable([\w\-.])+\.woff2/.test(str))
+      const interFontFileArr = assets.filter((str: string) => /InterVariable[\w\-.]+\.woff2/.test(str))
       const interLinks = interFontFileArr.map((href: string) => {
         return [
           'link',
@@ -84,7 +89,7 @@ export default defineConfig(({ command, mode }) => {
           },
         ]
       })
-      const JetBrainsMonoFontFileArr = assets.filter(str => /JetBrainsMono([\w\-.])+\.woff2/.test(str))
+      const JetBrainsMonoFontFileArr = assets.filter(str => /JetBrainsMono[\w\-.]+\.woff2/.test(str))
       const obj = {
         Medium: 'screen and (max-width: 480px)',
         SemiBold: 'screen and (min-width: 481px) and (max-width: 768px)',
@@ -92,7 +97,7 @@ export default defineConfig(({ command, mode }) => {
         ExtraBold: 'screen and (min-width: 1025px) and (max-width: 1280px)',
       }
       const JetBrainsMonoLinks = JetBrainsMonoFontFileArr.map((href) => {
-        const result = href.match(/JetBrainsMono-(\w+)\.((?:\w|-)+)\.woff2/)![1]
+        const result = href.match(/JetBrainsMono-(\w+)\.[\w\-]+\.woff2/)![1]
         const key = result.endsWith('Italic') ? result.slice(0, -6) : result
         return [
           'link',
