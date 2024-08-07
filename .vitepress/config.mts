@@ -44,8 +44,8 @@ export default defineConfig(({ command, mode }: {
         { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
       ],
     },
-    base: VITE_BASE_URL, // 终以斜杠开头和结尾
     srcDir: resolveCwd('src/pages'),
+    base: VITE_BASE_URL, // 终以斜杠开头和结尾
     // srcExclude
     outDir: resolveCwd('docs'),
     cacheDir: resolveCwd('.cache/vitepress'),

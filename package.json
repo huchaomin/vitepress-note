@@ -11,7 +11,8 @@
     "dev": "vitepress dev .",
     "build": "vitepress build .",
     "preview": "vitepress preview .",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "inspectEslintConfig": "npx @eslint/config-inspector"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.0"
