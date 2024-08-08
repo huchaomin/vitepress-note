@@ -1,9 +1,11 @@
 # readme
 
-## 实线
+## 实践
 
 - tsconfig 参考 create-vue
-- eslint config 参考 antfu
+- eslint config 参考 antfu vscode 本地配置不能完全按照生成的来
+- prettier 安装参考 eslint-plugin-prettier
+- [换行符](https://shuliqi.github.io/2020/06/06/%E5%85%B3%E4%BA%8EDelete%60CR%60eslint-prettier-prettier-%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#%E9%97%AE%E9%A2%98%E7%9A%84%E6%8F%90%E5%87%BA),使用.editorconfig解决
 
 ## todo
 

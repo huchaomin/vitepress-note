@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2024-07-23 17:47:23
- * @LastEditors  : huchaomin peter@qingcongai.com
- * @LastEditTime : 2024-08-05 15:53:34
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-08-08 15:19:24
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
@@ -21,5 +21,5 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // 注册自定义全局组件
     //  app.component('MyGlobalComponent' /* ... */)
-  }
+  },
 } satisfies Theme // TODO 与 defineConfigWithTheme https://vitepress.dev/zh/guide/custom-theme
