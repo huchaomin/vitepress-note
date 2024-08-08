@@ -22,7 +22,15 @@ export default antfu(
       tsconfigPath: 'tsconfig.json',
     },
     unocss: true,
+    // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
+    stylistic: {
+      overrides: {
+        'style/quote-props': ['error', 'as-needed'], // 与 prettier 保持一致
+        'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
+      },
+    },
   },
+  // https://github.com/prettier/eslint-plugin-prettier
   eslintPluginPrettierRecommended,
   {
     rules: {

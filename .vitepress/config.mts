@@ -91,7 +91,7 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
           },
         ]
       })
-      const JetBrainsMonoFontFileArr = assets.filter(str =>
+      const JetBrainsMonoFontFileArr = assets.filter((str) =>
         /JetBrainsMono[\w\-.]+\.woff2/.test(str),
       )
       const obj = {
@@ -101,7 +101,8 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
         SemiBold: 'screen and (min-width: 481px) and (max-width: 768px)',
       }
       const JetBrainsMonoLinks = JetBrainsMonoFontFileArr.map((href) => {
-        const result = href.match(/JetBrainsMono-(\w+)\.[\w\-]+\.woff2/)![1]
+        // 这里[\w-]  和 [\w\-] 相同中间的 - 会被转义
+        const result = href.match(/JetBrainsMono-(\w+)\.[\w-]+\.woff2/)![1]
         const key = result.endsWith('Italic') ? result.slice(0, -6) : result
         return [
           'link',
