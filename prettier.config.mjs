@@ -5,9 +5,9 @@ export default {
   bracketSpacing: true, // 在对象前后添加空格-eg: { foo: bar }
   disableLanguages: [], // 禁用格式化的语言
   embeddedLanguageFormatting: 'auto', // 控制嵌入的其他语言代码格式化。
-  endOfLine: 'lf', // 结束行形式
   enable: true, // 启用prettier格式化
   enableDebugLogs: true, // 启用调试日志
+  endOfLine: 'lf', // 结束行形式
   // ignorePath: '.prettierignore', // 忽略格式化的路径
   // prettierPath: '', // 指定prettier的路径
   htmlWhitespaceSensitivity: 'css', // 对HTML全局空白不敏感
@@ -16,15 +16,15 @@ export default {
   printWidth: 100, // 单行长度
   proseWrap: 'preserve', // 不知道怎么翻译
   quoteProps: 'as-needed', // 仅在必需时为对象的key添加引号
-  resolveGlobalModules: false, // 不使用全局 prettier 模块
   requireConfig: true, // Require a "prettierconfig" to format prettier
   requirePragma: false, // 无需顶部注释即可格式化
-  singleAttributePerLine: false, // 会在 HTML、JSX、Vue 和 Angular 中格式化为每个属性单独占一行。
-  useEditorConfig: true, // 使用.editorconfig配置
+  resolveGlobalModules: false, // 不使用全局 prettier 模块
   semi: false, // 句末使用分号
+  singleAttributePerLine: false, // 会在 HTML、JSX、Vue 和 Angular 中格式化为每个属性单独占一行。
   singleQuote: true, // 使用单引号
   tabWidth: 2, // 缩进长度
   trailingComma: 'all', // 多行时尽可能打印尾随逗号
+  useEditorConfig: true, // 使用配置文件
   useTabs: false, // 使用空格代替tab缩进
   vueIndentScriptAndStyle: false, // 不对vue中的script及style标签缩进
   withNodeModules: false, // 不格式化node_modules中的文件

@@ -26,9 +26,9 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
     // srcExclude
     cacheDir: resolveCwd('.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
-    lastUpdated: true,
     description: packageJson.description,
     lang: 'zh-CN',
+    lastUpdated: true,
     markdown: {
       container: {
         dangerLabel: '危险',
