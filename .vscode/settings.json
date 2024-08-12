@@ -6,6 +6,7 @@
     "tseslint",
     "vitepress"
   ],
+  "eslint.useFlatConfig": true,
   // Disable the default formatter, use eslint instead
   "prettier.enable": true,
   // "editor.formatOnSave": false,
@@ -14,7 +15,6 @@
   //   "source.fixAll.eslint": "explicit",
   //   "source.organizeImports": "never"
   // },
-  "eslint.useFlatConfig": true,
   // Silent the stylistic rules in you IDE, but still auto fix them
   // "eslint.rules.customizations": [
   //   {

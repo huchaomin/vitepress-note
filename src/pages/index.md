@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
+  name: 'My Awesome Project'
+  text: 'A VitePress Site'
   tagline: My great project tagline
   actions:
     - theme: brand
@@ -37,7 +37,9 @@ Wraps in a
   const a = import.meta.env.VITE_BASE_URL
 </script>
 
+```ts-vue
 {{ a }}
+```
 
 ```js
 const a = test

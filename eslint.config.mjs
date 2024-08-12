@@ -8,20 +8,21 @@ import prettierOptions from './prettier.config.mjs'
 // https://perfectionist.dev/guide/getting-started TODO 不知道以后 antfu 会不会默认开启这个配置
 const perfectionistConfig = await perfectionistWrapperFn()
 
-// [eslint-stylistic]https://eslint.style/rules/default/jsx-closing-tag-location
 export default antfu(
   {
     formatters: {
-      css: true,
-      html: true,
-      markdown: true,
-      // xml: true, 这一项配置了 vscode 的 eslint 插件会报错
+      // 都默认开启了
+      // css: true,
+      // html: true,
+      // markdown: true, // 使用 prettier 格式化 markdown 文件,搭配 DavidAnson.vscode-markdownlint 插件一起使用
+      // xml: true, 这一项配置了 vscode 的 eslint 插件会报错, 需要 @prettier/plugin-xml 插件
       prettierOptions,
     },
-    // GLOB_EXCLUDE 已经包括了大部分的忽略文件，遵守 gitignore 规则
     // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+    // GLOB_EXCLUDE 已经包括了大部分的忽略文件，遵守 gitignore 规则
     ignores: ['src/pages/public/**/*'],
     jsonc: false, // 使用 vscode.json-language-features
+    // markdown: true, // Enable linting for **code snippets** in Markdown. (默认为true)
     // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
     stylistic: {
       overrides: {
@@ -41,6 +42,15 @@ export default antfu(
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'perfectionist/sort-imports': 'off', // 有其他排序插件
+      'prettier/prettier': [
+        'error',
+        {},
+        {
+          fileInfoOptions: {
+            ignorePath: '.prettierignore-for-eslint', // 消除 md 文件 开头的错误警告
+          },
+        },
+      ],
     },
   },
 ).override(perfectionistConfig[0].name, perfectionist.configs['recommended-natural'])
