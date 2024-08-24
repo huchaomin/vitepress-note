@@ -21,7 +21,7 @@ export default antfu(
     // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
     // GLOB_EXCLUDE 已经包括了大部分的忽略文件，遵守 gitignore 规则
     ignores: ['src/pages/public/**/*'],
-    jsonc: false, // 使用 vscode.json-language-features
+    // jsonc: true, //  vscode.json-language-features 一起使用，冲突爆红就放在 .prettierignore-for-eslint 文件中
     // markdown: true, // Enable linting for **code snippets** in Markdown. (默认为true)
     // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
     stylistic: {

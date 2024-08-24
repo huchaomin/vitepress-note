@@ -3,12 +3,18 @@
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "moduleDetection": "force",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": [
       "node"
     ],
-    "noEmit": true
+    "allowImportingTsExtensions": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noEmit": true,
+    "isolatedModules": true
   },
   "include": [
     "build/**/*",
