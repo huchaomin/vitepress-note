@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "moduleDetection": "force", // /// <reference types="vite/client" />
+    "moduleDetection": "force",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -13,6 +13,9 @@
         "src/assets/images/*"
       ]
     },
+    "types": [
+      "vite/client"
+    ],
     "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
