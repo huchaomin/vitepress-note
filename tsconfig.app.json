@@ -1,9 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "incremental": true, // 增量编译， 配合 tsBuildInfoFile 一起使用
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "moduleDetection": "force",
     "baseUrl": ".",
     "paths": {
       "@/*": [

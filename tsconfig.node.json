@@ -1,11 +1,8 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "composite": true,
+    "composite": true, // https://www.typescriptlang.org/docs/handbook/project-references.html#composite
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "moduleDetection": "force",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
     "types": [
       "node"
     ],
