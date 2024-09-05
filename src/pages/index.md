@@ -35,10 +35,13 @@ Wraps in a
 
 <script setup lang="ts">
   const a = import.meta.env.VITE_BASE_URL
+  const b = ref('b')
 </script>
 
+<Text></Text>
+
 ```ts-vue
-{{ a }}
+{{ a,b }}
 ```
 
 ```js

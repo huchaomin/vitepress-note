@@ -124,19 +124,23 @@ export default defineConfig(({ command, mode }) => {
           dtsPath: resolveCwd('types/env.d.ts'),
         }),
         AutoImport({
+          dirs: [
+            resolveCwd('src/plugins/autoImport'),
+            resolveCwd('src/components/autoImport'),
+            resolveCwd('src/hooks'),
+          ],
           dts: resolveCwd('types/auto-imports.d.ts'),
+          // },
           imports: [
             // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
             'vue',
             '@vueuse/core',
           ],
-          // defaultExportByFilename: true,
-          // dirs: ['src/plugins/autoImport'],
           // eslintrc: {
           //   enabled: true,
+          //   filepath: resolveCwd('eslintrc-auto-import.mjs'),
           //   globalsPropValue: 'readonly',
-          //   filepath: 'eslintrc-auto-import.json',
-          // },
+          include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/],
         }),
       ],
       resolve: {
