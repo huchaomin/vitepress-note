@@ -3,6 +3,7 @@
   "compilerOptions": {
     "composite": true, // https://www.typescriptlang.org/docs/handbook/project-references.html#composite
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "resolveJsonModule": true,
     "types": [
       "node"
     ],
