@@ -39,6 +39,7 @@ Wraps in a
 </script>
 
 <Text></Text>
+<Text3></Text3>
 
 ```ts-vue
 {{ a,b }}

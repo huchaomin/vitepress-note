@@ -6,8 +6,10 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const aa: typeof import('../src/hooks/aa')['default']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const bb: typeof import('../src/components/autoImport/bb')['default']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']

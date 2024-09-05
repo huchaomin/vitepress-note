@@ -130,7 +130,6 @@ export default defineConfig(({ command, mode }) => {
             resolveCwd('src/hooks'),
           ],
           dts: resolveCwd('types/auto-imports.d.ts'),
-          // },
           imports: [
             // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
             'vue',
@@ -140,7 +139,8 @@ export default defineConfig(({ command, mode }) => {
           //   enabled: true,
           //   filepath: resolveCwd('eslintrc-auto-import.mjs'),
           //   globalsPropValue: 'readonly',
-          include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/],
+          // },
+          include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/], // md 文件开启
         }),
       ],
       resolve: {
