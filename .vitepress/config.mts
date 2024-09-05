@@ -1,6 +1,7 @@
 import path from 'node:path'
 import process from 'node:process'
-import { defineConfig, loadEnv } from 'vitepress'
+import type { defineConfig as defineVitepressConfig } from 'vitepress'
+import { defineConfig, loadEnv } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import packageJson from '../package.json'
@@ -9,19 +10,13 @@ function resolveCwd(p: string): string {
   return path.resolve(process.cwd(), p)
 }
 
-interface defineConfigFnArgs {
-  command: string
-  mode: string
-}
-
-// https://vitepress.dev/reference/site-config
 const envDir = resolveCwd('env')
-// @ts-expect-error vitepress 的类型定义错误
-export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
+// https://vitepress.dev/reference/site-config
+export default defineConfig(({ command, mode }) => {
   console.log(command, mode)
   const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
   const { VITE_BASE_URL } = env
-  return {
+  const obj: ReturnType<typeof defineVitepressConfig> = {
     base: VITE_BASE_URL, // 终以斜杠开头和结尾
     // srcExclude
     cacheDir: resolveCwd('.cache/vitepress'),
@@ -75,22 +70,24 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
       socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
-    transformHead({ assets }: { assets: string[] }) {
+    transformHead({ assets }) {
       const interFontFileArr = assets.filter((str: string) =>
         /InterVariable[\w\-.]+\.woff2/.test(str),
       )
-      const interLinks = interFontFileArr.map((href: string) => {
-        return [
-          'link',
-          {
-            as: 'font',
-            crossorigin: '',
-            href,
-            rel: 'preload',
-            type: 'font/woff2',
-          },
-        ]
-      })
+      const interLinks: [string, Record<string, string>][] = interFontFileArr.map(
+        (href: string) => {
+          return [
+            'link',
+            {
+              as: 'font',
+              crossorigin: '',
+              href,
+              rel: 'preload',
+              type: 'font/woff2',
+            },
+          ]
+        },
+      )
       const JetBrainsMonoFontFileArr = assets.filter((str) =>
         /JetBrainsMono[\w\-.]+\.woff2/.test(str),
       )
@@ -100,22 +97,24 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
         Medium: 'screen and (max-width: 480px)',
         SemiBold: 'screen and (min-width: 481px) and (max-width: 768px)',
       }
-      const JetBrainsMonoLinks = JetBrainsMonoFontFileArr.map((href) => {
-        // 这里[\w-]  和 [\w\-] 相同中间的 - 会被转义
-        const result = href.match(/JetBrainsMono-(\w+)\.[\w-]+\.woff2/)![1]
-        const key = result.endsWith('Italic') ? result.slice(0, -6) : result
-        return [
-          'link',
-          {
-            as: 'font',
-            crossorigin: '',
-            href,
-            media: obj[key as keyof typeof obj],
-            rel: 'preload',
-            type: 'font/woff2',
-          },
-        ]
-      })
+      const JetBrainsMonoLinks: [string, Record<string, string>][] = JetBrainsMonoFontFileArr.map(
+        (href) => {
+          // 这里[\w-]  和 [\w\-] 相同中间的 - 会被转义
+          const result = href.match(/JetBrainsMono-(\w+)\.[\w-]+\.woff2/)![1]
+          const key = result.endsWith('Italic') ? result.slice(0, -6) : result
+          return [
+            'link',
+            {
+              as: 'font',
+              crossorigin: '',
+              href,
+              media: obj[key as keyof typeof obj],
+              rel: 'preload',
+              type: 'font/woff2',
+            },
+          ]
+        },
+      )
       return [...interLinks, ...JetBrainsMonoLinks]
     },
     vite: {
@@ -142,10 +141,11 @@ export default defineConfig(({ command, mode }: defineConfigFnArgs) => {
       ],
       resolve: {
         alias: {
-          '@': resolveCwd('src'),
+          '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
           img: resolveCwd('src/static/images'),
         },
       },
     },
   }
+  return obj
 })
