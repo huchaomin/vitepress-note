@@ -60,7 +60,6 @@ pnpx vitepress init
     font-weight: bold;
   }
   </style>
-
   ```
 
   ::: warning
@@ -97,3 +96,8 @@ api
 - [构建时数据加载](https://vitepress.dev/zh/guide/data-loading#build-time-data-loading)
 - SSR
 - [生成 sitemap](https://vitepress.dev/zh/guide/sitemap-generation#sitemap-generation)
+
+## 参考文献
+
+- VitePress-Plugin-Compression 打包成dist.zip
+- 内部实际上使用的是 unplugin-vue-markdown

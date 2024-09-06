@@ -172,6 +172,7 @@ export default defineConfig(({ command, mode }) => {
         Components({
           dirs: [resolveCwd('src/components/autoImport')],
           dts: resolveCwd('types/components.d.ts'),
+          extensions: ['vue', 'md'], // md文件也可以作为组件
           include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
         }),
         Inspect({
