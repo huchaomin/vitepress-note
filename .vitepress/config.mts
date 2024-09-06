@@ -3,6 +3,7 @@ import process from 'node:process'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
 import { defineConfig, loadEnv } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import packageJson from '../package.json'
 
@@ -124,11 +125,7 @@ export default defineConfig(({ command, mode }) => {
           dtsPath: resolveCwd('types/env.d.ts'),
         }),
         AutoImport({
-          dirs: [
-            resolveCwd('src/plugins/autoImport'),
-            resolveCwd('src/components/autoImport'),
-            resolveCwd('src/hooks'),
-          ],
+          dirs: [resolveCwd('src/plugins/autoImport'), resolveCwd('src/hooks')],
           dts: resolveCwd('types/auto-imports.d.ts'),
           imports: [
             // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
@@ -141,6 +138,11 @@ export default defineConfig(({ command, mode }) => {
           //   globalsPropValue: 'readonly',
           // },
           include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/], // md 文件开启
+        }),
+        Components({
+          dirs: [resolveCwd('src/components/autoImport')],
+          dts: resolveCwd('types/components.d.ts'),
+          include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
         }),
       ],
       resolve: {
