@@ -1,7 +1,8 @@
 import path from 'node:path'
+import type * as http from 'node:http'
 import process from 'node:process'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
-import { defineConfig, loadEnv } from 'vite'
+import { type ProxyOptions, defineConfig, loadEnv } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
@@ -11,18 +12,29 @@ function resolveCwd(p: string): string {
   return path.resolve(process.cwd(), p)
 }
 
+function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
+  const reqUrl = req.url ?? ''
+  const proxyUrl = new URL(options.rewrite?.(reqUrl) ?? reqUrl, options.target as string).href ?? ''
+  res.setHeader('X-Res-ProxyUrl', proxyUrl) // 查看真实的请求地址
+}
+
 const envDir = resolveCwd('env')
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ command, mode }) => {
-  console.log(command, mode)
   const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
-  const { VITE_BASE_URL } = env
+  const { VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
+  console.log({
+    command,
+    env,
+    mode,
+  })
   const obj: ReturnType<typeof defineVitepressConfig> = {
-    base: VITE_BASE_URL, // 终以斜杠开头和结尾
+    base: VITE_BASE_URL, // 终以斜杠开头和结尾(没有结尾vite会自动处理)
     // srcExclude
     cacheDir: resolveCwd('.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
     description: packageJson.description,
+    head: [['link', { href: `${VITE_BASE_URL}/favicon.ico`, rel: 'icon' }]],
     lang: 'zh-CN',
     lastUpdated: true,
     markdown: {
@@ -149,6 +161,21 @@ export default defineConfig(({ command, mode }) => {
         alias: {
           '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
           img: resolveCwd('src/static/images'),
+        },
+      },
+      server: {
+        host: '0.0.0.0',
+        open: false,
+        port: VITE_PORT,
+        proxy: {
+          [`${env.VITE_BASE_URL}${env.VITE_API_PREFIX}/`]: {
+            bypass,
+            changeOrigin: true,
+            rewrite: (p) => {
+              return p.replace(new RegExp(env.VITE_BASE_URL), '')
+            },
+            target: VITE_PROXY_TARGET,
+          },
         },
       },
     },

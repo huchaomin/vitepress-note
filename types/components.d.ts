@@ -8,6 +8,5 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Text: typeof import('./../src/components/autoImport/Text.vue')['default']
-    Text3: typeof import('./../src/components/autoImport/Text3.vue')['default']
   }
 }

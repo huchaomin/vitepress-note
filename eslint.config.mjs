@@ -20,7 +20,12 @@ export default antfu(
     },
     // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
     // GLOB_EXCLUDE 已经包括了大部分的忽略文件，遵守 gitignore 规则
-    ignores: ['src/pages/public/**/*'],
+    ignores: [
+      'src/pages/public/**/*',
+      'types/auto-import.d.ts',
+      'types/components.d.ts',
+      'types/env.d.ts',
+    ],
     // jsonc: true, //  vscode.json-language-features 一起使用，冲突爆红就放在 .prettierignore-for-eslint 文件中
     // markdown: true, // Enable linting for **code snippets** in Markdown. (默认为true)
     // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
@@ -42,6 +47,7 @@ export default antfu(
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'perfectionist/sort-imports': 'off', // 有其他排序插件
+      'perfectionist/sort-named-imports': 'off', // 有其他排序插件
       'prettier/prettier': [
         'error',
         {},
