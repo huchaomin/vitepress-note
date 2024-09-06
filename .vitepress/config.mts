@@ -5,6 +5,8 @@ import type { defineConfig as defineVitepressConfig } from 'vitepress'
 import { type ProxyOptions, defineConfig, loadEnv } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+import viteCompression from 'vite-plugin-compression'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import packageJson from '../package.json'
 
@@ -30,6 +32,20 @@ export default defineConfig(({ command, mode }) => {
   })
   const obj: ReturnType<typeof defineVitepressConfig> = {
     base: VITE_BASE_URL, // 终以斜杠开头和结尾(没有结尾vite会自动处理)
+    async buildEnd(siteConfig) {
+      const { outDir } = siteConfig.userConfig
+      /* eslint-disable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
+      // @ts-expect-error 不知为啥类型错误
+      const obj = viteCompression({
+        verbose: false,
+      })
+      obj.configResolved({
+        build: {
+          outDir,
+        },
+      })
+      await obj.closeBundle()
+    },
     // srcExclude
     cacheDir: resolveCwd('.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
@@ -155,6 +171,11 @@ export default defineConfig(({ command, mode }) => {
           dirs: [resolveCwd('src/components/autoImport')],
           dts: resolveCwd('types/components.d.ts'),
           include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
+        }),
+        visualizer({
+          // TODO 会打开两遍 (client、server)
+          filename: '.cache/visualizer/report.html',
+          open: true,
         }),
       ],
       resolve: {
