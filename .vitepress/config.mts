@@ -35,7 +35,7 @@ export default defineConfig(({ command, mode }) => {
     async buildEnd(siteConfig) {
       const { outDir } = siteConfig.userConfig
       /* eslint-disable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
-      // @ts-expect-error 不知为啥类型错误
+      // @ts-expect-error 不知为啥类型错误, 这里要压缩html, 才要这做，按照官方配置只能压缩非html文件，因为插件运行期间html还没生成
       const obj = viteCompression({
         verbose: false,
       })
@@ -45,6 +45,7 @@ export default defineConfig(({ command, mode }) => {
         },
       })
       await obj.closeBundle()
+      /* eslint-enable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
     },
     // srcExclude
     cacheDir: resolveCwd('.cache/vitepress'),
