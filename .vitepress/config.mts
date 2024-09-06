@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
+import Inspect from 'vite-plugin-inspect'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import packageJson from '../package.json'
 
@@ -173,9 +174,13 @@ export default defineConfig(({ command, mode }) => {
           dts: resolveCwd('types/components.d.ts'),
           include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
         }),
+        Inspect({
+          // build: true, // build 模式下启用
+          outputDir: resolveCwd('.cache/inspect/.vite-inspect'),
+        }),
         visualizer({
           // TODO 会打开两遍 (client、server)
-          filename: '.cache/visualizer/report.html',
+          filename: resolveCwd('.cache/visualizer/report.html'),
           open: true,
         }),
       ],
