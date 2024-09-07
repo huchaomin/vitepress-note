@@ -9,9 +9,9 @@
     "pnpm": ">= 9.1.4"
   },
   "scripts": {
-    "dev": "vitepress dev .",
-    "build": "vitepress build .",
-    "preview": "vitepress preview .",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
     "preinstall": "npx only-allow pnpm",
     "inspectEslintConfig": "npx @eslint/config-inspector"
   },

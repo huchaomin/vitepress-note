@@ -2,7 +2,7 @@
 
 ## todo
 
-- 部署到GitHub Pages
+- [部署到GitHub Pages](https://cn.vitejs.dev/guide/static-deploy.html#github-pages)
 - [whyframe](https://whyframe.dev/)
 - [shiki.style](https://shiki.style/)
 - [路由过度动画](https://vitepress.dev/zh/guide/extending-default-theme#on-route-change)
@@ -26,6 +26,11 @@
 - vite.optimizeDeps
 - vite-plugin-icons  可以配合vcode的Iconify IntelliSense插件使用.
 - vite-plugin-windicss
+- 使用 lightning-css [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
+- new URL()
+- <link rel="modulepreload">
+- [NPM](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity), [社区插件列表](https://github.com/vitejs/awesome-vite#plugins), [rollup](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
+- [Monorepo 和链接依赖](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 
 ## 参考文献
 
