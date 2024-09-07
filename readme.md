@@ -24,6 +24,8 @@
 - 不用sass 不用 unocss
 - build.rollupOptions.output
 - vite.optimizeDeps
+- vite-plugin-icons  可以配合vcode的Iconify IntelliSense插件使用.
+- vite-plugin-windicss
 
 ## 参考文献
 

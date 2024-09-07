@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
+import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import Inspect from 'vite-plugin-inspect'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import packageJson from '../package.json'
@@ -175,6 +176,7 @@ export default defineConfig(({ command, mode }) => {
           extensions: ['vue', 'md'], // md文件也可以作为组件
           include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
         }),
+        aliasImportChecker(),
         Inspect({
           // build: true, // build 模式下启用
           outputDir: resolveCwd('.cache/inspect/.vite-inspect'),
