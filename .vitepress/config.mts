@@ -2,7 +2,7 @@ import path from 'node:path'
 import type * as http from 'node:http'
 import process from 'node:process'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
-import { type ProxyOptions, defineConfig, loadEnv } from 'vite'
+import { type ProxyOptions, defineConfig, loadEnv, normalizePath } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -25,6 +25,7 @@ function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: Pr
 const envDir = resolveCwd('env')
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ command, mode }) => {
+  // loadEnv 设置第三个参数为空 来加载所有环境变量，而不管是否有 `VITE_` 前缀
   const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
   const { VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
   console.log({
@@ -39,6 +40,16 @@ export default defineConfig(({ command, mode }) => {
       /* eslint-disable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
       // @ts-expect-error 不知为啥类型错误, 这里要压缩html, 才要这做，按照官方配置只能压缩非html文件，因为插件运行期间html还没生成
       const obj = viteCompression({
+        filter: (file: string) => {
+          const normalizePathFile = normalizePath(file)
+          const defaultReg = /\.(?:js|mjs|json|css|html)$/i
+          // const excludeFiles = ['.vite/manifest.json']
+          const excludeFiles:any[] = []
+          return (
+            defaultReg.test(normalizePathFile) &&
+            !excludeFiles.some((item) => normalizePathFile.includes(item))
+          )
+        },
         verbose: false,
       })
       obj.configResolved({
@@ -150,7 +161,11 @@ export default defineConfig(({ command, mode }) => {
       return [...interLinks, ...JetBrainsMonoLinks]
     },
     vite: {
+      clearScreen:false,
       envDir,
+      esbuild: {
+        drop: mode === 'production' ? ['console', 'debugger'] : [],
+      },
       plugins: [
         envParse({
           dtsPath: resolveCwd('types/env.d.ts'),
@@ -192,10 +207,14 @@ export default defineConfig(({ command, mode }) => {
           '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
           img: resolveCwd('src/static/images'),
         },
+        // https://cn.vitejs.dev/guide/performance.html#reduce-resolve-operations
+        // 不 建议忽略自定义导入类型的扩展名（例如：.vue），因为它会影响 IDE 和类型支持。
+        extensions: ['.ts', '.js'],
       },
       server: {
         host: '0.0.0.0',
         open: false,
+        strictPort: true,
         port: VITE_PORT,
         proxy: {
           [`${env.VITE_BASE_URL}${env.VITE_API_PREFIX}/`]: {

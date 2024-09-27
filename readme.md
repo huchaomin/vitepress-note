@@ -2,6 +2,7 @@
 
 ## todo
 
+- autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [部署到GitHub Pages](https://cn.vitejs.dev/guide/static-deploy.html#github-pages)
 - [whyframe](https://whyframe.dev/)
 - [shiki.style](https://shiki.style/)
@@ -26,11 +27,14 @@
 - vite.optimizeDeps
 - vite-plugin-icons  可以配合vcode的Iconify IntelliSense插件使用.
 - vite-plugin-windicss
-- 使用 lightning-css [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
-- new URL()
-- <link rel="modulepreload">
+- 使用 lightning-css  build.cssMinify [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
 - [NPM](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity), [社区插件列表](https://github.com/vitejs/awesome-vite#plugins), [rollup](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [Monorepo 和链接依赖](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
+- [预热常用文件 优化](https://cn.vitejs.dev/guide/performance#warm-up-frequently-used-files)
+- [虚拟模块](https://cn.vitejs.dev/guide/api-plugin.html#virtual-modules-convention)
+- vite resolve.dedupe 配置 [参考](https://juejin.cn/post/7239996748318408759#heading-9)
+- vite css 相关设置
+- server.warmup 与 optimizeDeps
 
 ## 参考文献
 

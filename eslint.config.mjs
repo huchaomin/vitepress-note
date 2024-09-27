@@ -31,6 +31,11 @@ export default antfu(
     // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
     stylistic: {
       overrides: {
+        '@stylistic/js/operator-linebreak': [
+          'error',
+          'after',
+          { overrides: { ':': 'before', '?': 'before' } },
+        ],
         'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
         'style/quote-props': ['error', 'as-needed'], // 与 prettier 保持一致
       },
