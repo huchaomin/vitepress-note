@@ -22,7 +22,6 @@
 - vitepress-plugin-comment-with-giscus
 - vitepress-plugin-pagefind
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
-- 不用sass 不用 unocss
 - build.rollupOptions.output
 - vite.optimizeDeps
 - vite-plugin-icons  可以配合vcode的Iconify IntelliSense插件使用.

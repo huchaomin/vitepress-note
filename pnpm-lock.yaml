@@ -21,9 +21,6 @@ importers:
       '@types/node':
         specifier: ^22.7.4
         version: 22.7.4
-      '@unocss/eslint-plugin':
-        specifier: ^0.62.3
-        version: 0.62.4(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
@@ -54,9 +51,6 @@ importers:
       rollup-plugin-visualizer:
         specifier: ^5.12.0
         version: 5.12.0(rollup@4.22.5)
-      sass:
-        specifier: ^1.79.4
-        version: 1.79.4
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -3280,8 +3274,10 @@ snapshots:
       unconfig: 0.5.5
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
-  '@unocss/core@0.62.4': {}
+  '@unocss/core@0.62.4':
+    optional: true
 
   '@unocss/eslint-plugin@0.62.4(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)':
     dependencies:
@@ -3294,6 +3290,7 @@ snapshots:
       - eslint
       - supports-color
       - typescript
+    optional: true
 
   '@vitejs/plugin-vue@5.1.4(vite@5.4.8(@types/node@22.7.4)(sass@1.79.4))(vue@3.5.10(typescript@5.6.2))':
     dependencies:
@@ -3499,6 +3496,7 @@ snapshots:
     dependencies:
       esbuild: 0.23.1
       load-tsconfig: 0.2.5
+    optional: true
 
   callsites@3.1.0: {}
 
@@ -3538,6 +3536,7 @@ snapshots:
   chokidar@4.0.1:
     dependencies:
       readdirp: 4.0.1
+    optional: true
 
   ci-info@4.0.0: {}
 
@@ -3614,7 +3613,8 @@ snapshots:
 
   define-lazy-prop@3.0.0: {}
 
-  defu@6.1.4: {}
+  defu@6.1.4:
+    optional: true
 
   dequal@2.0.3: {}
 
@@ -3697,6 +3697,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.23.1
       '@esbuild/win32-ia32': 0.23.1
       '@esbuild/win32-x64': 0.23.1
+    optional: true
 
   escalade@3.2.0: {}
 
@@ -4146,7 +4147,8 @@ snapshots:
 
   ignore@5.3.2: {}
 
-  immutable@4.3.7: {}
+  immutable@4.3.7:
+    optional: true
 
   import-fresh@3.3.0:
     dependencies:
@@ -4164,6 +4166,7 @@ snapshots:
       tsx: 4.19.1
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   imurmurhash@0.1.4: {}
 
@@ -4215,9 +4218,11 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jiti@1.21.6: {}
+  jiti@1.21.6:
+    optional: true
 
-  jiti@2.0.0-beta.3: {}
+  jiti@2.0.0-beta.3:
+    optional: true
 
   js-tokens@4.0.0: {}
 
@@ -4269,7 +4274,8 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  load-tsconfig@0.2.5: {}
+  load-tsconfig@0.2.5:
+    optional: true
 
   local-pkg@0.5.0:
     dependencies:
@@ -4809,7 +4815,8 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.1: {}
+  readdirp@4.0.1:
+    optional: true
 
   refa@0.12.1:
     dependencies:
@@ -4886,6 +4893,7 @@ snapshots:
       chokidar: 4.0.1
       immutable: 4.3.7
       source-map-js: 1.2.1
+    optional: true
 
   scslre@0.3.0:
     dependencies:
@@ -5037,6 +5045,7 @@ snapshots:
       get-tsconfig: 4.8.1
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   type-check@0.4.0:
     dependencies:
@@ -5061,6 +5070,7 @@ snapshots:
       importx: 0.4.4
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   undici-types@6.19.8: {}
 

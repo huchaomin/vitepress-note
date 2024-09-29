@@ -43,7 +43,6 @@ export default antfu(
     typescript: {
       tsconfigPath: 'tsconfig.json',
     },
-    unocss: true,
   },
   // https://github.com/prettier/eslint-plugin-prettier
   eslintPluginPrettierRecommended,

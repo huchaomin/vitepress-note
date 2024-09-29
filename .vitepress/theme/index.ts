@@ -1,14 +1,16 @@
 /*
- * @Author       : huchaomin peter@qingcongai.com
+ * @Author       : huchaomin
+ peter@qingcongai.com
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-09-25 15:49:54
+ * @LastEditTime : 2024-09-29 11:33:37
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme-without-fonts'
-import '@/assets/css/index.scss'
+import '@/assets/css/vars.css'
+import '@/assets/css/font.css'
 
 export default {
   // Vue 应用实例, 路由实例, 站点数据
