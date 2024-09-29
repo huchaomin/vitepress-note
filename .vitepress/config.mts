@@ -10,6 +10,7 @@ import viteCompression from 'vite-plugin-compression'
 import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import Inspect from 'vite-plugin-inspect'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
+import tailwindcss from '@tailwindcss/vite'
 import packageJson from '../package.json'
 
 function resolveCwd(p: string): string {
@@ -105,6 +106,9 @@ export default defineConfig(({ command, mode }) => {
           items: [
             { link: '/markdown-examples', text: 'Markdown Examples' },
             { link: '/api-examples', text: 'Runtime API Examples' },
+            { link: 'tools/tailwindcss', text: 'tailwindcss' },
+            { link: 'tools/vite', text: 'vite' },
+            { link: 'tools/vitePress', text: 'vitePress' },
           ],
           text: 'Examples',
         },
@@ -167,6 +171,7 @@ export default defineConfig(({ command, mode }) => {
         drop: mode === 'production' ? ['console', 'debugger'] : [],
       },
       plugins: [
+        tailwindcss(),
         envParse({
           dtsPath: resolveCwd('types/env.d.ts'),
         }),

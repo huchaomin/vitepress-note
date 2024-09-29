@@ -34,6 +34,7 @@
 - vite resolve.dedupe 配置 [参考](https://juejin.cn/post/7239996748318408759#heading-9)
 - vite css 相关设置
 - server.warmup 与 optimizeDeps
+- [vite 插件市场，模板市场](https://github.com/vitejs/awesome-vite)
 
 ## 参考文献
 
