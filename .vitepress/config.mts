@@ -11,6 +11,7 @@ import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import Inspect from 'vite-plugin-inspect'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import tailwindcss from '@tailwindcss/vite'
+// import vueDevTools from 'vite-plugin-vue-devtools'
 import packageJson from '../package.json'
 
 function resolveCwd(p: string): string {
@@ -44,8 +45,7 @@ export default defineConfig(({ command, mode }) => {
         filter: (file: string) => {
           const normalizePathFile = normalizePath(file)
           const defaultReg = /\.(?:js|mjs|json|css|html)$/i
-          // const excludeFiles = ['.vite/manifest.json']
-          const excludeFiles:any[] = []
+          const excludeFiles = ['manifest.json']
           return (
             defaultReg.test(normalizePathFile) &&
             !excludeFiles.some((item) => normalizePathFile.includes(item))
@@ -165,13 +165,12 @@ export default defineConfig(({ command, mode }) => {
       return [...interLinks, ...JetBrainsMonoLinks]
     },
     vite: {
-      clearScreen:false,
+      clearScreen: false,
       envDir,
       esbuild: {
         drop: mode === 'production' ? ['console', 'debugger'] : [],
       },
       plugins: [
-        tailwindcss(),
         envParse({
           dtsPath: resolveCwd('types/env.d.ts'),
         }),
@@ -189,6 +188,7 @@ export default defineConfig(({ command, mode }) => {
           //   globalsPropValue: 'readonly',
           // },
           include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/], // md 文件开启
+          vueTemplate: true, // solve When auto-import a ref, inline operations won't be auto unwrapped. [https://github.com/unjs/unimport/pull/15]
         }),
         Components({
           dirs: [resolveCwd('src/components/autoImport')],
@@ -197,6 +197,7 @@ export default defineConfig(({ command, mode }) => {
           include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
         }),
         aliasImportChecker(),
+        tailwindcss(),
         Inspect({
           // build: true, // build 模式下启用
           outputDir: resolveCwd('.cache/inspect/.vite-inspect'),
@@ -219,7 +220,6 @@ export default defineConfig(({ command, mode }) => {
       server: {
         host: '0.0.0.0',
         open: false,
-        strictPort: true,
         port: VITE_PORT,
         proxy: {
           [`${env.VITE_BASE_URL}${env.VITE_API_PREFIX}/`]: {
@@ -231,6 +231,7 @@ export default defineConfig(({ command, mode }) => {
             target: VITE_PROXY_TARGET,
           },
         },
+        strictPort: true,
       },
     },
   }

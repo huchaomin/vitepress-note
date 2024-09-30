@@ -32,11 +32,11 @@ const module = await import(`./dir/${file}.js`)
 与 `MODE` 的没有丝毫关系，是两个不同的概念
 会影响 `PROD` 和 `DEV` 的行为
 
-| Command | import.meta.env.PROD | import.meta.env.DEV |
-| --- | --- | --- |
-| NODE_ENV=production | true | false |
-| NODE_ENV=development | false | true |
-| NODE_ENV=other | false | false |
+| Command              | import.meta.env.PROD | import.meta.env.DEV |
+| -------------------- | -------------------- | ------------------- |
+| NODE_ENV=production  | true                 | false               |
+| NODE_ENV=development | false                | true                |
+| NODE_ENV=other       | false                | false               |
 
 可以在命令行中设置，也可以在env文件中设置
 

@@ -8,11 +8,12 @@ export default {
   enable: true, // 启用prettier格式化
   enableDebugLogs: true, // 启用调试日志
   endOfLine: 'lf', // 结束行形式
-  // ignorePath: '.prettierignore', // 忽略格式化的路径
   // prettierPath: '', // 指定prettier的路径
   htmlWhitespaceSensitivity: 'css', // 对HTML全局空白不敏感
+  // ignorePath: '.prettierignore', // 忽略格式化的路径 默认为'.prettierignore'
   insertPragma: false, // 在已被preitter格式化的文件顶部加上标注
   jsxSingleQuote: false, // jsx中使用单引号
+  plugins: ['prettier-plugin-tailwindcss'],
   printWidth: 100, // 单行长度
   proseWrap: 'preserve', // 不知道怎么翻译
   quoteProps: 'as-needed', // 仅在必需时为对象的key添加引号
