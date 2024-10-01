@@ -25,6 +25,7 @@ export default antfu(
       'types/auto-import.d.ts',
       'types/components.d.ts',
       'types/env.d.ts',
+      'folder-alias.json',
     ],
     // jsonc: true, // 配合 vscode.json-language-features 一起使用，冲突爆红就放在 .prettierignore 文件中 (默认为true) [jsonc: true 排序， vscode.json-language-features 截断好一点]
     // markdown: true, // 1、 Enable linting for **code snippets** in Markdown. 2、md文件的其他地方也会 (默认为true)
