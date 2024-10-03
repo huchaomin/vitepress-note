@@ -11,12 +11,17 @@ pnpx vitepress init
 
 ```md
 <!-- 链接到其他页面 -->
+
 [Getting Started](./getting-started)
 [Getting Started](../guide/getting-started)
 [Getting Started](../guide/getting-started#heading)
+
 <!-- 连接到非VitePress 页面（src 目录下其他html页面） -->
-[Link to pure.html](/pure.html){target="_self"}
+
+[Link to pure.html](/pure.html){target="\_self"}
+
 <!-- 链接到外部页面 -->
+
 [Getting Started](https://vitepress.vuejs.org/guide/getting-started.html)
 ```
 

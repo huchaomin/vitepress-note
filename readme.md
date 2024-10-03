@@ -24,9 +24,9 @@
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
 - vite.optimizeDeps
-- vite-plugin-icons  可以配合vcode的Iconify IntelliSense插件使用.
+- vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.
 - vite-plugin-windicss
-- 使用 lightning-css  build.cssMinify [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
+- 使用 lightning-css build.cssMinify [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
 - [NPM](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity), [社区插件列表](https://github.com/vitejs/awesome-vite#plugins), [rollup](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [Monorepo 和链接依赖](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [预热常用文件 优化](https://cn.vitejs.dev/guide/performance#warm-up-frequently-used-files)
@@ -35,6 +35,7 @@
 - vite css 相关设置
 - server.warmup 与 optimizeDeps
 - [vite 插件市场，模板市场](https://github.com/vitejs/awesome-vite)
+- 本博客的图片处理
 
 ## 参考文献
 

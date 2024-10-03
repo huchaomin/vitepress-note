@@ -109,6 +109,7 @@ export default defineConfig(({ command, mode }) => {
             { link: 'tools/tailwindcss', text: 'tailwindcss' },
             { link: 'tools/vite', text: 'vite' },
             { link: 'tools/vitePress', text: 'vitePress' },
+            { link: 'css/@rules/@layer', text: '@layer' },
           ],
           text: 'Examples',
         },
@@ -211,7 +212,7 @@ export default defineConfig(({ command, mode }) => {
       resolve: {
         alias: {
           '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
-          img: resolveCwd('src/static/images'),
+          img: resolveCwd('src/assets/images'),
         },
         // https://cn.vitejs.dev/guide/performance.html#reduce-resolve-operations
         // 不 建议忽略自定义导入类型的扩展名（例如：.vue），因为它会影响 IDE 和类型支持。
