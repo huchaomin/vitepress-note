@@ -36,7 +36,7 @@
 - server.warmup 与 optimizeDeps
 - [vite 插件市场，模板市场](https://github.com/vitejs/awesome-vite)
 - 本博客的图片处理
-- root --default var --变量
+- [css @property 与 css Houdini](https://www.cnblogs.com/coco1s/p/14661268.html)
 
 ## 参考文献
 
