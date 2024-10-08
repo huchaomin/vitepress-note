@@ -110,6 +110,7 @@ export default defineConfig(({ command, mode }) => {
             { link: 'tools/vite', text: 'vite' },
             { link: 'tools/vitePress', text: 'vitePress' },
             { link: 'css/@rules/@layer', text: '@layer' },
+            { link: 'css/@rules/@media', text: '@media' },
             { link: 'css/css变量', text: 'css变量' },
           ],
           text: 'Examples',
