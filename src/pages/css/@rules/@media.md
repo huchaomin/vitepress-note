@@ -93,10 +93,10 @@
 
 ```css
 @media screen and (min-width: 640px) and (max-width: 768px){
-  /* 满足屏幕，宽度在640-768之间，包括等于 */
+  /* 满足屏幕 且 宽度在640-768之间，包括等于 */
 }
 @media not screen and (min-width: 640px) and (max-width: 768px){
-  /* 满足屏幕，宽度不在640-768之间，不包括等于 */
+  /* 不是屏幕 或 宽度不在640-768之间，不包括等于 */
 }
 ```
 
