@@ -4,4 +4,7 @@
   --color-*: initial;
   --color-black: #000;
   --color-white: #fff;
+
+  /* --font-family-*: initial; */
+  --font-family-sans: var(--vp-font-family-base);
 }
