@@ -19,7 +19,7 @@
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-sidebar | vite-plugin-vitepress-auto-sidebar
 - vitepress-plugin-sandpack
-- vitepress-plugin-comment-with-giscus
+- vitepress-plugin-comment-with-giscus giscus 评论插件
 - vitepress-plugin-pagefind
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
