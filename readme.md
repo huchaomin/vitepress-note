@@ -37,6 +37,8 @@
 - [vite 插件市场，模板市场](https://github.com/vitejs/awesome-vite)
 - 本博客的图片处理
 - [css @property 与 css Houdini](https://www.cnblogs.com/coco1s/p/14661268.html)
+- npm install tailwindcss@next @tailwindcss/vite@next
+- [fix lightningcss dep url resolution with custom root](https://github.com/vitejs/vite/pull/18125/files) [6.0.0-beta.2](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md)
 
 ## 参考文献
 

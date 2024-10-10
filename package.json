@@ -20,21 +20,22 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
-    "@tailwindcss/vite": "4.0.0-alpha.25",
+    "@tailwindcss/vite": "4.0.0-alpha.26",
     "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "@vue/tsconfig": "^0.5.1",
-    "eslint": "^9.11.1",
+    "browserslist": "^4.24.0",
+    "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-format": "^0.1.2",
-    "eslint-plugin-perfectionist": "^3.7.0",
+    "eslint-plugin-perfectionist": "^3.8.0",
     "eslint-plugin-prettier": "^5.2.1",
     "markdown-it-anchor": "^9.2.0",
     "only-allow": "^1.2.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "rollup-plugin-visualizer": "^5.12.0",
-    "tailwindcss": "4.0.0-alpha.25",
+    "tailwindcss": "4.0.0-alpha.26",
     "typescript": "^5.6.2",
     "unplugin-auto-import": "^0.18.3",
     "unplugin-vue-components": "^0.27.4",
@@ -43,7 +44,7 @@
     "vite-plugin-env-parse": "^1.0.15",
     "vite-plugin-inspect": "^0.8.7",
     "vite-plugin-vue-devtools": "^7.4.6",
-    "vitepress": "^1.3.4"
+    "vitepress": "^1.4.0"
   },
   "pnpm": {
     "peerDependencyRules": {

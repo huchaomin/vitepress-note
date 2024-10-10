@@ -11,6 +11,8 @@ import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import Inspect from 'vite-plugin-inspect'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import tailwindcss from '@tailwindcss/vite'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 import packageJson from '../package.json'
 
@@ -168,7 +170,20 @@ export default defineConfig(({ command, mode }) => {
       return [...interLinks, ...JetBrainsMonoLinks]
     },
     vite: {
+      build: {
+        cssMinify: 'lightningcss',
+      },
       clearScreen: false,
+      css: {
+        lightningcss: {
+          nonStandard: {
+            deepSelectorCombinator: true, // TODO 好像不支持  :deep
+          },
+          // TODO https://cn.vitejs.dev/config/shared-options#css-lightningcss
+          targets: browserslistToTargets(browserslist('>= 0.25%')),
+        },
+        transformer: 'lightningcss',
+      },
       envDir,
       esbuild: {
         drop: mode === 'production' ? ['console', 'debugger'] : [],
@@ -214,6 +229,7 @@ export default defineConfig(({ command, mode }) => {
       resolve: {
         alias: {
           '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
+          font: resolveCwd('src/assets/fonts'), // 看看升级到 vite 6 以后会不会有问题
           img: resolveCwd('src/assets/images'),
         },
         // https://cn.vitejs.dev/guide/performance.html#reduce-resolve-operations
