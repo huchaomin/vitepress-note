@@ -53,6 +53,7 @@ export default antfu(
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'perfectionist/sort-imports': 'off', // 有其他排序插件
       'perfectionist/sort-named-imports': 'off', // 有其他排序插件
+      'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
       'prettier/prettier': ['error'],
     },
   },

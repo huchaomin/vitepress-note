@@ -19,7 +19,11 @@
     "vite.config.*",
     "eslint.config.*",
     "prettier.config.*",
+    "stylelint.config.*",
     ".vitepress/config.*",
     "types/**/*"
+  ],
+  "exclude": [
+    "/build/.cache"
   ]
 }

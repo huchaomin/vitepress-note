@@ -1,0 +1,7 @@
+**/*.min.css
+
+/.vscode
+/node_modules
+
+/docs
+/build/.cache

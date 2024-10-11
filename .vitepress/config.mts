@@ -1,6 +1,5 @@
-import path from 'node:path'
 import type * as http from 'node:http'
-import process from 'node:process'
+import { resolveCwd } from '../build/utils/index.ts'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
 import { type ProxyOptions, defineConfig, loadEnv, normalizePath } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -15,10 +14,6 @@ import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 import packageJson from '../package.json'
-
-function resolveCwd(p: string): string {
-  return path.resolve(process.cwd(), p)
-}
 
 function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
   const reqUrl = req.url ?? ''
@@ -64,7 +59,7 @@ export default defineConfig(({ command, mode }) => {
       /* eslint-enable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
     },
     // srcExclude
-    cacheDir: resolveCwd('.cache/vitepress'),
+    cacheDir: resolveCwd('build/.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
     description: packageJson.description,
     head: [['link', { href: `${VITE_BASE_URL}/favicon.ico`, rel: 'icon' }]],
@@ -218,11 +213,11 @@ export default defineConfig(({ command, mode }) => {
         tailwindcss(),
         Inspect({
           // build: true, // build 模式下启用
-          outputDir: resolveCwd('.cache/inspect/.vite-inspect'),
+          outputDir: resolveCwd('build/.cache/inspect/.vite-inspect'),
         }),
         visualizer({
           // TODO 会打开两遍 (client、server)
-          filename: resolveCwd('.cache/visualizer/report.html'),
+          filename: resolveCwd('build/.cache/visualizer/report.html'),
           open: true,
         }),
       ],
