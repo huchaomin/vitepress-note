@@ -6,8 +6,10 @@
 
 ## 语法
 
+<!-- postcss-ignore -->
+
 ```css
-@layer layer-name {rules}；
+@layer layer-name { rules }；
 @layer layer-name;
 @layer layer-name1, layer-name2, layer-name3;
 // 匿名层
@@ -26,13 +28,16 @@
 
 ```css
 @layer layer1, layer2;
+
 @layer layer2 {
   button { padding: 10px; }
 }
+
 @layer layer1 {
   button { padding: 20px; }
 }
-// 结果 10px: 代码从上往下读，layer1 先声明， layer2 后声明
+
+/* 结果 10px: 代码从上往下读，layer1 先声明， layer2 后声明 */
 ```
 
 ### 重复定义后面的权重高
@@ -45,10 +50,12 @@
 @layer layer {
   button { padding: 10px; }
 }
+
 @layer layer {
   button { padding: 20px; }
 }
-// 结果 20px,
+
+/* 结果 20px, */
 ```
 
 ### 比非层定义的权重低
@@ -58,9 +65,10 @@
 :::
 
 ```css
-.some-button { height: 40px; }
+.some_button { height: 40px; }
+
 @layer {
-  .container .some-button { height: 30px; }
+  .container .some_button { height: 30px; }
 }
 ```
 
@@ -90,10 +98,13 @@
 
 ```css
 @layer layer {
-  button { text-decoration:  none !important; }
+  button {
+    text-decoration: none !important;
+  }
 }
-button { text-decoration:  underline !important; }
-// 结果 none
+button { text-decoration: underline !important; }
+
+/* 结果 none */
 ```
 
 这里 important 权重有点反常识，请参阅[张鑫旭-理解CSS中的级联规则](https://www.zhangxinxu.com/wordpress/2022/05/deep-in-css-cascade/)

@@ -12,9 +12,9 @@ export default antfu(
   {
     formatters: {
       // 都默认开启了
-      // css: true,
+      css: false, // 用了 stylelint
       // html: true,
-      markdown: true, // 使用 prettier 格式化 markdown 文件,搭配 DavidAnson.vscode-markdownlint 插件一起使用, 需设置为true
+      // markdown: true, // 使用 prettier 格式化 markdown 文件,搭配 DavidAnson.vscode-markdownlint 插件一起使用
       // xml: true, 这一项配置了 vscode 的 eslint 插件会报错, 需要 @prettier/plugin-xml 插件
       prettierOptions, // 配置 prettier 的配置,这里不会读 ignorePath 这个配置,否则 ignorePath 里面配置的文件都不会被 prettier 格式化了
     },
@@ -28,7 +28,7 @@ export default antfu(
       'folder-alias.json',
     ],
     // jsonc: true, // 配合 vscode.json-language-features 一起使用，冲突爆红就放在 .prettierignore 文件中 (默认为true) [jsonc: true 排序， vscode.json-language-features 截断好一点]
-    // markdown: true, // 1、 Enable linting for **code snippets** in Markdown. 2、md文件的其他地方也会 (默认为true)
+    // markdown: true, // 1、 Enable linting for **code snippets** in Markdown. 2. 也会把上面的 formatters.markdown 设置为true 3. 默认为true
     // https://github.com/eslint-stylistic/eslint-stylistic/blob/main/packages/eslint-plugin/configs/customize.ts
     stylistic: {
       overrides: {

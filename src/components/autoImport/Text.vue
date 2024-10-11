@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 15:27:39
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-11 09:04:38
+ * @LastEditTime : 2024-10-11 11:08:45
  * @Description  :
 -->
 <script setup lang="ts">
@@ -25,6 +25,19 @@ function handleClick() {
 
 <style scoped>
 .oneItem {
+  position: relative;
   display: block;
+}
+
+.example {
+  color: blue;
+
+  &:hover {
+    color: rebeccapurple;
+  }
+
+  &::before {
+    color: blue;
+  }
 }
 </style>
