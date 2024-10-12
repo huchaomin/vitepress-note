@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 16:22:18
+ * @LastEditTime : 2024-10-12 17:00:11
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -17,7 +17,7 @@ import tailwindcss from '@tailwindcss/vite'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
-import { envDir, getEnv, resolveCwd } from './utils/index.ts'
+import { envDir, getEnv, resolveCwd, normalizeJoinPath } from './utils/index.ts'
 import { envParse } from 'vite-plugin-env-parse'
 
 function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
@@ -29,7 +29,7 @@ function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: Pr
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ command, mode }) => {
   const env = getEnv(mode)
-  const { VITE_PORT, VITE_PROXY_TARGET } = env
+  const { VITE_API_PREFIX, VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
   console.log({
     command,
     env,
@@ -108,11 +108,11 @@ export default defineConfig(({ command, mode }) => {
       open: false,
       port: VITE_PORT,
       proxy: {
-        [`${env.VITE_BASE_URL}${env.VITE_API_PREFIX}/`]: {
+        [normalizeJoinPath(VITE_BASE_URL, VITE_API_PREFIX)]: {
           bypass,
           changeOrigin: true,
           rewrite: (p) => {
-            return p.replace(new RegExp(env.VITE_BASE_URL), '')
+            return VITE_BASE_URL === '/' ? p : p.replace(new RegExp(VITE_BASE_URL), '')
           },
           target: VITE_PROXY_TARGET,
         },

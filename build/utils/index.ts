@@ -2,12 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 16:08:16
+ * @LastEditTime : 2024-10-12 16:57:44
  * @Description  :
  */
+
+// [normalizePath](https://github.com/jiangjiu/blog-md/issues/47)
 import path from 'node:path'
 import process from 'node:process'
-import { loadEnv } from 'vite'
+import { loadEnv, normalizePath } from 'vite'
 import { parseLoadedEnv } from 'vite-plugin-env-parse'
 
 function resolveCwd(p: string): string {
@@ -21,4 +23,8 @@ function getEnv(mode: string): ImportMetaEnv {
   return parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
 }
 
-export { envDir, getEnv, resolveCwd }
+function normalizeJoinPath(...paths: string[]): string {
+  return normalizePath(path.join(...paths))
+}
+
+export { envDir, getEnv, normalizeJoinPath, resolveCwd }

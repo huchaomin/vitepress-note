@@ -29,6 +29,8 @@ features:
 Wraps in a
 :::
 
+<NButton>Hello World</NButton>
+
 <<< @/tools/vite.md{2-8}
 
 <<< @/api-examples.md{2-3}

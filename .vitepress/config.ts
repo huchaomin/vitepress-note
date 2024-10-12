@@ -1,4 +1,11 @@
-import { resolveCwd, getEnv } from '../build/utils/index.ts'
+/*
+ * @Author       : peter peter@qingcongai.com
+ * @Date         : 2024-10-08 09:29:19
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-12 16:56:44
+ * @Description  :
+ */
+import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
 import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
@@ -38,7 +45,7 @@ export default defineConfig(({ mode }) => {
     cacheDir: resolveCwd('build/.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
     description: packageJson.description,
-    head: [['link', { href: `${VITE_BASE_URL}/favicon.ico`, rel: 'icon' }]],
+    head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
     lang: 'zh-CN',
     lastUpdated: true,
     markdown: {
