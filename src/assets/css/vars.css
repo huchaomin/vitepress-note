@@ -65,27 +65,9 @@
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) {
   :root {
     --vp-font-family-mono: 'JetBrainsMonoSemiBold';
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  :root {
-    --vp-font-family-mono: 'JetBrainsMonoBold';
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  :root {
-    --vp-font-family-mono: 'JetBrainsMonoExtraBold';
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .vp-doc [class*=language-] code{
-    font-weight: 900;
   }
 }
 

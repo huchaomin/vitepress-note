@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 16:57:44
+ * @LastEditTime : 2024-10-12 17:11:39
  * @Description  :
  */
 
@@ -16,7 +16,7 @@ function resolveCwd(p: string): string {
   return path.resolve(process.cwd(), p)
 }
 
-const envDir = resolveCwd('env')
+const envDir = resolveCwd('build/env')
 
 function getEnv(mode: string): ImportMetaEnv {
   // loadEnv 设置第三个参数为空 来加载所有环境变量，而不管是否有 `VITE_` 前缀

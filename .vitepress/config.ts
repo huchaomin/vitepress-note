@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 16:56:44
+ * @LastEditTime : 2024-10-12 18:08:46
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -122,10 +122,8 @@ export default defineConfig(({ mode }) => {
         /JetBrainsMono[\w\-.]+\.woff2/.test(str),
       )
       const obj = {
-        Bold: 'screen and (min-width: 769px) and (max-width: 1024px)',
-        ExtraBold: 'screen and (min-width: 1025px) and (max-width: 1280px)',
         Medium: 'screen and (max-width: 480px)',
-        SemiBold: 'screen and (min-width: 481px) and (max-width: 768px)',
+        SemiBold: 'screen and (min-width: 481px)',
       }
       const JetBrainsMonoLinks: [string, Record<string, string>][] = JetBrainsMonoFontFileArr.map(
         (href) => {

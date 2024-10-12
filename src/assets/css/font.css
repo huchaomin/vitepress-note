@@ -292,27 +292,3 @@
   font-display: swap;
   src: url('font/JetBrainsMono-SemiBoldItalic.woff2') format('woff2');
 }
-@font-face {
-  font-family: 'JetBrainsMonoBold';
-  font-style: normal;
-  font-display: swap;
-  src: url('font/JetBrainsMono-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrainsMonoBold';
-  font-style: italic;
-  font-display: swap;
-  src: url('font/JetBrainsMono-BoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrainsMonoExtraBold';
-  font-style: normal;
-  font-display: swap;
-  src: url('font/JetBrainsMono-ExtraBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'JetBrainsMonoExtraBold';
-  font-style: italic;
-  font-display: swap;
-  src: url('font/JetBrainsMono-ExtraBoldItalic.woff2') format('woff2');
-}
