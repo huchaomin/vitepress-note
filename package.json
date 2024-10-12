@@ -16,7 +16,8 @@
     "inspectEslintConfig": "npx @eslint/config-inspector"
   },
   "dependencies": {
-    "@vueuse/core": "^11.1.0"
+    "@vueuse/core": "^11.1.0",
+    "naive-ui": "^2.40.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",

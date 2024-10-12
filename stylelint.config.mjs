@@ -6,9 +6,9 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
+    '@stylistic/stylelint-config',
     'stylelint-config-standard',
     'stylelint-config-recess-order',
-    '@stylistic/stylelint-config',
     'stylelint-config-recommended-vue', // 放最后一个
   ],
   // 格式化 md 文件中的 css 代码

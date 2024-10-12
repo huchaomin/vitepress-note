@@ -38,6 +38,10 @@
 - [css @property 与 css Houdini](https://www.cnblogs.com/coco1s/p/14661268.html)
 - npm install tailwindcss@next @tailwindcss/vite@next
 - [fix lightningcss dep url resolution with custom root](https://github.com/vitejs/vite/pull/18125/files) [6.0.0-beta.2](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md)
+- naive ui 字体和图标的使用
+- [onUpdateXxx](https://www.naiveui.com/zh-CN/light/docs/common-issues)
+- [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
+- [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
 
 ## 参考文献
 

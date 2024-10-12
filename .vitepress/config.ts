@@ -1,37 +1,13 @@
-import type * as http from 'node:http'
-import { resolveCwd } from '../build/utils/index.ts'
+import { resolveCwd, getEnv } from '../build/utils/index.ts'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
-import { type ProxyOptions, defineConfig, loadEnv, normalizePath } from 'vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
-import aliasImportChecker from 'vite-plugin-alias-import-checker'
-import Inspect from 'vite-plugin-inspect'
-import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
-import tailwindcss from '@tailwindcss/vite'
-import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
-// import vueDevTools from 'vite-plugin-vue-devtools'
 import packageJson from '../package.json'
 
-function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
-  const reqUrl = req.url ?? ''
-  const proxyUrl = new URL(options.rewrite?.(reqUrl) ?? reqUrl, options.target as string).href ?? ''
-  res.setHeader('X-Res-ProxyUrl', proxyUrl) // 查看真实的请求地址
-}
-
-const envDir = resolveCwd('env')
-// https://vitepress.dev/reference/site-config
-export default defineConfig(({ command, mode }) => {
-  // loadEnv 设置第三个参数为空 来加载所有环境变量，而不管是否有 `VITE_` 前缀
-  const env = parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
-  const { VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
-  console.log({
-    command,
-    env,
-    mode,
-  })
+// https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
+export default defineConfig(({ mode }) => {
+  const env = getEnv(mode)
+  const { VITE_BASE_URL } = env
   const obj: ReturnType<typeof defineVitepressConfig> = {
     base: VITE_BASE_URL, // 终以斜杠开头和结尾(没有结尾vite会自动处理)
     async buildEnd(siteConfig) {
@@ -89,7 +65,7 @@ export default defineConfig(({ command, mode }) => {
       //   md.use(markdownItFoo)
       // }
     },
-    outDir: resolveCwd('docs'),
+    outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     srcDir: resolveCwd('src/pages'),
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
@@ -165,88 +141,7 @@ export default defineConfig(({ command, mode }) => {
       return [...interLinks, ...JetBrainsMonoLinks]
     },
     vite: {
-      build: {
-        cssMinify: 'lightningcss',
-      },
-      clearScreen: false,
-      css: {
-        lightningcss: {
-          nonStandard: {
-            deepSelectorCombinator: true, // TODO 好像不支持  :deep
-          },
-          // TODO https://cn.vitejs.dev/config/shared-options#css-lightningcss
-          targets: browserslistToTargets(browserslist('>= 0.25%')),
-        },
-        transformer: 'lightningcss',
-      },
-      envDir,
-      esbuild: {
-        drop: mode === 'production' ? ['console', 'debugger'] : [],
-      },
-      plugins: [
-        envParse({
-          dtsPath: resolveCwd('types/env.d.ts'),
-        }),
-        AutoImport({
-          dirs: [resolveCwd('src/plugins/autoImport'), resolveCwd('src/hooks')],
-          dts: resolveCwd('types/auto-imports.d.ts'),
-          imports: [
-            // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
-            'vue',
-            '@vueuse/core',
-          ],
-          // eslintrc: {
-          //   enabled: true,
-          //   filepath: resolveCwd('eslintrc-auto-import.mjs'),
-          //   globalsPropValue: 'readonly',
-          // },
-          include: [/\.[jt]sx?$/, /\.astro$/, /\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.md$/], // md 文件开启
-          vueTemplate: true, // solve When auto-import a ref, inline operations won't be auto unwrapped. [https://github.com/unjs/unimport/pull/15]
-        }),
-        Components({
-          dirs: [resolveCwd('src/components/autoImport')],
-          dts: resolveCwd('types/components.d.ts'),
-          extensions: ['vue', 'md'], // md文件也可以作为组件
-          include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
-        }),
-        aliasImportChecker(),
-        tailwindcss(),
-        Inspect({
-          // build: true, // build 模式下启用
-          outputDir: resolveCwd('build/.cache/inspect/.vite-inspect'),
-        }),
-        visualizer({
-          // TODO 会打开两遍 (client、server)
-          filename: resolveCwd('build/.cache/visualizer/report.html'),
-          open: true,
-        }),
-      ],
-      resolve: {
-        alias: {
-          '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
-          font: resolveCwd('src/assets/fonts'), // 看看升级到 vite 6 以后会不会有问题
-          img: resolveCwd('src/assets/images'),
-        },
-        // https://cn.vitejs.dev/guide/performance.html#reduce-resolve-operations
-        // 不 建议忽略自定义导入类型的扩展名（例如：.vue），因为它会影响 IDE 和类型支持。
-        extensions: ['.ts', '.js'],
-      },
-      server: {
-        host: '0.0.0.0',
-        open: false,
-        port: VITE_PORT,
-        proxy: {
-          [`${env.VITE_BASE_URL}${env.VITE_API_PREFIX}/`]: {
-            bypass,
-            changeOrigin: true,
-            rewrite: (p) => {
-              return p.replace(new RegExp(env.VITE_BASE_URL), '')
-            },
-            target: VITE_PROXY_TARGET,
-          },
-        },
-        strictPort: true,
-      },
+      configFile: resolveCwd('build/vite.config.ts'),
     },
   }
   return obj
