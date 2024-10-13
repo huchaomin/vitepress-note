@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 18:08:46
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-13 11:36:22
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -101,10 +101,10 @@ export default defineConfig(({ mode }) => {
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     transformHead({ assets }) {
-      const interFontFileArr = assets.filter((str: string) =>
-        /InterVariable[\w\-.]+\.woff2/.test(str),
+      const smileySansFontFileArr = assets.filter((str: string) =>
+        /SmileySans[\w\-.]+\.woff2/.test(str),
       )
-      const interLinks: [string, Record<string, string>][] = interFontFileArr.map(
+      const interLinks: [string, Record<string, string>][] = smileySansFontFileArr.map(
         (href: string) => {
           return [
             'link',

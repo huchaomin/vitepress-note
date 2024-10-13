@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    NButton: typeof import('naive-ui')['NButton']
     Text: typeof import('./../src/components/autoImport/Text.vue')['default']
   }
 }

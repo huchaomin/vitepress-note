@@ -12,7 +12,7 @@ export default antfu(
   {
     formatters: {
       // 都默认开启了
-      css: false, // 用了 stylelint
+      // css: true, // 与 stylelint 一起
       // html: true,
       // markdown: true, // 使用 prettier 格式化 markdown 文件,搭配 DavidAnson.vscode-markdownlint 插件一起使用
       // xml: true, 这一项配置了 vscode 的 eslint 插件会报错, 需要 @prettier/plugin-xml 插件

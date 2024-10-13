@@ -1,11 +1,13 @@
+/* stylelint-disable custom-property-pattern */
+
 /* @import "tailwindcss"; */
 
 /* 不使用默认的 theme layer */
-@import "tailwindcss/preflight" layer(base);
-@import "tailwindcss/utilities" layer(utilities);
-
+@import url("tailwindcss/preflight") layer(base);
+@import url("tailwindcss/utilities") layer(utilities);
 
 /* 处理 @layer theme {} */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --color-*: initial;
   --color-black: #000;
