@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-13 11:36:22
+ * @LastEditTime : 2024-10-13 18:01:34
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -10,6 +10,7 @@ import type { defineConfig as defineVitepressConfig } from 'vitepress'
 import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
+import insertLoadingHtml from '../build/plugins/insertLoadingHtml.ts'
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -144,6 +145,9 @@ export default defineConfig(({ mode }) => {
         },
       )
       return [...interLinks, ...JetBrainsMonoLinks]
+    },
+    transformHtml(code) {
+      return insertLoadingHtml(code)
     },
     vite: {
       configFile: resolveCwd('build/vite.config.ts'),

@@ -27,6 +27,7 @@ export default {
         message: '尽量使用嵌套写法',
       },
     ],
+    'import-notation': 'string', // url 模式好像 tailwindcss 引入有问题
     'selector-class-pattern': [
       '^(el-|([a-z][a-z0-9]*)(_[a-z0-9]+)*)$',
       {

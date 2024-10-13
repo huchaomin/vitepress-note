@@ -33,6 +33,7 @@
     "eslint-plugin-perfectionist": "^3.8.0",
     "eslint-plugin-prettier": "^5.2.1",
     "markdown-it-anchor": "^9.2.0",
+    "node-html-parser": "^6.1.13",
     "only-allow": "^1.2.1",
     "postcss-html": "^1.7.0",
     "postcss-markdown": "^1.2.0",
