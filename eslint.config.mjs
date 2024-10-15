@@ -49,6 +49,7 @@ export default antfu(
   eslintPluginPrettierRecommended,
   {
     rules: {
+      'antfu/consistent-chaining': 'off',
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'perfectionist/sort-imports': 'off', // 有其他排序插件

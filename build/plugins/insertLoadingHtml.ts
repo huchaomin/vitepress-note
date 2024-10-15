@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-14 00:01:28
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-15 11:51:57
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -25,37 +25,71 @@ export default (code: string): string => {
           align-items: center;
           top: 0;
           left: 0;
+          transition: opacity 0.8s;
         }
 
-        .waiting_logo {
-          width: 180px;
-          transform: scale(0.91);
-          transform-origin: center center;
-          animation: 3s linear 0s infinite normal forwards running breath;
+        #waiting .loader {
+          position: relative;
+          box-sizing: border-box;
+          display: inline-flex;
+          width: 200px;
+          height: 140px;
+          background: #979794;
+          border-radius: 8px;
+          perspective: 1000px;
+
+          &::before {
+            position: absolute;
+            inset: 10px;
+            content: "";
+            background: #f5f5f5  no-repeat;
+            background-image:
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0);
+            background-position:
+              15px 30px,
+              15px 60px,
+              15px 90px,
+              105px 30px,
+              105px 60px,
+              105px 90px;
+            background-size: 60px 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 25%);
+          }
+
+          &::after {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            width: calc(50% - 10px);
+            content: "";
+            background: #fff no-repeat;
+            background-image:
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0),
+              linear-gradient(#ddd 100px, transparent 0);
+            background-position: 50% 30px, 50% 60px, 50%  90px;
+            background-size: 60px 10px;
+            border-radius: 8px;
+            transform: rotateY(0deg);
+            transform-origin: left center;
+            animation: paging 1s linear infinite;
+          }
         }
 
-        @keyframes breath {
-          0% {
-            animation-timing-function: cubic-bezier(0.9647, 0.2413, -0.0705, 0.7911);
-            transform: scale(0.9);
-          }
-
-          51% {
-            animation-timing-function: cubic-bezier(0.9226, 0.2631, -0.0308, 0.7628);
-            transform: scale(1.02994);
-          }
-
-          100% {
-            transform: scale(0.9);
+        @keyframes paging {
+          to {
+            transform: rotateY(-180deg);
           }
         }
       </style>
-      <img
-        class="waiting_logo"
-        src="../src/assets/images/logo.svg"
-        alt="waiting_logo"
-        importance="high"
-      />
+      <div class="loader"></div>
     </div>`,
   )
   return root.outerHTML

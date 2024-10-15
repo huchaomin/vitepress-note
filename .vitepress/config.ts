@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-13 18:01:34
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-15 14:35:02
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -93,6 +93,7 @@ export default defineConfig(({ mode }) => {
             { link: 'css/@rules/@layer', text: '@layer' },
             { link: 'css/@rules/@media', text: '@media' },
             { link: 'css/css变量', text: 'css变量' },
+            { link: 'utils/确保网页字体加载完成', text: '确保网页字体加载完成' },
           ],
           text: 'Examples',
         },
