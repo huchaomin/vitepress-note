@@ -3,6 +3,7 @@
     "antfu",
     "crossorigin",
     "frontmatter",
+    "sider",
     "tseslint",
     "vitepress"
   ],
