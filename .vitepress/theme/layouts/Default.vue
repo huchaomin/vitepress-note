@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-15 18:15:32
+ * @LastEditTime : 2024-10-16 09:28:46
  * @Description  :
 -->
 <script setup lang="ts"></script>
@@ -10,7 +10,7 @@
 <template>
   <NLayout
     id="doc-layout"
-    :has-sider="showSider"
+    :has-sider="!isTablet && !isMobile"
     :position="isMobile ? 'static' : 'absolute'"
     :style="{
       top: isMobile ? '' : 'var(--header-height)',
@@ -30,13 +30,14 @@
       <NMenu :value="menuValue" :options="options" :render-label="renderMenuLabel" />
     </NLayoutSider> -->
     <NLayout
-      ref="layoutInstRef"
-      :scrollbar-props="layoutScrollbarProps"
+      :scrollbar-props="{
+        containerClass: 'document-scroll-container',
+      }"
       :native-scrollbar="false"
-      :position="isMobile || showSider ? 'static' : 'absolute'"
+      :position="isMobile || (!isTablet && !isMobile) ? 'static' : 'absolute'"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <Content />
+      <Content></Content>
       <!-- 底部 -->
       <!-- <SiteFooter /> -->
     </NLayout>

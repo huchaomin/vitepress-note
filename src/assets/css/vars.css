@@ -50,11 +50,11 @@
   --font-family-others: "JetBrainsMonoMedium";
   --font-family-semi-bold-others: "JetBrainsMonoSemiBold";
   --font-family-zh: "SmileySans-Oblique";
-  --vp-font-family-base: var(--font-family-semi-bold-others), var(--font-family-zh);
-  --vp-font-family-mono: var(--vp-font-family-base);
+  --font-family-base: var(--font-family-semi-bold-others), var(--font-family-zh);
+  --font-family-mono: var(--vp-font-family-base);
 
   @media screen and (width <= 480px) {
-    --vp-font-family-mono: var(--font-family-others), var(--font-family-zh);
+    --font-family-mono: var(--font-family-others), var(--font-family-zh);
   }
 }
 

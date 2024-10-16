@@ -63,6 +63,18 @@ export default antfu(
           registeredComponentsOnly: false,
         },
       ], // 组件名必须为PascalCase
+      'vue/html-self-closing': [
+        'error',
+        {
+          html: {
+            component: 'never',
+            normal: 'never',
+            void: 'always',
+          },
+          math: 'always',
+          svg: 'always',
+        },
+      ], // html标签不要自闭合
     },
   },
 ).override(perfectionistConfig[0].name, perfectionist.configs['recommended-natural'])
