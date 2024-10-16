@@ -7,18 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
-    ICustomAaa: typeof import('~icons/custom/aaa')['default']
-    NAutoComplete: typeof import('naive-ui')['NAutoComplete']
-    NButton: typeof import('naive-ui')['NButton']
-    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
-    NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
-    NIcon: typeof import('naive-ui')['NIcon']
-    NLayout: typeof import('naive-ui')['NLayout']
-    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
-    NMenu: typeof import('naive-ui')['NMenu']
-    NPopover: typeof import('naive-ui')['NPopover']
-    NText: typeof import('naive-ui')['NText']
     Text: typeof import('./../src/components/autoImport/Text.vue')['default']
   }
 }

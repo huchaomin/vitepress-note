@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-15 14:35:02
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-16 23:52:15
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -11,6 +11,16 @@ import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
 import insertLoadingHtml from '../build/plugins/insertLoadingHtml.ts'
+import { generateSidebar } from 'vitepress-sidebar'
+
+const aaa = generateSidebar({
+  documentRootPath: 'src/pages',
+  useFolderTitleFromIndexFile: true,
+  useTitleFromFileHeading: true,
+  useTitleFromFrontmatter: true,
+})
+
+console.log(aaa)
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -77,29 +87,8 @@ export default defineConfig(({ mode }) => {
     srcDir: resolveCwd('src/pages'),
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
-      nav: [
-        { link: '/', text: 'Home' },
-        { link: '/markdown-examples', text: 'Examples' },
-      ],
-
-      sidebar: [
-        {
-          items: [
-            { link: '/markdown-examples', text: 'Markdown Examples' },
-            { link: '/api-examples', text: 'Runtime API Examples' },
-            { link: 'tools/tailwindcss', text: 'tailwindcss' },
-            { link: 'tools/vite', text: 'vite' },
-            { link: 'tools/vitePress', text: 'vitePress' },
-            { link: 'css/@rules/@layer', text: '@layer' },
-            { link: 'css/@rules/@media', text: '@media' },
-            { link: 'css/css变量', text: 'css变量' },
-            { link: 'utils/确保网页字体加载完成', text: '确保网页字体加载完成' },
-          ],
-          text: 'Examples',
-        },
-      ],
-
-      socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+      // sidebar: generateSidebar({
+      // }),
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     transformHead({ assets }) {
