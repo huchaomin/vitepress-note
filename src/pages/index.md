@@ -31,6 +31,9 @@ Wraps in a
 
 <NButton>Hello World</NButton>
 
+<i-carbon-accessibility/>
+<i-custom-aaa/>
+
 <<< @/tools/vite.md{2-8}
 
 <<< @/api-examples.md{2-3}

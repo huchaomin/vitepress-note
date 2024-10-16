@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 17:00:11
+ * @LastEditTime : 2024-10-16 16:40:09
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -14,6 +14,9 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import Inspect from 'vite-plugin-inspect'
 import tailwindcss from '@tailwindcss/vite'
+import Icons from 'unplugin-icons/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import IconsResolver from 'unplugin-icons/resolver'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
@@ -55,6 +58,14 @@ export default defineConfig(({ command, mode }) => {
       drop: mode === 'production' ? ['console', 'debugger'] : [],
     },
     plugins: [
+      // https://github.com/unplugin/unplugin-icons?tab=readme-ov-file
+      // https://github.com/unplugin/unplugin-icons/blob/main/examples/vite-vue3/vite.config.ts
+      Icons({
+        autoInstall: true,
+        customCollections: {
+          custom: FileSystemIconLoader(resolveCwd('src/assets/icons')),
+        },
+      }),
       envParse({
         dtsPath: resolveCwd('types/env.d.ts'),
       }),
@@ -79,7 +90,12 @@ export default defineConfig(({ command, mode }) => {
         dts: resolveCwd('types/components.d.ts'),
         extensions: ['vue', 'md'], // md文件也可以作为组件
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
-        resolvers: [NaiveUiResolver()],
+        resolvers: [
+          NaiveUiResolver(),
+          IconsResolver({
+            customCollections: ['custom'],
+          }),
+        ],
       }),
       aliasImportChecker(),
       tailwindcss(),
