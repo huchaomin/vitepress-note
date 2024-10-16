@@ -33,6 +33,7 @@ export default antfu(
     stylistic: {
       overrides: {
         'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
+        'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
         'style/operator-linebreak': [
           'error',
           'after',

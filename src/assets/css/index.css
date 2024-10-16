@@ -5,8 +5,6 @@
 body {
   overflow: hidden;
 
-  --header-height: 64px;
-
   /* isMobile */
   @media only screen and (width <= 639px) {
     overflow: visible;
