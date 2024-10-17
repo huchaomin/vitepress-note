@@ -7,10 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
-    ICustomAaa: typeof import('~icons/custom/aaa')['default']
-    NButton: typeof import('naive-ui')['NButton']
-    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']

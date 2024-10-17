@@ -18,6 +18,9 @@ importers:
       '@antfu/eslint-config':
         specifier: ^3.7.3
         version: 3.7.3(@typescript-eslint/utils@8.8.1(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3))(@vue/compiler-sfc@3.5.11)(eslint-plugin-format@0.1.2(eslint@9.12.0(jiti@2.3.3)))(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3)
+      '@css-render/vue3-ssr':
+        specifier: ^0.15.14
+        version: 0.15.14(vue@3.5.11(typescript@5.6.3))
       '@iconify-json/carbon':
         specifier: ^1.2.3
         version: 1.2.3

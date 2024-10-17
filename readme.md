@@ -44,6 +44,8 @@
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
 - npm install --save-dev seemly
 - 左侧树的搜索功能
+- 用vp-link 不要用 router.go()
+- 生产环境 waiting 不生效问题
 
 ## 参考文献
 

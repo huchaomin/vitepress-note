@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
+    "@css-render/vue3-ssr": "^0.15.14",
     "@iconify-json/carbon": "^1.2.3",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/vite": "4.0.0-alpha.26",

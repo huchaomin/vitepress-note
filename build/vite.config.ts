@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-16 16:40:09
+ * @LastEditTime : 2024-10-17 16:44:28
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -134,6 +134,9 @@ export default defineConfig(({ command, mode }) => {
         },
       },
       strictPort: true,
+    },
+    ssr: {
+      noExternal: ['naive-ui', 'date-fns', 'vueuc'],
     },
   }
 })
