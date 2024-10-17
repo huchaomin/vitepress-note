@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-16 23:52:15
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-17 13:52:30
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -12,15 +12,6 @@ import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
 import insertLoadingHtml from '../build/plugins/insertLoadingHtml.ts'
 import { generateSidebar } from 'vitepress-sidebar'
-
-const aaa = generateSidebar({
-  documentRootPath: 'src/pages',
-  useFolderTitleFromIndexFile: true,
-  useTitleFromFileHeading: true,
-  useTitleFromFrontmatter: true,
-})
-
-console.log(aaa)
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -87,8 +78,12 @@ export default defineConfig(({ mode }) => {
     srcDir: resolveCwd('src/pages'),
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
-      // sidebar: generateSidebar({
-      // }),
+      sidebar: generateSidebar({
+        documentRootPath: 'src/pages',
+        useFolderTitleFromIndexFile: true,
+        useTitleFromFileHeading: true,
+        useTitleFromFrontmatter: true,
+      }),
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     transformHead({ assets }) {

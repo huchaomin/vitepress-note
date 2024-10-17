@@ -2,7 +2,7 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-16 16:54:55
+ * @LastEditTime : 2024-10-17 16:18:46
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
@@ -13,9 +13,7 @@ import './hideWaiting'
 import App from './App.vue'
 
 export default {
-  enhanceApp(...arg) {
-    console.log(arg)
-  },
+  enhanceApp() {},
   Layout: () => {
     return h(App, null, {})
   },

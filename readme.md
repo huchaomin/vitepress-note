@@ -43,7 +43,7 @@
 - [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
 - npm install --save-dev seemly
-- 懒加载 layout
+- 左侧树的搜索功能
 
 ## 参考文献
 

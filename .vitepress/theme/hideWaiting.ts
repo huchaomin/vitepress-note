@@ -1,12 +1,13 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 11:48:52
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-15 20:28:01
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-17 09:32:23
  * @Description  :
  */
+import { inBrowser } from 'vitepress'
 
-if (!import.meta.env.SSR && import.meta.env.PROD) {
+if (inBrowser && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     const waiting = document.querySelector('#waiting') as HTMLElement
     waiting.addEventListener('animationend', () => {

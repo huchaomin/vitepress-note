@@ -2,10 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-16 09:28:46
+ * @LastEditTime : 2024-10-17 09:47:00
  * @Description  :
 -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LeftDrawer from '../components/LeftDrawer.vue'
+</script>
 
 <template>
   <NLayout
@@ -17,18 +19,7 @@
     }"
   >
     <!-- 左侧菜单 -->
-    <!-- <NLayoutSider
-      v-if="showSider"
-      :native-scrollbar="false"
-      :collapsed-width="0"
-      collapse-mode="transform"
-      trigger-style="top: 240px;"
-      collapsed-trigger-style="top: 240px; right: -20px;"
-      bordered
-      show-trigger="arrow-circle"
-    >
-      <NMenu :value="menuValue" :options="options" :render-label="renderMenuLabel" />
-    </NLayoutSider> -->
+    <LeftDrawer></LeftDrawer>
     <NLayout
       :scrollbar-props="{
         containerClass: 'document-scroll-container',
