@@ -1,13 +1,12 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 17:12:15
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 17:25:22
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-17 20:21:17
  * @Description  :
  */
 import type { App } from 'vue'
 import { setup } from '@css-render/vue3-ssr'
-import { useRoute } from 'vitepress'
 import { NConfigProvider, type GlobalThemeOverrides, zhCN, dateZhCN } from 'naive-ui'
 
 import AppEntry from './App.vue'
@@ -22,15 +21,6 @@ const CssRenderStyle = defineComponent({
     const collect: () => string = inject('css-render-collect')!
     return {
       style: collect(),
-    }
-  },
-})
-
-const VitepressPath = defineComponent({
-  setup() {
-    const route = useRoute()
-    return () => {
-      return h('vitepress-path', null, [route.path])
     }
   },
 })
@@ -73,7 +63,7 @@ const NaiveUIProvider = defineComponent({
       {
         default: () => [
           h(AppEntry, null, { default: this.$slots.default?.() }),
-          import.meta.env.SSR ? [h(CssRenderStyle), h(VitepressPath)] : null,
+          import.meta.env.SSR ? [h(CssRenderStyle)] : null,
         ],
       },
     )

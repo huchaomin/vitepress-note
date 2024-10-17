@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 18:19:40
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-17 20:26:26
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -13,7 +13,6 @@ import packageJson from '../package.json'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
 import { generateSidebar } from 'vitepress-sidebar'
 
-const fileAndStyles: Record<string, string> = {}
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
   const env = getEnv(mode)
@@ -76,19 +75,6 @@ export default defineConfig(({ mode }) => {
       // }
     },
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
-    // postRender(context) {
-    //   const styleRegex = /<css-render-style>([\s\S]+)<\/css-render-style>/
-    //   const vitepressPathRegex = /<vitepress-path>(.+)<\/vitepress-path>/
-    //   const style = styleRegex.exec(context.content)?.[1]
-    //   const vitepressPath = vitepressPathRegex.exec(context.content)?.[1]
-    //   if (vitepressPath && style) {
-    //     console.log(vitepressPath)
-
-    //     fileAndStyles[vitepressPath] = style
-    //   }
-    //   context.content = context.content.replace(styleRegex, '')
-    //   context.content = context.content.replace(vitepressPathRegex, '')
-    // },
     srcDir: resolveCwd('src/pages'),
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
@@ -147,22 +133,6 @@ export default defineConfig(({ mode }) => {
     },
     transformHtml(code) {
       return postHandleHtml(code)
-      // console.log(id)
-
-      // const html = id.split('/').pop()
-      // if (!html) {
-      //   return code
-      // }
-      // const style = fileAndStyles[`/${html}`]
-      // console.log(html)
-
-      // if (style) {
-      //   console.log('---------------')
-      //   console.log(id, style)
-
-      //   return code.replace(/<\/head>/, `${style}</head>`)
-      // }
-      // return code
     },
     vite: {
       configFile: resolveCwd('build/vite.config.ts'),

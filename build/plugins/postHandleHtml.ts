@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 18:34:59
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-17 20:22:30
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -10,7 +10,6 @@ import { parse } from 'node-html-parser'
 export default (code: string): string => {
   const root = parse(code)
   const app = root.querySelector('#app')!
-  app.querySelector('vitepress-path')?.remove()
   const cssRenderStyle = app.querySelector('css-render-style')
   if (cssRenderStyle) {
     const cssRenderStyleInner = cssRenderStyle.innerHTML
