@@ -1,0 +1,18 @@
+{
+  "common": {
+    "borderRadius": "4px",
+    "fontFamily": "var(--font-family-base)",
+    "fontFamilyMono": "var(--font-family-mono)",
+    "infoColor": "#697FEDFF",
+    "infoColorHover": "#9AADFEFF",
+    "infoColorPressed": "#596CDBFF",
+    "infoColorSuppl": "#9AADFEFF",
+    "primaryColor": "#697FEDFF",
+    "primaryColorHover": "#9AADFEFF",
+    "primaryColorPressed": "#596CDBFF",
+    "primaryColorSuppl": "#9AADFEFF"
+  },
+  "Tree": {
+    "nodeWrapperPadding": "0 0"
+  }
+}

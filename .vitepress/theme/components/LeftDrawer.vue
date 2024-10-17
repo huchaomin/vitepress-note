@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 16:27:26
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-18 00:41:21
  * @Description  :
 -->
 <script setup lang="ts">
@@ -21,18 +21,18 @@ interface SidebarItem {
   text: string
 }
 
-function addBase(items: SidebarItem[], level: number) {
+function addKey(items: Omit<SidebarItem, 'key'>[], level: number) {
   return [...items].map((_item) => {
     const item = { ..._item, key: `${level}-${_item.text}` }
     if (item.items) {
-      item.items = addBase(item.items, level + 1)
+      item.items = addKey(item.items, level + 1)
     }
     return item
   })
 }
 
 const sidebar = computed(() => {
-  return addBase(theme.value.sidebar, 0)
+  return addKey(theme.value.sidebar, 0)
 })
 
 const override: TreeOverrideNodeClickBehavior = ({ option }) => {
@@ -62,19 +62,24 @@ function pushKeys(
   return false
 }
 
+// 有可能长度为 0, 但是 一般不展示这个视图
 function getCurrentTreeKeys() {
   const keys: string[] = []
   pushKeys(null, sidebar.value, decodeURIComponent(route.path), keys)
   return keys
 }
-const defaultExpandedKeys = getCurrentTreeKeys()
-const defaultSelectedKeys = [defaultExpandedKeys[defaultExpandedKeys.length - 1]]
+const currentKeys = getCurrentTreeKeys()
+const selectedKeys = ref(currentKeys.length ? [currentKeys.pop()!] : [])
+const expandedKeys = ref(currentKeys)
 
-console.log(route.path)
-
-console.log(sidebar.value)
-console.log(defaultExpandedKeys)
-console.log(defaultSelectedKeys)
+watch(
+  () => route.path, // hash 和 query 都改变不了 path
+  () => {
+    const ck = getCurrentTreeKeys()
+    selectedKeys.value = ck.length ? [ck.pop()!] : []
+    expandedKeys.value = [...new Set([...ck, ...expandedKeys.value])]
+  },
+)
 
 function handleUpdateSelectedKeys(_: string[], option: SidebarItem[]): void {
   const link = option[0]?.link
@@ -96,9 +101,9 @@ function handleUpdateSelectedKeys(_: string[], option: SidebarItem[]): void {
     show-trigger="arrow-circle"
   >
     <NTree
+      v-model:expanded-keys="expandedKeys"
       block-line
-      :default-expanded-keys="defaultExpandedKeys"
-      :default-selected-keys="defaultSelectedKeys"
+      :selected-keys="selectedKeys"
       label-field="text"
       children-field="items"
       selectable
