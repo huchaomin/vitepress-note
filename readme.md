@@ -45,7 +45,6 @@
 - npm install --save-dev seemly
 - 左侧树的搜索功能
 - 用vp-link 不要用 router.go()
-- 生产环境 waiting 不生效问题
 
 ## 参考文献
 
