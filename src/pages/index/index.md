@@ -1,10 +1,9 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
-
 header: false
+exclude: true
 ---
 
-# test
+# index
 
 ::: raw
 Wraps in a

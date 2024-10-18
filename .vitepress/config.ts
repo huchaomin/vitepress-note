@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-17 20:26:26
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-18 13:55:18
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -11,7 +11,7 @@ import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
-import { generateSidebar } from 'vitepress-sidebar'
+import { generateSidebar, type SidebarItem } from 'vitepress-sidebar'
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -75,15 +75,27 @@ export default defineConfig(({ mode }) => {
       // }
     },
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
+    rewrites: {
+      'index/index.md': 'index.md',
+    },
     srcDir: resolveCwd('src/pages'),
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
-      sidebar: generateSidebar({
-        documentRootPath: 'src/pages',
-        useFolderTitleFromIndexFile: true,
-        useTitleFromFileHeading: true,
-        useTitleFromFrontmatter: true,
-      }),
+      sidebar: (
+        generateSidebar({
+          convertSameNameSubFileToGroupIndexPage: true,
+          debugPrint: false,
+          documentRootPath: 'src/pages',
+          excludeFilesByFrontmatterFieldName: 'exclude',
+          // sortMenusByFrontmatterOrder: true, // TODO
+          // excludePattern: ['index/index.md'], // 排除的文件
+          sortFolderTo: 'top', // TODO
+          useFolderLinkFromIndexFile: true,
+          useFolderTitleFromIndexFile: true,
+          useTitleFromFileHeading: true,
+          useTitleFromFrontmatter: true,
+        }) as SidebarItem[]
+      ).filter((item) => item.link !== '/index/index.md'), // excludeFilesByFrontmatterFieldName 和 excludePattern 对这个文件起不了作用
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     transformHead({ assets }) {

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-18 10:06:56
+ * @LastEditTime : 2024-10-18 13:56:30
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,7 +13,6 @@ const { theme } = useData()
 const route = useRoute()
 
 interface SidebarItem {
-  collapsed?: boolean
   items?: SidebarItem[]
   key: string
   link: string
@@ -83,7 +82,6 @@ watch(
 )
 
 function renderLabel({ option }: { option: TreeOption }) {
-  console.log(option)
   if (option.link) {
     return h(
       'a',
