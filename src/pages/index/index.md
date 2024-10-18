@@ -5,7 +5,9 @@ title: 擎聪智慧大屏系统
 ---
 
 <script setup lang="ts">
-import Index from './Index.vue'
+import { defineClientComponent } from 'vitepress'
+const Index = defineClientComponent(() => {
+  return import('./Index.vue')
+})
 </script>
-
 <Index></Index>
