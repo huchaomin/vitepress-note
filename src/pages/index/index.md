@@ -1,35 +1,11 @@
 ---
 header: false
-exclude: true
+layout: full
+title: 擎聪智慧大屏系统
 ---
 
-# index
-
-::: raw
-Wraps in a
-:::
-
-<NButton>Hello World</NButton>
-
-<i-carbon-accessibility/>
-<i-custom-aaa/>
-
-<<< @/tools/vite.md{2-8}
-
-<<< @/api-examples.md{2-3}
-
 <script setup lang="ts">
-  const a = import.meta.env.VITE_BASE_URL
-  const b = ref('b')
+import Index from './Index.vue'
 </script>
 
-<Text></Text>
-
-```ts-vue
-{{ a,b }}
-```
-
-```js
-const a = test
-console.log('hello')
-```
+<Index></Index>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-18 13:55:18
+ * @LastEditTime : 2024-10-18 13:59:24
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -79,8 +79,9 @@ export default defineConfig(({ mode }) => {
       'index/index.md': 'index.md',
     },
     srcDir: resolveCwd('src/pages'),
+    // https://vitepress.dev/reference/default-theme-config
     themeConfig: {
-      // https://vitepress.dev/reference/default-theme-config
+      // https://vitepress-sidebar.cdget.com/zhHans/guide/api#excludepattern
       sidebar: (
         generateSidebar({
           convertSameNameSubFileToGroupIndexPage: true,
