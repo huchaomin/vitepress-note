@@ -21,6 +21,7 @@ export default {
   plugins: ['stylelint-use-nesting'],
   // null (to turn the rule off)
   rules: {
+    '@stylistic/declaration-block-trailing-semicolon': ['never'], // 与 prettier 保持一致
     'csstools/use-nesting': [
       'always',
       {

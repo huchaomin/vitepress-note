@@ -57,6 +57,14 @@ export default antfu(
       'perfectionist/sort-named-imports': 'off', // 有其他排序插件
       'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
       'prettier/prettier': ['error'],
+      'ts/strict-boolean-expressions': [
+        'error',
+        {
+          allowNullableBoolean: true,
+          allowNullableNumber: true,
+          allowNullableString: true,
+        },
+      ],
       'vue/component-name-in-template-casing': [
         'error',
         'PascalCase',

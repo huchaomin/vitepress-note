@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-18 13:59:24
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-19 23:51:09
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -11,7 +11,7 @@ import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
-import { generateSidebar, type SidebarItem } from 'vitepress-sidebar'
+import sidebar from '../build/plugins/generateSidebar.ts'
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -81,22 +81,7 @@ export default defineConfig(({ mode }) => {
     srcDir: resolveCwd('src/pages'),
     // https://vitepress.dev/reference/default-theme-config
     themeConfig: {
-      // https://vitepress-sidebar.cdget.com/zhHans/guide/api#excludepattern
-      sidebar: (
-        generateSidebar({
-          convertSameNameSubFileToGroupIndexPage: true,
-          debugPrint: false,
-          documentRootPath: 'src/pages',
-          excludeFilesByFrontmatterFieldName: 'exclude',
-          // sortMenusByFrontmatterOrder: true, // TODO
-          // excludePattern: ['index/index.md'], // 排除的文件
-          sortFolderTo: 'top', // TODO
-          useFolderLinkFromIndexFile: true,
-          useFolderTitleFromIndexFile: true,
-          useTitleFromFileHeading: true,
-          useTitleFromFrontmatter: true,
-        }) as SidebarItem[]
-      ).filter((item) => item.link !== '/index/index.md'), // excludeFilesByFrontmatterFieldName 和 excludePattern 对这个文件起不了作用
+      sidebar,
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     transformHead({ assets }) {
