@@ -18,7 +18,8 @@
   "dependencies": {
     "@kjgl77/datav-vue3": "^1.7.3",
     "@vueuse/core": "^11.1.0",
-    "naive-ui": "^2.40.1"
+    "naive-ui": "^2.40.1",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
