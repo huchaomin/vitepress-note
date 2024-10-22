@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 16:02:20
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 09:20:41
+ * @LastEditTime : 2024-10-22 15:44:35
  * @Description  :
  */
 import Resource, { type AssetType } from '@/components/three/utils/Resource'
@@ -24,6 +24,7 @@ import pathLine from '../assets/texture/pathLine2.png'
 import pathLine2 from '../assets/texture/pathLine4.png'
 import point from '../assets/texture/point1.png'
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const assets = [
   { name: 'grid', path: grid, type: 'Texture' },
   { name: 'pathLine', path: pathLine2, type: 'Texture' },
@@ -43,17 +44,17 @@ const assets = [
   { name: 'point', path: point, type: 'Texture' },
   {
     name: 'chinaStorke',
-    path: '../assets/json/中华人民共和国-轮廓.json',
+    path: `${BASE_URL}assets/json/中华人民共和国-轮廓.json`,
     type: 'File',
   },
   {
     name: 'china',
-    path: '../assets/json/中华人民共和国.json',
+    path: `${BASE_URL}assets/json/中华人民共和国.json`,
     type: 'File',
   },
   {
     name: 'transportPath',
-    path: '../assets/json/运输路径.json',
+    path: `${BASE_URL}assets/json/运输路径.json`,
     type: 'File',
   },
 ]
@@ -63,12 +64,12 @@ export default async (): Promise<AssetType[]> => {
   instance.addLoader(FileLoader, 'FileLoader')
 
   // 资源加载成功事件
-  instance.on('onSuccess', (path) => {
-    console.log(`${path}加载成功`)
-  })
+  // instance.on('onSuccess', (path) => {
+  //   console.log(`${path}加载成功`)
+  // })
   // 资源加载完成事件
-  instance.on('onLoad', () => {
-    console.log('资源加载完成')
-  })
+  // instance.on('onLoad', () => {
+  //   console.log('资源加载完成')
+  // })
   return instance.loadAll(assets)
 }

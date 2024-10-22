@@ -2,20 +2,27 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 11:50:17
+ * @LastEditTime : 2024-10-22 15:27:37
  * @Description  :
  */
 import {
   Color,
+  Shape,
   RepeatWrapping,
   LineBasicMaterial,
   MeshStandardMaterial,
   DoubleSide,
   Group,
+  Mesh,
+  Vector3,
+  ExtrudeGeometry,
+  BufferGeometry,
+  LineLoop,
 } from 'three'
 import type * as THREE from 'three'
-
 import type { CanvasRenderType } from '../index'
+import { transformMapGeoJSON, getBoundBox, calcUv2 } from '@/components/three/utils/index'
+import { geoMercator } from 'd3-geo'
 
 function createProvinceMaterial(_this: CanvasRenderType) {
   const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
@@ -95,9 +102,102 @@ function createProvinceMaterial(_this: CanvasRenderType) {
   return [topMaterial, sideMaterial]
 }
 
+function createProvinceGroup(_this: CanvasRenderType) {
+  const mainGroup = new Group()
+  mainGroup.position.set(0, 0, 0.06)
+  const mapData = transformMapGeoJSON(_this.getAssetsData('china') as string)
+  const coordinates = []
+  const linesGroup = new Group()
+  mapData.features.forEach((feature, featureIndex) => {
+    const { adcode, center, centroid, childrenNum, name } = feature.properties
+    coordinates.push({
+      adcode,
+      center,
+      centroid: centroid ?? center,
+      enName: '',
+      name,
+      value: 0,
+    })
+    const group = new Group()
+    group.name = `meshGroup${featureIndex}`
+    group.userData = {
+      adcode,
+      center,
+      centroid: centroid ?? center,
+      childrenNum,
+      index: featureIndex,
+      // 存材质的默认发光颜色
+      materialEmissiveHex: _this.focusMapTopMaterial.emissive.getHex(),
+      name,
+    }
+
+    // 线组
+    const lineGroup = new Group()
+    lineGroup.name = `lineGroup${featureIndex}`
+    lineGroup.userData = {
+      adcode,
+      index: featureIndex,
+    }
+
+    // 拉伸设置
+    const extrudeSettings = {
+      bevelEnabled: true,
+      bevelSegments: 1,
+      bevelThickness: 0.1,
+      depth: _this.depth,
+    }
+    const materials = [_this.focusMapTopMaterial.clone(), _this.focusMapSideMaterial]
+    feature.geometry.coordinates.forEach((multiPolygon) => {
+      multiPolygon.forEach((polygon) => {
+        // 绘制shape
+        const shape = new Shape()
+        for (let i = 0; i < polygon.length; i++) {
+          if (!polygon[i][0] || !polygon[i][1]) {
+            return false
+          }
+          const [x, y] = geoMercator().center(_this.pointCenter).scale(120).translate([0, 0])(
+            polygon[i],
+          )!
+          if (i === 0) {
+            shape.moveTo(x, -y)
+          }
+          shape.lineTo(x, -y)
+        }
+
+        const geometry = new ExtrudeGeometry(shape, extrudeSettings)
+        const mesh = new Mesh(geometry, materials)
+        mesh.userData = {
+          adcode,
+          depth: _this.depth,
+          materialEmissiveHex: _this.focusMapTopMaterial.emissive.getHex(),
+          name,
+        }
+        mesh.renderOrder = 9
+        group.add(mesh)
+      })
+      const points: THREE.Vector3[] = []
+      let line: null | THREE.LineLoop = null
+      multiPolygon[0].forEach((item) => {
+        const [x, y] = geoMercator().center(_this.pointCenter).scale(120).translate([0, 0])(item)!
+        points.push(new Vector3(x, -y, 0))
+        const geometry = new BufferGeometry()
+        geometry.setFromPoints(points)
+        line = new LineLoop(geometry, _this.provinceLineMaterial)
+        line.renderOrder = 2
+        line.name = 'mapLine'
+      })
+      lineGroup.add(line!)
+    })
+    linesGroup.add(lineGroup)
+    lineGroup.position.set(0, 0, _this.depth + 0.11)
+    group.add(lineGroup)
+    mainGroup.add(group)
+  })
+  return mainGroup
+}
+
 // 创建省份
 function createProvince(_this: CanvasRenderType) {
-  const mapJsonData = _this.getAssetsData('china')
   const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
 
   topNormal.wrapS = topNormal.wrapT = RepeatWrapping
@@ -110,44 +210,35 @@ function createProvince(_this: CanvasRenderType) {
   })
   const [topMaterial, sideMaterial] = createProvinceMaterial(_this)
 
+  _this.focusMapTopMaterial = topMaterial
   _this.focusMapSideMaterial = sideMaterial
-  const province = new ExtrudeMap(_this, {
-    center: _this.pointCenter,
-    data: mapJsonData,
-    depth: _this.depth,
-    lineMaterial: _this.provinceLineMaterial,
-    position: new Vector3(0, 0, 0.06),
-    renderOrder: 9,
-    sideMaterial,
-    topFaceMaterial: topMaterial,
-  })
   _this.time.on('tick', () => {
-    sideMaterial.map.offset.y += 0.002
+    sideMaterial.map!.offset.y += 0.002
   })
-  const faceMaterial = new MeshStandardMaterial({
-    color: 0x061e47,
-    map: topNormal,
-    normalMap: topNormal,
-    opacity: 1,
-    transparent: true,
-  })
+  const provinceGroup = createProvinceGroup(_this)
 
-  const { box3, boxSize } = getBoundBox(province.mapGroup)
+  // TODO
+  // const faceMaterial = new MeshStandardMaterial({
+  //   color: 0x061e47,
+  //   map: topNormal,
+  //   normalMap: topNormal,
+  //   opacity: 1,
+  //   transparent: true,
+  // })
+
+  const { box3, boxSize } = getBoundBox(provinceGroup)
 
   _this.eventElement = []
-  province.mapGroup.children.map((group, index) => {
-    group.children.map((mesh) => {
+  provinceGroup.children.forEach((group) => {
+    group.children.forEach((mesh) => {
+      // TODO
       if (mesh.type === 'Mesh') {
         _this.eventElement.push(mesh)
-
-        _this.calcUv2(mesh.geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
+        calcUv2(mesh.geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
       }
     })
   })
-
-  return {
-    province,
-  }
+  return provinceGroup
 }
 
 export default (_this: CanvasRenderType) => {
@@ -156,9 +247,9 @@ export default (_this: CanvasRenderType) => {
   const focusMapGroup = new Group()
   _this.focusMapGroup = focusMapGroup
   // 地图
-  const { province } = createProvince(_this)
-  _this.provinceMesh = province
-  province.setParent(focusMapGroup)
+  const provinceGroup = createProvince(_this)
+  _this.provinceMesh = provinceGroup
+  focusMapGroup.add(provinceGroup)
 
   focusMapGroup.position.set(0, 0, -5)
   focusMapGroup.scale.set(1, 1, 0)

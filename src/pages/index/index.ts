@@ -2,10 +2,10 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 11:51:13
+ * @LastEditTime : 2024-10-22 15:41:53
  * @Description  :
  */
-import { Fog, Color } from 'three'
+import { Fog, Color, Group } from 'three'
 import { ThreeCore } from '@/components/three/core'
 import type * as THREE from 'three'
 import { InteractionManager } from 'three.interactive'
@@ -20,10 +20,11 @@ import createModel from './modules/createModel'
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
   depth: number
+  eventElement: THREE.Mesh[]
   focusMapSideMaterial: THREE.MeshStandardMaterial
   history: AnyHistory
   interactionManager: InteractionManager
-  pointCenter: ConstructorParameters<typeof THREE.Vector2>
+  pointCenter: [number, number]
   provinceLineMaterial: THREE.LineBasicMaterial
   rotateBorder1: THREE.Mesh
   rotateBorder2: THREE.Mesh
@@ -54,19 +55,26 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
-
     this.renderer.resize()
     this.history = new AnyHistory()
     this.history.push({ name: '中国' })
     createLight(this)
     void loadAllAssets().then((res) => {
       this.assets = res
+      console.log(this.assets)
+
+      this.sceneGroup = new Group()
+      this.mainSceneGroup = new Group()
+      this.sceneGroup.add(this.mainSceneGroup)
+      this.scene.add(this.sceneGroup)
+      console.log(this.scene)
+
       // 创建底图
       createFloor(this)
       // 旋转边框
       createRotateBorder(this)
       // 处理地图
-      // createModel(this)
+      createModel(this)
     })
   }
 
