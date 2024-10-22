@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:21:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 11:29:38
+ * @LastEditTime : 2024-10-22 16:32:59
  * @Description  :
  */
 
@@ -49,6 +49,6 @@ export default (_this: CanvasRenderType) => {
   )
   quan.rotateX(-Math.PI / 2)
   quan.position.set(0, _this.depth + 2.05, 0)
-  _this.quan = quan
   _this.scene.add(quan)
+  return quan
 }

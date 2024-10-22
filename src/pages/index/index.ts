@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 15:41:53
+ * @LastEditTime : 2024-10-22 17:26:24
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -16,6 +16,7 @@ import createFloor from './modules/createFloor'
 import createRotateBorder from './modules/createRotateBorder'
 import createLight from './modules/createLight'
 import createModel from './modules/createModel'
+import createEnterAnimation from './modules/createEnterAnimation'
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -65,16 +66,21 @@ export default class CanvasRender extends ThreeCore {
 
       this.sceneGroup = new Group()
       this.mainSceneGroup = new Group()
+      this.mainSceneGroup.rotateX(-Math.PI / 2)
       this.sceneGroup.add(this.mainSceneGroup)
       this.scene.add(this.sceneGroup)
       console.log(this.scene)
 
       // 创建底图
-      createFloor(this)
+      const quan = createFloor(this)
       // 旋转边框
       createRotateBorder(this)
-      // 处理地图
+      // 创建地图
       createModel(this)
+      // 创建进场动画
+      createEnterAnimation(this, {
+        quan,
+      })
     })
   }
 
@@ -83,7 +89,7 @@ export default class CanvasRender extends ThreeCore {
     if (result) {
       return result.data
     } else {
-      console.error(`未找到${name}资源`)
+      throw new Error(`未找到${name}资源s`)
     }
   }
 }

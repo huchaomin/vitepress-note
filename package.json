@@ -19,6 +19,7 @@
     "@kjgl77/datav-vue3": "^1.7.3",
     "@vueuse/core": "^11.1.0",
     "d3-geo": "^3.1.1",
+    "gsap": "^3.12.5",
     "naive-ui": "^2.40.1",
     "three": "^0.169.0",
     "three.interactive": "^1.8.0"
