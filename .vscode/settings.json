@@ -4,6 +4,7 @@
     "crossorigin",
     "datav",
     "frontmatter",
+    "GLTF",
     "kjgl",
     "sider",
     "tseslint",

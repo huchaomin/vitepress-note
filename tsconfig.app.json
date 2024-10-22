@@ -21,6 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "strictPropertyInitialization": false, // https://juejin.cn/post/7342480215532634122
     "isolatedModules": true
   },
   "include": [

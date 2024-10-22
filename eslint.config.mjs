@@ -57,6 +57,7 @@ export default antfu(
       'perfectionist/sort-named-imports': 'off', // 有其他排序插件
       'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
       'prettier/prettier': ['error'],
+      'prefer-promise-reject-errors': 'off',
       'ts/strict-boolean-expressions': [
         'error',
         {

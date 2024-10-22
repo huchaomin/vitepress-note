@@ -18,8 +18,10 @@
   "dependencies": {
     "@kjgl77/datav-vue3": "^1.7.3",
     "@vueuse/core": "^11.1.0",
+    "d3-geo": "^3.1.1",
     "naive-ui": "^2.40.1",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "three.interactive": "^1.8.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
@@ -28,7 +30,9 @@
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/vite": "4.0.0-alpha.27",
     "@tsconfig/node20": "^20.1.4",
+    "@types/d3-geo": "^3.1.0",
     "@types/node": "^22.7.6",
+    "@types/three": "^0.169.0",
     "@vue/tsconfig": "^0.5.1",
     "browserslist": "^4.24.0",
     "eslint": "^9.12.0",
