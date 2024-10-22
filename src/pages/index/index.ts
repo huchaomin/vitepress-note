@@ -2,25 +2,37 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 09:28:18
+ * @LastEditTime : 2024-10-22 11:51:13
  * @Description  :
  */
-import { Fog, Color, PointLight, AmbientLight, DirectionalLight } from 'three'
+import { Fog, Color } from 'three'
 import { ThreeCore } from '@/components/three/core'
 import type * as THREE from 'three'
 import { InteractionManager } from 'three.interactive'
 import AnyHistory from '@/components/three/utils/AnyHistory'
 import loadAllAssets from './utils/loadAllAssets'
+import type { AssetType } from '@/components/three/utils/Resource'
+import createFloor from './modules/createFloor'
+import createRotateBorder from './modules/createRotateBorder'
+import createLight from './modules/createLight'
+import createModel from './modules/createModel'
 
 export default class CanvasRender extends ThreeCore {
+  assets: AssetType[]
+  depth: number
+  focusMapSideMaterial: THREE.MeshStandardMaterial
   history: AnyHistory
   interactionManager: InteractionManager
   pointCenter: ConstructorParameters<typeof THREE.Vector2>
+  provinceLineMaterial: THREE.LineBasicMaterial
+  rotateBorder1: THREE.Mesh
+  rotateBorder2: THREE.Mesh
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
   ) {
     super(canvas, config)
+    this.setAxesHelper()
     // 中心坐标
     this.pointCenter = [108.55, 34.32]
     this.flyLineCenter = [116.41995, 40.18994]
@@ -44,35 +56,28 @@ export default class CanvasRender extends ThreeCore {
     )
 
     this.renderer.resize()
-    this.initLight()
     this.history = new AnyHistory()
     this.history.push({ name: '中国' })
-    void loadAllAssets().then(() => {})
+    createLight(this)
+    void loadAllAssets().then((res) => {
+      this.assets = res
+      // 创建底图
+      createFloor(this)
+      // 旋转边框
+      createRotateBorder(this)
+      // 处理地图
+      // createModel(this)
+    })
   }
 
-  // 创建点光源并添加到场景中
-  createPointLight(
-    pointParams: ConstructorParameters<typeof PointLight>,
-    position: Parameters<InstanceType<typeof THREE.Vector3>['set']>,
-  ) {
-    const pointLight = new PointLight(...pointParams)
-    pointLight.position.set(...position)
-    this.scene.add(pointLight)
-  }
-
-  // 初始化灯光
-  initLight() {
-    const sun = new AmbientLight(0xffffff, 2)
-    this.scene.add(sun)
-    // 方向光
-    const directionalLight = new DirectionalLight(0xffffff, 4)
-    directionalLight.position.set(-30, 6, -8)
-    directionalLight.castShadow = true
-    directionalLight.shadow.radius = 20
-    directionalLight.shadow.mapSize.width = 1024
-    directionalLight.shadow.mapSize.height = 1024
-    this.scene.add(directionalLight)
-    this.createPointLight([0x0e81fb, 160, 10000, 1], [-3, 16, -3])
-    this.createPointLight([0x1f5f7a, 100, 100, 1], [-4, 8, 43])
+  getAssetsData(name: string) {
+    const result = this.assets.find((item) => item.name === name)
+    if (result) {
+      return result.data
+    } else {
+      console.error(`未找到${name}资源`)
+    }
   }
 }
+
+export type CanvasRenderType = InstanceType<typeof CanvasRender>

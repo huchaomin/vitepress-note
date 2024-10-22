@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-21 14:33:41
+ * @LastEditTime : 2024-10-22 09:49:21
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'
@@ -17,16 +17,17 @@ import type * as THREE from 'three'
 export class ThreeCore extends EventEmitter {
   camera: Camera
   canvas: HTMLCanvasElement
-  config: {
-    geoProjectionCenter: THREE.Vector2
-  }
-
   renderer: Renderer
   scene: THREE.Scene
   sizes: Sizes
   time: Time
 
-  constructor(canvas: HTMLCanvasElement, config = {}) {
+  constructor(
+    canvas: HTMLCanvasElement,
+    config: {
+      geoProjectionCenter: ConstructorParameters<typeof THREE.Vector2>
+    },
+  ) {
     super()
     this.canvas = canvas
     this.scene = new Scene()
