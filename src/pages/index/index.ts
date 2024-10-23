@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 14:25:04
+ * @LastEditTime : 2024-10-23 15:25:29
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -10,6 +10,7 @@ import { ThreeCore } from '@/components/three/core'
 import type * as THREE from 'three'
 import { InteractionManager } from 'three.interactive'
 import AnyHistory from '@/components/three/utils/AnyHistory'
+import Label3d from '@/components/three/utils/Label3d'
 import loadAllAssets from './utils/loadAllAssets'
 import type { AssetType } from '@/components/three/utils/Resource'
 import createFloor from './modules/createFloor'
@@ -18,6 +19,7 @@ import createLight from './modules/createLight'
 import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
 import createMouseEvent from './modules/createMouseEvent'
+import createProvinceNameLabel from './modules/createProvinceNameLabel'
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -26,6 +28,7 @@ export default class CanvasRender extends ThreeCore {
   focusMapSideMaterial: THREE.MeshStandardMaterial
   history: AnyHistory
   interactionManager: InteractionManager
+  label3d: Label3d
   pointCenter: [number, number]
   provinceLineMaterial: THREE.LineBasicMaterial
   rotateBorder1: THREE.Mesh
@@ -57,6 +60,7 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
+    this.label3d = new Label3d(this)
     this.history = new AnyHistory()
     this.history.push({ name: '中国' })
     createLight(this)
@@ -83,6 +87,8 @@ export default class CanvasRender extends ThreeCore {
       createAnimation(this, {
         quan,
       })
+      // 创建省份名称标签
+      const provinceNameLabelArr = createProvinceNameLabel(this)
     })
   }
 

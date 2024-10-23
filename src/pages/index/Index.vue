@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 11:19:17
+ * @LastEditTime : 2024-10-23 16:54:20
  * @Description  :
 -->
 <script setup lang="ts">
@@ -35,7 +35,9 @@ onMounted(() => {
 <template>
   <div ref="rootRef" class="flex h-screen w-screen items-center justify-center">
     <div :class="classStr" :style="{ aspectRatio: ratio }">
-      <canvas ref="canvasRef"></canvas>
+      <div class="w-full h-full relative">
+        <canvas ref="canvasRef"></canvas>
+      </div>
     </div>
   </div>
 </template>
@@ -44,4 +46,12 @@ onMounted(() => {
     width: 100% !important;
     height: 100% !important
   }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  :deep(.provinces-name-label-wrap) {
+    color: #a6d7e2;
+    text-shadow: 1px 1px 0 #000;
+    opacity: 0
+  }
+
 </style>

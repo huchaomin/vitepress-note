@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 16:02:20
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 15:44:35
+ * @LastEditTime : 2024-10-23 14:38:59
  * @Description  :
  */
 import Resource, { type AssetType } from '@/components/three/utils/Resource'
@@ -50,6 +50,11 @@ const assets = [
   {
     name: 'china',
     path: `${BASE_URL}assets/json/中华人民共和国.json`,
+    type: 'File',
+  },
+  {
+    name: 'province',
+    path: `${BASE_URL}assets/json/中华人民共和国省份.json`,
     type: 'File',
   },
   {
