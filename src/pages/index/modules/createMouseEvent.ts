@@ -2,16 +2,30 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 14:24:58
+ * @LastEditTime : 2024-10-23 17:17:27
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import gsap from 'gsap'
 
-export default (_this: CanvasRenderType) => {
+export default (_this: CanvasRenderType, { provinceNameLabelArr }: {}) => {
   let objectsHover: THREE.Group[] = []
   let isClicked = false
+
+  function moveProvinceNameLabel(adcode: number, type: 'down' | 'up') {
+    provinceNameLabelArr.forEach((label) => {
+      if (label.userData.adcode === adcode) {
+        gsap.to(label.position, {
+          duration: 0.3,
+          z:
+            type === 'up'
+              ? label.userData.position[2] + _this.depth / 2 + 0.3
+              : label.userData.position[2],
+        })
+      }
+    })
+  }
 
   function reset(group: THREE.Group) {
     gsap.to(group.scale, {
@@ -28,6 +42,7 @@ export default (_this: CanvasRenderType) => {
       },
       z: 1,
     })
+    moveProvinceNameLabel(group.userData.adcode as number, 'down')
   }
   function move(group: THREE.Group) {
     console.log(group)
@@ -35,6 +50,7 @@ export default (_this: CanvasRenderType) => {
       duration: 0.3,
       z: 1.5,
     })
+    moveProvinceNameLabel(group.userData.adcode as number, 'up')
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
         const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>

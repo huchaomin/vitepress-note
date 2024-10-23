@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 15:50:02
+ * @LastEditTime : 2024-10-23 17:19:11
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -31,8 +31,6 @@ function labelNameStyle(
   label.setParent(_this.mainSceneGroup)
   label.userData.adcode = data.adcode
   label.userData.position = [position.x, position.y, position.z]
-  console.log('label', label)
-
   return label
 }
 

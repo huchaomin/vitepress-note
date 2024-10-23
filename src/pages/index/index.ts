@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 15:25:29
+ * @LastEditTime : 2024-10-23 17:18:14
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -81,14 +81,17 @@ export default class CanvasRender extends ThreeCore {
       createRotateBorder(this)
       // 创建地图
       createMap(this)
-      // 创建鼠标事件
-      createMouseEvent(this)
-      // 创建进场动画
-      createAnimation(this, {
-        quan,
-      })
       // 创建省份名称标签
       const provinceNameLabelArr = createProvinceNameLabel(this)
+      // 创建鼠标事件
+      createMouseEvent(this, {
+        provinceNameLabelArr,
+      })
+      // 创建进场动画
+      createAnimation(this, {
+        provinceNameLabelArr,
+        quan,
+      })
     })
   }
 
