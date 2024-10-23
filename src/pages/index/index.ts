@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:18:14
+ * @LastEditTime : 2024-10-23 17:48:16
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -20,6 +20,7 @@ import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
 import createMouseEvent from './modules/createMouseEvent'
 import createProvinceNameLabel from './modules/createProvinceNameLabel'
+import createProvinceCenterCircle from './modules/createProvinceCenterCircle'
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -83,12 +84,15 @@ export default class CanvasRender extends ThreeCore {
       createMap(this)
       // 创建省份名称标签
       const provinceNameLabelArr = createProvinceNameLabel(this)
+      // 创建省份中心圆
+      const provinceCenterCircleArr = createProvinceCenterCircle(this)
       // 创建鼠标事件
       createMouseEvent(this, {
         provinceNameLabelArr,
       })
       // 创建进场动画
       createAnimation(this, {
+        provinceCenterCircleArr,
         provinceNameLabelArr,
         quan,
       })

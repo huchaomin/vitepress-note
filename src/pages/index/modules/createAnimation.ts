@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:03:13
+ * @LastEditTime : 2024-10-23 17:47:39
  * @Description  :
  */
 import gsap from 'gsap'
@@ -13,9 +13,11 @@ import createGridRipple from './createGridRipple'
 export default (
   _this: CanvasRenderType,
   {
+    provinceCenterCircleArr,
     provinceNameLabelArr,
     quan,
   }: {
+    provinceCenterCircleArr: THREE.Group[]
     quan: THREE.Mesh
   },
 ) => {
@@ -135,7 +137,7 @@ export default (
     }),
     'focusMapOpacity',
   )
-  provinceNameLabelArr.map((item, index) => {
+  provinceNameLabelArr.forEach((item, index) => {
     const element = item.element.querySelector('.provinces-name-label-wrap')
     tl.add(
       gsap.to(element, {
@@ -144,6 +146,30 @@ export default (
         ease: 'circ.out',
         opacity: 1,
         translateY: 0,
+      }),
+      'bar',
+    )
+  })
+  provinceCenterCircleArr.forEach((item, index) => {
+    tl.add(
+      gsap.to(item.children[0].scale, {
+        delay: 0.05 * index,
+        duration: 0.5,
+        ease: 'circ.out',
+        x: 1,
+        y: 1,
+        z: 1,
+      }),
+      'bar',
+    )
+    tl.add(
+      gsap.to(item.children[1].scale, {
+        delay: 0.05 * index,
+        duration: 0.5,
+        ease: 'circ.out',
+        x: 1,
+        y: 1,
+        z: 1,
       }),
       'bar',
     )
