@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 18:12:26
+ * @LastEditTime : 2024-10-23 14:25:04
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -17,6 +17,7 @@ import createRotateBorder from './modules/createRotateBorder'
 import createLight from './modules/createLight'
 import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
+import createMouseEvent from './modules/createMouseEvent'
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -76,6 +77,8 @@ export default class CanvasRender extends ThreeCore {
       createRotateBorder(this)
       // 创建地图
       createMap(this)
+      // 创建鼠标事件
+      createMouseEvent(this)
       // 创建进场动画
       createAnimation(this, {
         quan,
@@ -90,6 +93,13 @@ export default class CanvasRender extends ThreeCore {
     } else {
       throw new Error(`未找到${name}资源s`)
     }
+  }
+
+  // TODO 更新
+  update() {
+    super.update()
+    this.stats && this.stats.update()
+    this.interactionManager && this.interactionManager.update()
   }
 }
 
