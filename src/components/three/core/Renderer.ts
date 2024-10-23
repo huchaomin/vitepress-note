@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:17:33
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-21 10:21:17
+ * @LastEditTime : 2024-10-22 18:01:56
  * @Description  :
  */
 import { WebGLRenderer } from 'three'
@@ -17,6 +17,9 @@ export default class Renderer {
     this.postprocessing = postprocessing
     this.composer = composer
     this.setInstance()
+    sizes.on('resize', () => {
+      this.resize()
+    })
   }
 
   destroy() {

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 17:26:24
+ * @LastEditTime : 2024-10-22 18:12:26
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -15,8 +15,8 @@ import type { AssetType } from '@/components/three/utils/Resource'
 import createFloor from './modules/createFloor'
 import createRotateBorder from './modules/createRotateBorder'
 import createLight from './modules/createLight'
-import createModel from './modules/createModel'
-import createEnterAnimation from './modules/createEnterAnimation'
+import createMap from './modules/createMap'
+import createAnimation from './modules/createAnimation'
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -56,7 +56,6 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
-    this.renderer.resize()
     this.history = new AnyHistory()
     this.history.push({ name: '中国' })
     createLight(this)
@@ -76,9 +75,9 @@ export default class CanvasRender extends ThreeCore {
       // 旋转边框
       createRotateBorder(this)
       // 创建地图
-      createModel(this)
+      createMap(this)
       // 创建进场动画
-      createEnterAnimation(this, {
+      createAnimation(this, {
         quan,
       })
     })

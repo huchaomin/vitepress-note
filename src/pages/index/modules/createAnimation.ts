@@ -2,12 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 16:56:49
+ * @LastEditTime : 2024-10-23 09:27:36
  * @Description  :
  */
 import gsap from 'gsap'
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
+import createGridRipple from './createGridRipple'
 
 export default (
   _this: CanvasRenderType,
@@ -94,8 +95,8 @@ export default (
       ease: 'circ.out',
       onComplete: () => {
         // TODO
-        // _this.createMirror()
-        // _this.createGridRipple()
+        // _this.createMapMirror()
+        createGridRipple(_this)
       },
       opacity: 1,
     }),
