@@ -2,14 +2,22 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:17:27
+ * @LastEditTime : 2024-10-23 17:58:02
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import gsap from 'gsap'
 
-export default (_this: CanvasRenderType, { provinceNameLabelArr }: {}) => {
+export default (
+  _this: CanvasRenderType,
+  {
+    provinceCenterCircleArr,
+    provinceNameLabelArr,
+  }: {
+    provinceCenterCircleArr: THREE.Group[]
+  },
+) => {
   let objectsHover: THREE.Group[] = []
   let isClicked = false
 
@@ -22,6 +30,20 @@ export default (_this: CanvasRenderType, { provinceNameLabelArr }: {}) => {
             type === 'up'
               ? label.userData.position[2] + _this.depth / 2 + 0.3
               : label.userData.position[2],
+        })
+      }
+    })
+  }
+
+  function moveProvinceCenterCircle(adcode: number, type: 'down' | 'up') {
+    provinceCenterCircleArr.forEach((group) => {
+      if (group.userData.adcode === adcode) {
+        gsap.to(group.position, {
+          duration: 0.3,
+          z:
+            type === 'up'
+              ? (group.userData.position as [number, number, number])[2] + _this.depth / 2 + 0.3
+              : (group.userData.position as [number, number, number])[2],
         })
       }
     })
@@ -43,14 +65,15 @@ export default (_this: CanvasRenderType, { provinceNameLabelArr }: {}) => {
       z: 1,
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'down')
+    moveProvinceCenterCircle(group.userData.adcode as number, 'down')
   }
   function move(group: THREE.Group) {
-    console.log(group)
     gsap.to(group.scale, {
       duration: 0.3,
       z: 1.5,
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'up')
+    moveProvinceCenterCircle(group.userData.adcode as number, 'up')
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
         const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>

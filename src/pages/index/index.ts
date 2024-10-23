@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:48:16
+ * @LastEditTime : 2024-10-23 17:58:35
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -88,6 +88,7 @@ export default class CanvasRender extends ThreeCore {
       const provinceCenterCircleArr = createProvinceCenterCircle(this)
       // 创建鼠标事件
       createMouseEvent(this, {
+        provinceCenterCircleArr,
         provinceNameLabelArr,
       })
       // 创建进场动画
