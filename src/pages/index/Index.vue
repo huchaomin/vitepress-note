@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 16:54:20
+ * @LastEditTime : 2024-10-23 18:29:09
  * @Description  :
 -->
 <script setup lang="ts">
@@ -42,16 +42,73 @@ onMounted(() => {
   </div>
 </template>
 <style scoped>
-  canvas {
-    width: 100% !important;
-    height: 100% !important
+canvas {
+  width: 100% !important;
+  height: 100% !important
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+:deep(.provinces-name-label-wrap) {
+  color: #a6d7e2;
+  text-shadow: 1px 1px 0 #000;
+  opacity: 0
+}
+
+:deep(.badges-label) {
+  z-index: 99999;
+
+  &-outline {
+    position: absolute
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  :deep(.provinces-name-label-wrap) {
-    color: #a6d7e2;
-    text-shadow: 1px 1px 0 #000;
-    opacity: 0
+  &-wrap {
+    position: relative;
+    bottom: 50px;
+    z-index: 99999;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background: #0e1937;
+    border: 1px solid #1e7491;
+
+    span {
+      color: #ffe70b
+    }
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: "";
+      border-right: 2px solid #6cfffe;
+      border-bottom: 2px solid #6cfffe
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: "";
+      border-top: 2px solid #6cfffe;
+      border-left: 2px solid #6cfffe
+    }
+
+    .icon {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 27px;
+      height: 20px;
+      transform: translateX(-13px)
+    }
   }
+}
 
 </style>
