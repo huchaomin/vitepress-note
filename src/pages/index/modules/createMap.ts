@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 15:27:37
+ * @LastEditTime : 2024-10-24 16:13:51
  * @Description  :
  */
 import {
@@ -216,16 +216,6 @@ function createProvince(_this: CanvasRenderType) {
     sideMaterial.map!.offset.y += 0.002
   })
   const provinceGroup = createProvinceGroup(_this)
-
-  // TODO
-  // const faceMaterial = new MeshStandardMaterial({
-  //   color: 0x061e47,
-  //   map: topNormal,
-  //   normalMap: topNormal,
-  //   opacity: 1,
-  //   transparent: true,
-  // })
-
   const { box3, boxSize } = getBoundBox(provinceGroup)
 
   _this.eventElement = []
@@ -242,19 +232,9 @@ function createProvince(_this: CanvasRenderType) {
 }
 
 export default (_this: CanvasRenderType) => {
-  const mapGroup = new Group()
-  mapGroup.name = 'chinaMapGroup'
-  const focusMapGroup = new Group()
-  _this.focusMapGroup = focusMapGroup
-  // 地图
-  const provinceGroup = createProvince(_this)
-  _this.provinceMesh = provinceGroup
-  focusMapGroup.add(provinceGroup)
-
-  focusMapGroup.position.set(0, 0, -5)
-  focusMapGroup.scale.set(1, 1, 0)
-
-  mapGroup.add(focusMapGroup)
-  mapGroup.position.set(0, 0.2, 0)
-  _this.mainSceneGroup.add(mapGroup)
+  const group = createProvince(_this)
+  group.position.set(0, 0.2, -5)
+  group.scale.set(1, 1, 0)
+  _this.mainSceneGroup.add(group)
+  return group
 }

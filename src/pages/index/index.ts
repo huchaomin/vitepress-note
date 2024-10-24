@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 14:57:41
+ * @LastEditTime : 2024-10-24 16:01:20
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -16,7 +16,7 @@ import type { AssetType } from '@/components/three/utils/Resource'
 import createBgLight from './modules/createBgLight'
 import createHalo from './modules/createHalo'
 import createRotateBorder from './modules/createRotateBorder'
-import createLight from './modules/createLight'
+import createEnvLight from './modules/createEnvLight'
 import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
 import createMouseEvent from './modules/createMouseEvent'
@@ -33,6 +33,7 @@ export default class CanvasRender extends ThreeCore {
   history: AnyHistory
   interactionManager: InteractionManager
   label3d: Label3d
+  mainSceneGroup: Group
   pointCenter: [number, number]
   provinceLineMaterial: THREE.LineBasicMaterial
   constructor(
@@ -42,7 +43,6 @@ export default class CanvasRender extends ThreeCore {
     super(canvas, config)
     // 中心坐标
     this.pointCenter = [108.55, 34.32]
-    this.flyLineCenter = [116.41995, 40.18994]
     this.depth = 5
     this.scene.fog = new Fog(0x011024, 1, 500)
     this.scene.background = new Color(0x011024)
@@ -64,18 +64,13 @@ export default class CanvasRender extends ThreeCore {
     this.label3d = new Label3d(this)
     this.history = new AnyHistory()
     this.history.push({ name: '中国' })
-    createLight(this)
     void loadAllAssets().then((res) => {
       this.assets = res
-      console.log(this.assets)
-
-      this.sceneGroup = new Group()
       this.mainSceneGroup = new Group()
       this.mainSceneGroup.rotateX(-Math.PI / 2)
-      this.sceneGroup.add(this.mainSceneGroup)
-      this.scene.add(this.sceneGroup)
-      console.log(this.scene)
-
+      this.scene.add(this.mainSceneGroup)
+      // 创建环境光
+      createEnvLight(this)
       // 创建周围光晕
       const halo = createHalo(this)
       // 创建背景光
@@ -83,7 +78,7 @@ export default class CanvasRender extends ThreeCore {
       // 旋转边框
       const { rotateBorder1, rotateBorder2 } = createRotateBorder(this)
       // 创建地图
-      createMap(this)
+      const mapGroup = createMap(this)
       // 创建地图描边
       createMapStroke(this)
       // 创建省份名称标签
@@ -101,6 +96,7 @@ export default class CanvasRender extends ThreeCore {
       // 创建进场动画
       createAnimation(this, {
         halo,
+        mapGroup,
         provinceCenterCircleArr,
         provinceNameLabelArr,
         rotateBorder1,

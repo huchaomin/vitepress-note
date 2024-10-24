@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 15:14:27
+ * @LastEditTime : 2024-10-24 16:20:23
  * @Description  :
  */
 import gsap from 'gsap'
@@ -14,12 +14,14 @@ export default (
   _this: CanvasRenderType,
   {
     halo,
+    mapGroup,
     provinceCenterCircleArr,
     provinceNameLabelArr,
     rotateBorder1,
     rotateBorder2,
   }: {
     halo: THREE.Mesh
+    mapGroup: THREE.Group
     provinceCenterCircleArr: THREE.Group[]
     rotateBorder1: THREE.Mesh
     rotateBorder2: THREE.Mesh
@@ -62,7 +64,7 @@ export default (
     'halo',
   )
   tl.add(
-    gsap.to(_this.focusMapGroup.position, {
+    gsap.to(mapGroup.position, {
       duration: 1,
       x: 0,
       y: 0,
@@ -72,7 +74,7 @@ export default (
   )
 
   tl.add(
-    gsap.to(_this.focusMapGroup.scale, {
+    gsap.to(mapGroup.scale, {
       duration: 1,
       ease: 'circ.out',
       x: 1,
@@ -82,10 +84,11 @@ export default (
     'focusMap',
   )
 
-  _this.provinceMesh.traverse((obj) => {
-    if (obj.isMesh) {
+  mapGroup.traverse((obj) => {
+    if ((obj as THREE.Mesh).isMesh) {
+      console.log(obj)
       tl.add(
-        gsap.to(obj.material[0], {
+        gsap.to(((obj as THREE.Mesh).material as THREE.MeshStandardMaterial[])[0], {
           duration: 1,
           ease: 'circ.out',
           opacity: 1,
