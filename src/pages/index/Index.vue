@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 11:01:17
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-25 00:18:53
  * @Description  :
 -->
 <script setup lang="ts">
@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
   <div ref="rootRef" class="flex h-screen w-screen items-center justify-center">
     <div :class="classStr" :style="{ aspectRatio: ratio }">
-      <div class="w-full h-full relative">
+      <div class="w-full h-full relative canvas_parent">
         <canvas ref="canvasRef"></canvas>
       </div>
     </div>
@@ -47,13 +47,13 @@ canvas {
   height: 100% !important;
 }
 
-:deep(.provinces_name_label) {
+.canvas_parent >>> .provinces_name_label {
   color: #a6d7e2;
   text-shadow: 1px 1px 0 #000;
   opacity: 0;
 }
 
-:deep(.badges_label_wrap) {
+.canvas_parent >>> .badges_label_wrap {
   opacity: 1;
 
   .badges_label {
