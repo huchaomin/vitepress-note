@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:47:39
+ * @LastEditTime : 2024-10-24 10:20:55
  * @Description  :
  */
 import gsap from 'gsap'
@@ -138,9 +138,8 @@ export default (
     'focusMapOpacity',
   )
   provinceNameLabelArr.forEach((item, index) => {
-    const element = item.element.querySelector('.provinces-name-label-wrap')
     tl.add(
-      gsap.to(element, {
+      gsap.to(item.element, {
         delay: 0.05 * index,
         duration: 0.5,
         ease: 'circ.out',

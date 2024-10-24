@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 18:26:18
+ * @LastEditTime : 2024-10-24 10:07:33
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -20,12 +20,17 @@ interface dataItem {
   value: number
 }
 function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vector3): CSS3DSprite {
-  const label = _this.label3d.create('', 'badges-label', true)
+  const label = _this.label3d.create('', 'badges_label_wrap', true)
   label.init(
-    `<div class="badges-label-wrap">
-    平均工资：<span>${data.value}元</span>
-    <img class="icon" src="${labelArrow}" alt="" />
-  </div>`,
+    `<div class="badges_label">
+      <div>2024-10-24</div>
+      <div>
+        回款：<span class="amt">${data.value}元</span>
+      </div>
+      <div class="icon_wrapper">
+        <img class="icon" src="${labelArrow}" alt="" />
+      </div>
+    </div>`,
     position,
   )
   _this.label3d.setLabelStyle(label, 0.1, 'x')

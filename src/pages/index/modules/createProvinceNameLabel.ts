@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 17:19:11
+ * @LastEditTime : 2024-10-24 10:27:11
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -16,17 +16,9 @@ interface province {
   name: string
 }
 
-function labelNameStyle(
-  _this: CanvasRenderType,
-  data: province,
-  index: number,
-  position: THREE.Vector3,
-) {
-  const label = _this.label3d.create('', 'provinces-name-label', true)
-  label.init(
-    `<div class="provinces-name-label"><div class="provinces-name-label-wrap">${data.name}</div></div>`,
-    position,
-  )
+function labelNameStyle(_this: CanvasRenderType, data: province, position: THREE.Vector3) {
+  const label = _this.label3d.create('', 'provinces_name_label', true)
+  label.init(`${data.name}`, position)
   _this.label3d.setLabelStyle(label, 0.08, 'x')
   label.setParent(_this.mainSceneGroup)
   label.userData.adcode = data.adcode
@@ -36,8 +28,8 @@ function labelNameStyle(
 
 export default (_this: CanvasRenderType) => {
   const provinceConfig = JSON.parse(_this.getAssetsData('province') as string) as province[]
-  return provinceConfig.map((data, index) => {
+  return provinceConfig.map((data) => {
     const [x, y] = _this.geoProjection(data.centroid)!
-    return labelNameStyle(_this, data, index, new Vector3(x, -y - 1.5, _this.depth + 0.4))
+    return labelNameStyle(_this, data, new Vector3(x, -y - 1.5, _this.depth + 0.4))
   })
 }

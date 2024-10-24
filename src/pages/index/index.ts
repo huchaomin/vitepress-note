@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 18:10:03
+ * @LastEditTime : 2024-10-24 10:31:19
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -91,6 +91,7 @@ export default class CanvasRender extends ThreeCore {
       const provinceBadgeLabelArr = createProvinceBadgeLabel(this)
       // 创建鼠标事件
       createMouseEvent(this, {
+        provinceBadgeLabelArr,
         provinceCenterCircleArr,
         provinceNameLabelArr,
       })

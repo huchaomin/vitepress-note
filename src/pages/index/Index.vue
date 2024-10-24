@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 18:29:09
+ * @LastEditTime : 2024-10-24 11:01:17
  * @Description  :
 -->
 <script setup lang="ts">
@@ -44,27 +44,21 @@ onMounted(() => {
 <style scoped>
 canvas {
   width: 100% !important;
-  height: 100% !important
+  height: 100% !important;
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
-:deep(.provinces-name-label-wrap) {
+:deep(.provinces_name_label) {
   color: #a6d7e2;
   text-shadow: 1px 1px 0 #000;
-  opacity: 0
+  opacity: 0;
 }
 
-:deep(.badges-label) {
-  z-index: 99999;
+:deep(.badges_label_wrap) {
+  opacity: 1;
 
-  &-outline {
-    position: absolute
-  }
-
-  &-wrap {
+  .badges_label {
     position: relative;
     bottom: 50px;
-    z-index: 99999;
     padding: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -72,8 +66,8 @@ canvas {
     background: #0e1937;
     border: 1px solid #1e7491;
 
-    span {
-      color: #ffe70b
+    .amt {
+      color: #ffe70b;
     }
 
     &::after {
@@ -85,7 +79,7 @@ canvas {
       height: 10px;
       content: "";
       border-right: 2px solid #6cfffe;
-      border-bottom: 2px solid #6cfffe
+      border-bottom: 2px solid #6cfffe;
     }
 
     &::before {
@@ -97,16 +91,23 @@ canvas {
       height: 10px;
       content: "";
       border-top: 2px solid #6cfffe;
-      border-left: 2px solid #6cfffe
+      border-left: 2px solid #6cfffe;
+    }
+
+    .icon_wrapper {
+      position: absolute;
+      bottom: -21px;
+      left: 50%;
+      z-index: -1;
+      transform: translateX(-50%);
     }
 
     .icon {
-      position: absolute;
-      bottom: -40px;
-      left: 50%;
-      width: 27px;
-      height: 20px;
-      transform: translateX(-13px)
+      width: 20px;
+      height: 18px;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
+      animation: 3.5s linear 0s infinite normal forwards running wander;
+      transform-box: view-box;
     }
   }
 }
