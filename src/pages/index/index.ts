@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 11:15:47
+ * @LastEditTime : 2024-10-24 14:57:41
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -13,7 +13,8 @@ import AnyHistory from '@/components/three/utils/AnyHistory'
 import Label3d from '@/components/three/utils/Label3d'
 import loadAllAssets from './utils/loadAllAssets'
 import type { AssetType } from '@/components/three/utils/Resource'
-import createFloor from './modules/createFloor'
+import createBgLight from './modules/createBgLight'
+import createHalo from './modules/createHalo'
 import createRotateBorder from './modules/createRotateBorder'
 import createLight from './modules/createLight'
 import createMap from './modules/createMap'
@@ -34,14 +35,11 @@ export default class CanvasRender extends ThreeCore {
   label3d: Label3d
   pointCenter: [number, number]
   provinceLineMaterial: THREE.LineBasicMaterial
-  rotateBorder1: THREE.Mesh
-  rotateBorder2: THREE.Mesh
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
   ) {
     super(canvas, config)
-    this.setAxesHelper()
     // 中心坐标
     this.pointCenter = [108.55, 34.32]
     this.flyLineCenter = [116.41995, 40.18994]
@@ -78,10 +76,12 @@ export default class CanvasRender extends ThreeCore {
       this.scene.add(this.sceneGroup)
       console.log(this.scene)
 
-      // 创建底图
-      const quan = createFloor(this)
+      // 创建周围光晕
+      const halo = createHalo(this)
+      // 创建背景光
+      createBgLight(this)
       // 旋转边框
-      createRotateBorder(this)
+      const { rotateBorder1, rotateBorder2 } = createRotateBorder(this)
       // 创建地图
       createMap(this)
       // 创建地图描边
@@ -100,9 +100,11 @@ export default class CanvasRender extends ThreeCore {
       })
       // 创建进场动画
       createAnimation(this, {
+        halo,
         provinceCenterCircleArr,
         provinceNameLabelArr,
-        quan,
+        rotateBorder1,
+        rotateBorder2,
       })
     })
   }

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 10:07:33
+ * @LastEditTime : 2024-10-24 13:51:04
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -35,9 +35,12 @@ function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vecto
   )
   _this.label3d.setLabelStyle(label, 0.1, 'x')
   label.setParent(_this.mainSceneGroup)
+  // TODO
   // label.hide()
-  label.userData.adcode = data.adcode
-  label.userData.position = [position.x, position.y, position.z]
+  label.userData = {
+    adcode: data.adcode,
+    position: [position.x, position.y, position.z],
+  }
   return label
 }
 

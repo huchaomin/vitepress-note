@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:21:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 16:32:59
+ * @LastEditTime : 2024-10-24 14:56:11
  * @Description  :
  */
 
@@ -34,21 +34,4 @@ export default (_this: CanvasRenderType) => {
   mesh.rotateX(-Math.PI / 2)
   mesh.position.set(0, 0.05, 0)
   _this.scene.add(mesh)
-
-  const quanTexture = _this.getAssetsData('quan') as THREE.Texture
-
-  const quan = new Mesh(
-    new PlaneGeometry(250, 250),
-    new MeshBasicMaterial({
-      blending: AdditiveBlending,
-      depthTest: false,
-      map: quanTexture,
-      opacity: 1,
-      transparent: true,
-    }),
-  )
-  quan.rotateX(-Math.PI / 2)
-  quan.position.set(0, _this.depth + 2.05, 0)
-  _this.scene.add(quan)
-  return quan
 }

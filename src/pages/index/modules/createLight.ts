@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:36:42
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 11:41:36
+ * @LastEditTime : 2024-10-24 14:31:30
  * @Description  :
  */
 
@@ -21,7 +21,6 @@ function createPointLight(
 }
 export default (_this: CanvasRenderType) => {
   const sun = new AmbientLight(0xffffff, 2)
-  _this.scene.add(sun)
   // 方向光
   const directionalLight = new DirectionalLight(0xffffff, 4)
   directionalLight.position.set(-30, 6, -8)
@@ -29,7 +28,10 @@ export default (_this: CanvasRenderType) => {
   directionalLight.shadow.radius = 20
   directionalLight.shadow.mapSize.width = 1024
   directionalLight.shadow.mapSize.height = 1024
-  _this.scene.add(directionalLight)
-  _this.scene.add(createPointLight([0x0e81fb, 160, 10000, 1], [-3, 16, -3]))
-  _this.scene.add(createPointLight([0x1f5f7a, 100, 100, 1], [-4, 8, 43]))
+  _this.scene.add(
+    sun,
+    directionalLight,
+    createPointLight([0x0e81fb, 160, 10000, 1], [-3, 16, -3]),
+    createPointLight([0x1f5f7a, 100, 100, 1], [-4, 8, 43]),
+  )
 }

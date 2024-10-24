@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 18:15:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-23 09:32:37
+ * @LastEditTime : 2024-10-24 14:13:51
  * @Description  :
  */
 import {
@@ -128,7 +128,6 @@ export default (_this: CanvasRenderType) => {
     opacity: 0.5,
     transparent: true,
   })
-
   const mesh = new Mesh(geometry, material)
   mesh.rotateX(-Math.PI / 2)
   const [x, y] = _this.geoProjection(_this.pointCenter)!
@@ -137,6 +136,7 @@ export default (_this: CanvasRenderType) => {
   mesh2.material = material.clone()
   mesh2.material.opacity = 0.1
   _this.scene.add(mesh, mesh2)
+  // 创建扩散效果 clone 的材质不会被下面影响
   void createDiffuseShader(_this, material).then((pointShader) => {
     _this.time.on('tick', (deltaTime) => {
       pointShader.uniforms.uTime.value += deltaTime

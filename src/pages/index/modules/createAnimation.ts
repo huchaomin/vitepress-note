@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 10:20:55
+ * @LastEditTime : 2024-10-24 15:14:27
  * @Description  :
  */
 import gsap from 'gsap'
@@ -13,15 +13,20 @@ import createGridRipple from './createGridRipple'
 export default (
   _this: CanvasRenderType,
   {
+    halo,
     provinceCenterCircleArr,
     provinceNameLabelArr,
-    quan,
+    rotateBorder1,
+    rotateBorder2,
   }: {
+    halo: THREE.Mesh
     provinceCenterCircleArr: THREE.Group[]
-    quan: THREE.Mesh
+    rotateBorder1: THREE.Mesh
+    rotateBorder2: THREE.Mesh
   },
 ) => {
   const tl = gsap.timeline()
+  tl.addLabel('halo', 5)
   tl.addLabel('focusMap', 3.5)
   tl.addLabel('focusMapOpacity', 4.0)
   tl.addLabel('bar', 5.0)
@@ -43,11 +48,18 @@ export default (
 
   // 光圈旋转动画
   tl.add(
-    gsap.to(quan.rotation, {
+    gsap.to(halo.rotation, {
       duration: 5,
       z: -2 * Math.PI,
     }),
-    '-=2',
+    'halo',
+  )
+  tl.add(
+    gsap.to(halo.material, {
+      duration: 5,
+      opacity: 0,
+    }),
+    'halo',
   )
   tl.add(
     gsap.to(_this.focusMapGroup.position, {
@@ -116,7 +128,7 @@ export default (
   )
 
   tl.add(
-    gsap.to(_this.rotateBorder1.scale, {
+    gsap.to(rotateBorder1.scale, {
       delay: 0.3,
       duration: 1,
       ease: 'circ.out',
@@ -127,7 +139,7 @@ export default (
     'focusMapOpacity',
   )
   tl.add(
-    gsap.to(_this.rotateBorder2.scale, {
+    gsap.to(rotateBorder2.scale, {
       delay: 0.5,
       duration: 1,
       ease: 'circ.out',
