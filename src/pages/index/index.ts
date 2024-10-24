@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 16:01:20
+ * @LastEditTime : 2024-10-24 17:42:54
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -29,13 +29,11 @@ export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
   depth: number
   eventElement: THREE.Mesh[]
-  focusMapSideMaterial: THREE.MeshStandardMaterial
   history: AnyHistory
   interactionManager: InteractionManager
   label3d: Label3d
   mainSceneGroup: Group
   pointCenter: [number, number]
-  provinceLineMaterial: THREE.LineBasicMaterial
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
@@ -77,8 +75,12 @@ export default class CanvasRender extends ThreeCore {
       createBgLight(this)
       // 旋转边框
       const { rotateBorder1, rotateBorder2 } = createRotateBorder(this)
-      // 创建地图
-      const mapGroup = createMap(this)
+      // TODO getCoordinates 创建地图
+      const {
+        group: mapGroup,
+        provinceLineMaterial,
+        sideMaterial: mapSideMaterial,
+      } = createMap(this)
       // 创建地图描边
       createMapStroke(this)
       // 创建省份名称标签
@@ -97,7 +99,9 @@ export default class CanvasRender extends ThreeCore {
       createAnimation(this, {
         halo,
         mapGroup,
+        mapSideMaterial,
         provinceCenterCircleArr,
+        provinceLineMaterial,
         provinceNameLabelArr,
         rotateBorder1,
         rotateBorder2,

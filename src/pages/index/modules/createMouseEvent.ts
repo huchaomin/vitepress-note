@@ -2,12 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 10:58:48
+ * @LastEditTime : 2024-10-24 18:41:02
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import gsap from 'gsap'
+import type { labelInstance } from '@/components/three/utils/Label3d'
 
 export default (
   _this: CanvasRenderType,
@@ -16,13 +17,13 @@ export default (
     provinceCenterCircleArr,
     provinceNameLabelArr,
   }: {
-    provinceBadgeLabelArr: THREE.Group[]
+    provinceBadgeLabelArr: labelInstance[]
     provinceCenterCircleArr: THREE.Group[]
-    provinceNameLabelArr: THREE.Group[]
+    provinceNameLabelArr: labelInstance[]
   },
 ) => {
   // let isClicked = false
-  function moveGroupZPosition(group: THREE.Group, type: 'down' | 'up') {
+  function moveGroupZPosition(group: labelInstance | THREE.Group, type: 'down' | 'up') {
     gsap.to(group.position, {
       duration: 0.3,
       z:

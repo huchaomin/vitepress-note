@@ -2,12 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 10:27:11
+ * @LastEditTime : 2024-10-24 18:33:49
  * @Description  :
  */
 import { Vector3 } from 'three'
 import type * as THREE from 'three'
 import type { CanvasRenderType } from '../index'
+import type { labelInstance } from '@/components/three/utils/Label3d'
 
 interface province {
   adcode: number
@@ -16,7 +17,11 @@ interface province {
   name: string
 }
 
-function labelNameStyle(_this: CanvasRenderType, data: province, position: THREE.Vector3) {
+function labelNameStyle(
+  _this: CanvasRenderType,
+  data: province,
+  position: THREE.Vector3,
+): labelInstance {
   const label = _this.label3d.create('', 'provinces_name_label', true)
   label.init(`${data.name}`, position)
   _this.label3d.setLabelStyle(label, 0.08, 'x')

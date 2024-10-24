@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 16:13:51
+ * @LastEditTime : 2024-10-24 17:22:42
  * @Description  :
  */
 import {
@@ -102,7 +102,12 @@ function createProvinceMaterial(_this: CanvasRenderType) {
   return [topMaterial, sideMaterial]
 }
 
-function createProvinceGroup(_this: CanvasRenderType) {
+function createProvinceGroup(
+  _this: CanvasRenderType,
+  topMaterial: THREE.MeshStandardMaterial,
+  sideMaterial: THREE.MeshStandardMaterial,
+  provinceLineMaterial: THREE.LineBasicMaterial,
+) {
   const mainGroup = new Group()
   mainGroup.position.set(0, 0, 0.06)
   const mapData = transformMapGeoJSON(_this.getAssetsData('china') as string)
@@ -127,7 +132,7 @@ function createProvinceGroup(_this: CanvasRenderType) {
       childrenNum,
       index: featureIndex,
       // 存材质的默认发光颜色
-      materialEmissiveHex: _this.focusMapTopMaterial.emissive.getHex(),
+      materialEmissiveHex: topMaterial.emissive.getHex(),
       name,
     }
 
@@ -146,7 +151,8 @@ function createProvinceGroup(_this: CanvasRenderType) {
       bevelThickness: 0.1,
       depth: _this.depth,
     }
-    const materials = [_this.focusMapTopMaterial.clone(), _this.focusMapSideMaterial]
+    // 这里必须clone 要不然会共享同一个材质
+    const materials = [topMaterial.clone(), sideMaterial]
     feature.geometry.coordinates.forEach((multiPolygon) => {
       multiPolygon.forEach((polygon) => {
         // 绘制shape
@@ -169,7 +175,7 @@ function createProvinceGroup(_this: CanvasRenderType) {
         mesh.userData = {
           adcode,
           depth: _this.depth,
-          materialEmissiveHex: _this.focusMapTopMaterial.emissive.getHex(),
+          materialEmissiveHex: topMaterial.emissive.getHex(),
           name,
         }
         mesh.renderOrder = 9
@@ -182,7 +188,7 @@ function createProvinceGroup(_this: CanvasRenderType) {
         points.push(new Vector3(x, -y, 0))
         const geometry = new BufferGeometry()
         geometry.setFromPoints(points)
-        line = new LineLoop(geometry, _this.provinceLineMaterial)
+        line = new LineLoop(geometry, provinceLineMaterial)
         line.renderOrder = 2
         line.name = 'mapLine'
       })
@@ -199,10 +205,8 @@ function createProvinceGroup(_this: CanvasRenderType) {
 // 创建省份
 function createProvince(_this: CanvasRenderType) {
   const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
-
   topNormal.wrapS = topNormal.wrapT = RepeatWrapping
-
-  _this.provinceLineMaterial = new LineBasicMaterial({
+  const provinceLineMaterial = new LineBasicMaterial({
     color: 0x2bc4dc,
     fog: false,
     opacity: 0,
@@ -210,31 +214,43 @@ function createProvince(_this: CanvasRenderType) {
   })
   const [topMaterial, sideMaterial] = createProvinceMaterial(_this)
 
-  _this.focusMapTopMaterial = topMaterial
-  _this.focusMapSideMaterial = sideMaterial
   _this.time.on('tick', () => {
-    sideMaterial.map!.offset.y += 0.002
+    sideMaterial.map!.offset.y += 0.002 // 材质有一个慢慢浸湿的效果
   })
-  const provinceGroup = createProvinceGroup(_this)
+  const provinceGroup = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
   const { box3, boxSize } = getBoundBox(provinceGroup)
 
   _this.eventElement = []
   provinceGroup.children.forEach((group) => {
-    group.children.forEach((mesh) => {
-      // TODO
-      if (mesh.type === 'Mesh') {
-        _this.eventElement.push(mesh)
-        calcUv2(mesh.geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
+    group.children.forEach((object) => {
+      if ((object as THREE.Mesh).isMesh) {
+        _this.eventElement.push(object as THREE.Mesh)
+        calcUv2((object as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
       }
     })
   })
-  return provinceGroup
+  return {
+    provinceGroup,
+    provinceLineMaterial,
+    sideMaterial,
+    topMaterial,
+  }
 }
 
 export default (_this: CanvasRenderType) => {
-  const group = createProvince(_this)
+  const {
+    provinceGroup: group,
+    provinceLineMaterial,
+    sideMaterial,
+    topMaterial,
+  } = createProvince(_this)
   group.position.set(0, 0.2, -5)
   group.scale.set(1, 1, 0)
   _this.mainSceneGroup.add(group)
-  return group
+  return {
+    group,
+    provinceLineMaterial,
+    sideMaterial,
+    topMaterial,
+  }
 }

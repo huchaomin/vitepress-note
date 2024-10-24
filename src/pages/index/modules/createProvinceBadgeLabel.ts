@@ -2,13 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 13:51:04
+ * @LastEditTime : 2024-10-24 18:40:07
  * @Description  :
  */
 import { Vector3 } from 'three'
 import type { CanvasRenderType } from '../index'
 import dataArr from '../data'
-import type { CSS3DSprite } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
+import type { labelInstance } from '@/components/three/utils/Label3d'
 import labelArrow from '../assets/texture/label-arrow.png'
 
 interface dataItem {
@@ -19,7 +19,7 @@ interface dataItem {
   }
   value: number
 }
-function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vector3): CSS3DSprite {
+function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vector3): labelInstance {
   const label = _this.label3d.create('', 'badges_label_wrap', true)
   label.init(
     `<div class="badges_label">
