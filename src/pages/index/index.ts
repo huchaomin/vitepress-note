@@ -1,15 +1,14 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 17:42:54
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-25 00:10:20
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
 import { ThreeCore } from '@/components/three/core'
 import type * as THREE from 'three'
 import { InteractionManager } from 'three.interactive'
-import AnyHistory from '@/components/three/utils/AnyHistory'
 import Label3d from '@/components/three/utils/Label3d'
 import loadAllAssets from './utils/loadAllAssets'
 import type { AssetType } from '@/components/three/utils/Resource'
@@ -29,7 +28,6 @@ export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
   depth: number
   eventElement: THREE.Mesh[]
-  history: AnyHistory
   interactionManager: InteractionManager
   label3d: Label3d
   mainSceneGroup: Group
@@ -60,8 +58,6 @@ export default class CanvasRender extends ThreeCore {
       this.canvas,
     )
     this.label3d = new Label3d(this)
-    this.history = new AnyHistory()
-    this.history.push({ name: '中国' })
     void loadAllAssets().then((res) => {
       this.assets = res
       this.mainSceneGroup = new Group()
@@ -109,6 +105,13 @@ export default class CanvasRender extends ThreeCore {
     })
   }
 
+  destroy() {
+    super.destroy()
+    this.label3d.destroy()
+    this.interactionManager.dispose()
+    // TODO rESOURCE dESTROY?
+  }
+
   getAssetsData(name: string) {
     const result = this.assets.find((item) => item.name === name)
     if (result) {
@@ -118,11 +121,11 @@ export default class CanvasRender extends ThreeCore {
     }
   }
 
-  // TODO 更新
+  // 在 ThreeCore tick 事件中调用
   update() {
+    // 调用 ThreeCore 中的 update 方法
     super.update()
-    this.stats && this.stats.update()
-    this.interactionManager && this.interactionManager.update()
+    this.interactionManager.update()
   }
 }
 

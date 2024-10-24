@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 09:49:21
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-24 23:49:48
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'

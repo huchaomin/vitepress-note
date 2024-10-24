@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 18:33:49
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-24 23:36:43
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -22,10 +22,11 @@ function labelNameStyle(
   data: province,
   position: THREE.Vector3,
 ): labelInstance {
-  const label = _this.label3d.create('', 'provinces_name_label', true)
+  const label = _this.label3d.create('provinces_name_label')
   label.init(`${data.name}`, position)
-  _this.label3d.setLabelStyle(label, 0.08, 'x')
-  label.setParent(_this.mainSceneGroup)
+  label.scale.set(0.08, 0.08, 0.08) // 根据相机渲染范围控制HTML 3D标签尺寸
+  label.rotation.x = Math.PI / 2 // 控制HTML标签CSS3对象角度,
+  _this.mainSceneGroup.add(label)
   label.userData.adcode = data.adcode
   label.userData.position = [position.x, position.y, position.z]
   return label

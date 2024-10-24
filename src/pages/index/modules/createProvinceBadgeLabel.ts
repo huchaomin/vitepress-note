@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 18:40:07
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-24 23:35:44
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -20,7 +20,7 @@ interface dataItem {
   value: number
 }
 function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vector3): labelInstance {
-  const label = _this.label3d.create('', 'badges_label_wrap', true)
+  const label = _this.label3d.create('badges_label_wrap')
   label.init(
     `<div class="badges_label">
       <div>2024-10-24</div>
@@ -33,8 +33,9 @@ function labelNameStyle(_this: CanvasRenderType, data: dataItem, position: Vecto
     </div>`,
     position,
   )
-  _this.label3d.setLabelStyle(label, 0.1, 'x')
-  label.setParent(_this.mainSceneGroup)
+  label.scale.set(0.1, 0.1, 0.1) // 根据相机渲染范围控制HTML 3D标签尺寸
+  label.rotation.x = Math.PI / 2 // 控制HTML标签CSS3对象角度,
+  _this.mainSceneGroup.add(label)
   // TODO
   // label.hide()
   label.userData = {
