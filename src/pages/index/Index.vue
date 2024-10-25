@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 15:19:22
+ * @LastEditTime : 2024-10-25 18:02:29
  * @Description  :
 -->
 <script setup lang="ts">
@@ -48,7 +48,9 @@ canvas {
 }
 
 .canvas_parent >>> .provinces_name_label {
-  color: #a6d7e2;
+  top: -1px;
+  font-size: 16px;
+  color: #fff;
   text-shadow: 1px 1px 0 #000;
   opacity: 0;
 }

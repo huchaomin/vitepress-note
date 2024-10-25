@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 17:16:28
+ * @LastEditTime : 2024-10-25 17:49:38
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -25,13 +25,13 @@ import createProvinceBadgeLabel from './modules/createProvinceBadgeLabel'
 import createMapStroke from './modules/createMapStroke'
 
 export default class CanvasRender extends ThreeCore {
-  private assets: AssetType[]
-  private depth: number
-  private eventElement: THREE.Mesh[]
-  private interactionManager: InteractionManager
-  private label3d: Label3d
-  private mainSceneGroup: Group
-  private pointCenter: [number, number]
+  assets: AssetType[]
+  depth: number
+  eventElement: THREE.Mesh[]
+  interactionManager: InteractionManager
+  label3d: Label3d
+  mainSceneGroup: Group
+  pointCenter: [number, number]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
