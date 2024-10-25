@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 13:46:44
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 16:14:38
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-25 22:36:52
  * @Description  :
  */
 
@@ -18,7 +18,7 @@ interface GeoJSON {
     properties: {
       adcode: number
       center: [number, number]
-      centroid?: [number, number]
+      centroid: [number, number]
       childrenNum: number
       name: string
     }
@@ -31,6 +31,8 @@ function transformMapGeoJSON(jsonString: string): GeoJSON {
   const features = data.features
   for (let i = 0; i < features.length; i++) {
     const element = features[i]
+    // 有的数据没有centroid字段，用center字段代替
+    element.properties.centroid = element.properties.centroid ?? element.properties.center
     if (element.geometry.type === 'Polygon') {
       element.geometry.coordinates = [
         element.geometry.coordinates as unknown as [number, number][][],

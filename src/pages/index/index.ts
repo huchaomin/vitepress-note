@@ -27,11 +27,11 @@ import createMapStroke from './modules/createMapStroke'
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
   depth: number
-  eventElement: THREE.Mesh[]
   interactionManager: InteractionManager
   label3d: Label3d
   mainSceneGroup: Group
   pointCenter: [number, number]
+  provinceMeshArr: THREE.Mesh[]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
@@ -58,7 +58,7 @@ export default class CanvasRender extends ThreeCore {
 
     this.label3d = new Label3d(this)
     this.assets = []
-    this.eventElement = []
+    this.provinceMeshArr = []
 
     this.setAxesHelper()
     void loadAllAssets().then((res) => {

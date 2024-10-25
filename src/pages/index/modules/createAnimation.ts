@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 17:17:38
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-25 23:20:10
  * @Description  :
  */
 import gsap from 'gsap'
@@ -46,8 +46,8 @@ export default (
       onComplete: () => {
         _this.camera.controls.saveState()
       },
-      y: 200,
-      z: 100,
+      y: 160,
+      z: 80,
     }),
   )
   // 光晕旋转动画
@@ -87,27 +87,26 @@ export default (
     'mapBody',
   )
 
-  mapGroup.traverse((obj) => {
-    if ((obj as THREE.Mesh).isMesh) {
-      tl.add(
-        gsap.to(((obj as THREE.Mesh).material as THREE.MeshStandardMaterial[])[0], {
-          duration: 1,
-          ease: 'circ.out',
-          opacity: 1,
-        }),
-        'mapParts',
-      )
-      tl.add(
-        gsap.to(obj.position, {
-          duration: 1,
-          ease: 'circ.out',
-          x: 0,
-          y: 0,
-          z: 0,
-        }),
-        'mapParts',
-      )
-    }
+  _this.provinceMeshArr.forEach((mesh) => {
+    tl.add(
+      // top material
+      gsap.to((mesh.material as THREE.MeshStandardMaterial[])[0], {
+        duration: 1,
+        ease: 'circ.out',
+        opacity: 1,
+      }),
+      'mapParts',
+    )
+    tl.add(
+      gsap.to(mesh.position, {
+        duration: 1,
+        ease: 'circ.out',
+        x: 0,
+        y: 0,
+        z: 0,
+      }),
+      'mapParts',
+    )
   })
   tl.add(
     gsap.to(mapSideMaterial, {

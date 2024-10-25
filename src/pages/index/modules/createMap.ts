@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 16:14:02
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-25 23:16:22
  * @Description  :
  */
 import {
@@ -108,26 +108,15 @@ function createProvinceGroup(
   provinceLineMaterial: THREE.LineBasicMaterial,
 ) {
   const mainGroup = new Group()
-  mainGroup.position.set(0, 0, 0.06)
   const mapData = transformMapGeoJSON(_this.getAssetsData('china') as string)
-  const coordinates = []
-  const linesGroup = new Group()
   mapData.features.forEach((feature, featureIndex) => {
     const { adcode, center, centroid, childrenNum, name } = feature.properties
-    coordinates.push({
-      adcode,
-      center,
-      centroid: centroid ?? center,
-      enName: '',
-      name,
-      value: 0,
-    })
     const group = new Group()
     group.name = `meshGroup${featureIndex}`
     group.userData = {
       adcode,
       center,
-      centroid: centroid ?? center,
+      centroid,
       childrenNum,
       index: featureIndex,
       // 存材质的默认发光颜色
@@ -142,14 +131,6 @@ function createProvinceGroup(
       adcode,
       index: featureIndex,
     }
-
-    // 拉伸设置
-    const extrudeSettings = {
-      bevelEnabled: true,
-      bevelSegments: 1,
-      bevelThickness: 0.1,
-      depth: _this.depth,
-    }
     // 这里必须clone 要不然会共享同一个材质
     const materials = [topMaterial.clone(), sideMaterial]
     feature.geometry.coordinates.forEach((multiPolygon) => {
@@ -157,9 +138,6 @@ function createProvinceGroup(
         // 绘制shape
         const shape = new Shape()
         for (let i = 0; i < polygon.length; i++) {
-          if (!polygon[i][0] || !polygon[i][1]) {
-            return false
-          }
           const [x, y] = _this.geoProjection(polygon[i], {
             geoProjectionCenter: _this.pointCenter,
           })!
@@ -169,10 +147,16 @@ function createProvinceGroup(
           shape.lineTo(x, -y)
         }
 
-        const geometry = new ExtrudeGeometry(shape, extrudeSettings)
+        const geometry = new ExtrudeGeometry(shape, {
+          bevelEnabled: true,
+          bevelSegments: 1,
+          bevelThickness: 0.1,
+          depth: _this.depth,
+        })
         const mesh = new Mesh(geometry, materials)
         mesh.userData = {
           adcode,
+          centroid,
           depth: _this.depth,
           materialEmissiveHex: topMaterial.emissive.getHex(),
           name,
@@ -180,6 +164,7 @@ function createProvinceGroup(
         mesh.renderOrder = 9
         group.add(mesh)
       })
+      // 绘制省份边界线
       const points: THREE.Vector3[] = []
       let line: null | THREE.LineLoop = null
       multiPolygon[0].forEach((item) => {
@@ -195,7 +180,6 @@ function createProvinceGroup(
       })
       lineGroup.add(line!)
     })
-    linesGroup.add(lineGroup)
     lineGroup.position.set(0, 0, _this.depth + 0.11)
     group.add(lineGroup)
     mainGroup.add(group)
@@ -223,7 +207,7 @@ function createProvince(_this: CanvasRenderType) {
   provinceGroup.children.forEach((group) => {
     group.children.forEach((object) => {
       if ((object as THREE.Mesh).isMesh) {
-        _this.eventElement.push(object as THREE.Mesh)
+        _this.provinceMeshArr.push(object as THREE.Mesh)
         calcUv2((object as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
       }
     })

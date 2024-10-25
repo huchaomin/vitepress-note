@@ -94,7 +94,7 @@ export default (
   }
 
   // 循环添加事件
-  _this.eventElement.forEach((m) => {
+  _this.provinceMeshArr.forEach((m) => {
     _this.interactionManager.add(m)
     // https://github.com/markuslerner/THREE.Interactive bindEventsOnBodyElement: true
     const mesh = m as unknown as HTMLBodyElement
