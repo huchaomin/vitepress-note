@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 00:18:53
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-25 15:19:22
  * @Description  :
 -->
 <script setup lang="ts">
@@ -60,7 +60,6 @@ canvas {
     position: relative;
     bottom: 50px;
     padding: 10px;
-    font-size: 12px;
     font-weight: bold;
     color: #fff;
     background: #0e1937;

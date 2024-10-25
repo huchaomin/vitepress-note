@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-24 23:35:44
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-25 15:21:03
  * @Description  :
  */
 import { Vector3 } from 'three'

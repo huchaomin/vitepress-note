@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 15:04:56
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-24 23:38:28
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-25 11:42:15
  * @Description  :
  */
 import {
@@ -11,7 +11,7 @@ import {
   CSS3DRenderer,
 } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 import type * as THREE from 'three'
-import type { ThreeCore } from '@/components/three/core'
+import type { ThreeCore } from '../core'
 
 export type labelInstance = {
   hide: () => labelInstance
@@ -20,29 +20,22 @@ export type labelInstance = {
 } & (InstanceType<typeof CSS3DObject> | InstanceType<typeof CSS3DSprite>)
 
 export default class Label3d {
-  camera: ThreeCore['camera']
-  css3dRender: CSS3DRenderer
-  scene: ThreeCore['scene']
-  sizes: ThreeCore['sizes']
+  private css3dRender: CSS3DRenderer
   constructor({ camera, canvas, scene, sizes, time }: ThreeCore) {
-    this.scene = scene
-    this.camera = camera
-    this.sizes = sizes
-    this.css3dRender = new CSS3DRenderer() // 实例化css3d渲染器
-    const { height, width } = this.sizes
-    this.css3dRender.setSize(width, height) // 设置渲染器的尺寸
-    this.css3dRender.domElement.style.position = 'absolute' // 设置定位位置
-    this.css3dRender.domElement.style.left = '0px'
-    this.css3dRender.domElement.style.top = '0px'
-    this.css3dRender.domElement.style.pointerEvents = 'none' // 设置不能被选中
-    this.css3dRender.domElement.className = `label3d-${useId()}`
-    canvas.parentNode!.appendChild(this.css3dRender.domElement) // 插入到容器当中
+    const css3dRender = new CSS3DRenderer() // 实例化css3d渲染器
+    css3dRender.domElement.style.position = 'absolute' // 设置定位位置
+    css3dRender.domElement.style.left = '0px'
+    css3dRender.domElement.style.top = '0px'
+    css3dRender.domElement.style.pointerEvents = 'none' // 设置不能被选中
+    css3dRender.domElement.className = `label3d-${useId()}`
+    canvas.parentNode!.appendChild(css3dRender.domElement) // 插入到容器当中
     time.on('tick', () => {
-      this.update()
+      css3dRender.render(scene, camera.instance)
     })
-    this.sizes.on('resize', () => {
-      this.resize()
+    sizes.on('resize', () => {
+      css3dRender.setSize(sizes.width, sizes.height)
     })
+    this.css3dRender = css3dRender
   }
 
   create(className = '', isSprite = true) {
@@ -77,14 +70,5 @@ export default class Label3d {
 
   destroy() {
     this.css3dRender.domElement.remove()
-  }
-
-  resize() {
-    const { height, width } = this.sizes
-    this.css3dRender.setSize(width, height)
-  }
-
-  update() {
-    this.css3dRender.render(this.scene, this.camera.instance)
   }
 }

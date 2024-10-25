@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-24 23:49:48
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-25 15:14:44
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'
@@ -15,12 +15,12 @@ import { geoMercator } from 'd3-geo'
 import type * as THREE from 'three'
 
 export class ThreeCore extends EventEmitter {
-  camera: Camera
-  canvas: HTMLCanvasElement
-  renderer: Renderer
-  scene: THREE.Scene
-  sizes: Sizes
-  time: Time
+  readonly camera: Camera
+  readonly canvas: HTMLCanvasElement
+  readonly renderer: Renderer
+  readonly scene: THREE.Scene
+  readonly sizes: Sizes
+  readonly time: Time
 
   constructor(
     canvas: HTMLCanvasElement,
@@ -41,10 +41,8 @@ export class ThreeCore extends EventEmitter {
       geoProjectionTranslate: [0, 0],
     }
     this.config = Object.assign({}, defaultConfig, config)
-    this.sizes.on('resize', () => {
-      this.resize()
-    })
     this.time.on('tick', () => {
+      // 此时如果 子类实例定义了 update 方法，会执行子类的 update 方法
       this.update()
     })
   }
@@ -88,11 +86,6 @@ export class ThreeCore extends EventEmitter {
       .translate(geoProjectionTranslate)(args)
   }
 
-  resize() {
-    this.camera.resize()
-    this.renderer.resize()
-  }
-
   /**
    * 设置AxesHelper
    */
@@ -101,8 +94,5 @@ export class ThreeCore extends EventEmitter {
     this.scene.add(axes)
   }
 
-  update() {
-    this.camera.update()
-    this.renderer.update()
-  }
+  update() {}
 }
