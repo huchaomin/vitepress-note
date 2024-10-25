@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 18:42:38
+ * @LastEditTime : 2024-10-25 10:09:39
  * @Description  :
  */
 import gsap from 'gsap'
@@ -34,17 +34,15 @@ export default (
   },
 ) => {
   const tl = gsap.timeline()
-  tl.addLabel('halo', 5)
-  tl.addLabel('focusMap', 3.5)
-  tl.addLabel('focusMapOpacity', 4.0)
-  tl.addLabel('province', 5.0)
+  tl.addLabel('mapBody', 3.5)
+  tl.addLabel('mapParts', 4.5)
+  tl.addLabel('province', 6.0)
 
   // 相机动画
   tl.add(
     gsap.to(_this.camera.instance.position, {
-      delay: 2,
-      duration: 2.5,
-      ease: 'circ.out',
+      duration: 8,
+      ease: 'power1.in',
       onComplete: () => {
         _this.camera.controls.saveState()
       },
@@ -53,40 +51,41 @@ export default (
       z: 78.77649752477839,
     }),
   )
-
-  // 光圈旋转动画
+  // 光晕旋转动画
   tl.add(
     gsap.to(halo.rotation, {
-      duration: 5,
+      duration: 8,
       z: -2 * Math.PI,
     }),
-    'halo',
+    '<',
   )
+  // 光晕旋透明度
   tl.add(
     gsap.to(halo.material, {
-      duration: 5,
+      duration: 8,
       opacity: 0,
     }),
-    'halo',
+    '<',
   )
+  // mapBody动画
   tl.add(
     gsap.to(mapGroup.position, {
-      duration: 1,
+      duration: 1.5,
       x: 0,
       y: 0,
       z: 0,
     }),
-    'focusMap',
+    'mapBody',
   )
   tl.add(
     gsap.to(mapGroup.scale, {
-      duration: 1,
+      duration: 1.5,
       ease: 'circ.out',
       x: 1,
       y: 1,
       z: 1,
     }),
-    'focusMap',
+    'mapBody',
   )
 
   mapGroup.traverse((obj) => {
@@ -97,7 +96,7 @@ export default (
           ease: 'circ.out',
           opacity: 1,
         }),
-        'focusMapOpacity',
+        'mapParts',
       )
       tl.add(
         gsap.to(obj.position, {
@@ -107,7 +106,7 @@ export default (
           y: 0,
           z: 0,
         }),
-        'focusMapOpacity',
+        'mapParts',
       )
     }
   })
@@ -120,7 +119,7 @@ export default (
       },
       opacity: 1,
     }),
-    'focusMapOpacity',
+    'mapParts',
   )
   tl.add(
     gsap.to(provinceLineMaterial, {
@@ -128,7 +127,7 @@ export default (
       duration: 0.5,
       opacity: 1,
     }),
-    'focusMapOpacity',
+    'mapParts',
   )
 
   tl.add(
@@ -140,7 +139,7 @@ export default (
       y: 1,
       z: 1,
     }),
-    'focusMapOpacity',
+    'mapParts',
   )
   tl.add(
     gsap.to(rotateBorder2.scale, {
@@ -151,7 +150,7 @@ export default (
       y: 1,
       z: 1,
     }),
-    'focusMapOpacity',
+    'mapParts',
   )
   provinceNameLabelArr.forEach((item, index) => {
     tl.add(
