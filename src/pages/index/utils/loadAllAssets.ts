@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 16:02:20
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 14:56:00
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-26 00:39:29
  * @Description  :
  */
 import Resource, { type AssetType } from '@/components/three/utils/Resource'
@@ -49,16 +49,6 @@ const assets: AssetType[] = [
   {
     name: 'china',
     path: `${BASE_URL}assets/json/中华人民共和国.json`,
-    type: 'FileLoader',
-  },
-  {
-    name: 'province',
-    path: `${BASE_URL}assets/json/中华人民共和国省份.json`,
-    type: 'FileLoader',
-  },
-  {
-    name: 'transportPath',
-    path: `${BASE_URL}assets/json/运输路径.json`,
     type: 'FileLoader',
   },
 ]

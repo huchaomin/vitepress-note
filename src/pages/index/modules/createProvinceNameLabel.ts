@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 15:16:28
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-26 00:50:39
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -12,7 +12,6 @@ import type { labelInstance } from '@/components/three/utils/Label3d'
 
 interface province {
   adcode: number
-  center: [number, number]
   centroid: [number, number]
   name: string
 }
@@ -32,10 +31,19 @@ function labelNameStyle(
   return label
 }
 
-export default (_this: CanvasRenderType) => {
-  const provinceConfig = JSON.parse(_this.getAssetsData('province') as string) as province[]
-  return provinceConfig.map((data) => {
-    const [x, y] = _this.geoProjection(data.centroid)!
-    return labelNameStyle(_this, data, new Vector3(x, -y - 1.5, _this.depth + 0.4))
-  })
+export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
+  return mapGroup.children
+    .filter((c) => {
+      return (
+        c.userData.type === 'shape' && c.userData.centroid !== undefined && c.userData.name !== ''
+      )
+    })
+    .map((group) => {
+      const [x, y] = _this.geoProjection((group.userData as province).centroid)!
+      return labelNameStyle(
+        _this,
+        group.userData as province,
+        new Vector3(x, -y - 1.5, _this.depth + 0.4),
+      )
+    })
 }

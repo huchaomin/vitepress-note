@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 23:16:22
+ * @LastEditTime : 2024-10-26 00:06:47
  * @Description  :
  */
 import {
@@ -107,29 +107,27 @@ function createProvinceGroup(
   sideMaterial: THREE.MeshStandardMaterial,
   provinceLineMaterial: THREE.LineBasicMaterial,
 ) {
-  const mainGroup = new Group()
+  const group = new Group()
   const mapData = transformMapGeoJSON(_this.getAssetsData('china') as string)
-  mapData.features.forEach((feature, featureIndex) => {
-    const { adcode, center, centroid, childrenNum, name } = feature.properties
-    const group = new Group()
-    group.name = `meshGroup${featureIndex}`
-    group.userData = {
+  mapData.features.forEach((feature) => {
+    const { adcode, centroid, name } = feature.properties
+
+    // shape 组
+    const shapeGroup = new Group()
+    shapeGroup.userData = {
       adcode,
-      center,
       centroid,
-      childrenNum,
-      index: featureIndex,
-      // 存材质的默认发光颜色
-      materialEmissiveHex: topMaterial.emissive.getHex(),
       name,
+      type: 'shape',
     }
 
     // 线组
     const lineGroup = new Group()
-    lineGroup.name = `lineGroup${featureIndex}`
     lineGroup.userData = {
       adcode,
-      index: featureIndex,
+      centroid,
+      name,
+      type: 'line',
     }
     // 这里必须clone 要不然会共享同一个材质
     const materials = [topMaterial.clone(), sideMaterial]
@@ -162,7 +160,7 @@ function createProvinceGroup(
           name,
         }
         mesh.renderOrder = 9
-        group.add(mesh)
+        shapeGroup.add(mesh)
       })
       // 绘制省份边界线
       const points: THREE.Vector3[] = []
@@ -181,10 +179,9 @@ function createProvinceGroup(
       lineGroup.add(line!)
     })
     lineGroup.position.set(0, 0, _this.depth + 0.11)
-    group.add(lineGroup)
-    mainGroup.add(group)
+    group.add(shapeGroup, lineGroup)
   })
-  return mainGroup
+  return group
 }
 
 // 创建省份
@@ -205,12 +202,12 @@ function createProvince(_this: CanvasRenderType) {
   const provinceGroup = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
   const { box3, boxSize } = getBoundBox(provinceGroup)
   provinceGroup.children.forEach((group) => {
-    group.children.forEach((object) => {
-      if ((object as THREE.Mesh).isMesh) {
-        _this.provinceMeshArr.push(object as THREE.Mesh)
-        calcUv2((object as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
-      }
-    })
+    if (group.userData.type === 'shape') {
+      group.children.forEach((mesh) => {
+        _this.provinceMeshArr.push(mesh as THREE.Mesh)
+        calcUv2((mesh as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
+      })
+    }
   })
   return {
     provinceGroup,

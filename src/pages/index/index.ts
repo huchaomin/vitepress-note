@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 17:49:38
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-26 00:42:18
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -71,7 +71,6 @@ export default class CanvasRender extends ThreeCore {
       createBgLight(this)
       // 旋转边框
       const { rotateBorder1, rotateBorder2 } = createRotateBorder(this)
-      // TODO getCoordinates 创建地图
       const {
         group: mapGroup,
         provinceLineMaterial,
@@ -80,9 +79,9 @@ export default class CanvasRender extends ThreeCore {
       // 创建地图描边
       createMapStroke(this)
       // 创建省份名称标签
-      const provinceNameLabelArr = createProvinceNameLabel(this)
+      const provinceNameLabelArr = createProvinceNameLabel(this, mapGroup)
       // 创建省份中心圆
-      const provinceCenterCircleArr = createProvinceCenterCircle(this)
+      const provinceCenterCircleArr = createProvinceCenterCircle(this, mapGroup)
       // 创建省份徽章标签
       const provinceBadgeLabelArr = createProvinceBadgeLabel(this)
       // 创建鼠标事件

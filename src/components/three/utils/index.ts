@@ -2,13 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 13:46:44
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 22:36:52
+ * @LastEditTime : 2024-10-26 00:15:04
  * @Description  :
  */
 
 import type * as THREE from 'three'
 import { Vector3, Box3 } from 'three'
 
+// 南海九段线 名字为'', center, centroid字段没有
 interface GeoJSON {
   features: Array<{
     geometry: {
@@ -19,7 +20,6 @@ interface GeoJSON {
       adcode: number
       center: [number, number]
       centroid: [number, number]
-      childrenNum: number
       name: string
     }
     type: string
