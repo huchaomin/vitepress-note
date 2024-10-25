@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 17:22:42
+ * @LastEditTime : 2024-10-25 16:14:02
  * @Description  :
  */
 import {
@@ -22,7 +22,6 @@ import {
 import type * as THREE from 'three'
 import type { CanvasRenderType } from '../index'
 import { transformMapGeoJSON, getBoundBox, calcUv2 } from '@/components/three/utils/index'
-import { geoMercator } from 'd3-geo'
 
 function createProvinceMaterial(_this: CanvasRenderType) {
   const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
@@ -161,9 +160,9 @@ function createProvinceGroup(
           if (!polygon[i][0] || !polygon[i][1]) {
             return false
           }
-          const [x, y] = geoMercator().center(_this.pointCenter).scale(120).translate([0, 0])(
-            polygon[i],
-          )!
+          const [x, y] = _this.geoProjection(polygon[i], {
+            geoProjectionCenter: _this.pointCenter,
+          })!
           if (i === 0) {
             shape.moveTo(x, -y)
           }
@@ -184,7 +183,9 @@ function createProvinceGroup(
       const points: THREE.Vector3[] = []
       let line: null | THREE.LineLoop = null
       multiPolygon[0].forEach((item) => {
-        const [x, y] = geoMercator().center(_this.pointCenter).scale(120).translate([0, 0])(item)!
+        const [x, y] = _this.geoProjection(item, {
+          geoProjectionCenter: _this.pointCenter,
+        })!
         points.push(new Vector3(x, -y, 0))
         const geometry = new BufferGeometry()
         geometry.setFromPoints(points)
@@ -219,8 +220,6 @@ function createProvince(_this: CanvasRenderType) {
   })
   const provinceGroup = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
   const { box3, boxSize } = getBoundBox(provinceGroup)
-
-  _this.eventElement = []
   provinceGroup.children.forEach((group) => {
     group.children.forEach((object) => {
       if ((object as THREE.Mesh).isMesh) {

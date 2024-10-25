@@ -3,7 +3,7 @@
  * @Date         : 2024-10-21 10:52:52
  * @LastEditors  : peter peter@qingcongai.com
  * @LastEditTime : 2024-10-25 11:33:53
- * @Description  : TODO 删除没用的一些属性
+ * @Description  :
  */
 import EventEmitter from './EventEmitter'
 import * as THREE from 'three'

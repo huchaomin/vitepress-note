@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 13:46:44
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-22 15:19:01
+ * @LastEditTime : 2024-10-25 16:14:38
  * @Description  :
  */
 
@@ -44,8 +44,6 @@ function transformMapGeoJSON(jsonString: string): GeoJSON {
  * 获取网格的包围盒
  */
 function getBoundBox(group: THREE.Group) {
-  // 计算实际宽高
-  const size = new Vector3()
   // 包围盒计算模型对象的大小和位置
   const box3 = new Box3()
   box3.expandByObject(group) // 计算模型包围盒
@@ -57,16 +55,6 @@ function getBoundBox(group: THREE.Group) {
     box3,
     boxSize,
     center,
-  }
-  // TODO
-  if (group.geometry) {
-    group.geometry.computeBoundingBox()
-    group.geometry.computeBoundingSphere()
-    const { max, min } = group.geometry.boundingBox
-    size.x = max.x - min.x
-    size.y = max.y - min.y
-    size.z = max.z - min.z
-    obj.size = size
   }
   return obj
 }

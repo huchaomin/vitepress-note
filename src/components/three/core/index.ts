@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 15:14:44
+ * @LastEditTime : 2024-10-25 16:33:25
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'
@@ -14,7 +14,14 @@ import Camera from './Camera'
 import { geoMercator } from 'd3-geo'
 import type * as THREE from 'three'
 
+interface geoProjectionConfig {
+  geoProjectionCenter: [number, number]
+  geoProjectionScale: number
+  geoProjectionTranslate: [number, number]
+}
 export class ThreeCore extends EventEmitter {
+  private config: geoProjectionConfig
+
   readonly camera: Camera
   readonly canvas: HTMLCanvasElement
   readonly renderer: Renderer
@@ -22,12 +29,7 @@ export class ThreeCore extends EventEmitter {
   readonly sizes: Sizes
   readonly time: Time
 
-  constructor(
-    canvas: HTMLCanvasElement,
-    config: {
-      geoProjectionCenter: ConstructorParameters<typeof THREE.Vector2>
-    },
-  ) {
+  constructor(canvas: HTMLCanvasElement, config: Partial<geoProjectionConfig>) {
     super()
     this.canvas = canvas
     this.scene = new Scene()
@@ -54,8 +56,9 @@ export class ThreeCore extends EventEmitter {
     this.renderer.destroy()
     // https://threejs.org/docs/index.html#manual/zh/introduction/How-to-dispose-of-objects
     this.scene.traverse((child) => {
+      console.log(child)
+      // child: Scene、 PerspectiveCamera、 Mesh、 Group、LineLoop、 CSS3DSprite、 Light
       if (child instanceof Mesh) {
-        debugger
         if (child.geometry !== undefined) {
           ;(child.geometry as THREE.BufferGeometry).dispose()
         }
@@ -78,17 +81,17 @@ export class ThreeCore extends EventEmitter {
     this.canvas.parentNode!.removeChild(this.canvas)
   }
 
-  geoProjection(args) {
-    const { geoProjectionCenter, geoProjectionScale, geoProjectionTranslate } = this.config
+  geoProjection(point: [number, number], geoProjectionConfig?: Partial<geoProjectionConfig>) {
+    const { geoProjectionCenter, geoProjectionScale, geoProjectionTranslate } = {
+      ...this.config,
+      ...(geoProjectionConfig ?? {}),
+    }
     return geoMercator()
       .center(geoProjectionCenter)
       .scale(geoProjectionScale)
-      .translate(geoProjectionTranslate)(args)
+      .translate(geoProjectionTranslate)(point)
   }
 
-  /**
-   * 设置AxesHelper
-   */
   setAxesHelper(size = 250) {
     const axes = new AxesHelper(size)
     this.scene.add(axes)

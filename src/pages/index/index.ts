@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 00:10:20
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-25 16:23:31
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -25,13 +25,13 @@ import createProvinceBadgeLabel from './modules/createProvinceBadgeLabel'
 import createMapStroke from './modules/createMapStroke'
 
 export default class CanvasRender extends ThreeCore {
-  assets: AssetType[]
-  depth: number
-  eventElement: THREE.Mesh[]
-  interactionManager: InteractionManager
-  label3d: Label3d
-  mainSceneGroup: Group
-  pointCenter: [number, number]
+  private assets: AssetType[]
+  private depth: number
+  private eventElement: THREE.Mesh[]
+  private interactionManager: InteractionManager
+  private label3d: Label3d
+  private mainSceneGroup: Group
+  private pointCenter: [number, number]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config: ConstructorParameters<typeof ThreeCore>[1],
@@ -57,12 +57,16 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
+
+    this.mainSceneGroup = new Group()
+    this.mainSceneGroup.rotateX(-Math.PI / 2)
+    this.scene.add(this.mainSceneGroup)
+
     this.label3d = new Label3d(this)
+    this.assets = []
+    this.eventElement = []
     void loadAllAssets().then((res) => {
       this.assets = res
-      this.mainSceneGroup = new Group()
-      this.mainSceneGroup.rotateX(-Math.PI / 2)
-      this.scene.add(this.mainSceneGroup)
       // 创建环境光
       createEnvLight(this)
       // 创建周围光晕
@@ -109,7 +113,6 @@ export default class CanvasRender extends ThreeCore {
     super.destroy()
     this.label3d.destroy()
     this.interactionManager.dispose()
-    // TODO rESOURCE dESTROY?
   }
 
   getAssetsData(name: string) {
