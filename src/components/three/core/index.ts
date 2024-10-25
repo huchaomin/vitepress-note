@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 16:33:25
+ * @LastEditTime : 2024-10-25 16:57:40
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'
@@ -56,8 +56,7 @@ export class ThreeCore extends EventEmitter {
     this.renderer.destroy()
     // https://threejs.org/docs/index.html#manual/zh/introduction/How-to-dispose-of-objects
     this.scene.traverse((child) => {
-      console.log(child)
-      // child: Scene、 PerspectiveCamera、 Mesh、 Group、LineLoop、 CSS3DSprite、 Light
+      // child: Scene、 PerspectiveCamera、 Mesh、 Group、LineLoop、 CSS3DSprite、 Light...
       if (child instanceof Mesh) {
         if (child.geometry !== undefined) {
           ;(child.geometry as THREE.BufferGeometry).dispose()
@@ -92,8 +91,9 @@ export class ThreeCore extends EventEmitter {
       .translate(geoProjectionTranslate)(point)
   }
 
-  setAxesHelper(size = 250) {
+  setAxesHelper(size = 100) {
     const axes = new AxesHelper(size)
+    axes.setColors('red', 'yellow', 'blue')
     this.scene.add(axes)
   }
 

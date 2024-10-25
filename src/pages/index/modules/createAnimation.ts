@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 10:09:39
+ * @LastEditTime : 2024-10-25 17:17:38
  * @Description  :
  */
 import gsap from 'gsap'
@@ -46,9 +46,8 @@ export default (
       onComplete: () => {
         _this.camera.controls.saveState()
       },
-      x: 3.134497983573052,
-      y: 126.8312346165316,
-      z: 78.77649752477839,
+      y: 200,
+      z: 100,
     }),
   )
   // 光晕旋转动画

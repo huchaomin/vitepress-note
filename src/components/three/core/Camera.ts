@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 09:18:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 11:11:04
+ * @LastEditTime : 2024-10-25 17:20:57
  * @Description  :
  */
 import type * as THREE from 'three'
@@ -15,8 +15,7 @@ export default class Camera {
   readonly instance: THREE.PerspectiveCamera
 
   constructor({ canvas, scene, sizes, time }: ThreeCore) {
-    this.instance = new PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 2000)
-    this.instance.position.set(10, 10, 10)
+    this.instance = new PerspectiveCamera(45, sizes.width / sizes.height, 1)
     scene.add(this.instance)
 
     this.controls = new OrbitControls(this.instance, canvas)
