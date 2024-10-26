@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 16:44:28
+ * @LastEditTime : 2024-10-26 16:41:42
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -22,6 +22,7 @@ import { browserslistToTargets } from 'lightningcss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 import { envDir, getEnv, resolveCwd, normalizeJoinPath } from './utils/index.ts'
 import { envParse } from 'vite-plugin-env-parse'
+import autoImportStoreList from './plugins/autoImportStores.ts'
 
 function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
   const reqUrl = req.url ?? ''
@@ -75,7 +76,9 @@ export default defineConfig(({ command, mode }) => {
         imports: [
           // https://github.com/antfu/unplugin-auto-import/tree/main/src/presets
           'vue',
+          'pinia',
           '@vueuse/core',
+          autoImportStoreList,
         ],
         // eslintrc: {
         //   enabled: true,

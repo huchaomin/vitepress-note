@@ -2,15 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 16:25:54
+ * @LastEditTime : 2024-10-26 16:44:38
  * @Description  :
 -->
 <script setup lang="ts">
 import CanvasRender from './index';
 import Page1 from './component/Page1/Index.vue'
-
-const rootRef = ref<HTMLDivElement | null>(null)
-const { width } = useElementSize(rootRef)
 
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -23,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="rootRef" class="h-screen w-screen">
+  <div class="h-screen w-screen">
     <div style="aspect-ratio: 16/9;">
       <div class="w-full h-full relative canvas_parent">
         <canvas ref="canvasRef"></canvas>

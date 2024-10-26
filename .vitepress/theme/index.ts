@@ -2,7 +2,7 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-17 17:21:15
+ * @LastEditTime : 2024-10-26 17:08:54
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
@@ -11,9 +11,11 @@ import type { Theme } from 'vitepress'
 import { NaiveUIProvider, provideCssRenderCollect } from './embedNaiveUiSsr'
 import '@/assets/css/index.css'
 import './hideWaiting'
+import store from '@/store/index.ts'
 
 export default {
   enhanceApp: ({ app }) => {
+    app.use(store)
     provideCssRenderCollect(app)
   },
   Layout: NaiveUIProvider,

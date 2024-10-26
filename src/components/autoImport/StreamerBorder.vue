@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 16:18:59
+ * @LastEditTime : 2024-10-26 17:07:40
  * @Description  :
 -->
  <script setup lang="ts">
@@ -27,6 +27,8 @@ const props = withDefaults(
   },
 )
 
+const commonStore = useCommonStore()
+
 const rootRef = ref<HTMLDivElement | null>(null)
 const { height, width } = useElementSize(rootRef)
 
@@ -34,16 +36,21 @@ const perimeter = computed(() => {
   return 2 * (width.value + height.value)
 })
 
+const iconVW = ref(3)
+const iconPX = computed(() => {
+  return iconVW.value * commonStore.screenWidth / 100
+})
+
 const path = computed(() => {
   const halfTrackWidth = props.trackWidth / 2
   const right = width.value - halfTrackWidth
   const bottom = height.value - halfTrackWidth
   return `
-    M${halfTrackWidth + 30}, ${halfTrackWidth}
+    M${halfTrackWidth + iconPX.value}, ${halfTrackWidth}
     L${right}, ${halfTrackWidth}
     L${right}, ${bottom}
     L${halfTrackWidth}, ${bottom}
-    L${halfTrackWidth}, ${halfTrackWidth}
+    L${halfTrackWidth}, ${halfTrackWidth + iconPX.value}
   `
 })
 
@@ -114,7 +121,7 @@ defineOptions({
 <template>
   <div class="relative h-full w-full" ref="rootRef">
     <svg class="absolute" :width="width" :height="height" v-html="str" style="pointer-events: none;"></svg>
-    <div class="left_top_icon absolute" v-html="iconStr"></div>
+    <div class="left_top_icon absolute" v-html="iconStr" :style="`width: ${iconVW}vw; height: ${iconVW}vw`"></div>
     <div v-bind="$attrs">
       <slot></slot>
     </div>
@@ -124,8 +131,6 @@ defineOptions({
   .left_top_icon {
     top: 0;
     left: 0;
-    width: 3vw;
-    height: 3vw;
     transform: translate(-40%, -40%);
   }
 </style>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-12 17:11:39
+ * @LastEditTime : 2024-10-26 16:34:54
  * @Description  :
  */
 
@@ -27,4 +27,8 @@ function normalizeJoinPath(...paths: string[]): string {
   return normalizePath(path.join(...paths))
 }
 
-export { envDir, getEnv, normalizeJoinPath, resolveCwd }
+function firstUpperCase(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export { envDir, firstUpperCase, getEnv, normalizeJoinPath, resolveCwd }
