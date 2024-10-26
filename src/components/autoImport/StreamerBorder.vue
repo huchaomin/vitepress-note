@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 17:07:40
+ * @LastEditTime : 2024-10-26 17:13:36
  * @Description  :
 -->
  <script setup lang="ts">
@@ -19,7 +19,7 @@ const props = withDefaults(
   }>(),
   {
     trackWidth: 2,
-    trackColor: '#253B52',
+    trackColor: '#0C4269',
     streamerWidth: 4,
     streamerLength: 120,
     streamerColor: '#00CED1',
@@ -46,11 +46,11 @@ const path = computed(() => {
   const right = width.value - halfTrackWidth
   const bottom = height.value - halfTrackWidth
   return `
-    M${halfTrackWidth + iconPX.value}, ${halfTrackWidth}
+    M${halfTrackWidth + iconPX.value / 2}, ${halfTrackWidth}
     L${right}, ${halfTrackWidth}
     L${right}, ${bottom}
     L${halfTrackWidth}, ${bottom}
-    L${halfTrackWidth}, ${halfTrackWidth + iconPX.value}
+    L${halfTrackWidth}, ${halfTrackWidth + iconPX.value / 2}
   `
 })
 

@@ -11,7 +11,8 @@
     "primaryColor": "#697FEDFF",
     "primaryColorHover": "#9AADFEFF",
     "primaryColorPressed": "#596CDBFF",
-    "primaryColorSuppl": "#9AADFEFF"
+    "primaryColorSuppl": "#9AADFEFF",
+    "fontSize": "inherit"
   },
   "Tree": {
     "nodeWrapperPadding": "0 0",

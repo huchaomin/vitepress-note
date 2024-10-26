@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 16:44:38
+ * @LastEditTime : 2024-10-26 17:49:33
  * @Description  :
 -->
 <script setup lang="ts">
@@ -35,67 +35,71 @@ canvas {
   height: 100% !important;
 }
 
-.canvas_parent >>> .provinces_name_label {
-  top: -1px;
-  font-size: 16px;
-  color: #fff;
-  text-shadow: 1px 1px 0 #000;
-  opacity: 0;
-}
+.canvas_parent {
+  --line-color: #0c4269;
+  --line-hover-color: #00ced1;
 
-.canvas_parent >>> .badges_label_wrap {
-  opacity: 1;
-
-  .badges_label {
-    position: relative;
-    bottom: 50px;
-    padding: 10px;
-    font-weight: bold;
+  & >>> .provinces_name_label {
+    top: -1px;
     color: #fff;
-    background: #0e1937;
-    border: 1px solid #1e7491;
+    text-shadow: 1px 1px 0 #000;
+    opacity: 0;
+  }
 
-    .amt {
-      color: #ffe70b;
-    }
+  & >>> .badges_label_wrap {
+    opacity: 1;
 
-    &::after {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: block;
-      width: 10px;
-      height: 10px;
-      content: "";
-      border-right: 2px solid #6cfffe;
-      border-bottom: 2px solid #6cfffe;
-    }
+    .badges_label {
+      position: relative;
+      bottom: 50px;
+      padding: 10px;
+      font-weight: bold;
+      color: #fff;
+      background: #0e1937;
+      border: 1px solid #1e7491;
 
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      width: 10px;
-      height: 10px;
-      content: "";
-      border-top: 2px solid #6cfffe;
-      border-left: 2px solid #6cfffe;
-    }
+      .amt {
+        color: #ffe70b;
+      }
 
-    .icon_wrapper {
-      position: absolute;
-      bottom: -21px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+        content: "";
+        border-right: 2px solid #6cfffe;
+        border-bottom: 2px solid #6cfffe;
+      }
 
-    .icon {
-      width: 20px;
-      height: 18px;
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
-      animation: 3.5s linear 0s infinite normal forwards running wander;
-      transform-box: view-box;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+        content: "";
+        border-top: 2px solid #6cfffe;
+        border-left: 2px solid #6cfffe;
+      }
+
+      .icon_wrapper {
+        position: absolute;
+        bottom: -21px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .icon {
+        width: 20px;
+        height: 18px;
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
+        animation: 3.5s linear 0s infinite normal forwards running wander;
+        transform-box: view-box;
+      }
     }
   }
 }
