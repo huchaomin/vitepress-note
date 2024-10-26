@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     ICustomAaa: typeof import('~icons/custom/aaa')['default']
+    ICustomLine_dancing: typeof import('~icons/custom/line_dancing')['default']
     NButton: typeof import('naive-ui')['NButton']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NLayout: typeof import('naive-ui')['NLayout']

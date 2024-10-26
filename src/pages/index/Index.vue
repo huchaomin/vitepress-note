@@ -1,20 +1,20 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 17:49:33
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-26 23:39:51
  * @Description  :
 -->
 <script setup lang="ts">
-import CanvasRender from './index';
-import Page1 from './component/Page1/Index.vue'
-
+import CanvasRender from './index'
+import Page1 from './component/page1/Index.vue'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
 onMounted(() => {
+  // eslint-disable-next-line no-new
   new CanvasRender(canvasRef.value!, {
-    geoProjectionCenter:[108.55, 34.32],
+    geoProjectionCenter: [108.55, 34.32],
   })
 })
 </script>
@@ -22,13 +22,14 @@ onMounted(() => {
 <template>
   <div class="h-screen w-screen">
     <div style="aspect-ratio: 16/9;">
-      <div class="w-full h-full relative canvas_parent">
+      <div class="canvas_parent relative h-full w-full">
         <canvas ref="canvasRef"></canvas>
         <Page1></Page1>
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 canvas {
   width: 100% !important;
@@ -38,6 +39,7 @@ canvas {
 .canvas_parent {
   --line-color: #0c4269;
   --line-hover-color: #00ced1;
+  --yellow-color: #ffe70b;
 
   & >>> .provinces_name_label {
     top: -1px;
@@ -59,7 +61,7 @@ canvas {
       border: 1px solid #1e7491;
 
       .amt {
-        color: #ffe70b;
+        color: var(--yellow-color);
       }
 
       &::after {
@@ -69,7 +71,7 @@ canvas {
         display: block;
         width: 10px;
         height: 10px;
-        content: "";
+        content: '';
         border-right: 2px solid #6cfffe;
         border-bottom: 2px solid #6cfffe;
       }
@@ -81,7 +83,7 @@ canvas {
         display: block;
         width: 10px;
         height: 10px;
-        content: "";
+        content: '';
         border-top: 2px solid #6cfffe;
         border-left: 2px solid #6cfffe;
       }
@@ -103,5 +105,4 @@ canvas {
     }
   }
 }
-
 </style>

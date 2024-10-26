@@ -1,32 +1,26 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 18:12:32
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-27 00:19:45
  * @Description  :
 -->
 <script setup lang="ts">
+import StreamerBorder from './StreamerBorder.vue'
+import ScrollItem from './ScrollItem.vue'
 </script>
 
 <template>
   <div class="refund_scroll_wrapper absolute">
-    <StreamerBorder style="padding: 1vw 1.6vw;">
-      <h3>回款实时监控</h3>
+    <StreamerBorder style="padding: 1vw 0.5vw;">
+      <div class="ml-4" style="font-size: 1.2rem;">回款实时监控</div>
       <div class="mt-4">
-        <div>
-
-          <div>
-            <div>
-              <span>2024-10-26</span>
-              <span class="ml-3_5">何*洁</span>
-            </div>
-            <div>回款：1500.00</div>
-          </div>
-        </div>
+        <ScrollItem></ScrollItem>
       </div>
     </StreamerBorder>
   </div>
 </template>
+
 <style scoped>
 .refund_scroll_wrapper {
   right: 24vw;

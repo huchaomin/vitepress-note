@@ -3,8 +3,8 @@
 /* @import "tailwindcss"; */
 
 /* 不使用默认的 theme layer */
-@import "tailwindcss/preflight" layer(base);
-@import "tailwindcss/utilities" layer(utilities);
+@import 'tailwindcss/preflight' layer(base);
+@import 'tailwindcss/utilities' layer(utilities);
 
 /* 处理 @layer theme {} */
 /* stylelint-disable-next-line at-rule-no-unknown */

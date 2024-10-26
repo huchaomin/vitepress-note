@@ -1,33 +1,36 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 17:13:36
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-26 23:34:38
  * @Description  :
 -->
- <script setup lang="ts">
+<script setup lang="ts">
 import lineDancing from '@/assets/svg/line_dancing.svg?raw'
+import { colors } from '@/pages/index/utils/others.ts'
+
+defineOptions({
+  inheritAttrs: false,
+})
 
 const props = withDefaults(
   defineProps<{
-    trackWidth?: number
-    trackColor?: string
-    streamerWidth?: number
-    streamerLength?: number
-    streamerColor?: string
     duration?: number
+    streamerColor?: string
+    streamerLength?: number
+    streamerWidth?: number
+    trackColor?: string
+    trackWidth?: number
   }>(),
   {
-    trackWidth: 2,
-    trackColor: '#0C4269',
-    streamerWidth: 4,
-    streamerLength: 120,
-    streamerColor: '#00CED1',
     duration: 6,
+    streamerColor: colors.lineHover,
+    streamerLength: 120,
+    streamerWidth: 4,
+    trackColor: colors.line,
+    trackWidth: 2,
   },
 )
-
-const commonStore = useCommonStore()
 
 const rootRef = ref<HTMLDivElement | null>(null)
 const { height, width } = useElementSize(rootRef)
@@ -37,9 +40,7 @@ const perimeter = computed(() => {
 })
 
 const iconVW = ref(3)
-const iconPX = computed(() => {
-  return iconVW.value * commonStore.screenWidth / 100
-})
+const iconPX = useVwToPx(iconVW)
 
 const path = computed(() => {
   const halfTrackWidth = props.trackWidth / 2
@@ -110,27 +111,36 @@ const str = computed(() => {
 })
 
 const iconStr = computed(() => {
-  return lineDancing.replace('stroke: white;', `stroke: ${props.streamerColor};`).replace('stroke-width: 2;', `stroke-width: ${props.trackWidth};`)
+  return lineDancing
+    .replace('stroke: white;', `stroke: ${props.streamerColor};`)
+    .replace('stroke-width: 2;', `stroke-width: ${props.trackWidth};`)
 })
-
-defineOptions({
-  inheritAttrs: false,
-})
- </script>
+</script>
 
 <template>
-  <div class="relative h-full w-full" ref="rootRef">
-    <svg class="absolute" :width="width" :height="height" v-html="str" style="pointer-events: none;"></svg>
-    <div class="left_top_icon absolute" v-html="iconStr" :style="`width: ${iconVW}vw; height: ${iconVW}vw`"></div>
+  <div ref="rootRef" class="relative h-full w-full">
+    <svg
+      class="absolute"
+      :width="width"
+      :height="height"
+      style="pointer-events: none"
+      v-html="str"
+    />
+    <div
+      class="left_top_icon absolute"
+      :style="`width: ${iconVW}vw; height: ${iconVW}vw`"
+      v-html="iconStr"
+    ></div>
     <div v-bind="$attrs">
       <slot></slot>
     </div>
   </div>
 </template>
+
 <style scoped>
-  .left_top_icon {
-    top: 0;
-    left: 0;
-    transform: translate(-40%, -40%);
-  }
+.left_top_icon {
+  top: 0;
+  left: 0;
+  transform: translate(-40%, -40%);
+}
 </style>

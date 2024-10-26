@@ -1,74 +1,242 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg>
-<svg viewBox="-50 -50 100 100" transform="rotate(90, 0, 0)">
+<svg viewBox="0 0 100 100" transform="rotate(90, 0, 0)">
+  <title>ANIMATION 11 - VARIATION C</title>
   <defs>
-    <clipPath id="svg-15-a-outer-mask">
+    <clipPath id="svg-11-c-mask">
       <polygon
-        class="svg-15-a-polygon"
-        points="0,-40 34.641014099121094,20 -34.641014099121094,20"
+        class="svg-11-c-polygon"
+        points="0,-30 25.980762481689453,15 -25.980762481689453,15"
+        transform="translate(50, 50)"
       />
     </clipPath>
-    <g class="svg-15-a-g" id="svg-15-a-line-group">
-      <line
-        class="svg-15-a-line svg-15-a-radial-line"
-        style="animation-delay: -0s"
-        x1="0"
-        x2="25.98076057434082"
-        y1="-40"
-        y2="15"
-      />
-      <line class="svg-15-a-line" x1="0" x2="0" y1="-10" y2="-40" />
-      <line
-        class="svg-15-a-line svg-15-a-radial-line"
-        style="animation-delay: -3.3333333333333335s"
-        x1="0"
-        x2="25.98076057434082"
-        y1="-40"
-        y2="15"
-      />
-      <line class="svg-15-a-line" x1="0" x2="0" y1="-10" y2="-40" />
-      <line
-        class="svg-15-a-line svg-15-a-radial-line"
-        style="animation-delay: -6.666666666666667s"
-        x1="0"
-        x2="25.98076057434082"
-        y1="-40"
-        y2="15"
-      />
-      <line class="svg-15-a-line" x1="0" x2="0" y1="-10" y2="-40" />
-    </g>
   </defs>
   <style>
-    .svg-15-a-polygon,
-    .svg-15-a-line {
-      fill: none;
-      stroke: white;
-      stroke-width: 1;
+    .svg-11-c-g {
+      fill: white;
     }
 
-    .svg-15-a-radial-line {
-      animation: svg-15-a-line-anim 10s linear infinite;
+    .svg-11-c-line-group {
+      animation: svg-11-c-move-anim 20s ease-in-out infinite;
     }
 
-    @keyframes svg-15-a-line-anim {
-      from {
-        transform: scale(1.4);
+    @keyframes svg-11-c-move-anim {
+      0% {
+        transform: translate(0, 0);
       }
 
-      to {
-        transform: scale(0.15);
+      100% {
+        transform: translate(0, 60%);
+      }
+    }
+
+    .svg-11-c-rect {
+      transform-origin: 0 0;
+      animation: svg-11-c-scale-anim 20s ease-in-out infinite;
+    }
+
+    @keyframes svg-11-c-scale-anim {
+      0% {
+        transform: scaleY(0.001);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(0.001);
       }
     }
   </style>
-  <g class="svg-15-a-g" clip-path="url(#svg-15-a-outer-mask)">
-    <use class="svg-15-a-use" href="#svg-15-a-line-group" transform="rotate(0, 0, 0)" />
-    <use class="svg-15-a-use" href="#svg-15-a-line-group" transform="rotate(120, 0, 0)" />
-    <use class="svg-15-a-use" href="#svg-15-a-line-group" transform="rotate(240, 0, 0)" />
+  <g class="svg-11-c-g" clip-path="url(#svg-11-c-mask)" transform="translate(0, 7.5)">
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -0s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -0s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -1.0526315789473684s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -1.0526315789473684s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -2.1052631578947367s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -2.1052631578947367s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -3.1578947368421053s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -3.1578947368421053s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -4.2105263157894735s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -4.2105263157894735s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -5.2631578947368425s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -5.2631578947368425s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -6.315789473684211s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -6.315789473684211s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -7.368421052631579s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -7.368421052631579s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -8.421052631578947s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -8.421052631578947s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -9.473684210526315s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -9.473684210526315s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -10.526315789473685s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -10.526315789473685s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -11.578947368421053s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -11.578947368421053s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -12.631578947368421s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -12.631578947368421s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -13.68421052631579s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -13.68421052631579s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -14.736842105263158s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -14.736842105263158s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -15.789473684210526s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -15.789473684210526s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -16.842105263157894s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -16.842105263157894s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -17.894736842105264s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -17.894736842105264s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
+    <g class="svg-11-c-g svg-11-c-line-group" style="animation-delay: -18.94736842105263s">
+      <rect
+        class="svg-11-c-rect"
+        height="5"
+        style="animation-delay: -18.94736842105263s"
+        width="100"
+        x="0"
+        y="-2.5"
+      />
+    </g>
   </g>
-  <polygon
-    class="svg-15-a-polygon"
-    points="0,-10 8.660253524780273,5 -8.660253524780273,5"
-    style="fill: white"
-  />
-  <polygon class="svg-15-a-polygon" points="0,-40 34.641014099121094,20 -34.641014099121094,20" />
 </svg>
