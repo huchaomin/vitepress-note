@@ -2,14 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 18:05:24
+ * @LastEditTime : 2024-10-26 10:48:57
  * @Description  :
  */
 import { Vector3 } from 'three'
 import type { CanvasRenderType } from '../index'
 import dataArr from '../data'
 import type { labelInstance } from '@/components/three/utils/Label3d'
-import labelArrow from '../assets/texture/label-arrow.png'
+import labelArrow from '../assets/texture/label_arrow.png'
 
 interface dataItem {
   adcode: number

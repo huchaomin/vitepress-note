@@ -19,7 +19,7 @@ import type { CanvasRenderType } from '../index'
 
 export default (_this: CanvasRenderType) => {
   const geometry = new PlaneGeometry(200, 200)
-  const texture = _this.getAssetsData('gaoguang1') as THREE.Texture
+  const texture = _this.getAssetsData('bgLight') as THREE.Texture
   texture.colorSpace = SRGBColorSpace
   texture.wrapS = RepeatWrapping
   texture.wrapT = RepeatWrapping

@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:21:43
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 22:30:58
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-26 10:37:22
  * @Description  :
  */
 
@@ -11,13 +11,13 @@ import type * as THREE from 'three'
 import type { CanvasRenderType } from '../index'
 
 export default (_this: CanvasRenderType): THREE.Mesh => {
-  const quanTexture = _this.getAssetsData('quan') as THREE.Texture
+  const haloTexture = _this.getAssetsData('halo') as THREE.Texture
   const halo = new Mesh(
     new PlaneGeometry(210, 210),
     new MeshBasicMaterial({
       blending: AdditiveBlending,
       depthTest: false,
-      map: quanTexture,
+      map: haloTexture,
       opacity: 1,
       transparent: true,
     }),

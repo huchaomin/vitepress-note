@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:36:42
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 12:18:44
+ * @LastEditTime : 2024-10-26 10:46:58
  * @Description  :
  */
 
@@ -28,10 +28,10 @@ interface chinaStrokeType {
 }
 
 export default (_this: CanvasRenderType) => {
-  const texture = _this.getAssetsData('pathLine2') as THREE.Texture
+  const texture = _this.getAssetsData('strokeLine') as THREE.Texture
   texture.wrapS = texture.wrapT = RepeatWrapping
   texture.repeat.set(1, 1)
-  const mapJsonData = JSON.parse(_this.getAssetsData('chinaStorke') as string) as chinaStrokeType
+  const mapJsonData = JSON.parse(_this.getAssetsData('chinaStroke') as string) as chinaStrokeType
   const data = mapJsonData.features.map((path) => {
     return {
       geometry: path.geometry,

@@ -25,27 +25,27 @@ export default (_this: CanvasRenderType, mapGroup: THREE.Group): THREE.Group[] =
     })
     .map((g) => {
       const data = g.userData as province
-      const guangquan1 = _this.getAssetsData('guangquan1') as THREE.Texture
-      const guangquan2 = _this.getAssetsData('guangquan2') as THREE.Texture
+      const circle1 = _this.getAssetsData('circle1') as THREE.Texture
+      const circle2 = _this.getAssetsData('circle2') as THREE.Texture
       const geometry = new PlaneGeometry(2, 2)
 
       const material1 = new MeshBasicMaterial({
-        alphaMap: guangquan1,
+        alphaMap: circle1,
         blending: AdditiveBlending,
         color: 0xffffff,
         depthTest: false,
         fog: false,
-        map: guangquan1,
+        map: circle1,
         opacity: 1,
         transparent: true,
       })
       const material2 = new MeshBasicMaterial({
-        alphaMap: guangquan2,
+        alphaMap: circle2,
         blending: AdditiveBlending,
         color: 0xffffff,
         depthTest: false,
         fog: false,
-        map: guangquan2,
+        map: circle2,
         opacity: 1,
         transparent: true,
       })

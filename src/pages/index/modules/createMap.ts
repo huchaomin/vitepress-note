@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-26 00:06:47
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-26 10:49:59
  * @Description  :
  */
 import {
@@ -24,18 +24,18 @@ import type { CanvasRenderType } from '../index'
 import { transformMapGeoJSON, getBoundBox, calcUv2 } from '@/components/three/utils/index'
 
 function createProvinceMaterial(_this: CanvasRenderType) {
-  const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
-  topNormal.wrapS = topNormal.wrapT = RepeatWrapping
+  const topMap = _this.getAssetsData('mapTop') as THREE.Texture
+  topMap.wrapS = topMap.wrapT = RepeatWrapping
   const topMaterial = new MeshStandardMaterial({
     color: 0x061e47,
     emissive: 0x000000,
-    map: topNormal,
-    normalMap: topNormal,
+    map: topMap,
+    normalMap: topMap,
     opacity: 0,
     transparent: true,
   })
 
-  const sideMap = _this.getAssetsData('side') as THREE.Texture
+  const sideMap = _this.getAssetsData('mapSide') as THREE.Texture
   sideMap.wrapS = RepeatWrapping
   sideMap.wrapT = RepeatWrapping
   sideMap.repeat.set(1, 0.2)
@@ -186,8 +186,8 @@ function createProvinceGroup(
 
 // 创建省份
 function createProvince(_this: CanvasRenderType) {
-  const topNormal = _this.getAssetsData('topNormal') as THREE.Texture
-  topNormal.wrapS = topNormal.wrapT = RepeatWrapping
+  const topMap = _this.getAssetsData('mapTop') as THREE.Texture
+  topMap.wrapS = topMap.wrapT = RepeatWrapping
   const provinceLineMaterial = new LineBasicMaterial({
     color: 0x2bc4dc,
     fog: false,
