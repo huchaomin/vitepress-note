@@ -2,25 +2,16 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 18:02:29
+ * @LastEditTime : 2024-10-26 16:25:54
  * @Description  :
 -->
 <script setup lang="ts">
 import CanvasRender from './index';
+import Page1 from './component/Page1/Index.vue'
 
 const rootRef = ref<HTMLDivElement | null>(null)
-const { height, width } = useElementSize(rootRef)
+const { width } = useElementSize(rootRef)
 
-const ratio = '16/9'
-
-const classStr = computed(() => {
-  const [w, h] = ratio.split('/').map(Number)
-  if (height.value > (width.value * h) / w) {
-    return 'w-full'
-  } else {
-    return 'h-full'
-  }
-})
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
@@ -29,14 +20,14 @@ onMounted(() => {
     geoProjectionCenter:[108.55, 34.32],
   })
 })
-
 </script>
 
 <template>
-  <div ref="rootRef" class="flex h-screen w-screen items-center justify-center">
-    <div :class="classStr" :style="{ aspectRatio: ratio }">
+  <div ref="rootRef" class="h-screen w-screen">
+    <div style="aspect-ratio: 16/9;">
       <div class="w-full h-full relative canvas_parent">
         <canvas ref="canvasRef"></canvas>
+        <Page1></Page1>
       </div>
     </div>
   </div>
@@ -99,7 +90,6 @@ canvas {
       position: absolute;
       bottom: -21px;
       left: 50%;
-      z-index: -1;
       transform: translateX(-50%);
     }
 

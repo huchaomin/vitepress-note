@@ -60,7 +60,6 @@ export default class CanvasRender extends ThreeCore {
     this.assets = []
     this.provinceMeshArr = []
 
-    this.setAxesHelper()
     void loadAllAssets().then((res) => {
       this.assets = res
       // 创建环境光
