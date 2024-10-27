@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:23:02
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 11:19:54
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-27 23:13:15
  * @Description  :
  */
 import EventEmitter from './EventEmitter'
@@ -23,7 +23,7 @@ export default class Sizes extends EventEmitter {
         // @ts-expect-error 外部实例不能修改 readonly 属性， 这里可以
         this.height = height.value
         // @ts-expect-error 外部实例不能修改 readonly 属性， 这里可以
-        this.pixelRatio = this.pixelRatio || Math.min(window.devicePixelRatio, 2)
+        this.pixelRatio = window.devicePixelRatio
         this.emit('resize')
       },
       { immediate: true },

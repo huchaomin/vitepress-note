@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-26 23:34:38
+ * @LastEditTime : 2024-10-27 17:41:07
  * @Description  :
 -->
 <script setup lang="ts">
@@ -123,7 +123,7 @@ const iconStr = computed(() => {
       class="absolute"
       :width="width"
       :height="height"
-      style="pointer-events: none"
+      style="pointer-events: none;"
       v-html="str"
     />
     <div

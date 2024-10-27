@@ -12,6 +12,7 @@
   --color-*: initial;
   --color-black: #000;
   --color-white: #fff;
+  --color-yellow: #ffe70b;
 
   /* TODO --font-family-*: initial; */
   --font-family-sans: var(--vp-font-family-base);

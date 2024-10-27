@@ -30,6 +30,7 @@
     "@antfu/eslint-config": "^3.8.0",
     "@css-render/vue3-ssr": "^0.15.14",
     "@iconify-json/carbon": "^1.2.4",
+    "@iconify-json/line-md": "^1.2.2",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/vite": "4.0.0-alpha.27",
     "@tsconfig/node20": "^20.1.4",

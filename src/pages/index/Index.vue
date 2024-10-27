@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-26 23:39:51
+ * @LastEditTime : 2024-10-28 00:05:00
  * @Description  :
 -->
 <script setup lang="ts">
@@ -37,9 +37,8 @@ canvas {
 }
 
 .canvas_parent {
-  --line-color: #0c4269;
-  --line-hover-color: #00ced1;
-  --yellow-color: #ffe70b;
+  --color-line: #0c4269;
+  --color-line-hover: #00ced1;
 
   & >>> .provinces_name_label {
     top: -1px;
@@ -61,7 +60,7 @@ canvas {
       border: 1px solid #1e7491;
 
       .amt {
-        color: var(--yellow-color);
+        color: var(--color-yellow);
       }
 
       &::after {
