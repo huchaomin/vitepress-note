@@ -1,25 +1,40 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-28 00:20:59
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-28 10:26:18
  * @Description  :
 -->
 <script setup lang="ts">
 import StreamerBorder from './StreamerBorder.vue'
 import ScrollItem from './ScrollItem.vue'
+import autoAnimate from '@formkit/auto-animate'
 
 const scrollWrapperRef = ref<HTMLDivElement | null>(null)
 
 const { height } = useElementSize(scrollWrapperRef)
 
 // 创建一个长度为 4 的数组
-const scrollItems = Array.from({ length: 4 }, (_, index) => index).map(() => ({
+const scrollItems = reactive(Array.from({ length: 4 }, (_, index) => index).map(() => ({
   amount: 1000,
   key: Math.random(),
   name: '张三*姐',
   time: '2024-10-27',
-}))
+})))
+
+setInterval(() => {
+  scrollItems.unshift({
+    amount: 1000,
+    key: Math.random(),
+    name: '张三*姐',
+    time: '2024-10-27',
+  })
+  scrollItems.pop()
+}, 3000)
+
+onMounted(() => {
+  autoAnimate(scrollWrapperRef.value!)
+})
 
 console.log('scrollItems', scrollItems)
 
