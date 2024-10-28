@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-28 00:05:00
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-28 09:30:06
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,9 +41,11 @@ canvas {
   --color-line-hover: #00ced1;
 
   & >>> .provinces_name_label {
-    top: -1px;
+    top: -0.1vw;
+    font-size: 0.14rem;
     color: #fff;
-    text-shadow: 1px 1px 0 #000;
+
+    /* text-shadow: 1px 1px 0 #000; */
     opacity: 0;
   }
 
