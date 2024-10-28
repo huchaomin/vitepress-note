@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-25 23:20:10
+ * @LastEditTime : 2024-10-29 00:21:33
  * @Description  :
  */
 import gsap from 'gsap'
@@ -36,9 +36,9 @@ export default (
   const tl = gsap.timeline()
   tl.addLabel('mapBody', 3.5)
   tl.addLabel('mapParts', 4.5)
-  tl.addLabel('province', 6.0)
+  tl.addLabel('province', 4.5)
 
-  // 相机动画
+  // 相机动画，相机动画结束前其他动画最好提前完成
   tl.add(
     gsap.to(_this.camera.instance.position, {
       duration: 8,

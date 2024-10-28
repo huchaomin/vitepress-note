@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 15:04:56
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 11:42:15
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-28 23:31:36
  * @Description  :
  */
 import {
@@ -53,7 +53,6 @@ export default class Label3d {
     label.init = (innerHTML: string, position: THREE.Vector3) => {
       label.element.innerHTML = innerHTML
       label.element.style.visibility = 'visible'
-      label.element.style.pointerEvents = 'none'
       label.position.copy(position)
       return label
     }
