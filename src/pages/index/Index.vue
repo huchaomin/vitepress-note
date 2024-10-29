@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-28 09:30:06
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-30 00:12:08
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,20 +41,20 @@ canvas {
   --color-line-hover: #00ced1;
 
   & >>> .provinces_name_label {
-    top: -0.1vw;
-    font-size: 0.14rem;
+    top: -2px;
+    font-size: 16px;
     color: #fff;
-
-    /* text-shadow: 1px 1px 0 #000; */
+    text-shadow: 1px 1px 0 #000;
     opacity: 0;
   }
 
   & >>> .badges_label_wrap {
+    font-size: 16px;
     opacity: 1;
 
     .badges_label {
       position: relative;
-      bottom: 50px;
+      bottom: 48px;
       padding: 10px;
       font-weight: bold;
       color: #fff;
@@ -91,7 +91,7 @@ canvas {
 
       .icon_wrapper {
         position: absolute;
-        bottom: -21px;
+        bottom: -18px;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -99,9 +99,12 @@ canvas {
       .icon {
         width: 20px;
         height: 18px;
-        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
+
+        /* 不能有 transform 动画， 会造成标签模糊 */
+
+        /* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
         animation: 3.5s linear 0s infinite normal forwards running wander;
-        transform-box: view-box;
+        transform-box: view-box; */
       }
     }
   }
