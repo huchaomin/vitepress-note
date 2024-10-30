@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-30 17:49:00
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-10-31 00:38:43
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -72,6 +72,21 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
       ],
     },
     plugins: [
+      {
+        apply: 'build',
+        configResolved(config) {
+          // console.log('Resolved Vite config:', config)
+        },
+        enforce: 'post',
+        name: 'my-debug-plugin',
+        transform(code, id) {
+          if (id.includes('/index/Index.vue?vue&type=style')) {
+            console.log('Transforming:', id)
+            console.log(code)
+          }
+          return code
+        },
+      },
       // https://github.com/unplugin/unplugin-icons?tab=readme-ov-file
       // https://github.com/unplugin/unplugin-icons/blob/main/examples/vite-vue3/vite.config.ts
       Icons({
