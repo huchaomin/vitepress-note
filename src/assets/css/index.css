@@ -1,7 +1,7 @@
-@import "./font.css";
-@import "./vars.css";
-@import "./tailwindcss.css";
-@import "./keyframes.css";
+@import './font.css';
+@import './vars.css';
+@import './tailwindcss.css';
+@import './keyframes.css';
 
 body {
   overflow: hidden;

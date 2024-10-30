@@ -1,34 +1,34 @@
 @font-face {
   font-family: JetBrainsMonoMedium;
   font-style: normal;
-  src: url("font/JetBrainsMono-Medium.woff2") format("woff2");
+  src: url('font/JetBrainsMono-Medium.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: JetBrainsMonoMedium;
   font-style: italic;
-  src: url("font/JetBrainsMono-MediumItalic.woff2") format("woff2");
+  src: url('font/JetBrainsMono-MediumItalic.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: JetBrainsMonoSemiBold;
   font-style: normal;
-  src: url("font/JetBrainsMono-SemiBold.woff2") format("woff2");
+  src: url('font/JetBrainsMono-SemiBold.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: JetBrainsMonoSemiBold;
   font-style: italic;
-  src: url("font/JetBrainsMono-SemiBoldItalic.woff2") format("woff2");
+  src: url('font/JetBrainsMono-SemiBoldItalic.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: SmileySans-Oblique;
   font-style: normal;
-  src: url("font/SmileySans-Oblique.ttf.woff2") format("woff2");
+  src: url('font/SmileySans-Oblique.ttf.woff2') format('woff2');
   font-display: swap;
 }

@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-30 00:12:08
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-30 17:15:06
  * @Description  :
 -->
 <script setup lang="ts">
@@ -40,7 +40,7 @@ canvas {
   --color-line: #0c4269;
   --color-line-hover: #00ced1;
 
-  & >>> .provinces_name_label {
+  & :deep(.provinces_name_label) {
     top: -2px;
     font-size: 16px;
     color: #fff;
@@ -48,7 +48,7 @@ canvas {
     opacity: 0;
   }
 
-  & >>> .badges_label_wrap {
+  & :deep(.badges_label_wrap) {
     font-size: 16px;
     opacity: 1;
 

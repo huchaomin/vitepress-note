@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 16:41:42
+ * @LastEditTime : 2024-10-30 17:49:00
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -31,7 +31,7 @@ function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: Pr
 }
 
 /** @type {import('vite').UserConfig} */
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, isSsrBuild, mode }) => {
   const env = getEnv(mode)
   const { VITE_API_PREFIX, VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
   console.log({
@@ -57,6 +57,19 @@ export default defineConfig(({ command, mode }) => {
     envDir,
     esbuild: {
       drop: mode === 'production' ? ['console', 'debugger'] : [],
+    },
+    optimizeDeps: {
+      include: [
+        'three',
+        'three.interactive',
+        'gsap',
+        'd3-geo',
+        'three/examples/jsm/renderers/CSS3DRenderer.js',
+        '@formkit/auto-animate',
+        'three/examples/jsm/controls/OrbitControls.js',
+        'three/examples/jsm/loaders/GLTFLoader.js',
+        'three/examples/jsm/loaders/DRACOLoader.js',
+      ],
     },
     plugins: [
       // https://github.com/unplugin/unplugin-icons?tab=readme-ov-file
@@ -103,12 +116,13 @@ export default defineConfig(({ command, mode }) => {
       aliasImportChecker(),
       tailwindcss(),
       Inspect({
-        // build: true, // build 模式下启用
-        outputDir: resolveCwd('build/.cache/inspect/.vite-inspect'),
+        build: true, // build 模式下启用
+        outputDir: resolveCwd(`build/.cache/inspect/${isSsrBuild ? 'ssr' : 'client'}`),
       }),
       visualizer({
-        // TODO 会打开两遍 (client、server)
-        filename: resolveCwd('build/.cache/visualizer/report.html'),
+        filename: resolveCwd(
+          `build/.cache/visualizer/${isSsrBuild ? 'ssr' : 'client'}/report.html`,
+        ),
         open: true,
       }),
     ],

@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     ICustomAaa: typeof import('~icons/custom/aaa')['default']
-    ICustomLine_dancing: typeof import('~icons/custom/line_dancing')['default']
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
     NButton: typeof import('naive-ui')['NButton']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
@@ -18,6 +17,5 @@ declare module 'vue' {
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NText: typeof import('naive-ui')['NText']
     NTree: typeof import('naive-ui')['NTree']
-    StreamerBorder: typeof import('./../src/components/autoImport/StreamerBorder.vue')['default']
   }
 }
