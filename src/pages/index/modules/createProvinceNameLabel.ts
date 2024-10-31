@@ -23,8 +23,6 @@ function labelNameStyle(
 ): labelInstance {
   const label = _this.label3d.create('provinces_name_label')
   label.init(`${data.name}`, position)
-  label.scale.set(0.15, 0.15, 0.15) // 根据相机渲染范围控制HTML 3D标签尺寸
-  // label.rotation.x = Math.PI / 2 // 控制HTML标签CSS3对象角度,
   _this.mainSceneGroup.add(label)
   label.userData.adcode = data.adcode
   label.userData.position = [position.x, position.y, position.z]

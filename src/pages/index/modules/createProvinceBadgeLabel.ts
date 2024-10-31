@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-31 17:41:22
+ * @LastEditTime : 2024-10-31 17:52:04
  * @Description  :
  */
 import { Vector3 } from 'three'
@@ -38,6 +38,7 @@ function addLabelArrow(_this: CanvasRenderType, position: Vector3): labelInstanc
   const id = useUniqueId()
   label.init(`<canvas id="${id}" width="30" height="30"></canvas>`, position)
   setTimeout(() => {
+    // eslint-disable-next-line no-new
     new DotLottie({
       autoplay: true,
       canvas: document.querySelector(`#${id}`) as HTMLCanvasElement,
@@ -57,7 +58,6 @@ export default (_this: CanvasRenderType) => {
     const badge = addLabelBadge(_this, data, position)
     const arrow = addLabelArrow(_this, position)
     ;[badge, arrow].forEach((item) => {
-      item.scale.set(0.15, 0.15, 0.15) // 根据相机渲染范围控制HTML 3D标签尺寸
       item.userData = {
         adcode: data.adcode,
         position: [position.x, position.y, position.z],
