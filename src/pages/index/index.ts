@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-26 00:42:18
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-10-31 17:30:14
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -82,14 +82,16 @@ export default class CanvasRender extends ThreeCore {
       // 创建省份中心圆
       const provinceCenterCircleArr = createProvinceCenterCircle(this, mapGroup)
       // 创建省份徽章标签
-      const provinceBadgeLabelArr = createProvinceBadgeLabel(this)
+      const { arrowArr: provinceArrowLabelArr, badgeArr: provinceBadgeLabelArr } =
+        createProvinceBadgeLabel(this)
       // 创建鼠标事件
       createMouseEvent(this, {
+        provinceArrowLabelArr,
         provinceBadgeLabelArr,
         provinceCenterCircleArr,
         provinceNameLabelArr,
       })
-      // 创建进场动画
+      // 创建动画
       createAnimation(this, {
         halo,
         mapGroup,

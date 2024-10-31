@@ -48,64 +48,43 @@ canvas {
     opacity: 0;
   }
 
-  & :deep(.badges_label_wrap) {
+  & :deep(.badges_label) {
+    position: relative;
+    bottom: 48px;
+    padding: 10px;
     font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #0e1937;
+    border: 1px solid #1e7491;
     opacity: 1;
 
-    .badges_label {
-      position: relative;
-      bottom: 48px;
-      padding: 10px;
-      font-weight: bold;
-      color: #fff;
-      background: #0e1937;
-      border: 1px solid #1e7491;
+    .amt {
+      color: var(--color-yellow);
+    }
 
-      .amt {
-        color: var(--color-yellow);
-      }
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: '';
+      border-right: 2px solid #6cfffe;
+      border-bottom: 2px solid #6cfffe;
+    }
 
-      &::after {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        display: block;
-        width: 10px;
-        height: 10px;
-        content: '';
-        border-right: 2px solid #6cfffe;
-        border-bottom: 2px solid #6cfffe;
-      }
-
-      &::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 10px;
-        height: 10px;
-        content: '';
-        border-top: 2px solid #6cfffe;
-        border-left: 2px solid #6cfffe;
-      }
-
-      .icon_wrapper {
-        position: absolute;
-        bottom: -18px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .icon {
-        width: 20px;
-        height: 18px;
-
-        /* 不能有 transform 动画， 会造成标签模糊 */
-
-        /* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10, 0, 1);
-        animation: 3.5s linear 0s infinite normal forwards running wander;
-        transform-box: view-box; */
-      }
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: '';
+      border-top: 2px solid #6cfffe;
+      border-left: 2px solid #6cfffe;
     }
   }
 }

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 18:41:02
+ * @LastEditTime : 2024-10-31 17:31:02
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -13,10 +13,12 @@ import type { labelInstance } from '@/components/three/utils/Label3d'
 export default (
   _this: CanvasRenderType,
   {
+    provinceArrowLabelArr,
     provinceBadgeLabelArr,
     provinceCenterCircleArr,
     provinceNameLabelArr,
   }: {
+    provinceArrowLabelArr: labelInstance[]
     provinceBadgeLabelArr: labelInstance[]
     provinceCenterCircleArr: THREE.Group[]
     provinceNameLabelArr: labelInstance[]
@@ -50,7 +52,7 @@ export default (
   }
 
   function moveProvinceBadgeLabel(adcode: number, type: 'down' | 'up') {
-    provinceBadgeLabelArr.forEach((group) => {
+    ;[...provinceBadgeLabelArr, ...provinceArrowLabelArr].forEach((group) => {
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
       }
