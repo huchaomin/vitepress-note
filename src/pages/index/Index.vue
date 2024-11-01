@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 16:11:51
+ * @LastEditTime : 2024-11-01 17:47:33
  * @Description  :
 -->
 <script setup lang="ts">
@@ -38,9 +38,10 @@ canvas {
   --color-line: #0c4269;
   --color-line-hover: #00ced1;
 
+  color: var(--color-white);
+
   & :deep(.provinces_name) {
     top: -2px;
-    color: #fff;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
   }
@@ -49,7 +50,6 @@ canvas {
     position: relative;
     bottom: 47px;
     padding: 10px;
-    color: #fff;
     background: #0e1937;
     border: 1px solid #1e7491;
     opacity: 0;
@@ -89,6 +89,13 @@ canvas {
     width: 16px;
     height: 16px;
     opacity: 0;
+  }
+
+  & :deep() {
+    h3 {
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+    }
   }
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-28 10:26:18
+ * @LastEditTime : 2024-11-01 17:34:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,9 +41,9 @@ console.log('scrollItems', scrollItems)
 </script>
 
 <template>
-  <div class="refund_scroll_wrapper absolute h-full">
+  <div class="refund_scroll_wrapper absolute">
     <StreamerBorder style="padding: 1vw 0.5vw;" class="flex flex-col h-full">
-      <div class="ml-9" style="font-size: 1.2rem;">回款实时监控</div>
+      <h3 class="ml-9">回款实时监控</h3>
       <div ref="scrollWrapperRef" class="mt-4 flex-1 overflow-hidden">
         <ScrollItem
           v-for="(item, index) in scrollItems"
@@ -63,7 +63,6 @@ console.log('scrollItems', scrollItems)
   bottom: 8vw;
   width: 12.5vw;
   height: 20vw;
-  color: var(--color-white);
   box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
 }
 </style>
