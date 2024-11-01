@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 18:15:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 17:32:51
+ * @LastEditTime : 2024-11-01 09:58:14
  * @Description  :
  */
 import {
@@ -130,7 +130,7 @@ export default (_this: CanvasRenderType) => {
   })
   const mesh = new Mesh(geometry, material)
   mesh.rotateX(-Math.PI / 2)
-  const [x, y] = _this.geoProjection(_this.pointCenter)!
+  const [x, y] = _this.geoProjection()!
   mesh.position.set(x, -y, 0.01)
   const mesh2 = mesh.clone()
   mesh2.material = material.clone()

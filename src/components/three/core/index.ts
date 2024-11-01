@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 16:57:40
+ * @LastEditTime : 2024-11-01 10:24:55
  * @Description  :
  */
 import { AxesHelper, Scene, Mesh } from 'three'
@@ -29,7 +29,7 @@ export class ThreeCore extends EventEmitter {
   readonly sizes: Sizes
   readonly time: Time
 
-  constructor(canvas: HTMLCanvasElement, config: Partial<geoProjectionConfig>) {
+  constructor(canvas: HTMLCanvasElement, config?: Partial<geoProjectionConfig>) {
     super()
     this.canvas = canvas
     this.scene = new Scene()
@@ -42,7 +42,7 @@ export class ThreeCore extends EventEmitter {
       geoProjectionScale: 120,
       geoProjectionTranslate: [0, 0],
     }
-    this.config = Object.assign({}, defaultConfig, config)
+    this.config = Object.assign({}, defaultConfig, config ?? {})
     this.time.on('tick', () => {
       // 此时如果 子类实例定义了 update 方法，会执行子类的 update 方法
       this.update()
@@ -80,15 +80,21 @@ export class ThreeCore extends EventEmitter {
     this.canvas.parentNode!.removeChild(this.canvas)
   }
 
-  geoProjection(point: [number, number], geoProjectionConfig?: Partial<geoProjectionConfig>) {
+  geoProjection(
+    point: [number, number] = [0, 0],
+    adjustChinaCenter = false,
+    geoProjectionConfig?: Partial<geoProjectionConfig>,
+  ) {
     const { geoProjectionCenter, geoProjectionScale, geoProjectionTranslate } = {
       ...this.config,
       ...(geoProjectionConfig ?? {}),
     }
+    // 北纬34.32东经108.55  中华人民共和国大地原点，位于陕西省泾阳县永乐镇北流村
+    const p: [number, number] = adjustChinaCenter ? [point[0] - 108.55, point[1] - 34.32] : point
     return geoMercator()
       .center(geoProjectionCenter)
       .scale(geoProjectionScale)
-      .translate(geoProjectionTranslate)(point)
+      .translate(geoProjectionTranslate)(p)
   }
 
   setAxesHelper(size = 100) {

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-30 17:15:06
+ * @LastEditTime : 2024-11-01 10:01:26
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,9 +13,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 
 onMounted(() => {
   // eslint-disable-next-line no-new
-  new CanvasRender(canvasRef.value!, {
-    geoProjectionCenter: [108.55, 34.32],
-  })
+  new CanvasRender(canvasRef.value!)
 })
 </script>
 
@@ -40,9 +38,8 @@ canvas {
   --color-line: #0c4269;
   --color-line-hover: #00ced1;
 
-  & :deep(.provinces_name_label) {
+  & :deep(.provinces_name) {
     top: -2px;
-    font-size: 16px;
     color: #fff;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
@@ -52,8 +49,6 @@ canvas {
     position: relative;
     bottom: 48px;
     padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
     color: #fff;
     background: #0e1937;
     border: 1px solid #1e7491;

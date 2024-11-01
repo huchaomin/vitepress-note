@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:36:42
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 10:46:58
+ * @LastEditTime : 2024-11-01 09:59:07
  * @Description  :
  */
 
@@ -42,7 +42,7 @@ export default (_this: CanvasRenderType) => {
     const pathPoint: THREE.Vector3[] = []
     path.geometry.coordinates.forEach((coord) => {
       coord[0].forEach((item) => {
-        const [x, y] = _this.geoProjection(item)!
+        const [x, y] = _this.geoProjection(item, true)!
         pathPoint.push(new Vector3(x, -y, 0))
       })
     })

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-31 17:30:14
+ * @LastEditTime : 2024-11-01 10:40:09
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -19,9 +19,7 @@ import createEnvLight from './modules/createEnvLight'
 import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
 import createMouseEvent from './modules/createMouseEvent'
-import createProvinceNameLabel from './modules/createProvinceNameLabel'
-import createProvinceCenterCircle from './modules/createProvinceCenterCircle'
-import createProvinceBadgeLabel from './modules/createProvinceBadgeLabel'
+import createProvinceItem from './modules/createProvinceItem'
 import createMapStroke from './modules/createMapStroke'
 
 export default class CanvasRender extends ThreeCore {
@@ -30,15 +28,13 @@ export default class CanvasRender extends ThreeCore {
   interactionManager: InteractionManager
   label3d: Label3d
   mainSceneGroup: Group
-  pointCenter: [number, number]
   provinceMeshArr: THREE.Mesh[]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
-    config: ConstructorParameters<typeof ThreeCore>[1],
+    config?: ConstructorParameters<typeof ThreeCore>[1],
   ) {
     super(canvas, config)
     // 中心坐标
-    this.pointCenter = [108.55, 34.32]
     this.depth = 5
     this.scene.fog = new Fog(0x011024, 1, 500)
     this.scene.background = new Color(0x011024)
@@ -78,12 +74,14 @@ export default class CanvasRender extends ThreeCore {
       // 创建地图描边
       createMapStroke(this)
       // 创建省份名称标签
-      const provinceNameLabelArr = createProvinceNameLabel(this, mapGroup)
       // 创建省份中心圆
-      const provinceCenterCircleArr = createProvinceCenterCircle(this, mapGroup)
       // 创建省份徽章标签
-      const { arrowArr: provinceArrowLabelArr, badgeArr: provinceBadgeLabelArr } =
-        createProvinceBadgeLabel(this)
+      const {
+        arrowArr: provinceArrowLabelArr,
+        badgeArr: provinceBadgeLabelArr,
+        centerCircleArr: provinceCenterCircleArr,
+        nameArr: provinceNameLabelArr,
+      } = createProvinceItem(this, mapGroup)
       // 创建鼠标事件
       createMouseEvent(this, {
         provinceArrowLabelArr,

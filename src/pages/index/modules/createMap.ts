@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 10:49:59
+ * @LastEditTime : 2024-11-01 10:25:06
  * @Description  :
  */
 import {
@@ -136,9 +136,7 @@ function createProvinceGroup(
         // 绘制shape
         const shape = new Shape()
         for (let i = 0; i < polygon.length; i++) {
-          const [x, y] = _this.geoProjection(polygon[i], {
-            geoProjectionCenter: _this.pointCenter,
-          })!
+          const [x, y] = _this.geoProjection(polygon[i], true)!
           if (i === 0) {
             shape.moveTo(x, -y)
           }
@@ -166,9 +164,7 @@ function createProvinceGroup(
       const points: THREE.Vector3[] = []
       let line: null | THREE.LineLoop = null
       multiPolygon[0].forEach((item) => {
-        const [x, y] = _this.geoProjection(item, {
-          geoProjectionCenter: _this.pointCenter,
-        })!
+        const [x, y] = _this.geoProjection(item, true)!
         points.push(new Vector3(x, -y, 0))
         const geometry = new BufferGeometry()
         geometry.setFromPoints(points)
