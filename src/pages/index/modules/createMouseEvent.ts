@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-31 17:31:02
+ * @LastEditTime : 2024-11-01 14:47:25
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -30,7 +30,7 @@ export default (
       duration: 0.3,
       z:
         type === 'up'
-          ? (group.userData.position as [number, number, number])[2] + _this.depth / 2 + 0.3
+          ? (group.userData.position as [number, number, number])[2] + _this.depth
           : (group.userData.position as [number, number, number])[2],
     })
   }
@@ -60,10 +60,10 @@ export default (
   }
 
   function down(group: THREE.Group) {
-    gsap.to(group.scale, {
+    gsap.to(group.position, {
       duration: 0.3,
       // onComplete: () => {},
-      z: 1,
+      z: 0,
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
@@ -78,9 +78,9 @@ export default (
     moveProvinceBadgeLabel(group.userData.adcode as number, 'down')
   }
   function up(group: THREE.Group) {
-    gsap.to(group.scale, {
+    gsap.to(group.position, {
       duration: 0.3,
-      z: 1.5,
+      z: _this.depth,
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {

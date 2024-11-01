@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:30:35
+ * @LastEditTime : 2024-11-01 14:33:11
  * @Description  :
  */
 import gsap from 'gsap'
@@ -15,7 +15,6 @@ export default (
   _this: CanvasRenderType,
   {
     halo,
-    mapGroup,
     mapSideMaterial,
     provinceCenterCircleArr,
     provinceLineMaterial,
@@ -24,7 +23,6 @@ export default (
     rotateBorder2,
   }: {
     halo: THREE.Mesh
-    mapGroup: THREE.Group
     mapSideMaterial: THREE.MeshStandardMaterial
     provinceCenterCircleArr: THREE.Group[]
     provinceLineMaterial: THREE.LineBasicMaterial

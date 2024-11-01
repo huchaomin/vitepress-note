@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 11:37:22
+ * @LastEditTime : 2024-11-01 14:49:44
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -96,7 +96,6 @@ export default class CanvasRender extends ThreeCore {
       // 创建动画
       createAnimation(this, {
         halo,
-        mapGroup,
         mapSideMaterial,
         provinceCenterCircleArr,
         provinceLineMaterial,
