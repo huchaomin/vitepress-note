@@ -1,12 +1,11 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-27 17:41:07
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-01 16:40:06
  * @Description  :
 -->
 <script setup lang="ts">
-import lineDancing from '@/assets/svg/line_dancing.svg?raw'
 import { colors } from '@/pages/index/utils/others.ts'
 
 defineOptions({
@@ -110,11 +109,41 @@ const str = computed(() => {
   `
 })
 
-const iconStr = computed(() => {
-  return lineDancing
-    .replace('stroke: white;', `stroke: ${props.streamerColor};`)
-    .replace('stroke-width: 2;', `stroke-width: ${props.trackWidth};`)
-})
+const iconStr =
+  `<defs>
+    <clipPath id="svg-12-a-mask">
+      <polygon
+        class="svg-12-a-polygon"
+        points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+      />
+    </clipPath>
+  </defs>
+  <g class="svg-12-a-g" clip-path="url(#svg-12-a-mask)">
+    <polygon
+      class="svg-12-a-polygon svg-12-a-inner-polygon"
+      points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+      style="animation-delay: -0s"
+    />
+    <polygon
+      class="svg-12-a-polygon svg-12-a-inner-polygon"
+      points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+      style="animation-delay: -2.5s"
+    />
+    <polygon
+      class="svg-12-a-polygon svg-12-a-inner-polygon"
+      points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+      style="animation-delay: -5s"
+    />
+    <polygon
+      class="svg-12-a-polygon svg-12-a-inner-polygon"
+      points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+      style="animation-delay: -7.5s"
+    />
+  </g>
+  <polygon
+    class="svg-12-a-polygon svg-12-a-outer-polygon"
+    points="0,-30 21.21320343017578,-21.21320343017578 30,-1.8369703053475314e-15 21.21320343017578,21.21320343017578 3.673940610695063e-15,30 -21.21320343017578,21.21320343017578 -30,5.510910280767884e-15 -21.21320343017578,-21.21320343017578"
+  />`
 </script>
 
 <template>
@@ -126,11 +155,12 @@ const iconStr = computed(() => {
       style="pointer-events: none;"
       v-html="str"
     />
-    <div
+    <svg
+      viewBox="-50 -50 100 100"
       class="left_top_icon absolute"
       :style="`width: ${iconVW}vw; height: ${iconVW}vw`"
       v-html="iconStr"
-    ></div>
+    />
     <div v-bind="$attrs">
       <slot></slot>
     </div>
@@ -144,3 +174,59 @@ const iconStr = computed(() => {
   transform: translate(-40%, -40%);
 }
 </style>
+
+<style>
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable number-max-precision */
+
+.svg-12-a-polygon {
+  fill: none;
+  /* stylelint-disable-next-line value-keyword-case */
+  stroke: v-bind(streamerColor);
+  stroke-width: 2;
+}
+
+.svg-12-a-inner-polygon {
+  /* stylelint-disable-next-line value-keyword-case */
+  stroke-width: v-bind(trackWidth);
+  animation: svg-12-a-moving-poly-anim 10s linear infinite;
+}
+
+@keyframes svg-12-a-moving-poly-anim {
+  0% {
+    transform: translate(0%, -15%);
+  }
+
+  12.5% {
+    transform: translate(10.60660171508789%, -10.60660171508789%);
+  }
+
+  25% {
+    transform: translate(15%, -9.184851526737656e-16%);
+  }
+
+  37.5% {
+    transform: translate(10.60660171508789%, 10.60660171508789%);
+  }
+
+  50% {
+    transform: translate(1.8369703053475315e-15%, 15%);
+  }
+
+  62.5% {
+    transform: translate(-10.60660171508789%, 10.60660171508789%);
+  }
+
+  75% {
+    transform: translate(-15%, 2.755455140383942e-15%);
+  }
+
+  87.5% {
+    transform: translate(-10.60660171508789%, -10.60660171508789%);
+  }
+
+  100% {
+    transform: translate(0%, -15%);
+  }
+}
+  </style>
