@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:01:26
+ * @LastEditTime : 2024-11-01 16:11:51
  * @Description  :
 -->
 <script setup lang="ts">
@@ -47,12 +47,12 @@ canvas {
 
   & :deep(.badges_label) {
     position: relative;
-    bottom: 48px;
+    bottom: 47px;
     padding: 10px;
     color: #fff;
     background: #0e1937;
     border: 1px solid #1e7491;
-    opacity: 1;
+    opacity: 0;
 
     .amt {
       color: var(--color-yellow);
@@ -81,6 +81,14 @@ canvas {
       border-top: 2px solid #6cfffe;
       border-left: 2px solid #6cfffe;
     }
+  }
+
+  & :deep(.arrow_down_icon) {
+    position: relative;
+    bottom: 7px;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
   }
 }
 </style>

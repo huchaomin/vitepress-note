@@ -14,9 +14,6 @@ importers:
       '@kjgl77/datav-vue3':
         specifier: ^1.7.4
         version: 1.7.4(vue@3.5.12(typescript@5.6.3))
-      '@lottiefiles/dotlottie-web':
-        specifier: ^0.36.0
-        version: 0.36.0
       '@vueuse/core':
         specifier: ^11.1.0
         version: 11.1.0(vue@3.5.12(typescript@5.6.3))
@@ -793,9 +790,6 @@ packages:
 
   '@kjgl77/datav-vue3@1.7.4':
     resolution: {integrity: sha512-zYVTVKkklUxwtiNKS1qPBilm4rTW+WItfp0zVpaRAI8wgXkLSPbDR9xPq2+UcU/Jft7/DVdMfBp709E2ResuPQ==}
-
-  '@lottiefiles/dotlottie-web@0.36.0':
-    resolution: {integrity: sha512-FVGlQnhT95+aKrf4OiyC4/fP6ESZa8YwYDyvfuAeWktHFdAT/7Gbt76ZmCZU/Bwera6FB7UgJuoAtK/duTFCZQ==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4596,8 +4590,6 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-
-  '@lottiefiles/dotlottie-web@0.36.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

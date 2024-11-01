@@ -2,14 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:06:37
+ * @LastEditTime : 2024-11-01 16:12:38
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import type { labelInstance } from '@/components/three/utils/Label3d'
-import { DotLottie } from '@lottiefiles/dotlottie-web'
+import arrowDown from '../assets/texture/arrow_down.gif'
 
 interface province {
   adcode: number
@@ -39,17 +39,7 @@ function addLabelName(_this: CanvasRenderType, position: Vector3, data: province
 
 function addLabelArrow(_this: CanvasRenderType, position: Vector3): labelInstance {
   const label = _this.label3d.create()
-  const id = useUniqueId()
-  label.init(`<canvas id="${id}" width="30" height="30"></canvas>`, position)
-  setTimeout(() => {
-    // eslint-disable-next-line no-new
-    new DotLottie({
-      autoplay: true,
-      canvas: document.querySelector(`#${id}`) as HTMLCanvasElement,
-      loop: true,
-      src: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie', // or .json file
-    })
-  }, 3000)
+  label.init(`<img class="arrow_down_icon" src="${arrowDown}" alt="" />`, position)
   return label
 }
 
@@ -119,10 +109,6 @@ export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
         item.userData = {
           adcode: (group.userData as province).adcode,
           position: [position.x, position.y, position.z],
-        }
-        // TODO
-        if (getRandomInt() > 2) {
-          item.hide && item.hide()
         }
       })
       badgeArr.push(badge)
