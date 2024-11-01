@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:21:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-24 14:56:11
+ * @LastEditTime : 2024-11-01 11:29:17
  * @Description  :
  */
 
@@ -31,7 +31,6 @@ export default (_this: CanvasRenderType) => {
     transparent: true,
   })
   const mesh = new Mesh(geometry, material)
-  mesh.rotateX(-Math.PI / 2)
-  mesh.position.set(0, 0.05, 0)
+  mesh.position.set(0, 0, 0.02)
   _this.scene.add(mesh)
 }

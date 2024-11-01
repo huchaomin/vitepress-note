@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:36:42
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 09:59:07
+ * @LastEditTime : 2024-11-01 14:03:46
  * @Description  :
  */
 
@@ -60,7 +60,7 @@ export default (_this: CanvasRenderType) => {
         transparent: true,
       }),
     )
-    mesh.position.set(0, 0, _this.depth + 0.42)
+    mesh.position.set(0, 0, _this.depth)
     mesh.renderOrder = 21
     group.add(mesh)
   })

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:21:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 10:37:22
+ * @LastEditTime : 2024-11-01 11:30:39
  * @Description  :
  */
 
@@ -22,8 +22,8 @@ export default (_this: CanvasRenderType): THREE.Mesh => {
       transparent: true,
     }),
   )
-  halo.rotateX(-Math.PI / 2)
-  halo.position.set(0, _this.depth + 2.05, 0)
+  halo.position.set(0, 0, 0.03)
+
   _this.scene.add(halo)
   return halo
 }

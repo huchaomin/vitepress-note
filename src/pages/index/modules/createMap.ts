@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:25:06
+ * @LastEditTime : 2024-11-01 14:01:14
  * @Description  :
  */
 import {
@@ -153,7 +153,6 @@ function createProvinceGroup(
         mesh.userData = {
           adcode,
           centroid,
-          depth: _this.depth,
           materialEmissiveHex: topMaterial.emissive.getHex(),
           name,
         }
@@ -174,14 +173,14 @@ function createProvinceGroup(
       })
       lineGroup.add(line!)
     })
-    lineGroup.position.set(0, 0, _this.depth + 0.11)
+    lineGroup.position.set(0, 0, _this.depth + 0.1)
     group.add(shapeGroup, lineGroup)
   })
   return group
 }
 
 // 创建省份
-function createProvince(_this: CanvasRenderType) {
+export default (_this: CanvasRenderType) => {
   const topMap = _this.getAssetsData('mapTop') as THREE.Texture
   topMap.wrapS = topMap.wrapT = RepeatWrapping
   const provinceLineMaterial = new LineBasicMaterial({
@@ -195,9 +194,9 @@ function createProvince(_this: CanvasRenderType) {
   _this.time.on('tick', () => {
     sideMaterial.map!.offset.y += 0.002 // 材质有一个慢慢浸湿的效果
   })
-  const provinceGroup = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
-  const { box3, boxSize } = getBoundBox(provinceGroup)
-  provinceGroup.children.forEach((group) => {
+  const group = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
+  const { box3, boxSize } = getBoundBox(group)
+  group.children.forEach((group) => {
     if (group.userData.type === 'shape') {
       group.children.forEach((mesh) => {
         _this.provinceMeshArr.push(mesh as THREE.Mesh)
@@ -205,23 +204,6 @@ function createProvince(_this: CanvasRenderType) {
       })
     }
   })
-  return {
-    provinceGroup,
-    provinceLineMaterial,
-    sideMaterial,
-    topMaterial,
-  }
-}
-
-export default (_this: CanvasRenderType) => {
-  const {
-    provinceGroup: group,
-    provinceLineMaterial,
-    sideMaterial,
-    topMaterial,
-  } = createProvince(_this)
-  group.position.set(0, 0.2, -5)
-  group.scale.set(1, 1, 0)
   _this.mainSceneGroup.add(group)
   return {
     group,

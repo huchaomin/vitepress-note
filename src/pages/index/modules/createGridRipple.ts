@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 18:15:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 09:58:14
+ * @LastEditTime : 2024-11-01 11:29:47
  * @Description  :
  */
 import {
@@ -114,7 +114,7 @@ async function createDiffuseShader(
 }
 
 export default (_this: CanvasRenderType) => {
-  const geometry = new PlaneGeometry(500, 300)
+  const geometry = new PlaneGeometry(500, 500)
   const texture = _this.getAssetsData('grid') as THREE.Texture
   const alphaMap = _this.getAssetsData('gridBlack') as THREE.Texture
   texture.wrapS = texture.wrapT = alphaMap.wrapS = alphaMap.wrapT = RepeatWrapping
@@ -129,9 +129,8 @@ export default (_this: CanvasRenderType) => {
     transparent: true,
   })
   const mesh = new Mesh(geometry, material)
-  mesh.rotateX(-Math.PI / 2)
-  const [x, y] = _this.geoProjection()!
-  mesh.position.set(x, -y, 0.01)
+  mesh.position.set(0, 0, 0.01)
+
   const mesh2 = mesh.clone()
   mesh2.material = material.clone()
   mesh2.material.opacity = 0.1

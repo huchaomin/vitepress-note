@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 09:18:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-31 16:53:13
+ * @LastEditTime : 2024-11-01 10:48:34
  * @Description  :
  */
 import type * as THREE from 'three'
@@ -38,9 +38,9 @@ export default class Camera {
     })
 
     time.on('tick', () => {
-      if (this.isClicked) {
-        this.controls.update()
-      }
+      // if (this.isClicked) {
+      this.controls.update()
+      // }
     })
   }
 

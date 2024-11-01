@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:38:57
+ * @LastEditTime : 2024-11-01 14:06:37
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -110,7 +110,7 @@ export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
     })
     .forEach((group) => {
       const [x, y] = _this.geoProjection((group.userData as province).centroid, true)!
-      const position = new Vector3(x, -y, _this.depth + 0.92)
+      const position = new Vector3(x, -y, _this.depth + 0.1)
       const badge = addLabelBadge(_this, position)
       const arrow = addLabelArrow(_this, position)
       const name = addLabelName(_this, position, group.userData as province)

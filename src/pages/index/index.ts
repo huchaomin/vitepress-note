@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:40:09
+ * @LastEditTime : 2024-11-01 11:37:22
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -34,12 +34,13 @@ export default class CanvasRender extends ThreeCore {
     config?: ConstructorParameters<typeof ThreeCore>[1],
   ) {
     super(canvas, config)
+    this.setAxesHelper()
     // 中心坐标
     this.depth = 5
     this.scene.fog = new Fog(0x011024, 1, 500)
     this.scene.background = new Color(0x011024)
     // 设置相机位置及远近裁剪面
-    this.camera.instance.position.set(0, 225, 0)
+    this.camera.instance.position.set(0, 0, 255)
     this.camera.instance.updateProjectionMatrix()
     // 交互管理器
     this.interactionManager = new InteractionManager(
@@ -47,9 +48,7 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
-
     this.mainSceneGroup = new Group()
-    this.mainSceneGroup.rotateX(-Math.PI / 2)
     this.scene.add(this.mainSceneGroup)
 
     this.label3d = new Label3d(this)
@@ -58,6 +57,11 @@ export default class CanvasRender extends ThreeCore {
 
     void loadAllAssets().then((res) => {
       this.assets = res
+      // 注意z-index
+      // createGridRipple 0.01
+      // createBgLight 0.02
+      // createHalo 0.03
+      // createRotateBorder 0.04 0.05
       // 创建环境光
       createEnvLight(this)
       // 创建周围光晕

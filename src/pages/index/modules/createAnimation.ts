@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-29 00:21:33
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-01 14:30:35
  * @Description  :
  */
 import gsap from 'gsap'
@@ -34,9 +34,7 @@ export default (
   },
 ) => {
   const tl = gsap.timeline()
-  tl.addLabel('mapBody', 3.5)
-  tl.addLabel('mapParts', 4.5)
-  tl.addLabel('province', 4.5)
+  tl.addLabel('mapEnter', 4.5)
 
   // 相机动画，相机动画结束前其他动画最好提前完成
   tl.add(
@@ -46,8 +44,8 @@ export default (
       onComplete: () => {
         _this.camera.controls.saveState()
       },
-      y: 160,
-      z: 80,
+      y: -60,
+      z: 160,
     }),
   )
   // 光晕旋转动画
@@ -66,25 +64,27 @@ export default (
     }),
     '<',
   )
-  // mapBody动画
   tl.add(
-    gsap.to(mapGroup.position, {
-      duration: 1.5,
-      x: 0,
-      y: 0,
-      z: 0,
-    }),
-    'mapBody',
-  )
-  tl.add(
-    gsap.to(mapGroup.scale, {
-      duration: 1.5,
+    gsap.to(rotateBorder1.scale, {
+      delay: 0.3,
+      duration: 1,
       ease: 'circ.out',
       x: 1,
       y: 1,
       z: 1,
     }),
-    'mapBody',
+    'mapEnter',
+  )
+  tl.add(
+    gsap.to(rotateBorder2.scale, {
+      delay: 0.5,
+      duration: 1,
+      ease: 'circ.out',
+      x: 1,
+      y: 1,
+      z: 1,
+    }),
+    'mapEnter',
   )
 
   _this.provinceMeshArr.forEach((mesh) => {
@@ -95,17 +95,7 @@ export default (
         ease: 'circ.out',
         opacity: 1,
       }),
-      'mapParts',
-    )
-    tl.add(
-      gsap.to(mesh.position, {
-        duration: 1,
-        ease: 'circ.out',
-        x: 0,
-        y: 0,
-        z: 0,
-      }),
-      'mapParts',
+      'mapEnter',
     )
   })
   tl.add(
@@ -117,7 +107,7 @@ export default (
       },
       opacity: 1,
     }),
-    'mapParts',
+    'mapEnter',
   )
   tl.add(
     gsap.to(provinceLineMaterial, {
@@ -125,31 +115,9 @@ export default (
       duration: 0.5,
       opacity: 1,
     }),
-    'mapParts',
+    'mapEnter',
   )
 
-  tl.add(
-    gsap.to(rotateBorder1.scale, {
-      delay: 0.3,
-      duration: 1,
-      ease: 'circ.out',
-      x: 1,
-      y: 1,
-      z: 1,
-    }),
-    'mapParts',
-  )
-  tl.add(
-    gsap.to(rotateBorder2.scale, {
-      delay: 0.5,
-      duration: 1,
-      ease: 'circ.out',
-      x: 1,
-      y: 1,
-      z: 1,
-    }),
-    'mapParts',
-  )
   provinceNameLabelArr.forEach((item, index) => {
     tl.add(
       gsap.to(item.element, {
@@ -157,9 +125,8 @@ export default (
         duration: 0.5,
         ease: 'circ.out',
         opacity: 1,
-        translateY: 0,
       }),
-      'province',
+      'mapEnter',
     )
   })
   provinceCenterCircleArr.forEach((item, index) => {
@@ -172,7 +139,7 @@ export default (
         y: 1,
         z: 1,
       }),
-      'province',
+      'mapEnter',
     )
     tl.add(
       gsap.to(item.children[1].scale, {
@@ -183,7 +150,7 @@ export default (
         y: 1,
         z: 1,
       }),
-      'province',
+      'mapEnter',
     )
   })
 }
