@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 18:15:06
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 11:29:47
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-03 00:55:10
  * @Description  :
  */
 import {
@@ -133,7 +133,7 @@ export default (_this: CanvasRenderType) => {
 
   const mesh2 = mesh.clone()
   mesh2.material = material.clone()
-  mesh2.material.opacity = 0.1
+  mesh2.material.opacity = 0.04
   _this.scene.add(mesh, mesh2)
   // 创建扩散效果 clone 的材质不会被下面影响
   void createDiffuseShader(_this, material).then((pointShader) => {
