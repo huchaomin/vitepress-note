@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-03 17:10:02
+ * @LastEditTime : 2024-11-03 20:56:50
  * @Description  :
 -->
 <script setup lang="ts">
@@ -53,6 +53,16 @@ const data = [
   },
 ]
 
+const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
+const maxValue = ref(0)
+
+function rendered() {
+  const chart = vChartRef.value!.chart!
+  // @ts-expect-error https://github.com/apache/echarts/issues/18302
+  const yAxis = chart.getModel().getComponent('yAxis')
+  maxValue.value = yAxis.axis.scale.getExtent()[1]
+}
+
 const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption>>(() => {
   const config = {
     barWidth: useDynamicPx(26).value,
@@ -67,7 +77,6 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     },
     fontSize: useDynamicPx(16).value,
     gridXGap: useDynamicPx(20).value,
-    maxValue: 500,
   }
   return {
     grid: {
@@ -151,7 +160,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
           itemStyle: {
             color: config.color.backgroundBar,
           },
-          value: config.maxValue - item.value,
+          value: maxValue.value - item.value,
         })),
         stack: 'forStack',
         type: 'bar',
@@ -164,7 +173,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
             color: config.color.backgroundHat,
           },
           symbolPosition: 'end',
-          value: config.maxValue,
+          value: maxValue.value,
         })),
         symbolOffset: [0, -config.bottomEffectScatterHeight / 2],
         symbolSize: [config.barWidth, config.bottomEffectScatterHeight],
@@ -207,7 +216,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
 <template>
   <div class="refund_user_wrapper absolute flex flex-col">
     <ChartTitle :src="bar_chart" title="回款客户数据"></ChartTitle>
-    <VChart :option="option" autoresize class="flex-auto"></VChart>
+    <VChart ref="vChartRef" :option="option" autoresize class="flex-auto" @rendered="rendered"></VChart>
   </div>
 </template>
 
