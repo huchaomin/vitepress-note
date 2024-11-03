@@ -1,10 +1,12 @@
 /*
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-26 17:34:52
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-03 17:01:05
  * @Description  :
  */
+import { baseSize, designWidth } from '@/utils/config'
+
 export default defineStore('common', () => {
   // 全局加载状态
   const loading = ref(false)
@@ -24,8 +26,6 @@ export default defineStore('common', () => {
     })
     // 根据屏幕宽度设置根字体大小
     function setRootFontSize(): void {
-      const baseSize = 16 // 基础字体大小
-      const designWidth = 1920 // 设计稿宽度
       // 计算比例
       const scale = screenWidth.value / designWidth
       // 设置根字体大小
