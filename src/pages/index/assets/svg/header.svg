@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 1920 80"
+>
+  <style type="text/css">
+    .h_title_st1 {
+      fill: #48ffff;
+      fill-opacity: 0.9;
+    }
+
+    .h_title_st2 {
+      fill: #48ffff;
+      fill-opacity: 0.7;
+    }
+
+    .h_title_st3 {
+      fill: #48ffff;
+      fill-opacity: 0.5;
+    }
+
+    .h_title_text {
+      font-size: 30px;
+      letter-spacing: 8;
+      fill: #fff;
+    }
+  </style>
+  <g>
+    <g transform="matrix(-1,0,0,1,1243.1804466247559,0)">
+      <path class="h_title_st1" d="M662.5,42.8h7.6l-31.7,32.8h-7.6L662.5,42.8L662.5,42.8z" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" />
+    </g>
+    <g transform="matrix(-1,0,0,1,1216.9533576965332,0)">
+      <path class="h_title_st2" d="M649.4,42.8h7.6l-31.7,32.8h-7.6L649.4,42.8L649.4,42.8z" />
+      <animate
+        attributeName="opacity"
+        values="0.2;1;0.2"
+        dur="2s"
+        repeatCount="indefinite"
+        begin="1s"
+      />
+    </g>
+    <g transform="matrix(-1,0,0,1,1190.7243461608887,0)">
+      <path class="h_title_st3" d="M636.3,42.8h7.6l-31.7,32.8h-7.6L636.3,42.8L636.3,42.8z" />
+      <animate
+        attributeName="opacity"
+        values="0.2;1;0.2"
+        dur="2s"
+        repeatCount="indefinite"
+        begin="2s"
+      />
+    </g>
+  </g>
+  <g transform="matrix(-1,0,0,1,2766.4693870544434,0)">
+    <g transform="matrix(-1,0,0,1,2897.607692718506,0)">
+      <path class="h_title_st1" d="M1471.4,42.8h7.6l-31.7,32.8h-7.6L1471.4,42.8L1471.4,42.8z" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" />
+    </g>
+    <g transform="matrix(-1,0,0,1,2871.380603790283,0)">
+      <path class="h_title_st2" d="M1458.3,42.8h7.6l-31.7,32.8h-7.6L1458.3,42.8L1458.3,42.8z" />
+      <animate
+        attributeName="opacity"
+        values="0.2;1;0.2"
+        dur="2s"
+        repeatCount="indefinite"
+        begin="1s"
+      />
+    </g>
+    <g transform="matrix(-1,0,0,1,2845.1515922546387,0)">
+      <path class="h_title_st3" d="M1445.2,42.8h7.6L1421,75.6h-7.6L1445.2,42.8L1445.2,42.8z" />
+      <animate
+        attributeName="opacity"
+        values="0.2;1;0.2"
+        dur="2s"
+        repeatCount="indefinite"
+        begin="2s"
+      />
+    </g>
+  </g>
+  <linearGradient
+    id="v_line"
+    gradientUnits="userSpaceOnUse"
+    x1="-8.875063e-03"
+    y1="51.5948"
+    x2="1920.0089"
+    y2="51.5948"
+  >
+    <stop offset="0" style="stop-color: #00ffff; stop-opacity: 0.3" />
+    <stop offset="0.5" style="stop-color: #00ffff" />
+    <stop offset="1" style="stop-color: #00ffff; stop-opacity: 0.3" />
+  </linearGradient>
+  <path
+    id="line"
+    style="fill: none; stroke: url(#v_line); stroke-width: 3; stroke-miterlimit: 10"
+    d="
+  M0,28.4c0,0,538.6,3.2,575.7,3.2c30.5,0,25.5,43.3,70.1,43.3c21.4,0,596.3,0,629.4,0c44.9,0,33.1-43.3,75.1-43.3
+  c36.2,0,569.7-3.2,569.7-3.2"
+  />
+  <radialGradient id="shine_line" cx="0.5" cy="0.5" r="1" gradientUnits="objectBoundingBox">
+    <stop offset="0" style="stop-color: #ffffff" />
+    <stop offset="0.05" style="stop-color: #fbffff; stop-opacity: 0.9941" />
+    <stop offset="0.114" style="stop-color: #b0ffff; stop-opacity: 0.6" />
+    <stop offset="0.2154" style="stop-color: #71ffff; stop-opacity: 0.4" />
+    <stop offset="0.3069" style="stop-color: #40ffff; stop-opacity: 0.3" />
+    <stop offset="0.3869" style="stop-color: #1dffff; stop-opacity: 0.1" />
+    <stop offset="0.4523" style="stop-color: #08ffff; stop-opacity: 0.05" />
+    <stop offset="0.4948" style="stop-color: #00ffff; stop-opacity: 0.02" />
+  </radialGradient>
+  <ellipse id="shine" style="fill: url(#shine_line)" cx="960" cy="74.8" rx="138" ry="10.2">
+    <animate attributeName="ry" values="5;10.2;5" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="rx" values="50;138;50" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="cx" values="800;960;1120;960;800" dur="4s" repeatCount="indefinite" />
+  </ellipse>
+  <text transform="matrix(1 0 0 1 863 49.5948)" class="h_title_text">擎聪智慧大屏系统</text>
+</svg>
