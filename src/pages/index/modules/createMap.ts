@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:01:14
+ * @LastEditTime : 2024-11-04 09:37:29
  * @Description  :
  */
 import {
@@ -168,7 +168,7 @@ function createProvinceGroup(
         const geometry = new BufferGeometry()
         geometry.setFromPoints(points)
         line = new LineLoop(geometry, provinceLineMaterial)
-        line.renderOrder = 2
+        line.renderOrder = 20
         line.name = 'mapLine'
       })
       lineGroup.add(line!)

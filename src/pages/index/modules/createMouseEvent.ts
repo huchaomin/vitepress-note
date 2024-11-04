@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:47:25
+ * @LastEditTime : 2024-11-04 09:42:12
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -70,7 +70,6 @@ export default (
         const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
         o.material[0].emissive.setHex(group.userData.materialEmissiveHex as number)
         o.material[0].emissiveIntensity = 1
-        o.renderOrder = 9
       }
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'down')
@@ -87,7 +86,6 @@ export default (
         const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
         o.material[0].emissive.setHex(0x0b112d)
         o.material[0].emissiveIntensity = 2 // 放射光强度
-        o.renderOrder = 21
       }
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'up')

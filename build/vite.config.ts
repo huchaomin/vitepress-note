@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-31 15:06:25
+ * @LastEditTime : 2024-11-04 09:27:05
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -69,6 +69,15 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         'three/examples/jsm/controls/OrbitControls.js',
         'three/examples/jsm/loaders/GLTFLoader.js',
         'three/examples/jsm/loaders/DRACOLoader.js',
+        'pinia-plugin-persistedstate',
+        '@css-render/vue3-ssr',
+        'naive-ui',
+        'echarts/core',
+        'vue-echarts',
+        'echarts/components',
+        'echarts/charts',
+        'echarts/renderers',
+        '@lottiefiles/dotlottie-vue',
       ],
     },
     plugins: [
