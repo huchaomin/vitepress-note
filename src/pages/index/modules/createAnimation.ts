@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:33:11
+ * @LastEditTime : 2024-11-04 18:18:36
  * @Description  :
  */
 import gsap from 'gsap'
@@ -42,8 +42,7 @@ export default (
       onComplete: () => {
         _this.camera.controls.saveState()
       },
-      y: -60,
-      z: 160,
+      z: 200,
     }),
   )
   // 光晕旋转动画
@@ -85,16 +84,19 @@ export default (
     'mapEnter',
   )
 
+  // TODO
   _this.provinceMeshArr.forEach((mesh) => {
-    tl.add(
-      // top material
-      gsap.to((mesh.material as THREE.MeshStandardMaterial[])[0], {
-        duration: 1,
-        ease: 'circ.out',
-        opacity: 1,
-      }),
-      'mapEnter',
-    )
+    if (mesh.isMesh) {
+      tl.add(
+        // top material
+        gsap.to((mesh.material as THREE.MeshStandardMaterial[])[0], {
+          duration: 1,
+          ease: 'circ.out',
+          // opacity: 1,
+        }),
+        'mapEnter',
+      )
+    }
   })
   tl.add(
     gsap.to(mapSideMaterial, {
@@ -133,9 +135,8 @@ export default (
         delay: 0.05 * index,
         duration: 0.5,
         ease: 'circ.out',
-        x: 1,
-        y: 1,
-        z: 1,
+        x: 1.3,
+        y: 1.3,
       }),
       'mapEnter',
     )
@@ -144,9 +145,8 @@ export default (
         delay: 0.05 * index,
         duration: 0.5,
         ease: 'circ.out',
-        x: 1,
-        y: 1,
-        z: 1,
+        x: 1.3,
+        y: 1.3,
       }),
       'mapEnter',
     )

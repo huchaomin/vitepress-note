@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 09:42:12
+ * @LastEditTime : 2024-11-04 18:19:31
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -63,7 +63,7 @@ export default (
     gsap.to(group.position, {
       duration: 0.3,
       // onComplete: () => {},
-      z: 0,
+      z: group.userData.position?.[2] ?? 0,
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
@@ -79,7 +79,7 @@ export default (
   function up(group: THREE.Group) {
     gsap.to(group.position, {
       duration: 0.3,
-      z: _this.depth,
+      z: _this.depth + (group.userData.position?.[2] ?? 0),
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {

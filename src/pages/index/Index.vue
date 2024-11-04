@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 17:47:33
+ * @LastEditTime : 2024-11-04 17:21:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,7 +41,8 @@ canvas {
   color: var(--color-white);
 
   & :deep(.provinces_name) {
-    top: -2px;
+    top: -2.5px;
+    font-size: 0.8rem;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
   }

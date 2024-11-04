@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 09:37:29
+ * @LastEditTime : 2024-11-04 18:13:44
  * @Description  :
  */
 import {
@@ -123,12 +123,16 @@ function createProvinceGroup(
 
     // 线组
     const lineGroup = new Group()
+    const lineGroupPosition = [0, 0, _this.depth + 0.2] as const
     lineGroup.userData = {
       adcode,
       centroid,
       name,
+      position: lineGroupPosition,
       type: 'line',
     }
+    lineGroup.position.set(...lineGroupPosition)
+
     // 这里必须clone 要不然会共享同一个材质
     const materials = [topMaterial.clone(), sideMaterial]
     feature.geometry.coordinates.forEach((multiPolygon) => {
@@ -173,7 +177,6 @@ function createProvinceGroup(
       })
       lineGroup.add(line!)
     })
-    lineGroup.position.set(0, 0, _this.depth + 0.1)
     group.add(shapeGroup, lineGroup)
   })
   return group
@@ -196,14 +199,16 @@ export default (_this: CanvasRenderType) => {
   })
   const group = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
   const { box3, boxSize } = getBoundBox(group)
-  group.children.forEach((group) => {
-    if (group.userData.type === 'shape') {
-      group.children.forEach((mesh) => {
-        _this.provinceMeshArr.push(mesh as THREE.Mesh)
+  group.children.forEach((childGroup) => {
+    childGroup.children.forEach((mesh) => {
+      _this.provinceMeshArr.push(mesh as THREE.Mesh)
+      if (childGroup.userData.type === 'shape') {
         calcUv2((mesh as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
-      })
-    }
+      }
+    })
   })
+  console.log(_this.provinceMeshArr)
+
   _this.mainSceneGroup.add(group)
   return {
     group,
