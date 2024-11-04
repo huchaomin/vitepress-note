@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-03 20:56:50
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-04 11:49:40
  * @Description  :
 -->
 <script setup lang="ts">
@@ -65,8 +65,8 @@ function rendered() {
 
 const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption>>(() => {
   const config = {
-    barWidth: useDynamicPx(26).value,
-    bottomEffectScatterHeight: useDynamicPx(12).value,
+    barWidth: useDynamicPx(18).value,
+    bottomEffectScatterHeight: useDynamicPx(10).value,
     color: {
       backgroundBar: 'rgba(1, 80, 207,  0.3)',
       backgroundHat: 'rgba(1, 80, 207, 0.6)',
@@ -75,7 +75,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       barTop: 'rgba(14, 195, 255, 0.8)',
       bottomEffectScatter: 'rgba(102, 155, 255, 1)',
     },
-    fontSize: useDynamicPx(16).value,
+    fontSize: useDynamicPx(15).value,
     gridXGap: useDynamicPx(20).value,
   }
   return {
@@ -224,7 +224,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
 .refund_user_wrapper {
   bottom: 2vw;
   left: 2vw;
-  width: 26vw;
-  height: 24vw;
+  width: 24vw;
+  height: 23vw;
 }
 </style>
