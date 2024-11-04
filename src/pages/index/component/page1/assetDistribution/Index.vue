@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 13:38:58
+ * @LastEditTime : 2024-11-04 14:16:04
  * @Description  :
 -->
 <script setup lang="ts">
@@ -29,27 +29,27 @@ use([
 
 const data = [
   {
-    key: 'QD资产',
+    name: 'QD资产',
     value: 21,
     value2: 81,
   },
   {
-    key: 'LX资产',
+    name: 'LX资产',
     value: 30,
     value2: 70,
   },
   {
-    key: '信用卡',
+    name: '信用卡',
     value: 26,
     value2: 46,
   },
   {
-    key: '银登资产',
+    name: '银登资产',
     value: 23,
     value2: 43,
   },
   {
-    key: '其他资产',
+    name: '其他资产',
     value: 13,
     value2: 73,
   },
@@ -59,8 +59,8 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
   const config = {
     barWidth: useDynamicPx(10).value,
     color: {
-      barLeft: 'rgba(14, 195, 255, 0.8)',
-      barRight: 'rgba(0, 72, 203, 0.8)',
+      barLeft: colors.blueHover,
+      barRight: colors.blue,
     },
     fontSize: useDynamicPx(15).value,
     labelDistance: useDynamicPx(10).value,
@@ -175,7 +175,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
       axisTick: {
         show: false,
       },
-      data: data.map((item) => item.key),
+      data: data.map((item) => item.name),
       inverse: true,
       offset: config.labelDistance,
     },

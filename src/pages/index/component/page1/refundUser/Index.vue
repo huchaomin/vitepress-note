@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 11:49:40
+ * @LastEditTime : 2024-11-04 15:11:59
  * @Description  :
 -->
 <script setup lang="ts">
@@ -28,27 +28,27 @@ use([
 
 const data = [
   {
-    key: '2018年',
+    name: '2018年',
     value: 212,
   },
   {
-    key: '2019年',
+    name: '2019年',
     value: 305,
   },
   {
-    key: '2020年',
+    name: '2020年',
     value: 260,
   },
   {
-    key: '2021年',
+    name: '2021年',
     value: 283,
   },
   {
-    key: '2022年',
+    name: '2022年',
     value: 453,
   },
   {
-    key: '2023年',
+    name: '2023年',
     value: 353,
   },
 ]
@@ -70,9 +70,9 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     color: {
       backgroundBar: 'rgba(1, 80, 207,  0.3)',
       backgroundHat: 'rgba(1, 80, 207, 0.6)',
-      barBottom: 'rgba(0, 72, 203, 0.8)',
+      barBottom: colors.blueHover,
       barHat: 'rgba(14, 195, 255,  1)',
-      barTop: 'rgba(14, 195, 255, 0.8)',
+      barTop: colors.blue,
       bottomEffectScatter: 'rgba(102, 155, 255, 1)',
     },
     fontSize: useDynamicPx(15).value,
@@ -107,11 +107,11 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
             color: {
               colorStops: [
                 {
-                  color: config.color.barBottom,
+                  color: config.color.barTop,
                   offset: 0,
                 },
                 {
-                  color: config.color.barTop,
+                  color: config.color.barBottom,
                   offset: 1,
                 },
               ],
@@ -194,7 +194,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       axisTick: {
         show: false,
       },
-      data: data.map((item) => item.key),
+      data: data.map((item) => item.name),
       offset: config.gridXGap,
     },
     yAxis: {
