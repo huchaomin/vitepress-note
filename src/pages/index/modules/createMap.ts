@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 18:13:44
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-05 00:35:13
  * @Description  :
  */
 import {
@@ -115,23 +115,15 @@ function createProvinceGroup(
     // shape 组
     const shapeGroup = new Group()
     shapeGroup.userData = {
-      adcode,
-      centroid,
-      name,
       type: 'shape',
     }
 
     // 线组
     const lineGroup = new Group()
-    const lineGroupPosition = [0, 0, _this.depth + 0.2] as const
     lineGroup.userData = {
-      adcode,
-      centroid,
-      name,
-      position: lineGroupPosition,
       type: 'line',
     }
-    lineGroup.position.set(...lineGroupPosition)
+    lineGroup.position.set(0, 0, _this.depth + 0.11)
 
     // 这里必须clone 要不然会共享同一个材质
     const materials = [topMaterial.clone(), sideMaterial]
@@ -177,7 +169,14 @@ function createProvinceGroup(
       })
       lineGroup.add(line!)
     })
-    group.add(shapeGroup, lineGroup)
+    const tempGroup = new Group()
+    tempGroup.userData = {
+      adcode,
+      centroid,
+      name,
+    }
+    tempGroup.add(shapeGroup, lineGroup)
+    group.add(tempGroup)
   })
   return group
 }
@@ -199,19 +198,19 @@ export default (_this: CanvasRenderType) => {
   })
   const group = createProvinceGroup(_this, topMaterial, sideMaterial, provinceLineMaterial)
   const { box3, boxSize } = getBoundBox(group)
-  group.children.forEach((childGroup) => {
-    childGroup.children.forEach((mesh) => {
-      _this.provinceMeshArr.push(mesh as THREE.Mesh)
+  group.children.forEach((tempGroup) => {
+    tempGroup.children.forEach((childGroup) => {
       if (childGroup.userData.type === 'shape') {
-        calcUv2((mesh as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
+        childGroup.children.forEach((mesh) => {
+          _this.provinceMeshArr.push(mesh as THREE.Mesh)
+          calcUv2((mesh as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
+        })
       }
     })
   })
-  console.log(_this.provinceMeshArr)
-
   _this.mainSceneGroup.add(group)
   return {
-    group,
+    group, // group -> tempGroup -> shapeGroup | lineGroup
     provinceLineMaterial,
     sideMaterial,
     topMaterial,

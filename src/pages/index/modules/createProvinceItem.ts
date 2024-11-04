@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 16:12:38
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-05 00:27:52
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -92,11 +92,10 @@ export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
   const arrowArr: labelInstance[] = []
   const nameArr: labelInstance[] = []
   const centerCircleArr: THREE.Group[] = []
+
   mapGroup.children
-    .filter((c) => {
-      return (
-        c.userData.type === 'shape' && c.userData.centroid !== undefined && c.userData.name !== ''
-      )
+    .filter((tempGroup) => {
+      return tempGroup.userData.centroid !== undefined && tempGroup.userData.name !== ''
     })
     .forEach((group) => {
       const [x, y] = _this.geoProjection((group.userData as province).centroid, true)!

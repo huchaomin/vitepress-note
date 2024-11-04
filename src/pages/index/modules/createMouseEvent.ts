@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 18:19:31
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-05 00:28:19
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -63,7 +63,7 @@ export default (
     gsap.to(group.position, {
       duration: 0.3,
       // onComplete: () => {},
-      z: group.userData.position?.[2] ?? 0,
+      z: 0,
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
@@ -79,7 +79,7 @@ export default (
   function up(group: THREE.Group) {
     gsap.to(group.position, {
       duration: 0.3,
-      z: _this.depth + (group.userData.position?.[2] ?? 0),
+      z: _this.depth,
     })
     group.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
@@ -111,21 +111,25 @@ export default (
       const event = e as unknown as THREE.Event<
         'mouseover',
         {
-          parent: THREE.Group
+          parent: {
+            parent: THREE.Group
+          }
         } & THREE.Mesh
       >
       _this.canvas.style.cursor = 'pointer'
-      up(event.target.parent)
+      up(event.target.parent.parent)
     })
     mesh.addEventListener('mouseout', (e) => {
       const event = e as unknown as THREE.Event<
         'mouseover',
         {
-          parent: THREE.Group
+          parent: {
+            parent: THREE.Group
+          }
         } & THREE.Mesh
       >
       _this.canvas.style.cursor = 'default'
-      down(event.target.parent)
+      down(event.target.parent.parent)
     })
   })
 }
