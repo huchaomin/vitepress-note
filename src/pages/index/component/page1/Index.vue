@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:43:31
+ * @LastEditTime : 2024-11-05 16:12:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,6 +13,7 @@ import AssetDistribution from './assetDistribution/Index.vue'
 import RefundType from './refundType/Index.vue'
 import RefundTrend from './refundTrend/Index.vue'
 import RefundTotal from './refundTotal/Index.vue'
+import AssetSize from './assetSize/Index.vue'
 </script>
 
 <template>
@@ -24,6 +25,7 @@ import RefundTotal from './refundTotal/Index.vue'
     <RefundType></RefundType>
     <RefundTrend></RefundTrend>
     <RefundTotal></RefundTotal>
+    <AssetSize></AssetSize>
   </div>
 </template>
 

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:06:36
+ * @LastEditTime : 2024-11-05 16:25:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -121,7 +121,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
 
 <style scoped>
 .asset_distribution_wrapper {
-  top: 4vw;
+  top: 12vw;
   right: 2vw;
   width: 24vw;
   height: 18vw;
