@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 13:47:32
+ * @LastEditTime : 2024-11-05 13:57:33
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,7 +16,7 @@ import {
 } from 'echarts/components'
 import { BarChart, EffectScatterChart, PictorialBarChart, type EffectScatterSeriesOption, type PictorialBarSeriesOption, type BarSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors } from '@/pages/index/utils/others'
+import { colors, chartFontFamily } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -182,6 +182,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     xAxis: {
       axisLabel: {
         color: colors.white,
+        fontFamily: chartFontFamily,
         fontSize,
       },
       axisLine: {
@@ -198,6 +199,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     yAxis: {
       axisLabel: {
         color: colors.white,
+        fontFamily: chartFontFamily,
         fontSize,
       },
       splitLine: {

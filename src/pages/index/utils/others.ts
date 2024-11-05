@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:53:12
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 15:10:28
+ * @LastEditTime : 2024-11-05 13:56:33
  * @Description  :
  */
 const colors = {
@@ -13,4 +13,6 @@ const colors = {
   white: '#fff',
   yellow: '#ffe70b',
 }
-export { colors }
+
+const chartFontFamily = 'JetBrainsMonoMedium, SmileySans-Oblique'
+export { chartFontFamily, colors }

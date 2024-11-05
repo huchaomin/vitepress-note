@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 11:52:33
+ * @LastEditTime : 2024-11-05 13:59:06
  * @Description  :
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ import {
 } from 'echarts/components'
 import { BarChart, type BarSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors } from '@/pages/index/utils/others'
+import { colors, chartFontFamily } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -90,6 +90,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
       right: 'left',
       textStyle: {
         color: colors.white,
+        fontFamily: chartFontFamily,
         fontSize,
         lineHeight: fontSize + 1,
       },
@@ -114,6 +115,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         label: {
           color: colors.white,
           distance: labelDistance,
+          fontFamily: chartFontFamily,
           fontSize,
           position: 'insideBottom',
           show: true,
@@ -140,6 +142,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         label: {
           color: colors.white,
           distance: labelDistance,
+          fontFamily: chartFontFamily,
           fontSize,
           position: 'insideBottom',
           show: true,
@@ -162,6 +165,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
     yAxis: {
       axisLabel: {
         color: colors.white,
+        fontFamily: chartFontFamily,
         fontSize,
       },
       axisLine: {

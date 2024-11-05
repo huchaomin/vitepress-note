@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 13:50:09
+ * @LastEditTime : 2024-11-05 14:00:36
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,7 +16,7 @@ import {
 } from 'echarts/components'
 import { PieChart, type PieSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors } from '@/pages/index/utils/others'
+import { colors, chartFontFamily } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -68,6 +68,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
         },
         label: {
           color: colors.white,
+          fontFamily: chartFontFamily,
           fontSize,
           show: true,
         },
