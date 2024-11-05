@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 14:16:04
+ * @LastEditTime : 2024-11-05 11:52:33
  * @Description  :
 -->
 <script setup lang="ts">
@@ -56,27 +56,23 @@ const data = [
 ]
 
 const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | LegendComponentOption >>(() => {
-  const config = {
-    barWidth: useDynamicPx(10).value,
-    color: {
-      barLeft: colors.blueHover,
-      barRight: colors.blue,
-    },
-    fontSize: useDynamicPx(15).value,
-    labelDistance: useDynamicPx(10).value,
-  }
+  const blueBarLeft = colors.blueHover
+  const blueBarRight = colors.blue
+  const barWidth = useDynamicPx(10).value
+  const labelDistance = useDynamicPx(10).value
+  const fontSize = useDynamicPx(15).value
   return {
     grid: {
       bottom: 0,
       containLabel: true,
-      left: config.labelDistance,
-      top: config.fontSize * 3,
+      left: labelDistance,
+      top: fontSize * 2,
     },
     legend: {
       data: [
         {
           itemStyle: {
-            color: config.color.barLeft,
+            color: blueBarLeft,
           },
           name: '法诉',
         },
@@ -88,26 +84,28 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         },
       ],
       icon: 'roundRect',
-      itemHeight: config.barWidth,
-      itemWidth: config.barWidth * 2,
+      itemHeight: barWidth,
+      itemWidth: barWidth * 2,
+      padding: 0,
       right: 'left',
       textStyle: {
         color: colors.white,
-        fontSize: config.fontSize,
+        fontSize,
+        lineHeight: fontSize + 1,
       },
       top: 0,
     },
     series: [
       {
-        barWidth: config.barWidth,
+        barWidth,
         data: data.map((item) => ({
           itemStyle: {
-            borderRadius: [config.barWidth / 2, 0, 0, config.barWidth / 2],
+            borderRadius: [barWidth / 2, 0, 0, barWidth / 2],
             color: new graphic.LinearGradient(1, 0, 0, 0, [{
-              color: config.color.barRight,
+              color: blueBarRight,
               offset: 0,
             }, {
-              color: config.color.barLeft,
+              color: blueBarLeft,
               offset: 1,
             }], false),
           },
@@ -115,8 +113,8 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         })),
         label: {
           color: colors.white,
-          distance: config.labelDistance,
-          fontSize: config.fontSize,
+          distance: labelDistance,
+          fontSize,
           position: 'insideBottom',
           show: true,
         },
@@ -125,10 +123,10 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         type: 'bar',
       },
       {
-        barWidth: config.barWidth,
+        barWidth,
         data: data.map((item) => ({
           itemStyle: {
-            borderRadius: [0, config.barWidth / 2, config.barWidth / 2, 0],
+            borderRadius: [0, barWidth / 2, barWidth / 2, 0],
             color: new graphic.LinearGradient(1, 0, 0, 0, [{
               color: colors.lineHover,
               offset: 0,
@@ -141,8 +139,8 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         })),
         label: {
           color: colors.white,
-          distance: config.labelDistance,
-          fontSize: config.fontSize,
+          distance: labelDistance,
+          fontSize,
           position: 'insideBottom',
           show: true,
         },
@@ -153,8 +151,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
     ],
     xAxis: {
       axisLabel: {
-        color: colors.white,
-        fontSize: config.fontSize,
+        show: false,
       },
       splitLine: {
         lineStyle: {
@@ -165,7 +162,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
     yAxis: {
       axisLabel: {
         color: colors.white,
-        fontSize: config.fontSize,
+        fontSize,
       },
       axisLine: {
         lineStyle: {
@@ -177,7 +174,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
       },
       data: data.map((item) => item.name),
       inverse: true,
-      offset: config.labelDistance,
+      offset: labelDistance,
     },
   }
 })

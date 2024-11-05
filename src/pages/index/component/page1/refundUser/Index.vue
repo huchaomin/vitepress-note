@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 15:11:59
+ * @LastEditTime : 2024-11-05 13:47:32
  * @Description  :
 -->
 <script setup lang="ts">
@@ -64,54 +64,52 @@ function rendered() {
 }
 
 const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption>>(() => {
-  const config = {
-    barWidth: useDynamicPx(18).value,
-    bottomEffectScatterHeight: useDynamicPx(10).value,
-    color: {
-      backgroundBar: 'rgba(1, 80, 207,  0.3)',
-      backgroundHat: 'rgba(1, 80, 207, 0.6)',
-      barBottom: colors.blueHover,
-      barHat: 'rgba(14, 195, 255,  1)',
-      barTop: colors.blue,
-      bottomEffectScatter: 'rgba(102, 155, 255, 1)',
-    },
-    fontSize: useDynamicPx(15).value,
-    gridXGap: useDynamicPx(20).value,
+  const barWidth = useDynamicPx(18).value
+  const bottomEffectScatterHeight = useDynamicPx(10).value
+  const color = {
+    backgroundBar: 'rgba(1, 80, 207,  0.3)',
+    backgroundHat: 'rgba(1, 80, 207, 0.6)',
+    barBottom: colors.blueHover,
+    barHat: 'rgba(14, 195, 255,  1)',
+    barTop: colors.blue,
+    bottomEffectScatter: 'rgba(102, 155, 255, 1)',
   }
+  const fontSize = useDynamicPx(15).value
+  const gridXGap = useDynamicPx(20).value
   return {
     grid: {
-      bottom: config.gridXGap,
+      bottom: gridXGap,
       containLabel: true,
       left: 0,
       right: 0,
-      top: config.gridXGap,
+      top: fontSize * 2,
     },
     series: [
     // '最底下的涟漪圆片',
       {
         data: data.map(() => ({
           itemStyle: {
-            color: config.color.bottomEffectScatter,
+            color: color.bottomEffectScatter,
           },
           value: '0',
         })),
-        symbolSize: [config.barWidth, config.bottomEffectScatterHeight], // 宽高
+        symbolSize: [barWidth, bottomEffectScatterHeight], // 宽高
         type: 'effectScatter', // 带有涟漪特效动画的散点（气泡）图
         z: 1,
       },
       // 下半截柱状图
       {
-        barWidth: config.barWidth,
+        barWidth,
         data: data.map((item) => ({
           itemStyle: {
             color: {
               colorStops: [
                 {
-                  color: config.color.barTop,
+                  color: color.barTop,
                   offset: 0,
                 },
                 {
-                  color: config.color.barBottom,
+                  color: color.barBottom,
                   offset: 1,
                 },
               ],
@@ -130,7 +128,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       },
       // 下半截stack 透明柱状图
       {
-        barWidth: config.barWidth,
+        barWidth,
         data: data.map((item) => item.value),
         itemStyle: {
           color: 'transparent',
@@ -142,23 +140,23 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       {
         data: data.map((item) => ({
           itemStyle: {
-            color: config.color.barHat,
+            color: color.barHat,
           },
           symbolPosition: 'end',
           value: item.value,
         })),
-        symbolOffset: [0, -config.bottomEffectScatterHeight / 2],
-        symbolSize: [config.barWidth, config.bottomEffectScatterHeight],
+        symbolOffset: [0, -bottomEffectScatterHeight / 2],
+        symbolSize: [barWidth, bottomEffectScatterHeight],
         type: 'pictorialBar',
         z: 3,
       },
       // 背景
       {
         barGap: '-100%',
-        barWidth: config.barWidth,
+        barWidth,
         data: data.map((item) => ({
           itemStyle: {
-            color: config.color.backgroundBar,
+            color: color.backgroundBar,
           },
           value: maxValue.value - item.value,
         })),
@@ -170,13 +168,13 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       {
         data: data.map(() => ({
           itemStyle: {
-            color: config.color.backgroundHat,
+            color: color.backgroundHat,
           },
           symbolPosition: 'end',
           value: maxValue.value,
         })),
-        symbolOffset: [0, -config.bottomEffectScatterHeight / 2],
-        symbolSize: [config.barWidth, config.bottomEffectScatterHeight],
+        symbolOffset: [0, -bottomEffectScatterHeight / 2],
+        symbolSize: [barWidth, bottomEffectScatterHeight],
         type: 'pictorialBar',
         z: 5,
       },
@@ -184,7 +182,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     xAxis: {
       axisLabel: {
         color: colors.white,
-        fontSize: config.fontSize,
+        fontSize,
       },
       axisLine: {
         lineStyle: {
@@ -195,12 +193,12 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
         show: false,
       },
       data: data.map((item) => item.name),
-      offset: config.gridXGap,
+      offset: gridXGap,
     },
     yAxis: {
       axisLabel: {
         color: colors.white,
-        fontSize: config.fontSize,
+        fontSize,
       },
       splitLine: {
         lineStyle: {

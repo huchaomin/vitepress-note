@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 16:29:18
+ * @LastEditTime : 2024-11-05 13:50:09
  * @Description  :
 -->
 <script setup lang="ts">
@@ -101,7 +101,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
         ...itemOthers,
       },
     ],
-  } as ComposeOption<GridComponentOption | PieSeriesOption >
+  } as ComposeOption<GridComponentOption | PieSeriesOption>
 })
 </script>
 

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 13:48:59
+ * @LastEditTime : 2024-11-05 09:19:52
  * @Description  :
 -->
 <script setup lang="ts">
@@ -11,6 +11,7 @@ import RefundUser from './refundUser/Index.vue'
 import Header from './header/Index.vue'
 import AssetDistribution from './assetDistribution/Index.vue'
 import RefundType from './refundType/Index.vue'
+import RefundDistribution from './refundDistribution/Index.vue'
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import RefundType from './refundType/Index.vue'
     <AssetDistribution></AssetDistribution>
     <RefundUser></RefundUser>
     <RefundType></RefundType>
+    <RefundDistribution></RefundDistribution>
   </div>
 </template>
 
