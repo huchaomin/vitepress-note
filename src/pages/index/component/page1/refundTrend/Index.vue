@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:06:55
+ * @LastEditTime : 2024-11-05 15:20:21
  * @Description  :
 -->
 <script setup lang="ts">
@@ -68,7 +68,7 @@ const option = computed<ComposeOption<GridComponentOption | LegendComponentOptio
     grid: {
       bottom: xAxisOffset,
       containLabel: true,
-      left: 0,
+      left: useDynamicPx(4).value,
       right: 0,
       top: fontSize * 2,
     },
