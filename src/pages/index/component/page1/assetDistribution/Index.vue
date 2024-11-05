@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 13:59:06
+ * @LastEditTime : 2024-11-05 14:06:18
  * @Description  :
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ import {
 } from 'echarts/components'
 import { BarChart, type BarSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors, chartFontFamily } from '@/pages/index/utils/others'
+import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -60,7 +60,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
   const blueBarRight = colors.blue
   const barWidth = useDynamicPx(10).value
   const labelDistance = useDynamicPx(10).value
-  const fontSize = useDynamicPx(15).value
+  const fontSize = useDynamicPx(chartFontSize).value
   return {
     grid: {
       bottom: 0,

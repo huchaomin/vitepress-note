@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:00:36
+ * @LastEditTime : 2024-11-05 14:06:36
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,7 +16,7 @@ import {
 } from 'echarts/components'
 import { PieChart, type PieSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors, chartFontFamily } from '@/pages/index/utils/others'
+import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -38,7 +38,7 @@ const data = [
 const colorList = [colors.blueHover, colors.lineHover]
 
 const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>(() => {
-  const fontSize = useDynamicPx(15).value
+  const fontSize = useDynamicPx(chartFontSize).value
   const itemColor = (params: any) => colorList[params.dataIndex]
   const wrapperItemStyle = {
     opacity: 0.2,

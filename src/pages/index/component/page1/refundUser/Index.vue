@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 13:57:33
+ * @LastEditTime : 2024-11-05 14:05:59
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,7 +16,7 @@ import {
 } from 'echarts/components'
 import { BarChart, EffectScatterChart, PictorialBarChart, type EffectScatterSeriesOption, type PictorialBarSeriesOption, type BarSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors, chartFontFamily } from '@/pages/index/utils/others'
+import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -74,7 +74,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     barTop: colors.blue,
     bottomEffectScatter: 'rgba(102, 155, 255, 1)',
   }
-  const fontSize = useDynamicPx(15).value
+  const fontSize = useDynamicPx(chartFontSize).value
   const gridXGap = useDynamicPx(20).value
   return {
     grid: {

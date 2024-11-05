@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:02:52
+ * @LastEditTime : 2024-11-05 14:06:55
  * @Description  :
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ import {
 } from 'echarts/components'
 import { LineChart, type LineSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
-import { colors, chartFontFamily } from '@/pages/index/utils/others'
+import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
 use([
   GridComponent,
@@ -62,7 +62,7 @@ const data = [
 
 const option = computed<ComposeOption<GridComponentOption | LegendComponentOption | LineSeriesOption >>(() => {
   const xAxisOffset = useDynamicPx(15).value
-  const fontSize = useDynamicPx(15).value
+  const fontSize = useDynamicPx(chartFontSize).value
   const symbolSize = useDynamicPx(10).value
   return {
     grid: {
