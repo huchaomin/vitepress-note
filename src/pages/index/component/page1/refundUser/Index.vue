@@ -6,7 +6,7 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import ChartTitle from '../../ChartTitle.vue'
+import ChartTitle from '../ChartTitle.vue'
 import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
 import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'

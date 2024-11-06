@@ -2,11 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:06:18
+ * @LastEditTime : 2024-11-06 13:48:06
  * @Description  :
 -->
 <script setup lang="ts">
-import ChartTitle from '../../ChartTitle.vue'
+import ChartTitle from '../ChartTitle.vue'
 import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
