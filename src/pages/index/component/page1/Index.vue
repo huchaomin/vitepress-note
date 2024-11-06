@@ -2,23 +2,24 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 16:12:47
+ * @LastEditTime : 2024-11-06 13:46:14
  * @Description  :
 -->
 <script setup lang="ts">
 import RefundScroll from './refundScroll/Index.vue'
 import RefundUser from './refundUser/Index.vue'
-import Header from './header/Index.vue'
+import HeaderBar from './header/Index.vue'
 import AssetDistribution from './assetDistribution/Index.vue'
 import RefundType from './refundType/Index.vue'
 import RefundTrend from './refundTrend/Index.vue'
 import RefundTotal from './refundTotal/Index.vue'
 import AssetSize from './assetSize/Index.vue'
+// import FooterBar from './footer/Index.vue'
 </script>
 
 <template>
   <div class="page1_wrapper absolute h-full w-full">
-    <Header></Header>
+    <HeaderBar></HeaderBar>
     <RefundScroll></RefundScroll>
     <AssetDistribution></AssetDistribution>
     <RefundUser></RefundUser>
@@ -26,6 +27,7 @@ import AssetSize from './assetSize/Index.vue'
     <RefundTrend></RefundTrend>
     <RefundTotal></RefundTotal>
     <AssetSize></AssetSize>
+    <!-- <FooterBar></FooterBar> -->
   </div>
 </template>
 

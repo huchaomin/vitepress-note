@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 14:05:59
+ * @LastEditTime : 2024-11-06 10:47:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -82,7 +82,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       containLabel: true,
       left: 0,
       right: 0,
-      top: fontSize * 2,
+      top: fontSize,
     },
     series: [
     // '最底下的涟漪圆片',
