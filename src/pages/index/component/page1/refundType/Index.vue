@@ -1,13 +1,13 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 16:25:28
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-06 23:13:28
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
+import pie_chart from '@/pages/index/assets/json/lottie/pie_chart.json?url'
 import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
@@ -108,7 +108,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
 
 <template>
   <div class="asset_distribution_wrapper absolute flex flex-col">
-    <ChartTitle :src="bar_chart" title="回款方式"></ChartTitle>
+    <ChartTitle :src="pie_chart" title="回款方式"></ChartTitle>
     <div class="flex-auto relative">
       <VChart :option="option" autoresize></VChart>
       <div class="absolute flex flex-col items-center justify-center w-full h-full" style=" top: 0; left: 0;z-index: -1;">

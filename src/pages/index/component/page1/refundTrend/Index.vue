@@ -1,13 +1,13 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-05 15:20:21
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-06 23:01:08
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
+import line_chart from '@/pages/index/assets/json/lottie/line_chart.json?url'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
@@ -164,7 +164,7 @@ const option = computed<ComposeOption<GridComponentOption | LegendComponentOptio
 
 <template>
   <div class="asset_distribution_wrapper absolute flex flex-col">
-    <ChartTitle :src="bar_chart" title="回款趋势"></ChartTitle>
+    <ChartTitle :src="line_chart" title="回款趋势"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>

@@ -1,13 +1,13 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 13:48:06
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-06 23:34:32
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
+import bar_chart2 from '@/pages/index/assets/json/lottie/bar_chart2.json?url'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
@@ -186,7 +186,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
 
 <template>
   <div class="asset_distribution_wrapper absolute flex flex-col">
-    <ChartTitle :src="bar_chart" title="当前资产分布"></ChartTitle>
+    <ChartTitle :src="bar_chart2" title="当前资产分布"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>
