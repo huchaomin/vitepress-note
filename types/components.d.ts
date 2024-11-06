@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
+    NButton: typeof import('naive-ui')['NButton']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']

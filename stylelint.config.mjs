@@ -31,11 +31,11 @@ export default {
     ],
     'import-notation': 'string', // url 模式好像 tailwindcss 引入有问题
     'selector-class-pattern': [
-      '^(el-|([a-z][a-z0-9]*)(_[a-z0-9]+)*)$',
+      '^(n-|([a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9])$)',
       {
         // disableFix: true, // disable autofix
         message: '自定义 class 名称使用 snake_case',
       },
-    ], // TODO 类名命名规则：snake_case
+    ],
   },
 }

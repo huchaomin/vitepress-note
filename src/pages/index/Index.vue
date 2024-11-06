@@ -2,12 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 17:21:47
+ * @LastEditTime : 2024-11-06 18:10:35
  * @Description  :
 -->
 <script setup lang="ts">
 import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
+import SwiperBtns from './component/swiperBtns/Index.vue'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
@@ -23,6 +24,7 @@ onMounted(() => {
       <div class="canvas_parent relative h-full w-full">
         <canvas ref="canvasRef"></canvas>
         <Page1></Page1>
+        <SwiperBtns></SwiperBtns>
       </div>
     </div>
   </div>

@@ -35,6 +35,9 @@ importers:
       pinia-plugin-persistedstate:
         specifier: ^4.1.2
         version: 4.1.2(pinia@2.2.4(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3)))(rollup@4.24.0)
+      swiper:
+        specifier: ^11.1.14
+        version: 11.1.14
       three:
         specifier: ^0.169.0
         version: 0.169.0
@@ -3492,6 +3495,10 @@ packages:
 
   svg-tags@1.0.0:
     resolution: {integrity: sha512-ovssysQTa+luh7A5Weu3Rta6FJlFBBbInjOh722LIt6klpU2/HtdUbszju/G4devcvk8PGt7FCLv5wftu3THUA==}
+
+  swiper@11.1.14:
+    resolution: {integrity: sha512-VbQLQXC04io6AoAjIUWuZwW4MSYozkcP9KjLdrsG/00Q/yiwvhz9RQyt0nHXV10hi9NVnDNy1/wv7Dzq1lkOCQ==}
+    engines: {node: '>= 4.7.0'}
 
   synckit@0.6.2:
     resolution: {integrity: sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==}
@@ -7533,6 +7540,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   svg-tags@1.0.0: {}
+
+  swiper@11.1.14: {}
 
   synckit@0.6.2:
     dependencies:
