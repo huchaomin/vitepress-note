@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:14:34
+ * @LastEditTime : 2024-11-07 16:00:48
  * @Description  :
 -->
 <script setup lang="ts">
@@ -65,6 +65,7 @@ function rendered() {
 
 const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption>>(() => {
   const barWidth = useDynamicPx(18).value
+  const bottomEffectScatterWidth = useDynamicPx(26).value
   const bottomEffectScatterHeight = useDynamicPx(10).value
   const color = {
     backgroundBar: 'rgba(1, 80, 207,  0.3)',
@@ -93,7 +94,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
           },
           value: '0',
         })),
-        symbolSize: [barWidth, bottomEffectScatterHeight], // 宽高
+        symbolSize: [bottomEffectScatterWidth, bottomEffectScatterHeight], // 宽高
         type: 'effectScatter', // 带有涟漪特效动画的散点（气泡）图
         z: 1,
       },

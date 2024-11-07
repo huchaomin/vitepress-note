@@ -2,13 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 14:25:19
+ * @LastEditTime : 2024-11-07 16:09:00
  * @Description  :
 -->
 <script setup lang="ts">
 import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
 import SwiperBtns from './component/swiperBtns/Index.vue'
+import HeaderBar from './component/header/Index.vue'
+import FooterBar from './component/footer/Index.vue'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
@@ -23,8 +25,10 @@ onMounted(() => {
     <div style="aspect-ratio: 16/9;">
       <div class="canvas_parent relative h-full w-full">
         <canvas ref="canvasRef"></canvas>
+        <HeaderBar></HeaderBar>
         <Page1></Page1>
         <SwiperBtns></SwiperBtns>
+        <FooterBar></FooterBar>
       </div>
     </div>
   </div>

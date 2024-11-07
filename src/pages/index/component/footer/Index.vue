@@ -2,11 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 10:59:39
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:48:49
+ * @LastEditTime : 2024-11-07 15:57:10
  * @Description  :
 -->
 <script setup lang="ts">
-import footerSvg from '@/pages/index/assets/svg/footer1.svg?raw'
+import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
 
 </script>
 
