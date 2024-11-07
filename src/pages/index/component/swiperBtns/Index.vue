@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 13:55:34
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 18:10:14
+ * @LastEditTime : 2024-11-07 15:02:14
  * @Description  : slideToClickedSlide 不能和 loop 一起使用
 -->
 <script setup lang="ts">
@@ -52,10 +52,10 @@ const btnArr: Array<{
 
 <style scoped>
 .swiper_btns_wrapper {
-  bottom: 2vw;
+  bottom: 4.8vw;
   left: 50%;
   z-index: 2;
-  width: 36%;
+  width: 38%;
   transform: translateX(-50%);
 
   :deep() {
@@ -64,7 +64,10 @@ const btnArr: Array<{
       --n-width: 100%;
 
       font-size: 1.6rem;
-      background: linear-gradient(to bottom, rgb(0 72 203 / 10%), rgb(14 195 255 / 20%));
+
+      /* background: linear-gradient(to bottom, rgb(0 72 203 / 10%), rgb(14 195 255 / 20%)); */
+      background: rgb(12 66 105 / 30%);
+      backdrop-filter: blur(3px);
     }
   }
 }

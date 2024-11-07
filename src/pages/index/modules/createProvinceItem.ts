@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 10:02:09
+ * @LastEditTime : 2024-11-07 14:28:00
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -18,7 +18,7 @@ interface province {
 }
 
 function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstance {
-  const label = _this.label3d.create()
+  const label = _this.label3d.create('badges_label_wrapper')
   label.init(
     `<div class="badges_label">
       <p>2024-10-24</p>
@@ -38,7 +38,7 @@ function addLabelName(_this: CanvasRenderType, position: Vector3, data: province
 }
 
 function addLabelArrow(_this: CanvasRenderType, position: Vector3): labelInstance {
-  const label = _this.label3d.create()
+  const label = _this.label3d.create('arrow_down_icon_wrapper')
   label.init(`<img class="arrow_down_icon" src="${arrowDown}" alt="" />`, position)
   return label
 }
@@ -70,12 +70,11 @@ function addCenterCircle(_this: CanvasRenderType, position: THREE.Vector3) {
   const mesh1 = new Mesh(geometry, material1)
   mesh1.renderOrder = 24
   mesh1.scale.set(0, 0, 0)
-  _this.time.on('tick', (delta) => {
-    mesh1.rotation.z += delta * 2
-  })
+  mesh1.userData = {
+    type: 'inner',
+  }
   const mesh2 = new Mesh(geometry, material2)
   mesh2.renderOrder = 24
-  mesh2.position.z -= 0.001
   mesh2.scale.set(0, 0, 0)
   const group = new Group()
   group.add(mesh1, mesh2)

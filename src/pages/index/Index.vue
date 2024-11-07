@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 18:10:35
+ * @LastEditTime : 2024-11-07 14:25:19
  * @Description  :
 -->
 <script setup lang="ts">
@@ -49,49 +49,55 @@ canvas {
     opacity: 0;
   }
 
-  & :deep(.badges_label) {
-    position: relative;
-    bottom: 47px;
-    padding: 10px;
-    background: #0e1937;
-    border: 1px solid #1e7491;
+  & :deep(.badges_label_wrapper) {
     opacity: 0;
 
-    .amt {
-      color: var(--color-yellow);
-    }
+    .badges_label {
+      position: relative;
+      bottom: 47px;
+      padding: 10px;
+      background: #0e1937;
+      border: 1px solid #1e7491;
 
-    &::after {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: block;
-      width: 10px;
-      height: 10px;
-      content: '';
-      border-right: 2px solid #6cfffe;
-      border-bottom: 2px solid #6cfffe;
-    }
+      .amt {
+        color: var(--color-yellow);
+      }
 
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      width: 10px;
-      height: 10px;
-      content: '';
-      border-top: 2px solid #6cfffe;
-      border-left: 2px solid #6cfffe;
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+        content: '';
+        border-right: 2px solid #6cfffe;
+        border-bottom: 2px solid #6cfffe;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+        content: '';
+        border-top: 2px solid #6cfffe;
+        border-left: 2px solid #6cfffe;
+      }
     }
   }
 
-  & :deep(.arrow_down_icon) {
-    position: relative;
-    bottom: 7px;
-    width: 16px;
-    height: 16px;
+  & :deep(.arrow_down_icon_wrapper) {
     opacity: 0;
+
+    .arrow_down_icon {
+      position: relative;
+      bottom: 7px;
+      width: 16px;
+      height: 16px;
+    }
   }
 
   & :deep() {

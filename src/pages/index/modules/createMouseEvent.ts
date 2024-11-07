@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 11:23:16
+ * @LastEditTime : 2024-11-07 14:25:48
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -47,6 +47,19 @@ export default (
     provinceCenterCircleArr.forEach((group) => {
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
+        group.traverse((g) => {
+          if (g.userData.type === 'inner') {
+            if (type === 'up') {
+              const callback = (delta: number) => {
+                g.rotation.z += delta * 2
+              }
+              g.userData.callback = callback
+              _this.time.on('tick', callback)
+            } else {
+              _this.time.off('tick', g.userData.callback as (...args: any[]) => void)
+            }
+          }
+        })
       }
     })
   }
@@ -55,6 +68,11 @@ export default (
     ;[...provinceBadgeLabelArr, ...provinceArrowLabelArr].forEach((group) => {
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
+        gsap.to(group.element, {
+          duration: 0.5,
+          ease: 'circ.out',
+          opacity: type === 'up' ? 1 : 0,
+        })
       }
     })
   }
