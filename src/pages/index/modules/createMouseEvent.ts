@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-05 00:28:19
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-07 11:23:16
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -65,11 +65,13 @@ export default (
       // onComplete: () => {},
       z: 0,
     })
-    group.traverse((obj) => {
-      if ((obj as THREE.Mesh).isMesh) {
-        const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
-        o.material[0].emissive.setHex(group.userData.materialEmissiveHex as number)
-        o.material[0].emissiveIntensity = 1
+    group.traverse((g) => {
+      if (g.userData.type === 'shape') {
+        // TODO 为什么这里不能用g.traverse
+        g.children.forEach((m) => {
+          const o = m as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
+          o.material[0].emissive.setHex(o.userData.materialEmissiveHex as number)
+        })
       }
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'down')
@@ -81,11 +83,12 @@ export default (
       duration: 0.3,
       z: _this.depth,
     })
-    group.traverse((obj) => {
-      if ((obj as THREE.Mesh).isMesh) {
-        const o = obj as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
-        o.material[0].emissive.setHex(0x0b112d)
-        o.material[0].emissiveIntensity = 2 // 放射光强度
+    group.traverse((g) => {
+      if (g.userData.type === 'shape') {
+        g.children.forEach((m) => {
+          const o = m as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
+          o.material[0].emissive.setHex(0x0e86b2)
+        })
       }
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'up')
@@ -117,7 +120,7 @@ export default (
         } & THREE.Mesh
       >
       _this.canvas.style.cursor = 'pointer'
-      up(event.target.parent.parent)
+      up(event.target.parent.parent) // tempGroup
     })
     mesh.addEventListener('mouseout', (e) => {
       const event = e as unknown as THREE.Event<
@@ -129,7 +132,7 @@ export default (
         } & THREE.Mesh
       >
       _this.canvas.style.cursor = 'default'
-      down(event.target.parent.parent)
+      down(event.target.parent.parent) // tempGroup
     })
   })
 }

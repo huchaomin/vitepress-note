@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 09:47:04
+ * @LastEditTime : 2024-11-07 10:12:27
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -49,6 +49,9 @@ export default class CanvasRender extends ThreeCore {
       this.canvas,
     )
     this.mapSceneGroup = new Group()
+    this.mapSceneGroup.position.set(-6, 0, 36)
+    this.mapSceneGroup.rotateY(-Math.PI / 8)
+    this.mapSceneGroup.rotateZ(Math.PI / 2 / 18)
     this.scene.add(this.mapSceneGroup)
 
     this.label3d = new Label3d(this)
