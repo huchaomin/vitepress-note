@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-06 23:34:32
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-07 15:19:45
  * @Description  :
 -->
 <script setup lang="ts">
@@ -46,6 +46,11 @@ const data = [
   {
     name: '银登资产',
     value: 23,
+    value2: 43,
+  },
+  {
+    name: 'QC资产',
+    value: 43,
     value2: 43,
   },
   {
@@ -193,9 +198,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
 
 <style scoped>
 .asset_distribution_wrapper {
-  top: 2vw;
-  left: 2vw;
-  width: 24vw;
-  height: 18vw;
+  top: 3vw;
+  height: 22vw;
 }
 </style>

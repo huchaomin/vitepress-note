@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 14:40:37
+ * @LastEditTime : 2024-11-07 15:21:38
  * @Description  :
 -->
 <script setup lang="ts">
@@ -37,5 +37,28 @@ import FooterBar from './footer/Index.vue'
   left: 0;
   z-index: 1;
   pointer-events: none;
+
+  .refund_user_wrapper,
+  .asset_distribution_wrapper,
+  .refund_type_wrapper,
+  .refund_trend_wrapper {
+    width: 23vw;
+  }
+
+  .refund_user_wrapper,
+  .asset_distribution_wrapper {
+    left: 1.8vw;
+  }
+
+  .refund_type_wrapper,
+  .refund_trend_wrapper,
+  .asset_size_wrapper {
+    right: 1.8vw;
+  }
+
+  .refund_user_wrapper,
+  .refund_trend_wrapper {
+    bottom: 5vw;
+  }
 }
 </style>

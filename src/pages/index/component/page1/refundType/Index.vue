@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-06 23:13:28
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-07 15:26:25
  * @Description  :
 -->
 <script setup lang="ts">
@@ -72,7 +72,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
           fontSize,
           show: true,
         },
-        radius: ['60%', '80%'],
+        radius: ['58%', '78%'],
         ...itemOthers,
       },
       {
@@ -85,7 +85,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
         label: {
           show: false,
         },
-        radius: ['54%', '61%'],
+        radius: ['52%', '59%'],
         ...itemOthers,
       },
       {
@@ -98,7 +98,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
         label: {
           show: false,
         },
-        radius: ['79%', '86%'],
+        radius: ['77%', '84%'],
         ...itemOthers,
       },
     ],
@@ -107,7 +107,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
 </script>
 
 <template>
-  <div class="asset_distribution_wrapper absolute flex flex-col">
+  <div class="refund_type_wrapper absolute flex flex-col">
     <ChartTitle :src="pie_chart" title="回款方式"></ChartTitle>
     <div class="flex-auto relative">
       <VChart :option="option" autoresize></VChart>
@@ -120,10 +120,8 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption >>((
 </template>
 
 <style scoped>
-.asset_distribution_wrapper {
-  top: 12vw;
-  right: 2vw;
-  width: 24vw;
+.refund_type_wrapper {
+  top: 13vw;
   height: 18vw;
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 10:09:46
+ * @LastEditTime : 2024-11-07 15:22:50
  * @Description  :
 -->
 <script setup lang="ts">
@@ -33,8 +33,7 @@ const totalSplitArr = computed(() => {
 
 <style scoped>
   .asset_size_wrapper {
-    top: 4.8vw;
-    right: 2vw;
+    top: 6.2vw;
     font-size: 2.4rem;
   }
 

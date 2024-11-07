@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 13:55:34
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:02:14
+ * @LastEditTime : 2024-11-07 15:35:15
  * @Description  : slideToClickedSlide 不能和 loop 一起使用
 -->
 <script setup lang="ts">
@@ -66,8 +66,8 @@ const btnArr: Array<{
       font-size: 1.6rem;
 
       /* background: linear-gradient(to bottom, rgb(0 72 203 / 10%), rgb(14 195 255 / 20%)); */
-      background: rgb(12 66 105 / 30%);
-      backdrop-filter: blur(3px);
+      background: rgb(12 66 105 / 45%);
+      backdrop-filter: blur(7.5px);
     }
   }
 }

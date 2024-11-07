@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 10:47:28
+ * @LastEditTime : 2024-11-07 15:14:34
  * @Description  :
 -->
 <script setup lang="ts">
@@ -222,9 +222,6 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
 
 <style scoped>
 .refund_user_wrapper {
-  bottom: 2vw;
-  left: 2vw;
-  width: 24vw;
   height: 23vw;
 }
 </style>

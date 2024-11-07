@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-06 23:01:08
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-07 15:15:02
  * @Description  :
 -->
 <script setup lang="ts">
@@ -163,17 +163,14 @@ const option = computed<ComposeOption<GridComponentOption | LegendComponentOptio
 </script>
 
 <template>
-  <div class="asset_distribution_wrapper absolute flex flex-col">
+  <div class="refund_trend_wrapper absolute flex flex-col">
     <ChartTitle :src="line_chart" title="回款趋势"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>
 
 <style scoped>
-.asset_distribution_wrapper {
-  right: 2vw;
-  bottom: 2vw;
-  width: 24vw;
+.refund_trend_wrapper {
   height: 18vw;
 }
 </style>
