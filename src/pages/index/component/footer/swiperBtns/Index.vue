@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 13:55:34
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:35:15
+ * @LastEditTime : 2024-11-07 16:29:51
  * @Description  : slideToClickedSlide 不能和 loop 一起使用
 -->
 <script setup lang="ts">
@@ -32,7 +32,7 @@ const btnArr: Array<{
 </script>
 
 <template>
-  <div class="absolute swiper_btns_wrapper">
+  <div class="swiper_btns_wrapper">
     <Swiper
       :modules="[Autoplay]"
       :slides-per-view="3"
@@ -52,12 +52,6 @@ const btnArr: Array<{
 
 <style scoped>
 .swiper_btns_wrapper {
-  bottom: 4.8vw;
-  left: 50%;
-  z-index: 2;
-  width: 38%;
-  transform: translateX(-50%);
-
   :deep() {
     .n-button {
       --n-padding: 2rem 0;

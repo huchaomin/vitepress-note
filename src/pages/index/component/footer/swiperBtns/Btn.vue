@@ -2,11 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 16:06:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 09:56:48
+ * @LastEditTime : 2024-11-07 16:27:07
  * @Description  : swiper.slideTo 好像不能和 loop 一起使用
 -->
 <script setup lang="ts">
-import { colors } from '../../utils/others'
+import { colors } from '@/pages/index/utils/others'
 import { useSwiper } from 'swiper/vue'
 
 const props = withDefaults(
@@ -39,11 +39,11 @@ function swiperTo() {
 <template>
   <NButton ghost :color="isActive ? colors.white : colors.blueHover" @click="swiperTo">
     <span
-class="text"
-:class="{
-      isNext,
-      isPrev,
-    }">
+      class="text"
+      :class="{
+        isNext,
+        isPrev,
+      }">
       {{ text }}
     </span>
   </NButton>

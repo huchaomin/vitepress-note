@@ -2,11 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 10:59:39
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:57:10
+ * @LastEditTime : 2024-11-07 16:35:19
  * @Description  :
 -->
 <script setup lang="ts">
 import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
+import SwiperBtns from './swiperBtns/Index.vue'
 
 </script>
 
@@ -16,7 +17,10 @@ import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
 
 <template>
   <div class="flex items-center footer_wrapper absolute flex-col">
-    <div class="gap"></div>
+    <div class="top relative">
+      <SwiperBtns></SwiperBtns>
+      <div class="gap"></div>
+    </div>
     <div class="img" v-html="footerSvg"></div>
   </div>
 </template>
@@ -29,11 +33,13 @@ import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
   width: 100%;
 }
 
-.gap {
-  position: relative;
+.top {
   top: 2vw;
   z-index: -1;
   width: 38%;
+}
+
+.gap {
   height: 2.4vw;
   background: rgb(12 66 105 / 45%);
   backdrop-filter: blur(7.5px);
