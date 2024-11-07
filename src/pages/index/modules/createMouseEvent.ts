@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 14:25:48
+ * @LastEditTime : 2024-11-07 17:00:15
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -68,6 +68,9 @@ export default (
     ;[...provinceBadgeLabelArr, ...provinceArrowLabelArr].forEach((group) => {
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
+        if (group.update !== undefined) {
+          group.update('9999-99-99', Math.floor(Math.random() * 11))
+        }
         gsap.to(group.element, {
           duration: 0.5,
           ease: 'circ.out',

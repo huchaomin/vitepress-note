@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 14:28:00
+ * @LastEditTime : 2024-11-07 17:01:50
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -21,12 +21,16 @@ function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstanc
   const label = _this.label3d.create('badges_label_wrapper')
   label.init(
     `<div class="badges_label">
-      <p>2024-10-24</p>
+      <p class="date"></p>
       <p>
-        回款：<span class="amt">${getRandomInt()}元</span>
+        回款：<span class="amt"></span>元
       </p>
     </div>`,
     position,
+    (date: string, amt: number | string) => {
+      label.element.querySelector('.date')!.textContent = date
+      label.element.querySelector('.amt')!.textContent = String(amt)
+    },
   )
   return label
 }
@@ -80,10 +84,6 @@ function addCenterCircle(_this: CanvasRenderType, position: THREE.Vector3) {
   group.add(mesh1, mesh2)
   group.position.copy(position)
   return group
-}
-
-function getRandomInt(): number {
-  return Math.floor(Math.random() * 11)
 }
 
 export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {

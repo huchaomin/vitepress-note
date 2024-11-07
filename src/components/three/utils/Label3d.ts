@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 15:04:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 16:56:00
+ * @LastEditTime : 2024-11-07 16:57:28
  * @Description  :
  */
 import {
@@ -15,8 +15,9 @@ import type { ThreeCore } from '../core'
 
 export type labelInstance = {
   hide: () => labelInstance
-  init: (name: string, point: THREE.Vector3) => labelInstance
+  init: (name: string, point: THREE.Vector3, update?: labelInstance['update']) => labelInstance
   show: () => labelInstance
+  update?: (...arg: any) => void
 } & (InstanceType<typeof CSS3DObject> | InstanceType<typeof CSS3DSprite>)
 
 export default class Label3d {
@@ -52,11 +53,12 @@ export default class Label3d {
       labelInit = new CSS3DSprite(tag)
     }
     const label = labelInit as labelInstance
-    label.init = (innerHTML: string, position: THREE.Vector3) => {
+    label.init = (innerHTML: string, position: THREE.Vector3, update) => {
       label.element.innerHTML = innerHTML
       label.element.style.visibility = 'visible'
       label.position.copy(position)
       label.scale.set(this.labelScale, this.labelScale, this.labelScale) // 根据相机渲染范围控制HTML 3D标签尺寸
+      label.update = update
       return label
     }
     label.hide = () => {
