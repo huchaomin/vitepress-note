@@ -22,9 +22,10 @@
     }
 
     .h_title_text {
-      font-size: 30px;
-      letter-spacing: 8;
+      font-size: 2.4rem;
+      letter-spacing: 1rem;
       fill: #fff;
+      font-family: system-ui;
     }
   </style>
   <g>
@@ -113,5 +114,5 @@
     <animate attributeName="rx" values="50;138;50" dur="2s" repeatCount="indefinite" />
     <animate attributeName="cx" values="800;960;1120;960;800" dur="4s" repeatCount="indefinite" />
   </ellipse>
-  <text transform="matrix(1 0 0 1 863 49.5948)" class="h_title_text">擎聪智慧大屏系统</text>
+  <text transform="matrix(1 0 0 1 773 49.5948)" class="h_title_text">擎聪智慧大屏系统</text>
 </svg>
