@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 16:06:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-06 17:56:31
+ * @LastEditTime : 2024-11-07 09:56:48
  * @Description  : swiper.slideTo 好像不能和 loop 一起使用
 -->
 <script setup lang="ts">
@@ -51,6 +51,7 @@ class="text"
 
 <style scoped>
   .text {
+    transition: transform 0.6s;
     transform: perspective(9rem) rotateX(-28deg);
     transform-origin: bottom;
 

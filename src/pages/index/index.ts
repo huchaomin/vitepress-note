@@ -27,7 +27,7 @@ export default class CanvasRender extends ThreeCore {
   depth: number
   interactionManager: InteractionManager
   label3d: Label3d
-  mainSceneGroup: Group
+  mapSceneGroup: Group
   provinceMeshArr: THREE.Mesh[]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
@@ -48,8 +48,8 @@ export default class CanvasRender extends ThreeCore {
       this.camera.instance,
       this.canvas,
     )
-    this.mainSceneGroup = new Group()
-    this.scene.add(this.mainSceneGroup)
+    this.mapSceneGroup = new Group()
+    this.scene.add(this.mapSceneGroup)
 
     this.label3d = new Label3d(this)
     this.assets = []

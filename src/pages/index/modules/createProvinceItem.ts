@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-05 00:27:52
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-07 10:02:09
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -115,7 +115,7 @@ export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
       nameArr.push(name)
       centerCircleArr.push(centerCircle)
     })
-  _this.mainSceneGroup.add(
+  _this.mapSceneGroup.add(
     new Group().add(...badgeArr),
     new Group().add(...arrowArr),
     new Group().add(...nameArr),

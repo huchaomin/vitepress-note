@@ -65,7 +65,7 @@ export default (_this: CanvasRenderType) => {
     group.add(mesh)
   })
   group.visible = true
-  _this.mainSceneGroup.add(group)
+  _this.mapSceneGroup.add(group)
   _this.time.on('tick', (delta) => {
     if (group.visible) {
       texture.offset.x += 0.1 * delta

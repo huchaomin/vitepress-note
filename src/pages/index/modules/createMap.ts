@@ -208,7 +208,7 @@ export default (_this: CanvasRenderType) => {
       }
     })
   })
-  _this.mainSceneGroup.add(group)
+  _this.mapSceneGroup.add(group)
   return {
     group, // group -> tempGroup -> shapeGroup | lineGroup
     provinceLineMaterial,
