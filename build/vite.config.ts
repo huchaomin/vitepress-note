@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-04 09:27:05
+ * @LastEditTime : 2024-11-08 16:01:36
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -78,6 +78,8 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         'echarts/charts',
         'echarts/renderers',
         '@lottiefiles/dotlottie-vue',
+        'swiper/vue',
+        'swiper/modules',
       ],
     },
     plugins: [
@@ -101,6 +103,10 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
           'pinia',
           '@vueuse/core',
           autoImportStoreList,
+          {
+            from: 'alova/client',
+            imports: ['useRequest', 'useWatcher', 'usePagination '],
+          },
         ],
         // eslintrc: {
         //   enabled: true,

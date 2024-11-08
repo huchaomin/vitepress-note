@@ -1,21 +1,26 @@
 /*
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-03 17:01:05
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-08 14:21:15
  * @Description  :
  */
 import { baseSize, designWidth } from '@/utils/config'
+import { useLoadingBar } from 'naive-ui'
 
 export default defineStore('common', () => {
   // 全局加载状态
   const loading = ref(false)
   const loadingCount = ref(0)
-  const loadingText = ref('')
   watch(loadingCount, (val) => {
     loading.value = val > 0
-    if (val === 0) {
-      loadingText.value = ''
+  })
+  watch(loading, (val) => {
+    const loadingBar = useLoadingBar()
+    if (val) {
+      loadingBar.start()
+    } else {
+      loadingBar.finish()
     }
   })
   const screenWidth = ref(0)
@@ -39,7 +44,6 @@ export default defineStore('common', () => {
   return {
     loading,
     loadingCount,
-    loadingText,
     screenWidth,
   }
 })
