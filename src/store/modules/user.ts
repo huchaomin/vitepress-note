@@ -5,10 +5,13 @@
  * @LastEditTime : 2024-11-08 11:45:56
  * @Description  :
  */
+import { login } from '@/api/root'
+
 export default defineStore(
   'user',
   () => {
     const token = ref('')
+    function login() {}
     function clearSession() {
       token.value = ''
     }
