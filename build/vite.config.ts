@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 16:01:36
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-09 22:56:59
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -80,6 +80,9 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         '@lottiefiles/dotlottie-vue',
         'swiper/vue',
         'swiper/modules',
+        'alova',
+        'alova/fetch',
+        'alova/vue',
       ],
     },
     plugins: [

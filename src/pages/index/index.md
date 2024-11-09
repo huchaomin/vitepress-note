@@ -9,11 +9,11 @@ import { defineClientComponent } from 'vitepress'
 
 const userStore = useUserStore()
 const Index = defineClientComponent(async () => {
-  if(useStore.token === ''){
+  return import('./Index.vue')
+  // if(useStore.token === ''){
 
-  } else {
-    return import('./Index.vue')
-  }
+  // } else {
+  // }
 })
 </script>
 <Index></Index>

@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 10:59:39
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 16:35:19
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-09 23:08:10
  * @Description  :
 -->
 <script setup lang="ts">
@@ -40,9 +40,14 @@ import SwiperBtns from './swiperBtns/Index.vue'
 }
 
 .gap {
-  height: 2.4vw;
+  height: 2.8vw;
   background: rgb(12 66 105 / 45%);
   backdrop-filter: blur(7.5px);
+  border-radius: 2px;
   box-shadow: 0 8px 32px rgb(31 38 135 / 37%);
+}
+
+.img {
+  width: 80%;
 }
 </style>

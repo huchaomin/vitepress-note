@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-09 11:02:44
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-09 23:32:37
  * @Description  :
 -->
 <script setup lang="ts">
@@ -51,7 +51,7 @@ canvas {
   color: var(--color-white);
 
   & :deep(.provinces_name) {
-    top: -2.5px;
+    top: -0.1563rem;
     font-size: 0.8rem;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
@@ -62,8 +62,8 @@ canvas {
 
     .badges_label {
       position: relative;
-      bottom: 47px;
-      padding: 10px;
+      bottom: 3rem;
+      padding: 0.5rem;
       background: #0e1937;
       border: 1px solid #1e7491;
 
@@ -76,11 +76,11 @@ canvas {
         right: 0;
         bottom: 0;
         display: block;
-        width: 10px;
-        height: 10px;
+        width: 0.625rem;
+        height: 0.625rem;
         content: '';
-        border-right: 2px solid #6cfffe;
-        border-bottom: 2px solid #6cfffe;
+        border-right: 0.125rem solid #6cfffe;
+        border-bottom: 0.125rem solid #6cfffe;
       }
 
       &::before {
@@ -88,11 +88,11 @@ canvas {
         top: 0;
         left: 0;
         display: block;
-        width: 10px;
-        height: 10px;
+        width: 0.625rem;
+        height: 0.625rem;
         content: '';
-        border-top: 2px solid #6cfffe;
-        border-left: 2px solid #6cfffe;
+        border-top: 0.125rem solid #6cfffe;
+        border-left: 0.125rem solid #6cfffe;
       }
     }
   }
@@ -102,16 +102,16 @@ canvas {
 
     .arrow_down_icon {
       position: relative;
-      bottom: 7px;
-      width: 16px;
-      height: 16px;
+      bottom: 0.5rem;
+      width: 1rem;
+      height: 1rem;
     }
   }
 
   & :deep() {
     h3 {
       font-size: 1.2rem;
-      letter-spacing: 4px;
+      letter-spacing: 0.25rem;
     }
   }
 }
