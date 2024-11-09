@@ -2,11 +2,12 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-07-20 09:00:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 14:56:14
+ * @LastEditTime : 2024-11-09 10:52:34
  * @Description  :
  */
 
-import { useNotification, type NotificationOptions } from 'naive-ui'
+import { useNotify } from '@/plugins/naive-ui/discreteApi'
+import type { NotificationOptions } from 'naive-ui'
 
 enum NotificationTypes {
   error = 'error',
@@ -36,7 +37,7 @@ const create: createFn = (
     ...options
   } = {},
 ) => {
-  const notification = useNotification()
+  const notification = useNotify()
   notification[type]({
     content,
     duration,
