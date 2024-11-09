@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 14:30:15
+ * @LastEditTime : 2024-11-08 17:57:45
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -19,12 +19,8 @@ const { frontmatter } = useData()
 </script>
 
 <template>
-  <NLoadingBarProvider>
-    <NNotificationProvider>
-      <NLayout :position="isMobile ? 'static' : 'absolute'" class="root-layout">
-        <component :is="layoutMap[frontmatter.layout ?? 'default']"></component>
-      </NLayout>
-      <NGlobalStyle></NGlobalStyle>
-    </NNotificationProvider>
-  </NLoadingBarProvider>
+  <NLayout :position="isMobile ? 'static' : 'absolute'" class="root-layout">
+    <component :is="layoutMap[frontmatter.layout ?? 'default']"></component>
+  </NLayout>
+  <NGlobalStyle></NGlobalStyle>
 </template>

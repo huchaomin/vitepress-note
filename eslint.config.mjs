@@ -50,14 +50,6 @@ export default antfu(
   eslintPluginPrettierRecommended,
   {
     rules: {
-      'antfu/consistent-chaining': 'off',
-      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      'perfectionist/sort-imports': 'off', // 有其他排序插件
-      'perfectionist/sort-named-imports': 'off', // 有其他排序插件
-      'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
-      'prefer-promise-reject-errors': 'off',
-      'prettier/prettier': ['error'],
       // TODO
       // 'ts/strict-boolean-expressions': [
       //   'error',
@@ -67,6 +59,15 @@ export default antfu(
       //     allowNullableString: true,
       //   },
       // ],
+      '@typescript-eslint/promise-function-async': 'off',
+      'antfu/consistent-chaining': 'off',
+      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'perfectionist/sort-imports': 'off', // 有其他排序插件
+      'perfectionist/sort-named-imports': 'off', // 有其他排序插件
+      'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
+      'prefer-promise-reject-errors': 'off',
+      'prettier/prettier': ['error'],
       'vue/component-name-in-template-casing': [
         'error',
         'PascalCase',

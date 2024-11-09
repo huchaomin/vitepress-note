@@ -1,16 +1,14 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 17:12:15
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-18 00:32:39
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-08 18:21:03
  * @Description  :
  */
-import type { App } from 'vue'
+import type { App, Component } from 'vue'
 import { setup } from '@css-render/vue3-ssr'
-import { NConfigProvider, type GlobalThemeOverrides, zhCN, dateZhCN } from 'naive-ui'
-import naiveUiThemeConfig from './naive-ui-theme-overrides.json'
-
-import AppEntry from './App.vue'
+import { NConfigProvider } from 'naive-ui'
+import configProviderProps from './configProviderProps'
 
 const CssRenderStyle = defineComponent({
   render() {
@@ -33,28 +31,17 @@ function provideCssRenderCollect(app: App) {
   }
 }
 
-const themeOverrides: GlobalThemeOverrides = naiveUiThemeConfig
-
-const NaiveUIProvider = defineComponent({
-  render() {
-    return h(
-      NConfigProvider,
-      {
-        abstract: true,
-        breakpoints: breakpointsTailwind,
-        dateLocale: dateZhCN,
-        inlineThemeDisabled: true,
-        locale: zhCN,
-        themeOverrides,
-      },
-      {
+function NaiveUIProvider(AppEntry: Component) {
+  return defineComponent({
+    render() {
+      return h(NConfigProvider, configProviderProps, {
         default: () => [
           h(AppEntry, null, { default: this.$slots.default?.() }),
           import.meta.env.SSR ? [h(CssRenderStyle)] : null,
         ],
-      },
-    )
-  },
-})
+      })
+    },
+  })
+}
 
 export { NaiveUIProvider, provideCssRenderCollect }

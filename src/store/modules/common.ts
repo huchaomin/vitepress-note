@@ -2,11 +2,11 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 14:21:15
+ * @LastEditTime : 2024-11-09 10:42:43
  * @Description  :
  */
 import { baseSize, designWidth } from '@/utils/config'
-import { useLoadingBar } from 'naive-ui'
+import { useLoadingBar, type LoadingBarInstance } from '@/plugins/naive-ui/discreteApi'
 
 export default defineStore('common', () => {
   // 全局加载状态
@@ -15,8 +15,11 @@ export default defineStore('common', () => {
   watch(loadingCount, (val) => {
     loading.value = val > 0
   })
+  let loadingBar: LoadingBarInstance | null = null
   watch(loading, (val) => {
-    const loadingBar = useLoadingBar()
+    if (loadingBar === null) {
+      loadingBar = useLoadingBar()
+    }
     if (val) {
       loadingBar.start()
     } else {

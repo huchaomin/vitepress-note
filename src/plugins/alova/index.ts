@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 09:30:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 15:23:50
+ * @LastEditTime : 2024-11-09 10:45:28
  * @Description  : 添加 fetch 通用请求 配置
  */
 import { createAlova } from 'alova'

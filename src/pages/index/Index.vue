@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 16:25:58
+ * @LastEditTime : 2024-11-08 17:41:18
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,6 +10,7 @@ import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
 import HeaderBar from './component/header/Index.vue'
 import FooterBar from './component/footer/Index.vue'
+import { getMainData } from '@/api/bigScreen'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
@@ -17,6 +18,11 @@ onMounted(() => {
   // eslint-disable-next-line no-new
   new CanvasRender(canvasRef.value!)
 })
+
+const { data, loading } = useRequest(getMainData, {
+  initialData: {},
+})
+
 </script>
 
 <template>
