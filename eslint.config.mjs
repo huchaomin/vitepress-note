@@ -34,6 +34,7 @@ export default antfu(
       overrides: {
         'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
+        'style/indent': 'off', // 与 prettier 保持一致
         'style/operator-linebreak': [
           'error',
           'after',
@@ -43,6 +44,19 @@ export default antfu(
       },
     },
     typescript: {
+      overrides: {
+        'ts/strict-boolean-expressions': [
+          'error',
+          {
+            allowNullableBoolean: true,
+            allowNullableNumber: true,
+            allowNullableString: true,
+          },
+        ],
+      },
+      parserOptions: {
+        projectService: true,
+      },
       tsconfigPath: 'tsconfig.json',
     },
   },
@@ -50,15 +64,6 @@ export default antfu(
   eslintPluginPrettierRecommended,
   {
     rules: {
-      // TODO
-      // 'ts/strict-boolean-expressions': [
-      //   'error',
-      //   {
-      //     allowNullableBoolean: true,
-      //     allowNullableNumber: true,
-      //     allowNullableString: true,
-      //   },
-      // ],
       '@typescript-eslint/promise-function-async': 'off',
       'antfu/consistent-chaining': 'off',
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

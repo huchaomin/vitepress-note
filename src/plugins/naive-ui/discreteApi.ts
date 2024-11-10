@@ -1,50 +1,75 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 17:53:52
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-09 11:46:52
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-10 23:12:36
  * @Description  :
  */
 import {
-  type NotificationProviderProps,
-  type LoadingBarProviderProps,
-  type DialogProviderProps,
-  type ModalProviderProps,
   createDiscreteApi,
+  useLoadingBar as _useLoadingBar,
+  useNotification as _useNotification,
+  useDialog as _useDialog,
+  useModal as _useModal,
+  useMessage as _useMessage,
 } from 'naive-ui'
 
-import configProviderProps from './configProviderProps'
+import {
+  configProviderProps,
+  loadingBarProviderProps,
+  notificationProviderProps,
+  dialogProviderProps,
+  modalProviderProps,
+  messageProviderProps,
+} from './providerProps'
 
-function useLoadingBar(loadingBarProviderProps?: LoadingBarProviderProps) {
-  const { loadingBar } = createDiscreteApi(['loadingBar'], {
-    configProviderProps,
-    loadingBarProviderProps,
-  })
-  return loadingBar
+function isInSetup() {
+  return getCurrentInstance() !== null
 }
 
-function useNotify(notificationProviderProps?: NotificationProviderProps) {
-  const { notification } = createDiscreteApi(['notification'], {
-    configProviderProps,
-    notificationProviderProps,
-  })
-  return notification
+function useLoadingBar() {
+  return isInSetup()
+    ? _useLoadingBar()
+    : createDiscreteApi(['loadingBar'], {
+        configProviderProps,
+        loadingBarProviderProps,
+      }).loadingBar
 }
 
-function useDialog(dialogProviderProps?: DialogProviderProps) {
-  const { dialog } = createDiscreteApi(['dialog'], {
-    configProviderProps,
-    dialogProviderProps,
-  })
-  return dialog
+function useNotify() {
+  return isInSetup()
+    ? _useNotification()
+    : createDiscreteApi(['notification'], {
+        configProviderProps,
+        notificationProviderProps,
+      }).notification
 }
 
-function useModal(modalProviderProps?: ModalProviderProps) {
-  const { modal } = createDiscreteApi(['modal'], {
-    configProviderProps,
-    modalProviderProps,
-  })
-  return modal
+function useDialog() {
+  return isInSetup()
+    ? _useDialog()
+    : createDiscreteApi(['dialog'], {
+        configProviderProps,
+        dialogProviderProps,
+      }).dialog
 }
 
-export { useDialog, useLoadingBar, useModal, useNotify }
+function useModal() {
+  return isInSetup()
+    ? _useModal()
+    : createDiscreteApi(['modal'], {
+        configProviderProps,
+        modalProviderProps,
+      }).modal
+}
+
+function useMessage() {
+  return isInSetup()
+    ? _useMessage()
+    : createDiscreteApi(['message'], {
+        configProviderProps,
+        messageProviderProps,
+      }).message
+}
+
+export { useDialog, useLoadingBar, useMessage, useModal, useNotify }
