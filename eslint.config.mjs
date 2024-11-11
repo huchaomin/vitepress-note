@@ -36,6 +36,19 @@ export default antfu(
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
         'style/indent': 'off', // 与 prettier 保持一致
         'style/indent-binary-ops': 'off', // 与 prettier 保持一致
+        'style/member-delimiter-style': [
+          'error',
+          {
+            multiline: {
+              delimiter: 'none',
+            },
+            multilineDetection: 'brackets',
+            singleline: {
+              delimiter: 'semi',
+              requireLast: false,
+            },
+          },
+        ], // 与 prettier 保持一致
         'style/operator-linebreak': [
           'error',
           'after',

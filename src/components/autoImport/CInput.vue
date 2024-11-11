@@ -2,7 +2,7 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-11-02 15:23:39
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 16:38:18
+ * @LastEditTime : 2024-11-11 16:51:58
  * @Description  :
 -->
 <script setup lang="ts">
@@ -15,7 +15,7 @@ export type CInputPropsType = {
 // https://github.com/vuejs/core/issues/8286
 const props = withDefaults(
   defineProps<{
-    type: 'password' | 'text' | 'textarea'
+    type?: 'password' | 'text' | 'textarea'
   }>(),
   {
     type: 'text',
