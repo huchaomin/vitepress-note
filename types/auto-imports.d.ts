@@ -7,6 +7,7 @@
 export {}
 declare global {
   const $loading: typeof import('../src/plugins/autoImport/$loading')['default']
+  const $modal: typeof import('../src/plugins/autoImport/$modal')['default']
   const $notify: typeof import('../src/plugins/autoImport/$notify')['default']
   const EffectScope: typeof import('vue')['EffectScope']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
@@ -322,6 +323,7 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly $loading: UnwrapRef<typeof import('../src/plugins/autoImport/$loading')['default']>
+    readonly $modal: UnwrapRef<typeof import('../src/plugins/autoImport/$modal')['default']>
     readonly $notify: UnwrapRef<typeof import('../src/plugins/autoImport/$notify')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
