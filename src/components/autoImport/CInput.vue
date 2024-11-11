@@ -1,8 +1,8 @@
 <!--
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-11-02 15:23:39
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 16:51:58
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-11 22:47:53
  * @Description  :
 -->
 <script setup lang="ts">
@@ -12,7 +12,7 @@ export type CInputPropsType = {
   type?: 'password' | 'text' | 'textarea'
 } & Omit<InputProps, 'type'>
 
-// https://github.com/vuejs/core/issues/8286
+// TODO https://github.com/vuejs/core/issues/8286
 const props = withDefaults(
   defineProps<{
     type?: 'password' | 'text' | 'textarea'
