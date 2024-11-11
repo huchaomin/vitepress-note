@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-09 22:56:59
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-11 16:11:36
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -109,6 +109,16 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
           {
             from: 'alova/client',
             imports: ['useRequest', 'useWatcher', 'usePagination '],
+          },
+          {
+            from: '@/components/autoImport/CForm.vue',
+            imports: ['FormItemType'],
+            type: true,
+          },
+          {
+            from: '@/components/autoImport/CInput.vue',
+            imports: ['CInputPropsType'],
+            type: true,
           },
         ],
         // eslintrc: {

@@ -316,6 +316,12 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { FormItemType } from '@/components/autoImport/CForm.vue'
+  import('@/components/autoImport/CForm.vue')
+  // @ts-ignore
+  export type { CInputPropsType } from '@/components/autoImport/CInput.vue'
+  import('@/components/autoImport/CInput.vue')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
