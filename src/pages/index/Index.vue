@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 16:39:08
+ * @LastEditTime : 2024-11-12 17:43:58
  * @Description  :
 -->
 <script setup lang="ts">
@@ -36,23 +36,48 @@ const { data: mainData, send: mainSend } = useRequest(getMainData, {
 
 const { data: repayDataList, send: repaySend } = useRequest(getRepayList(), {
   initialData: [],
+}).onSuccess(() => {
+  showCurrentRepayItem(15000)
 })
+
+const currentRepayIndex = ref(0)
 
 const timer = setInterval(() => {
   queryFlayMap.next.date = dayjs().format('YYYY-MM-DD')
   if (queryFlayMap.next.date !== queryFlayMap.prev.date) {
     mainSend()
     repaySend()
+    currentRepayIndex.value = 0
   }
 }, 60000)
 
+function getRandomDelay() {
+  const min = 5
+  const max = 20
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+let timer2: NodeJS.Timeout | null
+function showCurrentRepayItem(delay: number) {
+  timer2 = setTimeout(() => {
+    if (currentRepayIndex.value >= repayDataList.value.length) {
+      currentRepayIndex.value = 0
+    } else {
+      currentRepayIndex.value++
+    }
+    showCurrentRepayItem(getRandomDelay() * 1000)
+  }, delay)
+}
+
 onUnmounted(() => {
   clearInterval(timer)
+  clearTimeout(timer2!)
 })
 
 const shareData: Record<string, any> = reactive({})
 shareData.mainData = mainData
 shareData.repayDataList = repayDataList
+shareData.currentRepayIndex = currentRepayIndex
 provide('shareData', shareData)
 </script>
 

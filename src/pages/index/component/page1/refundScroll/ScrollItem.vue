@@ -1,41 +1,41 @@
 <!--
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:14:43
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-28 00:25:35
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-12 17:46:46
  * @Description  :
 -->
 <script setup lang="ts">
-interface Item {
-  amount: number
-  name: string
-  time: string
-}
+import type { ItemType } from './Index.vue'
 
 withDefaults(
   defineProps<{
     index: number
-    item: Item
+    item: ItemType
   }>(),
   {},
 )
 
+const time = ref(dayjs().format('HH:mm:ss'))
 </script>
 
 <template>
   <div class="flex items-center">
     <div class="flex items-start">
       <i-line-md:play-filled
-        class="arrow mr-2" :style="{
-        color: `var(${ index === 0 ? '--color-yellow' : '--color-white' })`,
-        animation: index === 0 ? '2s linear -0.625s infinite normal forwards running breath' : 'none',
-      }"></i-line-md:play-filled>
+        class="arrow mr-2"
+        :style="{
+          color: `var(${index === 0 ? '--color-yellow' : '--color-white'})`,
+          animation:
+            index === 0 ? '2s linear -0.625s infinite normal forwards running breath' : 'none',
+        }"
+      ></i-line-md:play-filled>
       <div>
         <div>
-          <span>{{ item.time }}</span>
-          <span class="ml-3_5">{{ item.name }}</span>
+          <span>{{ time }}</span>
+          <span class="ml-3_5">{{ item.clientName }}</span>
         </div>
-        <div class="mt-1_5">回款：{{ item.amount }} 元</div>
+        <div class="mt-1_5">回款：{{ item.repayAmt }} 元</div>
       </div>
     </div>
   </div>

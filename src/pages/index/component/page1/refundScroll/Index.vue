@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:30:16
+ * @LastEditTime : 2024-11-12 17:47:55
  * @Description  :
 -->
 <script setup lang="ts">
@@ -14,38 +14,45 @@ const scrollWrapperRef = ref<HTMLDivElement | null>(null)
 
 const { height } = useElementSize(scrollWrapperRef)
 
-// 创建一个长度为 4 的数组
-const scrollItems = reactive(Array.from({ length: 4 }, (_, index) => index).map(() => ({
-  amount: 1000,
-  key: Math.random(),
-  name: '张三*姐',
-  time: '2024-10-27',
-})))
+const shareData: Record<string, any> = inject('shareData')!
 
-setInterval(() => {
-  scrollItems.unshift({
-    amount: 1000,
-    key: Math.random(),
-    name: '张三*姐',
-    time: '2024-10-27',
-  })
-  scrollItems.pop()
-}, 3000)
+export interface ItemType {
+  clientName: string
+  repayAmt: number
+  userId: string
+}
+
+const scrollItems = reactive<ItemType[]>([])
+
+watch(
+  [() => shareData.currentRepayIndex, () => shareData.repayDataList],
+  ([index, arr]) => {
+    if (arr.length === 0) {
+      return
+    }
+    if (index === 0 && scrollItems.length === 0) {
+      scrollItems.push(...[arr[0], arr[arr.length - 1], arr[arr.length - 2], arr[arr.length - 3]])
+    } else {
+      scrollItems.unshift(arr[index])
+      scrollItems.pop()
+    }
+  },
+  { immediate: true },
+)
 
 onMounted(() => {
   autoAnimate(scrollWrapperRef.value!)
 })
-
 </script>
 
 <template>
   <div class="refund_scroll_wrapper absolute">
-    <StreamerBorder style="padding: 1vw 0.3vw;" class="flex flex-col h-full">
+    <StreamerBorder style="padding: 1vw 0.3vw;" class="flex h-full flex-col">
       <h3 class="ml-9">回款实时监控</h3>
       <div ref="scrollWrapperRef" class="mt-2 flex-1 overflow-hidden">
         <ScrollItem
           v-for="(item, index) in scrollItems"
-          :key="item.key"
+          :key="item.userId"
           :item="item"
           :index="index"
           :style="{ height: `${height / 4}px` }"
@@ -59,7 +66,7 @@ onMounted(() => {
 .refund_scroll_wrapper {
   right: 27vw;
   bottom: 10.2vw;
-  width: 11.4vw;
+  width: 11vw;
   height: 18vw;
   box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
 }
