@@ -34,8 +34,6 @@ export default antfu(
       overrides: {
         'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
-        'style/indent': 'off', // 与 prettier 保持一致
-        'style/indent-binary-ops': 'off', // 与 prettier 保持一致
         'style/member-delimiter-style': [
           'error',
           {

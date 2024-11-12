@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 18:02:45
+ * @LastEditTime : 2024-11-12 10:48:54
  * @Description  :
 -->
 <script setup lang="ts">
@@ -36,6 +36,7 @@ watch(isMounted, (val) => {
       gsap.to(assetDistributionRef.value!.$el, {
         duration: 2,
         ease: 'circ.out',
+        opacity: 1,
         translateX: 0,
       }),
       'top_left',
@@ -44,6 +45,7 @@ watch(isMounted, (val) => {
       gsap.to(refundTypeRef.value!.$el, {
         duration: 2,
         ease: 'circ.out',
+        opacity: 1,
         translateX: 0,
       }),
       'top_right',
@@ -52,6 +54,7 @@ watch(isMounted, (val) => {
       gsap.to(refundUserRef.value!.$el, {
         duration: 2,
         ease: 'circ.out',
+        opacity: 1,
         translateX: 0,
       }),
       'bottom_left',
@@ -60,6 +63,7 @@ watch(isMounted, (val) => {
       gsap.to(refundTrendRef.value!.$el, {
         duration: 2,
         ease: 'circ.out',
+        opacity: 1,
         translateX: 0,
       }),
       'bottom_right',
@@ -99,12 +103,14 @@ watch(isMounted, (val) => {
   .refund_user_wrapper,
   .asset_distribution_wrapper {
     left: var(--x-padding);
+    opacity: 0;
     transform: translateX(calc(-100% - var(--x-padding)));
   }
 
   .refund_type_wrapper,
   .refund_trend_wrapper {
     right: var(--x-padding);
+    opacity: 0;
     transform: translateX(calc(100% + var(--x-padding)));
   }
 
