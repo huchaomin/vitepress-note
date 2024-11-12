@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 17:00:15
+ * @LastEditTime : 2024-11-12 18:20:34
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -83,7 +83,6 @@ export default (
   function down(group: THREE.Group) {
     gsap.to(group.position, {
       duration: 0.3,
-      // onComplete: () => {},
       z: 0,
     })
     group.traverse((g) => {
@@ -117,6 +116,7 @@ export default (
     moveProvinceBadgeLabel(group.userData.adcode as number, 'up')
   }
 
+  /*
   // 循环添加事件
   _this.provinceMeshArr.forEach((m) => {
     _this.interactionManager.add(m)
@@ -140,7 +140,7 @@ export default (
           }
         } & THREE.Mesh
       >
-      _this.canvas.style.cursor = 'pointer'
+      // _this.canvas.style.cursor = 'pointer'
       up(event.target.parent.parent) // tempGroup
     })
     mesh.addEventListener('mouseout', (e) => {
@@ -152,8 +152,9 @@ export default (
           }
         } & THREE.Mesh
       >
-      _this.canvas.style.cursor = 'default'
+      // _this.canvas.style.cursor = 'default'
       down(event.target.parent.parent) // tempGroup
     })
   })
+  */
 }

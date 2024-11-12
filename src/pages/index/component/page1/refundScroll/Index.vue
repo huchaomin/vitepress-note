@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 17:47:55
+ * @LastEditTime : 2024-11-12 17:50:03
  * @Description  :
 -->
 <script setup lang="ts">
@@ -66,7 +66,7 @@ onMounted(() => {
 .refund_scroll_wrapper {
   right: 27vw;
   bottom: 10.2vw;
-  width: 11vw;
+  width: 10.8vw;
   height: 18vw;
   box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
 }
