@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-09 23:32:37
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-12 11:31:49
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,7 +10,7 @@ import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
 import HeaderBar from './component/header/Index.vue'
 import FooterBar from './component/footer/Index.vue'
-import { getMainData } from '@/api/bigScreen'
+import { getMainData, getRepayList } from '@/api/bigScreen'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
@@ -19,10 +19,24 @@ onMounted(() => {
   new CanvasRender(canvasRef.value!)
 })
 
-const { data, loading } = useRequest(getMainData, {
+const { data: mainData } = useRequest(getMainData, {
   initialData: {},
 })
 
+const { data: repayData } = useRequest(
+  getRepayList({
+    // TODO
+    RepayDate: '2024-09-19',
+    startRepayDate: '2024-09-19',
+  }),
+  {
+    initialData: {},
+  },
+)
+const shareData: Record<string, any> = reactive({})
+shareData.mainData = mainData
+shareData.repayData = repayData
+provide('shareData', shareData)
 </script>
 
 <template>
@@ -51,8 +65,7 @@ canvas {
   color: var(--color-white);
 
   & :deep(.provinces_name) {
-    top: -0.1563rem;
-    font-size: 0.8rem;
+    top: -0.177rem;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
   }

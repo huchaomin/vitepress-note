@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:15:02
+ * @LastEditTime : 2024-11-12 10:57:11
  * @Description  :
 -->
 <script setup lang="ts">
@@ -20,47 +20,44 @@ import { LineChart, type LineSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
-use([
-  GridComponent,
-  LegendComponent,
-  LineChart,
-  CanvasRenderer,
-])
+use([GridComponent, LegendComponent, LineChart, CanvasRenderer])
 
 const data = [
   {
-    name: '2024/04',
+    name: '4月',
     value: 1000,
     value2: 800,
   },
   {
-    name: '2024/05',
+    name: '5月',
     value: 2000,
     value2: 1800,
   },
   {
-    name: '2024/06',
+    name: '6月',
     value: 3000,
     value2: 8800,
   },
   {
-    name: '2024/07',
+    name: '7月',
     value: 4000,
     value2: 10000,
   },
   {
-    name: '2024/08',
+    name: '8月',
     value: 5000,
     value2: 13000,
   },
   {
-    name: '2024/09',
+    name: '9月',
     value: 5000,
     value2: 13000,
   },
 ]
 
-const option = computed<ComposeOption<GridComponentOption | LegendComponentOption | LineSeriesOption >>(() => {
+const option = computed<
+  ComposeOption<GridComponentOption | LegendComponentOption | LineSeriesOption>
+>(() => {
   const xAxisOffset = useDynamicPx(15).value
   const fontSize = useDynamicPx(chartFontSize).value
   const symbolSize = useDynamicPx(10).value
