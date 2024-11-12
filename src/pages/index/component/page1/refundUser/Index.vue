@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 16:00:48
+ * @LastEditTime : 2024-11-12 15:45:56
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,48 +10,35 @@ import ChartTitle from '../ChartTitle.vue'
 import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
 import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'
+import { GridComponent, type GridComponentOption } from 'echarts/components'
 import {
-  GridComponent,
-  type GridComponentOption,
-} from 'echarts/components'
-import { BarChart, EffectScatterChart, PictorialBarChart, type EffectScatterSeriesOption, type PictorialBarSeriesOption, type BarSeriesOption } from 'echarts/charts'
+  BarChart,
+  EffectScatterChart,
+  PictorialBarChart,
+  type EffectScatterSeriesOption,
+  type PictorialBarSeriesOption,
+  type BarSeriesOption,
+} from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
-use([
-  GridComponent,
-  BarChart,
-  CanvasRenderer,
-  PictorialBarChart,
-  EffectScatterChart,
-])
+use([GridComponent, BarChart, CanvasRenderer, PictorialBarChart, EffectScatterChart])
 
-const data = [
-  {
-    name: '2018年',
-    value: 212,
-  },
-  {
-    name: '2019年',
-    value: 305,
-  },
-  {
-    name: '2020年',
-    value: 260,
-  },
-  {
-    name: '2021年',
-    value: 283,
-  },
-  {
-    name: '2022年',
-    value: 453,
-  },
-  {
-    name: '2023年',
-    value: 353,
-  },
-]
+const shareData: Record<string, any> = inject('shareData')!
+
+const data = computed(() => {
+  return (shareData.mainData.repayUserList ?? [])
+    .map((item: any) => {
+      return {
+        name: item.yearMonths,
+        value: item.repayUserQty,
+      }
+    })
+    .sort((a: any, b: any) => {
+      return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
+    })
+    .slice(-6)
+})
 
 const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
 const maxValue = ref(0)
@@ -63,7 +50,11 @@ function rendered() {
   maxValue.value = yAxis.axis.scale.getExtent()[1]
 }
 
-const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption>>(() => {
+const option = computed<
+  ComposeOption<
+    BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption
+  >
+>(() => {
   const barWidth = useDynamicPx(18).value
   const bottomEffectScatterWidth = useDynamicPx(26).value
   const bottomEffectScatterHeight = useDynamicPx(10).value
@@ -83,12 +74,12 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       containLabel: true,
       left: 0,
       right: 0,
-      top: fontSize,
+      top: fontSize * 1.5,
     },
     series: [
-    // '最底下的涟漪圆片',
+      // '最底下的涟漪圆片',
       {
-        data: data.map(() => ({
+        data: data.value.map(() => ({
           itemStyle: {
             color: color.bottomEffectScatter,
           },
@@ -101,7 +92,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       // 下半截柱状图
       {
         barWidth,
-        data: data.map((item) => ({
+        data: data.value.map((item: any) => ({
           itemStyle: {
             color: {
               colorStops: [
@@ -130,7 +121,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       // 下半截stack 透明柱状图
       {
         barWidth,
-        data: data.map((item) => item.value),
+        data: data.value.map((item: any) => item.value),
         itemStyle: {
           color: 'transparent',
         },
@@ -139,7 +130,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       },
       // 圆柱的顶部
       {
-        data: data.map((item) => ({
+        data: data.value.map((item: any) => ({
           itemStyle: {
             color: color.barHat,
           },
@@ -155,7 +146,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       {
         barGap: '-100%',
         barWidth,
-        data: data.map((item) => ({
+        data: data.value.map((item: any) => ({
           itemStyle: {
             color: color.backgroundBar,
           },
@@ -167,7 +158,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       },
       // 背景的顶部
       {
-        data: data.map(() => ({
+        data: data.value.map(() => ({
           itemStyle: {
             color: color.backgroundHat,
           },
@@ -185,6 +176,10 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
+        formatter: (yearMonths: string) => {
+          return dayjs(yearMonths).format('YY年M月')
+        },
+        interval: 0,
       },
       axisLine: {
         lineStyle: {
@@ -194,7 +189,7 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
       axisTick: {
         show: false,
       },
-      data: data.map((item) => item.name),
+      data: data.value.map((item: any) => item.name),
       offset: gridXGap,
     },
     yAxis: {
@@ -211,13 +206,18 @@ const option = computed<ComposeOption<BarSeriesOption | EffectScatterSeriesOptio
     },
   }
 })
-
 </script>
 
 <template>
   <div class="refund_user_wrapper absolute flex flex-col">
     <ChartTitle :src="bar_chart" title="回款客户数据"></ChartTitle>
-    <VChart ref="vChartRef" :option="option" autoresize class="flex-auto" @rendered="rendered"></VChart>
+    <VChart
+      ref="vChartRef"
+      :option="option"
+      autoresize
+      class="flex-auto"
+      @rendered="rendered"
+    ></VChart>
   </div>
 </template>
 

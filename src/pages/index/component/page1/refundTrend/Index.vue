@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 15:14:11
+ * @LastEditTime : 2024-11-12 15:47:46
  * @Description  :
 -->
 <script setup lang="ts">
@@ -60,9 +60,9 @@ const option = computed<
             fontFamily: chartFontFamily,
             fontSize,
             lineHeight: fontSize + useDynamicPx(3).value,
-            padding: [0, 0, 0, useDynamicPx(26).value],
-            text: '万元',
+            text: '（万元）',
           },
+          top: fontSize * 0.5,
           type: 'text',
         },
       ],
@@ -71,8 +71,8 @@ const option = computed<
       bottom: xAxisOffset,
       containLabel: true,
       left: useDynamicPx(4).value,
-      right: useDynamicPx(18).value,
-      top: fontSize * 2,
+      right: useDynamicPx(26).value,
+      top: fontSize * 3,
     },
     legend: {
       padding: 0,
@@ -83,7 +83,7 @@ const option = computed<
         fontSize,
         lineHeight: fontSize + useDynamicPx(3).value,
       },
-      top: 0,
+      top: fontSize * 0.5,
     },
     series: [
       {
@@ -137,8 +137,9 @@ const option = computed<
         fontFamily: chartFontFamily,
         fontSize,
         formatter: (yearMonths) => {
-          return dayjs(yearMonths).format('YY-M')
+          return dayjs(yearMonths).format('YY年M月')
         },
+        interval: 0,
       },
       axisLine: {
         lineStyle: {
