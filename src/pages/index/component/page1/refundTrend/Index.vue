@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 10:57:11
+ * @LastEditTime : 2024-11-12 15:14:11
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,60 +13,65 @@ import VChart from 'vue-echarts'
 import {
   GridComponent,
   LegendComponent,
+  GraphicComponent,
   type LegendComponentOption,
   type GridComponentOption,
+  type GraphicComponentOption,
 } from 'echarts/components'
 import { LineChart, type LineSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
+import dayjs from 'dayjs'
 
-use([GridComponent, LegendComponent, LineChart, CanvasRenderer])
+use([GridComponent, LegendComponent, LineChart, CanvasRenderer, GraphicComponent])
 
-const data = [
-  {
-    name: '4月',
-    value: 1000,
-    value2: 800,
-  },
-  {
-    name: '5月',
-    value: 2000,
-    value2: 1800,
-  },
-  {
-    name: '6月',
-    value: 3000,
-    value2: 8800,
-  },
-  {
-    name: '7月',
-    value: 4000,
-    value2: 10000,
-  },
-  {
-    name: '8月',
-    value: 5000,
-    value2: 13000,
-  },
-  {
-    name: '9月',
-    value: 5000,
-    value2: 13000,
-  },
-]
+const shareData: Record<string, any> = inject('shareData')!
+
+const data = computed(() => {
+  return (shareData.mainData.repayMonthlyList ?? [])
+    .map((item: any) => {
+      return {
+        fasuMonthRepayAmt: item.fasuMonthRepayAmt / 10000,
+        name: item.yearMonths,
+        tiaojieMonthRepayAmt: item.tiaojieMonthRepayAmt / 10000,
+      }
+    })
+    .sort((a: any, b: any) => {
+      return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
+    })
+    .slice(-6)
+})
 
 const option = computed<
-  ComposeOption<GridComponentOption | LegendComponentOption | LineSeriesOption>
+  ComposeOption<
+    GraphicComponentOption | GridComponentOption | LegendComponentOption | LineSeriesOption
+  >
 >(() => {
   const xAxisOffset = useDynamicPx(15).value
   const fontSize = useDynamicPx(chartFontSize).value
   const symbolSize = useDynamicPx(10).value
   return {
+    graphic: {
+      elements: [
+        {
+          left: 'left',
+          style: {
+            fill: colors.white,
+            fontFamily: chartFontFamily,
+            fontSize,
+            lineHeight: fontSize + useDynamicPx(3).value,
+            padding: [0, 0, 0, useDynamicPx(26).value],
+            text: '万元',
+          },
+          type: 'text',
+        },
+      ],
+    },
     grid: {
       bottom: xAxisOffset,
       containLabel: true,
       left: useDynamicPx(4).value,
-      right: 0,
+      right: useDynamicPx(18).value,
       top: fontSize * 2,
     },
     legend: {
@@ -76,7 +81,7 @@ const option = computed<
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
-        lineHeight: fontSize + 1,
+        lineHeight: fontSize + useDynamicPx(3).value,
       },
       top: 0,
     },
@@ -94,7 +99,7 @@ const option = computed<
             },
           ]),
         },
-        data: data.map((item) => item.value),
+        data: data.value.map((item: any) => item.fasuMonthRepayAmt),
         lineStyle: {
           color: colors.blueHover,
         },
@@ -116,7 +121,7 @@ const option = computed<
             },
           ]),
         },
-        data: data.map((item) => item.value2),
+        data: data.value.map((item: any) => item.tiaojieMonthRepayAmt),
         lineStyle: {
           color: colors.lineHover,
         },
@@ -131,6 +136,9 @@ const option = computed<
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
+        formatter: (yearMonths) => {
+          return dayjs(yearMonths).format('YY-M')
+        },
       },
       axisLine: {
         lineStyle: {
@@ -140,7 +148,8 @@ const option = computed<
       axisTick: {
         show: false,
       },
-      data: data.map((item) => item.name),
+      boundaryGap: false,
+      data: data.value.map((item: any) => item.name),
       offset: xAxisOffset,
     },
     yAxis: {

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 13:47:38
+ * @LastEditTime : 2024-11-12 14:30:20
  * @Description  :
 -->
 <script setup lang="ts">
@@ -29,7 +29,7 @@ const data = reactive([
   },
   {
     name: '调解回款',
-    value: computed(() => shareData.mainData.totalRepayAmt),
+    value: computed(() => shareData.mainData.tiaojieRepayAmt),
   },
 ])
 
@@ -68,6 +68,18 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
           color: colors.white,
           fontFamily: chartFontFamily,
           fontSize,
+          formatter: ({ name, value }) => {
+            return `{name|${name}}\n{value|${formatNumber(value, {
+              notation: 'compact',
+            })}}`
+          },
+          rich: {
+            value: {
+              fontFamily: chartFontFamily,
+              fontSize: fontSize * 0.9,
+              padding: [useDynamicPx(5).value, 0, 0, 0],
+            },
+          },
           show: true,
         },
         radius: ['58%', '78%'],
