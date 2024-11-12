@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 15:45:56
+ * @LastEditTime : 2024-11-12 16:29:31
  * @Description  :
 -->
 <script setup lang="ts">
@@ -37,7 +37,7 @@ const data = computed(() => {
     .sort((a: any, b: any) => {
       return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
     })
-    .slice(-6)
+    .slice(-7)
 })
 
 const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
@@ -73,7 +73,7 @@ const option = computed<
       bottom: gridXGap,
       containLabel: true,
       left: 0,
-      right: 0,
+      right: useDynamicPx(10).value,
       top: fontSize * 1.5,
     },
     series: [
@@ -179,7 +179,6 @@ const option = computed<
         formatter: (yearMonths: string) => {
           return dayjs(yearMonths).format('YY年M月')
         },
-        interval: 0,
       },
       axisLine: {
         lineStyle: {

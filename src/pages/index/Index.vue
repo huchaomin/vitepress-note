@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 11:31:49
+ * @LastEditTime : 2024-11-12 16:39:08
  * @Description  :
 -->
 <script setup lang="ts">
@@ -19,23 +19,40 @@ onMounted(() => {
   new CanvasRender(canvasRef.value!)
 })
 
-const { data: mainData } = useRequest(getMainData, {
+const queryFlayMap = {
+  next: {
+    date: dayjs().format('YYYY-MM-DD'),
+  },
+  prev: {
+    date: dayjs().format('YYYY-MM-DD'),
+  },
+}
+
+const { data: mainData, send: mainSend } = useRequest(getMainData, {
   initialData: {},
+}).onComplete(() => {
+  queryFlayMap.prev.date = dayjs().format('YYYY-MM-DD')
 })
 
-const { data: repayData } = useRequest(
-  getRepayList({
-    // TODO
-    RepayDate: '2024-09-19',
-    startRepayDate: '2024-09-19',
-  }),
-  {
-    initialData: {},
-  },
-)
+const { data: repayDataList, send: repaySend } = useRequest(getRepayList(), {
+  initialData: [],
+})
+
+const timer = setInterval(() => {
+  queryFlayMap.next.date = dayjs().format('YYYY-MM-DD')
+  if (queryFlayMap.next.date !== queryFlayMap.prev.date) {
+    mainSend()
+    repaySend()
+  }
+}, 60000)
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
+
 const shareData: Record<string, any> = reactive({})
 shareData.mainData = mainData
-shareData.repayData = repayData
+shareData.repayDataList = repayDataList
 provide('shareData', shareData)
 </script>
 

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 15:47:46
+ * @LastEditTime : 2024-11-12 16:28:23
  * @Description  :
 -->
 <script setup lang="ts">
@@ -39,7 +39,7 @@ const data = computed(() => {
     .sort((a: any, b: any) => {
       return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
     })
-    .slice(-6)
+    .slice(-7)
 })
 
 const option = computed<
@@ -71,7 +71,7 @@ const option = computed<
       bottom: xAxisOffset,
       containLabel: true,
       left: useDynamicPx(4).value,
-      right: useDynamicPx(26).value,
+      right: useDynamicPx(32).value,
       top: fontSize * 3,
     },
     legend: {
@@ -139,7 +139,6 @@ const option = computed<
         formatter: (yearMonths) => {
           return dayjs(yearMonths).format('YY年M月')
         },
-        interval: 0,
       },
       axisLine: {
         lineStyle: {
