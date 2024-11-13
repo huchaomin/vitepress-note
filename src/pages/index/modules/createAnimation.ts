@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 10:35:12
+ * @LastEditTime : 2024-11-13 13:48:09
  * @Description  :
  */
 import gsap from 'gsap'
@@ -10,6 +10,9 @@ import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import createGridRipple from './createGridRipple'
 import type { labelInstance } from '@/components/three/utils/Label3d'
+import { cameraPositionReadyKey } from '@/pages/index/utils/others'
+
+const bus = useEventBus(cameraPositionReadyKey)
 
 export default (
   _this: CanvasRenderType,
@@ -43,6 +46,7 @@ export default (
       ease: 'power1.in',
       onComplete: () => {
         _this.camera.controls.saveState()
+        bus.emit()
       },
       z: 200,
     }),

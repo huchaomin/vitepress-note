@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 11:14:30
+ * @LastEditTime : 2024-11-13 13:58:40
  * @Description  :
 -->
 <script setup lang="ts">
@@ -11,7 +11,11 @@ import Page1 from './component/page1/Index.vue'
 import HeaderBar from './component/header/Index.vue'
 import FooterBar from './component/footer/Index.vue'
 import { getMainData, getRepayList } from '@/api/bigScreen'
-import { repayItemChangeKey, type ItemType } from '@/pages/index/utils/others'
+import {
+  repayItemChangeKey,
+  cameraPositionReadyKey,
+  type ItemType,
+} from '@/pages/index/utils/others'
 
 const queryFlayMap = {
   next: {
@@ -39,6 +43,7 @@ const currentRepayIndex = ref(0)
 const timer = setInterval(() => {
   queryFlayMap.next.date = dayjs().format('YYYY-MM-DD')
   if (queryFlayMap.next.date !== queryFlayMap.prev.date) {
+    debugger
     mainSend()
     repaySend()
     currentRepayIndex.value = 0
@@ -68,14 +73,25 @@ onUnmounted(() => {
   clearTimeout(timer2!)
 })
 
-const bus = useEventBus(repayItemChangeKey)
+const repayItemChangeBus = useEventBus(repayItemChangeKey)
 
-watch([currentRepayIndex, repayDataList as unknown as ItemType[]], ([index, arr]) => {
-  bus.emit({
-    arr,
-    index,
-  })
+const cameraPositionReady = ref(false)
+const cameraPositionReadyBus = useEventBus(cameraPositionReadyKey)
+cameraPositionReadyBus.on(() => {
+  cameraPositionReady.value = true
 })
+
+watch(
+  [currentRepayIndex, repayDataList as unknown as ItemType[], cameraPositionReady],
+  ([index, arr, cameraPositionReady]) => {
+    if (cameraPositionReady) {
+      repayItemChangeBus.emit({
+        arr,
+        index,
+      })
+    }
+  },
+)
 
 const shareData: Record<string, any> = reactive({})
 shareData.mainData = mainData

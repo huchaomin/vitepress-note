@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 11:33:03
+ * @LastEditTime : 2024-11-13 14:17:33
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -11,6 +11,7 @@ import gsap from 'gsap'
 import type { labelInstance } from '@/components/three/utils/Label3d'
 import { repayItemChangeKey, type ItemType } from '@/pages/index/utils/others'
 
+const duration = 1.5
 export default (
   _this: CanvasRenderType,
   {
@@ -30,7 +31,7 @@ export default (
   // let isClicked = false
   function moveGroupZPosition(group: labelInstance | THREE.Group, type: 'down' | 'up') {
     gsap.to(group.position, {
-      duration: 0.3,
+      duration,
       z:
         type === 'up'
           ? (group.userData.position as [number, number, number])[2] + _this.depth
@@ -79,7 +80,7 @@ export default (
           group.update(data!.repayDate, data!.repayAmt)
         }
         gsap.to(group.element, {
-          duration: 0.5,
+          duration,
           ease: 'circ.out',
           opacity: type === 'up' ? 1 : 0,
         })
@@ -89,7 +90,7 @@ export default (
 
   function down(group: THREE.Group) {
     gsap.to(group.position, {
-      duration: 0.3,
+      duration,
       z: 0,
     })
     group.traverse((g) => {
@@ -107,7 +108,7 @@ export default (
   }
   function up(group: THREE.Group, data: ItemType) {
     gsap.to(group.position, {
-      duration: 0.3,
+      duration,
       z: _this.depth,
     })
     group.traverse((g) => {

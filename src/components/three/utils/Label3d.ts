@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 15:04:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 16:57:28
+ * @LastEditTime : 2024-11-13 11:46:01
  * @Description  :
  */
 import {
@@ -24,11 +24,12 @@ export default class Label3d {
   private css3dRender: CSS3DRenderer
   private labelScale: number
   constructor({ camera, canvas, scene, sizes, time }: ThreeCore, config?: { labelScale?: number }) {
-    this.labelScale = config?.labelScale ?? 0.18
+    this.labelScale = config?.labelScale ?? 0.16
     const css3dRender = new CSS3DRenderer() // 实例化css3d渲染器
     css3dRender.domElement.style.position = 'absolute' // 设置定位位置
     css3dRender.domElement.style.left = '0px'
     css3dRender.domElement.style.top = '0px'
+    css3dRender.domElement.style.zIndex = '1'
     css3dRender.domElement.style.pointerEvents = 'none' // 设置不能被选中
     css3dRender.domElement.className = `label3d-${useId()}`
     canvas.parentNode!.appendChild(css3dRender.domElement) // 插入到容器当中
