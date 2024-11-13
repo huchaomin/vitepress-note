@@ -1,12 +1,11 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 10:59:39
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 15:07:59
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-13 23:13:41
  * @Description  :
 -->
 <script setup lang="ts">
-import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
 import SwiperBtns from './swiperBtns/Index.vue'
 </script>
 
@@ -18,7 +17,7 @@ import SwiperBtns from './swiperBtns/Index.vue'
       <SwiperBtns></SwiperBtns>
       <div class="gap"></div>
     </div>
-    <div class="img" v-html="footerSvg"></div>
+    <img class="img" src="@/pages/index/assets/svg/footer.svg" />
   </div>
 </template>
 

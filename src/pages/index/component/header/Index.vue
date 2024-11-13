@@ -2,17 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:20:35
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-09 23:36:29
+ * @LastEditTime : 2024-11-13 23:11:01
  * @Description  :
 -->
-<script setup lang="ts">
-import headerSvg from '@/pages/index/assets/svg/header.svg?raw'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="header_wrapper absolute">
     <h1 class="header_title absolute">擎聪智慧大屏系统</h1>
-    <div v-html="headerSvg"></div>
+    <img src="@/pages/index/assets/svg/header.svg" alt="" />
   </div>
 </template>
 

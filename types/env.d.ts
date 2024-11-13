@@ -7,11 +7,5 @@ interface ImportMetaEnv {
   readonly VITE_BASE_URL: string
   readonly VITE_PORT: number
   readonly VITE_API_PREFIX: string
-  /**
-   * VITE_PROXY_TARGET=http://192.168.2.206:$VITE_PORT/ # 测试
-   * VITE_PROXY_TARGET=http://192.168.1.46:$VITE_PORT/ # 双贵
-   * VITE_PROXY_TARGET=http://192.168.1.215:$VITE_PORT/ # 明浩
-   * VITE_PROXY_TARGET=http://192.168.1.211:$VITE_PORT/ # robin
-   */
   readonly VITE_PROXY_TARGET: string
 }
