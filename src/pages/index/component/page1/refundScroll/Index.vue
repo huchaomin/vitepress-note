@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 14:18:18
+ * @LastEditTime : 2024-11-13 14:20:23
  * @Description  :
 -->
 <script setup lang="ts">
@@ -19,6 +19,8 @@ const { height } = useElementSize(scrollWrapperRef)
 
 const scrollItems = reactive<ItemType[]>([])
 const bus = useEventBus(repayItemChangeKey)
+
+let isViewReady = false
 bus.on(({ arr, index }) => {
   if (index === 0 && scrollItems.length === 0) {
     scrollItems.push(...[arr[0], arr[arr.length - 1], arr[arr.length - 2], arr[arr.length - 3]])
@@ -26,13 +28,16 @@ bus.on(({ arr, index }) => {
     scrollItems.unshift(arr[index])
     scrollItems.pop()
   }
-  gsap.to(proxy!.$el, {
-    duration: 1.5,
-    ease: 'power2.out',
-    opacity: 1,
-    scale: 1,
-    transformOrigin: 'top left',
-  })
+  if (!isViewReady) {
+    gsap.to(proxy!.$el, {
+      duration: 1,
+      ease: 'power2.out',
+      opacity: 1,
+      scale: 1,
+      transformOrigin: 'top left',
+    })
+    isViewReady = true
+  }
 })
 
 onMounted(() => {

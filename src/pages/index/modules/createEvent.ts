@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 14:17:33
+ * @LastEditTime : 2024-11-13 14:21:25
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -11,7 +11,7 @@ import gsap from 'gsap'
 import type { labelInstance } from '@/components/three/utils/Label3d'
 import { repayItemChangeKey, type ItemType } from '@/pages/index/utils/others'
 
-const duration = 1.5
+const duration = 1
 export default (
   _this: CanvasRenderType,
   {
