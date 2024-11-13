@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import line_chart from '@/pages/index/assets/json/lottie/line_chart.json?url'
+import line_chart from '@/pages/index/assets/json/lottie/line_chart.json?raw'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
@@ -170,7 +170,7 @@ const option = computed<
 
 <template>
   <div class="refund_trend_wrapper absolute flex flex-col">
-    <ChartTitle :src="line_chart" title="回款趋势"></ChartTitle>
+    <ChartTitle :data="line_chart" title="回款趋势"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>

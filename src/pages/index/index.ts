@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 10:12:27
+ * @LastEditTime : 2024-11-13 09:14:56
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -18,7 +18,7 @@ import createRotateBorder from './modules/createRotateBorder'
 import createEnvLight from './modules/createEnvLight'
 import createMap from './modules/createMap'
 import createAnimation from './modules/createAnimation'
-import createMouseEvent from './modules/createMouseEvent'
+import createEvent from './modules/createEvent'
 import createProvinceItem from './modules/createProvinceItem'
 import createMapStroke from './modules/createMapStroke'
 
@@ -89,8 +89,8 @@ export default class CanvasRender extends ThreeCore {
         centerCircleArr: provinceCenterCircleArr,
         nameArr: provinceNameLabelArr,
       } = createProvinceItem(this, mapGroup)
-      // 创建鼠标事件
-      createMouseEvent(this, {
+      // 创建事件
+      createEvent(this, {
         provinceArrowLabelArr,
         provinceBadgeLabelArr,
         provinceCenterCircleArr,

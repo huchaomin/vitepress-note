@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?url'
+import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?raw'
 import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'
 import { GridComponent, type GridComponentOption } from 'echarts/components'
@@ -209,7 +209,7 @@ const option = computed<
 
 <template>
   <div class="refund_user_wrapper absolute flex flex-col">
-    <ChartTitle :src="bar_chart" title="回款客户数据"></ChartTitle>
+    <ChartTitle :data="bar_chart" title="回款客户数据"></ChartTitle>
     <VChart
       ref="vChartRef"
       :option="option"

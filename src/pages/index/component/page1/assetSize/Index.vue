@@ -2,13 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 11:37:50
+ * @LastEditTime : 2024-11-13 09:22:30
  * @Description  :
 -->
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-import assets_size from '@/pages/index/assets/json/lottie/assets_size.json?url'
-import border from '@/pages/index/assets/json/lottie/border.json?url'
+import assets_size from '@/pages/index/assets/json/lottie/assets_size.json?raw'
+import border from '@/pages/index/assets/json/lottie/border.json?raw'
 import { formatNumber } from '@/utils/format'
 
 const shareData: Record<string, any> = inject('shareData')!
@@ -24,7 +24,7 @@ const totalSplitArr = computed(() => {
 
 <template>
   <div class="asset_size_wrapper align-center absolute flex">
-    <DotLottieVue :key="key" class="icon absolute" autoplay loop :src="assets_size"></DotLottieVue>
+    <DotLottieVue :key="key" class="icon absolute" autoplay loop :data="assets_size"></DotLottieVue>
     <span>资产规模：</span>
     <div v-for="(item, index) in totalSplitArr" :key="index" class="border_box relative">
       <DotLottieVue
@@ -32,7 +32,7 @@ const totalSplitArr = computed(() => {
         class="border_icon absolute"
         autoplay
         loop
-        :src="border"
+        :data="border"
       ></DotLottieVue>
       <div class="inline-flex items-center justify-center">{{ item }}</div>
     </div>

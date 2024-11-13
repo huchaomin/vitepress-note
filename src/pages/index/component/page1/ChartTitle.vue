@@ -2,16 +2,16 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 18:03:18
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 10:45:17
+ * @LastEditTime : 2024-11-13 09:23:31
  * @Description  :
 -->
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-import title_underline from '@/pages/index/assets/json/lottie/title_underline.json?url'
+import title_underline from '@/pages/index/assets/json/lottie/title_underline.json?raw'
 
 withDefaults(
   defineProps<{
-    src: string
+    data: string
     title: string
   }>(),
   {},
@@ -28,7 +28,7 @@ const key = useVwToPx(1)
         style="width: 3vw; height: 3vw;"
         autoplay
         loop
-        :src="src"
+        :data="data"
       ></DotLottieVue>
       <h3 class="ml-2">{{ title }}</h3>
     </div>
@@ -38,7 +38,7 @@ const key = useVwToPx(1)
       style="height: 1.5vw;"
       autoplay
       loop
-      :src="title_underline"
+      :data="title_underline"
     ></DotLottieVue>
   </div>
 </template>

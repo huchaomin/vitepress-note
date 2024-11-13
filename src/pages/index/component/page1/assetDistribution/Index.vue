@@ -2,12 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 15:19:45
+ * @LastEditTime : 2024-11-13 09:23:57
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart2 from '@/pages/index/assets/json/lottie/bar_chart2.json?url'
+import bar_chart2 from '@/pages/index/assets/json/lottie/bar_chart2.json?raw'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
@@ -20,12 +20,7 @@ import { BarChart, type BarSeriesOption } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 
-use([
-  GridComponent,
-  LegendComponent,
-  BarChart,
-  CanvasRenderer,
-])
+use([GridComponent, LegendComponent, BarChart, CanvasRenderer])
 
 const data = [
   {
@@ -60,7 +55,9 @@ const data = [
   },
 ]
 
-const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | LegendComponentOption >>(() => {
+const option = computed<
+  ComposeOption<BarSeriesOption | GridComponentOption | LegendComponentOption>
+>(() => {
   const blueBarLeft = colors.blueHover
   const blueBarRight = colors.blue
   const barWidth = useDynamicPx(10).value
@@ -107,13 +104,23 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         data: data.map((item) => ({
           itemStyle: {
             borderRadius: [barWidth / 2, 0, 0, barWidth / 2],
-            color: new graphic.LinearGradient(1, 0, 0, 0, [{
-              color: blueBarRight,
-              offset: 0,
-            }, {
-              color: blueBarLeft,
-              offset: 1,
-            }], false),
+            color: new graphic.LinearGradient(
+              1,
+              0,
+              0,
+              0,
+              [
+                {
+                  color: blueBarRight,
+                  offset: 0,
+                },
+                {
+                  color: blueBarLeft,
+                  offset: 1,
+                },
+              ],
+              false,
+            ),
           },
           value: item.value,
         })),
@@ -134,13 +141,23 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
         data: data.map((item) => ({
           itemStyle: {
             borderRadius: [0, barWidth / 2, barWidth / 2, 0],
-            color: new graphic.LinearGradient(1, 0, 0, 0, [{
-              color: colors.lineHover,
-              offset: 0,
-            }, {
-              color: colors.line,
-              offset: 1,
-            }], false),
+            color: new graphic.LinearGradient(
+              1,
+              0,
+              0,
+              0,
+              [
+                {
+                  color: colors.lineHover,
+                  offset: 0,
+                },
+                {
+                  color: colors.line,
+                  offset: 1,
+                },
+              ],
+              false,
+            ),
           },
           value: item.value2,
         })),
@@ -191,7 +208,7 @@ const option = computed<ComposeOption<BarSeriesOption | GridComponentOption | Le
 
 <template>
   <div class="asset_distribution_wrapper absolute flex flex-col">
-    <ChartTitle :src="bar_chart2" title="当前资产分布"></ChartTitle>
+    <ChartTitle :data="bar_chart2" title="当前资产分布"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>

@@ -2,12 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 11:40:46
+ * @LastEditTime : 2024-11-13 09:24:31
  * @Description  :
 -->
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-import refund_gather from '@/pages/index/assets/json/lottie/refund_gather.json?url'
+import refund_gather from '@/pages/index/assets/json/lottie/refund_gather.json?raw'
 import { formatNumber } from '@/utils/format'
 
 const shareData: Record<string, any> = inject('shareData')!
@@ -23,7 +23,7 @@ const total = toRef(() => shareData.mainData.totalRepayAmt)
       class="icon absolute"
       autoplay
       loop
-      :src="refund_gather"
+      :data="refund_gather"
     ></DotLottieVue>
     累计回款：{{ formatNumber(total) }}元
   </div>
