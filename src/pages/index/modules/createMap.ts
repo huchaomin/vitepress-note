@@ -202,7 +202,6 @@ export default (_this: CanvasRenderType) => {
     tempGroup.children.forEach((childGroup) => {
       if (childGroup.userData.type === 'shape') {
         childGroup.children.forEach((mesh) => {
-          _this.provinceMeshArr.push(mesh as THREE.Mesh)
           calcUv2((mesh as THREE.Mesh).geometry, boxSize.x, boxSize.y, box3.min.x, box3.min.y)
         })
       }

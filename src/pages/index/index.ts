@@ -2,12 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 09:14:56
+ * @LastEditTime : 2024-11-13 11:34:36
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
 import { ThreeCore } from '@/components/three/core'
-import type * as THREE from 'three'
 import { InteractionManager } from 'three.interactive'
 import Label3d from '@/components/three/utils/Label3d'
 import loadAllAssets from './utils/loadAllAssets'
@@ -28,7 +27,6 @@ export default class CanvasRender extends ThreeCore {
   interactionManager: InteractionManager
   label3d: Label3d
   mapSceneGroup: Group
-  provinceMeshArr: THREE.Mesh[]
   constructor(
     canvas: ConstructorParameters<typeof ThreeCore>[0],
     config?: ConstructorParameters<typeof ThreeCore>[1],
@@ -56,7 +54,6 @@ export default class CanvasRender extends ThreeCore {
 
     this.label3d = new Label3d(this)
     this.assets = []
-    this.provinceMeshArr = []
 
     void loadAllAssets().then((res) => {
       this.assets = res
@@ -91,6 +88,7 @@ export default class CanvasRender extends ThreeCore {
       } = createProvinceItem(this, mapGroup)
       // 创建事件
       createEvent(this, {
+        mapGroup,
         provinceArrowLabelArr,
         provinceBadgeLabelArr,
         provinceCenterCircleArr,
@@ -99,6 +97,7 @@ export default class CanvasRender extends ThreeCore {
       // 创建动画
       createAnimation(this, {
         halo,
+        mapGroup,
         mapSideMaterial,
         provinceCenterCircleArr,
         provinceLineMaterial,

@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-04 23:53:39
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-13 10:35:12
  * @Description  :
  */
 import gsap from 'gsap'
@@ -15,6 +15,7 @@ export default (
   _this: CanvasRenderType,
   {
     halo,
+    mapGroup,
     mapSideMaterial,
     provinceCenterCircleArr,
     provinceLineMaterial,
@@ -23,6 +24,7 @@ export default (
     rotateBorder2,
   }: {
     halo: THREE.Mesh
+    mapGroup: THREE.Group
     mapSideMaterial: THREE.MeshStandardMaterial
     provinceCenterCircleArr: THREE.Group[]
     provinceLineMaterial: THREE.LineBasicMaterial
@@ -84,16 +86,22 @@ export default (
     'mapEnter',
   )
 
-  _this.provinceMeshArr.forEach((mesh) => {
-    tl.add(
-      // top material
-      gsap.to((mesh.material as THREE.MeshStandardMaterial[])[0], {
-        duration: 1,
-        ease: 'circ.out',
-        opacity: 1,
-      }),
-      'mapEnter',
-    )
+  mapGroup.children.forEach((tempGroup) => {
+    tempGroup.children.forEach((childGroup) => {
+      if (childGroup.userData.type === 'shape') {
+        childGroup.children.forEach((mesh) => {
+          tl.add(
+            // top material
+            gsap.to(((mesh as THREE.Mesh).material as THREE.MeshStandardMaterial[])[0], {
+              duration: 1,
+              ease: 'circ.out',
+              opacity: 1,
+            }),
+            'mapEnter',
+          )
+        })
+      }
+    })
   })
   tl.add(
     gsap.to(mapSideMaterial, {

@@ -2,11 +2,11 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:14:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 17:46:46
+ * @LastEditTime : 2024-11-13 10:10:36
  * @Description  :
 -->
 <script setup lang="ts">
-import type { ItemType } from './Index.vue'
+import type { ItemType } from '@/pages/index/utils/others'
 
 withDefaults(
   defineProps<{

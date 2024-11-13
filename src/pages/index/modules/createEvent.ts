@@ -2,22 +2,25 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 18:20:34
+ * @LastEditTime : 2024-11-13 11:33:03
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import gsap from 'gsap'
 import type { labelInstance } from '@/components/three/utils/Label3d'
+import { repayItemChangeKey, type ItemType } from '@/pages/index/utils/others'
 
 export default (
   _this: CanvasRenderType,
   {
+    mapGroup,
     provinceArrowLabelArr,
     provinceBadgeLabelArr,
     provinceCenterCircleArr,
     provinceNameLabelArr,
   }: {
+    mapGroup: THREE.Group
     provinceArrowLabelArr: labelInstance[]
     provinceBadgeLabelArr: labelInstance[]
     provinceCenterCircleArr: THREE.Group[]
@@ -64,12 +67,16 @@ export default (
     })
   }
 
-  function moveProvinceBadgeLabel(adcode: number, type: 'down' | 'up') {
+  function moveProvinceBadgeLabel<T extends 'down' | 'up'>(
+    adcode: number,
+    type: T,
+    data: T extends 'up' ? ItemType : undefined,
+  ) {
     ;[...provinceBadgeLabelArr, ...provinceArrowLabelArr].forEach((group) => {
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
-        if (group.update !== undefined) {
-          group.update('9999-99-99', Math.floor(Math.random() * 11))
+        if (group.update !== undefined && type === 'up') {
+          group.update(data!.repayDate, data!.repayAmt)
         }
         gsap.to(group.element, {
           duration: 0.5,
@@ -96,9 +103,9 @@ export default (
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'down')
     moveProvinceCenterCircle(group.userData.adcode as number, 'down')
-    moveProvinceBadgeLabel(group.userData.adcode as number, 'down')
+    moveProvinceBadgeLabel(group.userData.adcode as number, 'down', undefined)
   }
-  function up(group: THREE.Group) {
+  function up(group: THREE.Group, data: ItemType) {
     gsap.to(group.position, {
       duration: 0.3,
       z: _this.depth,
@@ -113,8 +120,24 @@ export default (
     })
     moveProvinceNameLabel(group.userData.adcode as number, 'up')
     moveProvinceCenterCircle(group.userData.adcode as number, 'up')
-    moveProvinceBadgeLabel(group.userData.adcode as number, 'up')
+    moveProvinceBadgeLabel(group.userData.adcode as number, 'up', data)
   }
+
+  const bus = useEventBus(repayItemChangeKey)
+  let currentUpGroup: null | THREE.Group = null
+  bus.on(({ arr, index }) => {
+    const current = arr[index]
+    const result = mapGroup.children.find(
+      (tempGroup) => tempGroup.userData.name === current.registerProv,
+    )
+    if (result) {
+      up(result as THREE.Group, current)
+      if (currentUpGroup) {
+        down(currentUpGroup)
+      }
+      currentUpGroup = result as THREE.Group
+    }
+  })
 
   /*
   // 循环添加事件
