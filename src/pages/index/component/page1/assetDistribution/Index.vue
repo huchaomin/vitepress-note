@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 09:23:57
+ * @LastEditTime : 2024-11-13 15:35:05
  * @Description  :
 -->
 <script setup lang="ts">
@@ -24,34 +24,24 @@ use([GridComponent, LegendComponent, BarChart, CanvasRenderer])
 
 const data = [
   {
-    name: 'QD资产',
+    name: '非银资产',
     value: 21,
     value2: 81,
   },
   {
-    name: 'LX资产',
+    name: '银登资产',
     value: 30,
     value2: 70,
   },
   {
-    name: '信用卡',
+    name: '运营资产',
     value: 26,
     value2: 46,
   },
   {
-    name: '银登资产',
-    value: 23,
-    value2: 43,
-  },
-  {
-    name: 'QC资产',
+    name: '自持资产',
     value: 43,
-    value2: 43,
-  },
-  {
-    name: '其他资产',
-    value: 13,
-    value2: 73,
+    value2: 83,
   },
 ]
 
