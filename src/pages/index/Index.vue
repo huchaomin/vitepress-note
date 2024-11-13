@@ -2,10 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 13:58:40
+ * @LastEditTime : 2024-11-13 15:11:40
  * @Description  :
 -->
 <script setup lang="ts">
+import gsap from 'gsap'
 import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
 import HeaderBar from './component/header/Index.vue'
@@ -14,6 +15,7 @@ import { getMainData, getRepayList } from '@/api/bigScreen'
 import {
   repayItemChangeKey,
   cameraPositionReadyKey,
+  cameraPositionStartKey,
   type ItemType,
 } from '@/pages/index/utils/others'
 
@@ -103,16 +105,45 @@ onMounted(() => {
   // eslint-disable-next-line no-new
   new CanvasRender(canvasRef.value!)
 })
+
+const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
+const headerBarRef = ref<InstanceType<typeof HeaderBar> | null>(null)
+const footerBarRef = ref<InstanceType<typeof FooterBar> | null>(null)
+
+cameraPositionStartBus.on(() => {
+  cameraPositionStartBus.on(() => {
+    const tl = gsap.timeline()
+    tl.addLabel('header_footer', 4)
+    tl.add(
+      gsap.to(footerBarRef.value!.$el, {
+        duration: 2,
+        ease: 'circ.out',
+        opacity: 1,
+        translateY: 0,
+      }),
+      'header_footer',
+    )
+    tl.add(
+      gsap.to(headerBarRef.value!.$el, {
+        duration: 2,
+        ease: 'circ.out',
+        opacity: 1,
+        translateY: 0,
+      }),
+      'header_footer',
+    )
+  })
+})
 </script>
 
 <template>
   <div class="h-screen w-screen">
     <div style="aspect-ratio: 16/9;">
-      <div class="canvas_parent relative h-full w-full">
+      <div class="canvas_parent relative h-full w-full overflow-hidden">
         <canvas ref="canvasRef"></canvas>
-        <HeaderBar></HeaderBar>
+        <HeaderBar ref="headerBarRef"></HeaderBar>
         <Page1></Page1>
-        <FooterBar></FooterBar>
+        <FooterBar ref="footerBarRef"></FooterBar>
       </div>
     </div>
   </div>

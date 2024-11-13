@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 16:23:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 13:48:09
+ * @LastEditTime : 2024-11-13 15:15:06
  * @Description  :
  */
 import gsap from 'gsap'
@@ -10,9 +10,10 @@ import type { CanvasRenderType } from '../index'
 import type * as THREE from 'three'
 import createGridRipple from './createGridRipple'
 import type { labelInstance } from '@/components/three/utils/Label3d'
-import { cameraPositionReadyKey } from '@/pages/index/utils/others'
+import { cameraPositionReadyKey, cameraPositionStartKey } from '@/pages/index/utils/others'
 
-const bus = useEventBus(cameraPositionReadyKey)
+const cameraPositionReadyBus = useEventBus(cameraPositionReadyKey)
+const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
 
 export default (
   _this: CanvasRenderType,
@@ -38,15 +39,18 @@ export default (
 ) => {
   const tl = gsap.timeline()
   tl.addLabel('mapEnter', 4.5)
-
+  const cameraPositionDuration = 6
   // 相机动画，相机动画结束前其他动画最好提前完成
   tl.add(
     gsap.to(_this.camera.instance.position, {
-      duration: 8,
+      duration: cameraPositionDuration,
       ease: 'power1.in',
       onComplete: () => {
         _this.camera.controls.saveState()
-        bus.emit()
+        cameraPositionReadyBus.emit()
+      },
+      onStart: () => {
+        cameraPositionStartBus.emit()
       },
       z: 200,
     }),
@@ -54,7 +58,7 @@ export default (
   // 光晕旋转动画
   tl.add(
     gsap.to(halo.rotation, {
-      duration: 8,
+      duration: cameraPositionDuration,
       z: -2 * Math.PI,
     }),
     '<',
@@ -62,7 +66,7 @@ export default (
   // 光晕旋透明度
   tl.add(
     gsap.to(halo.material, {
-      duration: 8,
+      duration: cameraPositionDuration,
       opacity: 0,
     }),
     '<',

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 10:48:54
+ * @LastEditTime : 2024-11-13 15:17:34
  * @Description  :
 -->
 <script setup lang="ts">
@@ -14,6 +14,7 @@ import RefundType from './refundType/Index.vue'
 import RefundTrend from './refundTrend/Index.vue'
 import RefundTotal from './refundTotal/Index.vue'
 import AssetSize from './assetSize/Index.vue'
+import { cameraPositionStartKey } from '@/pages/index/utils/others'
 
 const refundScrollRef = ref<InstanceType<typeof RefundScroll> | null>(null)
 const refundUserRef = ref<InstanceType<typeof RefundUser> | null>(null)
@@ -23,52 +24,67 @@ const refundTrendRef = ref<InstanceType<typeof RefundTrend> | null>(null)
 const refundTotalRef = ref<InstanceType<typeof RefundTotal> | null>(null)
 const assetSizeRef = ref<InstanceType<typeof AssetSize> | null>(null)
 
-const isMounted = useMounted()
+const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
 
-watch(isMounted, (val) => {
-  if (val) {
-    const tl = gsap.timeline()
-    tl.addLabel('top_left', 0)
-    tl.addLabel('top_right', 0.5)
-    tl.addLabel('bottom_left', 1)
-    tl.addLabel('bottom_right', 1.5)
-    tl.add(
-      gsap.to(assetDistributionRef.value!.$el, {
-        duration: 2,
-        ease: 'circ.out',
-        opacity: 1,
-        translateX: 0,
-      }),
-      'top_left',
-    )
-    tl.add(
-      gsap.to(refundTypeRef.value!.$el, {
-        duration: 2,
-        ease: 'circ.out',
-        opacity: 1,
-        translateX: 0,
-      }),
-      'top_right',
-    )
-    tl.add(
-      gsap.to(refundUserRef.value!.$el, {
-        duration: 2,
-        ease: 'circ.out',
-        opacity: 1,
-        translateX: 0,
-      }),
-      'bottom_left',
-    )
-    tl.add(
-      gsap.to(refundTrendRef.value!.$el, {
-        duration: 2,
-        ease: 'circ.out',
-        opacity: 1,
-        translateX: 0,
-      }),
-      'bottom_right',
-    )
-  }
+cameraPositionStartBus.on(() => {
+  const tl = gsap.timeline()
+  tl.addLabel('top', 5)
+  tl.addLabel('bottom', 5.5)
+  tl.addLabel('head', 6)
+  tl.add(
+    gsap.to(assetDistributionRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'top',
+  )
+  tl.add(
+    gsap.to(refundTypeRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'top',
+  )
+  tl.add(
+    gsap.to(refundUserRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'bottom',
+  )
+  tl.add(
+    gsap.to(refundTrendRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'bottom',
+  )
+  tl.add(
+    gsap.to(refundTotalRef.value!.$el, {
+      duration: 2,
+      ease: 'power2.out',
+      opacity: 1,
+      translateY: 0,
+    }),
+    'head',
+  )
+  tl.add(
+    gsap.to(assetSizeRef.value!.$el, {
+      duration: 2,
+      ease: 'power2.out',
+      opacity: 1,
+      translateY: 0,
+    }),
+    'head',
+  )
 })
 </script>
 

@@ -22,6 +22,8 @@ import headerSvg from '@/pages/index/assets/svg/header.svg?raw'
   left: 0;
   z-index: 3;
   width: 100%;
+  opacity: 0;
+  transform: translateY(-100%);
 }
 
 .header_title {

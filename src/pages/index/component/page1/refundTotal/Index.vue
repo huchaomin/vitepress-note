@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 09:24:31
+ * @LastEditTime : 2024-11-13 14:55:15
  * @Description  :
 -->
 <script setup lang="ts">
@@ -34,7 +34,8 @@ const total = toRef(() => shareData.mainData.totalRepayAmt)
   top: 8vw;
   left: 42%;
   font-size: 1.6rem;
-  transform: translateX(-50%);
+  opacity: 0;
+  transform: translate(-50%, 2rem);
 }
 
 .icon {

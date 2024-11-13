@@ -1,22 +1,19 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-06 10:59:39
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-09 23:08:10
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-13 15:07:59
  * @Description  :
 -->
 <script setup lang="ts">
 import footerSvg from '@/pages/index/assets/svg/footer.svg?raw'
 import SwiperBtns from './swiperBtns/Index.vue'
-
 </script>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="flex items-center footer_wrapper absolute flex-col">
+  <div class="footer_wrapper absolute flex flex-col items-center">
     <div class="top relative">
       <SwiperBtns></SwiperBtns>
       <div class="gap"></div>
@@ -31,6 +28,8 @@ import SwiperBtns from './swiperBtns/Index.vue'
   left: 0;
   z-index: 3;
   width: 100%;
+  opacity: 0;
+  transform: translateY(100%);
 }
 
 .top {

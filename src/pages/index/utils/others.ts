@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:53:12
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 13:46:04
+ * @LastEditTime : 2024-11-13 14:26:22
  * @Description  :
  */
 import type { EventBusKey } from '@vueuse/core'
@@ -20,6 +20,7 @@ const repayItemChangeKey: EventBusKey<{
   index: number
 }> = Symbol('repay_item_change_key')
 
+const cameraPositionStartKey = Symbol('camera_position_start_key')
 const cameraPositionReadyKey = Symbol('camera_position_ready_key')
 
 const colors = {
@@ -35,4 +36,11 @@ const chartFontFamily = 'JetBrainsMonoMedium, SmileySans-Oblique'
 
 const chartFontSize = 16
 
-export { cameraPositionReadyKey, chartFontFamily, chartFontSize, colors, repayItemChangeKey }
+export {
+  cameraPositionReadyKey,
+  cameraPositionStartKey,
+  chartFontFamily,
+  chartFontSize,
+  colors,
+  repayItemChangeKey,
+}
