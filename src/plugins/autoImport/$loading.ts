@@ -7,13 +7,13 @@
  */
 export default {
   hide() {
-    const commonStore = useCommonStore()
+    const commonStore = useCommonStore(piniaInstance)
     setTimeout(() => {
       commonStore.loadingCount -= 1
     }, 300)
   },
   show() {
-    const commonStore = useCommonStore()
+    const commonStore = useCommonStore(piniaInstance)
     commonStore.loadingCount += 1
   },
 }

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 09:30:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-09 10:45:28
+ * @LastEditTime : 2024-11-13 17:48:54
  * @Description  : 添加 fetch 通用请求 配置
  */
 import { createAlova } from 'alova'
@@ -50,7 +50,7 @@ export default createAlova({
       },
       ...(method.meta ?? {}),
     }
-    const userStore = useUserStore()
+    const userStore = useUserStore(piniaInstance)
     const { useEmptyData, useEmptyParams, useFormData, useLoading, useToken } = method.meta
     if (useToken) {
       if (userStore.token) {
@@ -160,7 +160,7 @@ export default createAlova({
         }
         if (code >= 400) {
           if (code === 401) {
-            useUserStore().clearSession()
+            useUserStore(piniaInstance).clearSession()
           } else {
             if (useFailMsg) {
               $notify.error(msg)

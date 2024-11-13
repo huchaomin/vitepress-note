@@ -16,11 +16,5 @@ declare module 'vue' {
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NInput: typeof import('naive-ui')['NInput']
     NLayout: typeof import('naive-ui')['NLayout']
-    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
-    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
-    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
-    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    NText: typeof import('naive-ui')['NText']
-    NTree: typeof import('naive-ui')['NTree']
   }
 }

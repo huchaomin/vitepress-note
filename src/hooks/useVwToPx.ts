@@ -6,7 +6,7 @@
  * @Description  :
  */
 export default (VW: number | Ref<number>) => {
-  const commonStore = useCommonStore()
+  const commonStore = useCommonStore(piniaInstance)
   const n = isRef(VW) ? VW.value : VW
   return computed(() => (n * commonStore.screenWidth) / 100)
 }

@@ -6,7 +6,7 @@
  * @Description  :
 -->
 <script setup lang="ts">
-const userStore = useUserStore()
+const userStore = useUserStore(piniaInstance)
 
 const formData = reactive({
   password: '',

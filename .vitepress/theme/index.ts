@@ -2,7 +2,7 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-08 18:15:09
+ * @LastEditTime : 2024-11-13 17:49:58
  * @Description  :
  */
 // https://vitepress.dev/guide/custom-theme
@@ -12,11 +12,10 @@ import { NaiveUIProvider, provideCssRenderCollect } from '@/plugins/naive-ui/emb
 import AppEntry from './App.vue'
 import '@/assets/css/index.css'
 import './hideWaiting'
-import store from '@/store/index.ts'
 
 export default {
   enhanceApp: ({ app }) => {
-    app.use(store)
+    app.use(piniaInstance)
     provideCssRenderCollect(app)
   },
   Layout: NaiveUIProvider(AppEntry as Component),

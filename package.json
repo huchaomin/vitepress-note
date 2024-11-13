@@ -20,6 +20,7 @@
     "@formkit/auto-animate": "^0.8.2",
     "@lottiefiles/dotlottie-vue": "^0.4.18",
     "@vueuse/core": "^11.2.0",
+    "@vueuse/integrations": "^11.2.0",
     "alova": "^3.2.2",
     "d3-geo": "^3.1.1",
     "dayjs": "^1.11.13",
@@ -31,6 +32,7 @@
     "swiper": "^11.1.14",
     "three": "^0.170.0",
     "three.interactive": "^1.8.0",
+    "universal-cookie": "^7.2.2",
     "vue-echarts": "^7.0.3"
   },
   "devDependencies": {
@@ -39,7 +41,7 @@
     "@iconify-json/carbon": "^1.2.4",
     "@iconify-json/line-md": "^1.2.2",
     "@stylistic/stylelint-config": "^2.0.0",
-    "@tailwindcss/vite": "4.0.0-alpha.31",
+    "@tailwindcss/vite": "4.0.0-alpha.33",
     "@tsconfig/node20": "^20.1.4",
     "@types/d3-geo": "^3.1.0",
     "@types/node": "^22.9.0",
@@ -66,7 +68,7 @@
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-use-nesting": "^6.0.0",
-    "tailwindcss": "4.0.0-alpha.31",
+    "tailwindcss": "4.0.0-alpha.33",
     "typescript": "^5.6.3",
     "unplugin-auto-import": "^0.18.3",
     "unplugin-icons": "^0.20.1",

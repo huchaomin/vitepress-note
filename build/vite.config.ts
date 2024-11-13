@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 16:11:36
+ * @LastEditTime : 2024-11-13 17:53:12
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -83,6 +83,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         'alova',
         'alova/fetch',
         'alova/vue',
+        'dayjs',
       ],
     },
     plugins: [
@@ -105,6 +106,10 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
           'vue',
           'pinia',
           '@vueuse/core',
+          {
+            from: '@vueuse/integrations/useCookies',
+            imports: ['useCookies'],
+          },
           autoImportStoreList,
           {
             from: 'alova/client',
@@ -119,6 +124,10 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
             from: '@/components/autoImport/CInput.vue',
             imports: ['CInputPropsType'],
             type: true,
+          },
+          {
+            from: '@/store/index.ts',
+            imports: [['default', 'piniaInstance']],
           },
         ],
         // eslintrc: {
@@ -157,7 +166,6 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
     resolve: {
       alias: {
         '@': resolveCwd('src'), // 与导入代码片段不一样 https://vitepress.dev/zh/guide/markdown#import-code-snippets
-        font: resolveCwd('src/assets/fonts'), // 看看升级到 vite 6 以后会不会有问题
         img: resolveCwd('src/assets/images'),
       },
       // https://cn.vitejs.dev/guide/performance.html#reduce-resolve-operations
