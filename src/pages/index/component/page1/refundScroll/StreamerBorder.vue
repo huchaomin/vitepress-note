@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-26 12:23:23
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 16:40:06
+ * @LastEditTime : 2024-11-14 15:33:16
  * @Description  :
 -->
 <script setup lang="ts">
@@ -109,8 +109,7 @@ const str = computed(() => {
   `
 })
 
-const iconStr =
-  `<defs>
+const iconStr = `<defs>
     <clipPath id="svg-12-a-mask">
       <polygon
         class="svg-12-a-polygon"
@@ -148,13 +147,7 @@ const iconStr =
 
 <template>
   <div ref="rootRef" class="relative h-full w-full">
-    <svg
-      class="absolute"
-      :width="width"
-      :height="height"
-      style="pointer-events: none;"
-      v-html="str"
-    />
+    <svg class="absolute" :width="width" :height="height" v-html="str" />
     <svg
       viewBox="-50 -50 100 100"
       class="left_top_icon absolute"
@@ -229,4 +222,4 @@ const iconStr =
     transform: translate(0%, -15%);
   }
 }
-  </style>
+</style>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-14 09:22:48
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 14:07:19
+ * @LastEditTime : 2024-11-14 15:51:22
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,6 +41,7 @@ import { colors } from '@/pages/index/utils/others'
   left: 0;
   width: 100%;
   height: calc(100vw * 180 / 3840);
+  pointer-events: none;
   background: url('@/pages/index/assets/img/bottom_bg.png') 0 -0.7vw no-repeat;
   background-size: contain;
   opacity: 0;

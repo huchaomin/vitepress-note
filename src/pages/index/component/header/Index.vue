@@ -19,6 +19,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  pointer-events: none;
   opacity: 0;
   transform: translateY(-100%);
 }

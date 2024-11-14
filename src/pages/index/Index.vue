@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 14:16:30
+ * @LastEditTime : 2024-11-14 16:07:36
  * @Description  :
 -->
 <script setup lang="ts">
@@ -113,6 +113,7 @@ const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
 const headerBarRef = ref<InstanceType<typeof HeaderBar> | null>(null)
 const footerBarRef = ref<InstanceType<typeof FooterBar> | null>(null)
 const bottomMenuRef = ref<HTMLDivElement | null>(null)
+const bottomBgRef = ref<HTMLDivElement | null>(null)
 
 cameraPositionStartBus.on(() => {
   cameraPositionStartBus.on(() => {
@@ -145,19 +146,43 @@ cameraPositionStartBus.on(() => {
       }),
       'header_footer',
     )
+    tl.add(
+      gsap.to(bottomBgRef.value, {
+        duration: 2,
+        ease: 'circ.out',
+        opacity: 1,
+        translateY: 0,
+      }),
+      'header_footer',
+    )
   })
 })
 
 const bottomBtnText = ['智能数据大屏', '业务板块', '核心亮点']
+
+const carouselIndex = ref(0)
+function handleCarouselIndexChange(index: number) {
+  carouselIndex.value = index
+}
 </script>
 
 <template>
   <div class="h-screen w-screen">
     <div style="aspect-ratio: 16/9;">
       <div class="canvas_parent relative h-full w-full overflow-hidden">
-        <canvas ref="canvasRef"></canvas>
         <HeaderBar ref="headerBarRef"></HeaderBar>
-        <NCarousel effect="fade">
+        <canvas ref="canvasRef"></canvas>
+        <div
+          ref="bottomBgRef"
+          :style="{
+            visibility: carouselIndex === 0 ? 'visible' : 'hidden',
+          }"
+          class="bottom_bg absolute flex w-full justify-center"
+        >
+          <div class="bottom_bg_inner"></div>
+        </div>
+        <FooterBar ref="footerBarRef"></FooterBar>
+        <NCarousel effect="fade" :on-update:current-index="handleCarouselIndexChange">
           <Page1></Page1>
           <Page2></Page2>
           <Page3></Page3>
@@ -176,7 +201,6 @@ const bottomBtnText = ['智能数据大屏', '业务板块', '核心亮点']
             </div>
           </template>
         </NCarousel>
-        <FooterBar ref="footerBarRef"></FooterBar>
       </div>
     </div>
   </div>
@@ -188,11 +212,31 @@ canvas {
   height: 100% !important;
 }
 
+.bottom_bg {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(100%);
+
+  .bottom_bg_inner {
+    width: 50vw;
+    height: 10vw;
+    box-shadow: inset 0 -7vw 1.7544vw rgb(1 16 36 / 90%);
+  }
+}
+
 .n-carousel {
   position: absolute !important;
   top: 0;
   left: 0;
-  z-index: 1;
+  pointer-events: none;
+
+  :deep() {
+    .n-carousel__slide {
+      pointer-events: none !important;
+    }
+  }
 }
 
 .bottom_menu {
@@ -206,6 +250,7 @@ canvas {
     --n-font-size: 1.2rem;
 
     min-width: calc(var(--n-height) * 200 / 64);
+    pointer-events: auto;
     background: url('@/pages/index/assets/img/bottom_btn.png') no-repeat;
     background-size: 100%;
 
