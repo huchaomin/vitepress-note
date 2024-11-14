@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:20:35
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-13 23:11:01
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-14 13:56:20
  * @Description  :
 -->
 <script setup lang="ts"></script>
@@ -18,7 +18,6 @@
 .header_wrapper {
   top: 0;
   left: 0;
-  z-index: 3;
   width: 100%;
   opacity: 0;
   transform: translateY(-100%);

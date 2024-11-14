@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 15:17:34
+ * @LastEditTime : 2024-11-14 13:56:46
  * @Description  :
 -->
 <script setup lang="ts">
@@ -106,7 +106,6 @@ cameraPositionStartBus.on(() => {
 
   top: 0;
   left: 0;
-  z-index: 1;
   pointer-events: none;
 
   .refund_user_wrapper,

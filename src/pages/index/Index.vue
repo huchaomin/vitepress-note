@@ -2,16 +2,19 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 15:11:40
+ * @LastEditTime : 2024-11-14 14:16:30
  * @Description  :
 -->
 <script setup lang="ts">
 import gsap from 'gsap'
 import CanvasRender from './index'
 import Page1 from './component/page1/Index.vue'
+import Page2 from './component/page2/Index.vue'
+import Page3 from './component/page3/Index.vue'
 import HeaderBar from './component/header/Index.vue'
 import FooterBar from './component/footer/Index.vue'
 import { getMainData, getRepayList } from '@/api/bigScreen'
+import { colors } from '@/pages/index/utils/others'
 import {
   repayItemChangeKey,
   cameraPositionReadyKey,
@@ -109,6 +112,7 @@ onMounted(() => {
 const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
 const headerBarRef = ref<InstanceType<typeof HeaderBar> | null>(null)
 const footerBarRef = ref<InstanceType<typeof FooterBar> | null>(null)
+const bottomMenuRef = ref<HTMLDivElement | null>(null)
 
 cameraPositionStartBus.on(() => {
   cameraPositionStartBus.on(() => {
@@ -132,8 +136,19 @@ cameraPositionStartBus.on(() => {
       }),
       'header_footer',
     )
+    tl.add(
+      gsap.to(bottomMenuRef.value, {
+        duration: 2,
+        ease: 'circ.out',
+        opacity: 1,
+        translateY: 0,
+      }),
+      'header_footer',
+    )
   })
 })
+
+const bottomBtnText = ['智能数据大屏', '业务板块', '核心亮点']
 </script>
 
 <template>
@@ -142,7 +157,25 @@ cameraPositionStartBus.on(() => {
       <div class="canvas_parent relative h-full w-full overflow-hidden">
         <canvas ref="canvasRef"></canvas>
         <HeaderBar ref="headerBarRef"></HeaderBar>
-        <Page1></Page1>
+        <NCarousel effect="fade">
+          <Page1></Page1>
+          <Page2></Page2>
+          <Page3></Page3>
+          <template #dots="{ total, currentIndex, to }">
+            <div ref="bottomMenuRef" class="bottom_menu absolute flex w-full justify-center">
+              <NButton
+                v-for="index of total"
+                :key="index"
+                :class="{ ['is_active']: currentIndex === index - 1 }"
+                :bordered="false"
+                :color="colors.white"
+                ghost
+                @click="to(index - 1)"
+                >{{ bottomBtnText[index - 1] }}</NButton
+              >
+            </div>
+          </template>
+        </NCarousel>
         <FooterBar ref="footerBarRef"></FooterBar>
       </div>
     </div>
@@ -153,6 +186,48 @@ cameraPositionStartBus.on(() => {
 canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+.n-carousel {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bottom_menu {
+  bottom: 2vw;
+  gap: 0 1vw;
+  opacity: 0;
+  transform: translateY(100%);
+
+  .n-button {
+    --n-height: 2.5vw;
+    --n-font-size: 1.2rem;
+
+    min-width: calc(var(--n-height) * 200 / 64);
+    background: url('@/pages/index/assets/img/bottom_btn.png') no-repeat;
+    background-size: 100%;
+
+    :deep() {
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgb(117 232 255 / 100%), rgb(255 255 255 / 100%));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    &:hover,
+    &.is_active {
+      background: url('@/pages/index/assets/img/bottom_btn_hover.png') no-repeat;
+      background-size: 100%;
+    }
+  }
 }
 
 .canvas_parent {

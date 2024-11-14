@@ -2,7 +2,6 @@
 
 ## todo
 
-- [tailwindcss v4 打包 deep selector 有问题，开发环境没有问题](https://github.com/tailwindlabs/tailwindcss/issues/14839)
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [部署到GitHub Pages](https://cn.vitejs.dev/guide/static-deploy.html#github-pages)
 - [whyframe](https://whyframe.dev/)

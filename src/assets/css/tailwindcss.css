@@ -9,6 +9,7 @@
 /* 处理 @layer theme {} */
 /* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
+  /* text-yellow bg-yellow */
   --color-*: initial;
   --color-black: #000;
   --color-white: #fff;

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:14:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 10:10:36
+ * @LastEditTime : 2024-11-14 11:47:32
  * @Description  :
 -->
 <script setup lang="ts">
@@ -24,8 +24,10 @@ const time = ref(dayjs().format('HH:mm:ss'))
     <div class="flex items-start">
       <i-line-md:play-filled
         class="arrow mr-2"
+        :class="{
+          'text-yellow': index === 0,
+        }"
         :style="{
-          color: `var(${index === 0 ? '--color-yellow' : '--color-white'})`,
           animation:
             index === 0 ? '2s linear -0.625s infinite normal forwards running breath' : 'none',
         }"
@@ -35,7 +37,17 @@ const time = ref(dayjs().format('HH:mm:ss'))
           <span>{{ time }}</span>
           <span class="ml-3_5">{{ item.clientName }}</span>
         </div>
-        <div class="mt-1_5">回款：{{ item.repayAmt }} 元</div>
+        <div class="mt-1_5">
+          回款:
+          <span
+            :class="{
+              'text-yellow': index === 0,
+            }"
+          >
+            {{ item.repayAmt }}
+          </span>
+          元
+        </div>
       </div>
     </div>
   </div>

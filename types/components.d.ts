@@ -11,6 +11,7 @@ declare module 'vue' {
     CInput: typeof import('./../src/components/autoImport/CInput.vue')['default']
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NCarousel: typeof import('naive-ui')['NCarousel']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
