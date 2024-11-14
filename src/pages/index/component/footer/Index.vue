@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-14 09:22:48
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 15:51:22
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-14 23:44:13
  * @Description  :
 -->
 <script setup lang="ts">
@@ -42,7 +42,7 @@ import { colors } from '@/pages/index/utils/others'
   width: 100%;
   height: calc(100vw * 180 / 3840);
   pointer-events: none;
-  background: url('@/pages/index/assets/img/bottom_bg.png') 0 -0.7vw no-repeat;
+  background: url('@/pages/index/assets/img/bottom_bg.png') 0 no-repeat;
   background-size: contain;
   opacity: 0;
   transform: translateY(100%);
@@ -50,7 +50,7 @@ import { colors } from '@/pages/index/utils/others'
   .line_left,
   .line_right {
     position: absolute;
-    bottom: -0.42vw;
+    bottom: -1.12vw;
     width: 37vw;
     height: 2.97vw;
   }

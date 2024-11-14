@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 18:20:05
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-15 00:33:40
  * @Description  :
 -->
 <script setup lang="ts">
@@ -181,9 +181,9 @@ function handleCarouselIndexChange(index: number) {
           :style="{
             visibility: carouselIndex === 0 ? 'visible' : 'hidden',
           }"
-          class="bottom_bg absolute flex w-full justify-center"
+          class="bottom_bg absolute w-full"
         >
-          <div class="bottom_bg_inner"></div>
+          <div class="bottom_bg_inner absolute"></div>
         </div>
         <FooterBar ref="footerBarRef"></FooterBar>
         <NCarousel effect="fade" :on-update:current-index="handleCarouselIndexChange">
@@ -223,14 +223,19 @@ canvas {
 .bottom_bg {
   bottom: 0;
   left: 0;
+  height: 5vw;
   pointer-events: none;
   opacity: 0;
   transform: translateY(100%);
 
   .bottom_bg_inner {
-    width: 50vw;
-    height: 10vw;
-    box-shadow: inset 0 -7vw 1.7544vw rgb(1 16 36 / 90%);
+    top: 5vw;
+    left: 50%;
+    width: 250vw;
+    height: 250vw;
+    border-radius: 50%;
+    box-shadow: 0 -4vw 2vw 2vw rgb(1 16 36 / 90%);
+    transform: translateX(-50%);
   }
 }
 
