@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 11:34:36
+ * @LastEditTime : 2024-11-14 11:18:18
  * @Description  :
  */
 import { Fog, Color, Group } from 'three'
@@ -32,7 +32,6 @@ export default class CanvasRender extends ThreeCore {
     config?: ConstructorParameters<typeof ThreeCore>[1],
   ) {
     super(canvas, config)
-    this.setAxesHelper()
     // 中心坐标
     this.depth = 5
     this.scene.fog = new Fog(0x011024, 1, 500)

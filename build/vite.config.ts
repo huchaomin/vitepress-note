@@ -78,8 +78,6 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         'echarts/charts',
         'echarts/renderers',
         '@lottiefiles/dotlottie-vue',
-        'swiper/vue',
-        'swiper/modules',
         'alova',
         'alova/fetch',
         'alova/vue',
