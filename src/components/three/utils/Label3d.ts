@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 15:04:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 11:46:01
+ * @LastEditTime : 2024-11-14 18:16:37
  * @Description  :
  */
 import {
@@ -24,7 +24,7 @@ export default class Label3d {
   private css3dRender: CSS3DRenderer
   private labelScale: number
   constructor({ camera, canvas, scene, sizes, time }: ThreeCore, config?: { labelScale?: number }) {
-    this.labelScale = config?.labelScale ?? 0.16
+    this.labelScale = config?.labelScale ?? 0.125
     const css3dRender = new CSS3DRenderer() // 实例化css3d渲染器
     css3dRender.domElement.style.position = 'absolute' // 设置定位位置
     css3dRender.domElement.style.left = '0px'

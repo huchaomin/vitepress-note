@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 09:25:27
+ * @LastEditTime : 2024-11-14 17:48:24
  * @Description  :
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ import { formatNumber } from '@/utils/format'
 
 const shareData: Record<string, any> = inject('shareData')!
 
-const total = toRef(() => shareData.mainData.totalRepayAmt)
+// const total = toRef(() => shareData.mainData.totalRepayAmt)
 
 use([GridComponent, PieChart, CanvasRenderer])
 
@@ -121,7 +121,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
     <ChartTitle :data="pie_chart" title="回款方式"></ChartTitle>
     <div class="relative flex-auto">
       <VChart :option="option" autoresize></VChart>
-      <div
+      <!-- <div
         class="absolute flex h-full w-full flex-col items-center justify-center"
         style="top: 0; left: 0; z-index: -1;"
       >
@@ -131,7 +131,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
             notation: 'compact',
           })
         }}</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

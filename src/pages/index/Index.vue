@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 17:31:39
+ * @LastEditTime : 2024-11-14 18:20:05
  * @Description  :
 -->
 <script setup lang="ts">
@@ -188,7 +188,11 @@ function handleCarouselIndexChange(index: number) {
         <FooterBar ref="footerBarRef"></FooterBar>
         <NCarousel effect="fade" :on-update:current-index="handleCarouselIndexChange">
           <Page1></Page1>
-          <Page2></Page2>
+          <Page2
+            :class="{
+              active: carouselIndex === 1,
+            }"
+          ></Page2>
           <Page3></Page3>
           <template #dots="{ total, currentIndex, to }">
             <div ref="bottomMenuRef" class="bottom_menu absolute flex w-full justify-center">
@@ -287,17 +291,19 @@ canvas {
 
   & :deep(.provinces_name) {
     top: -0.177rem;
+    font-size: 16px;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
   }
 
   & :deep(.badges_label_wrapper) {
+    font-size: 16px;
     opacity: 0;
 
     .badges_label {
       position: relative;
-      bottom: 3rem;
-      padding: 0.5rem;
+      bottom: 48px;
+      padding: 8px;
       background: #0e1937;
       border: 1px solid #1e7491;
 
@@ -310,11 +316,11 @@ canvas {
         right: 0;
         bottom: 0;
         display: block;
-        width: 0.625rem;
-        height: 0.625rem;
+        width: 10px;
+        height: 10px;
         content: '';
-        border-right: 0.125rem solid #6cfffe;
-        border-bottom: 0.125rem solid #6cfffe;
+        border-right: 2px solid #6cfffe;
+        border-bottom: 2px solid #6cfffe;
       }
 
       &::before {
@@ -322,11 +328,11 @@ canvas {
         top: 0;
         left: 0;
         display: block;
-        width: 0.625rem;
-        height: 0.625rem;
+        width: 10px;
+        height: 10px;
         content: '';
-        border-top: 0.125rem solid #6cfffe;
-        border-left: 0.125rem solid #6cfffe;
+        border-top: 2px solid #6cfffe;
+        border-left: 2px solid #6cfffe;
       }
     }
   }
@@ -336,9 +342,9 @@ canvas {
 
     .arrow_down_icon {
       position: relative;
-      bottom: 0.5rem;
-      width: 1rem;
-      height: 1rem;
+      bottom: 8px;
+      width: 16px;
+      height: 16px;
     }
   }
 
