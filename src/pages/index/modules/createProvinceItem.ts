@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-07 17:01:50
+ * @LastEditTime : 2024-11-14 16:26:22
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -21,14 +21,14 @@ function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstanc
   const label = _this.label3d.create('badges_label_wrapper')
   label.init(
     `<div class="badges_label">
-      <p class="date"></p>
+      <p class="name"></p>
       <p>
         回款：<span class="amt"></span>元
       </p>
     </div>`,
     position,
-    (date: string, amt: number | string) => {
-      label.element.querySelector('.date')!.textContent = date
+    (name: string, amt: number | string) => {
+      label.element.querySelector('.name')!.textContent = name
       label.element.querySelector('.amt')!.textContent = String(amt)
     },
   )

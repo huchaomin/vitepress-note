@@ -48,7 +48,6 @@ const currentRepayIndex = ref(0)
 const timer = setInterval(() => {
   queryFlayMap.next.date = dayjs().format('YYYY-MM-DD')
   if (queryFlayMap.next.date !== queryFlayMap.prev.date) {
-    debugger
     mainSend()
     repaySend()
     currentRepayIndex.value = 0

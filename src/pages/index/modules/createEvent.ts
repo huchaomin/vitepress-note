@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 14:21:25
+ * @LastEditTime : 2024-11-14 16:25:43
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -77,7 +77,7 @@ export default (
       if (group.userData.adcode === adcode) {
         moveGroupZPosition(group, type)
         if (group.update !== undefined && type === 'up') {
-          group.update(data!.repayDate, data!.repayAmt)
+          group.update(data!.clientName, data!.repayAmt)
         }
         gsap.to(group.element, {
           duration,
@@ -133,7 +133,7 @@ export default (
     )
     if (result) {
       up(result as THREE.Group, current)
-      if (currentUpGroup) {
+      if (currentUpGroup && currentUpGroup.userData.name !== current.registerProv) {
         down(currentUpGroup)
       }
       currentUpGroup = result as THREE.Group
