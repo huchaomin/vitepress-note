@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 16:07:36
+ * @LastEditTime : 2024-11-14 17:31:39
  * @Description  :
 -->
 <script setup lang="ts">
@@ -19,6 +19,7 @@ import {
   repayItemChangeKey,
   cameraPositionReadyKey,
   cameraPositionStartKey,
+  carouselIndexChangeKey,
   type ItemType,
 } from '@/pages/index/utils/others'
 
@@ -102,10 +103,13 @@ shareData.mainData = mainData
 provide('shareData', shareData)
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
+const carouselIndexChangeBus = useEventBus(carouselIndexChangeKey)
 
 onMounted(() => {
-  // eslint-disable-next-line no-new
-  new CanvasRender(canvasRef.value!)
+  const instance = new CanvasRender(canvasRef.value!)
+  carouselIndexChangeBus.on((index) => {
+    instance.mapSceneGroup.visible = index === 0
+  })
 })
 
 const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
@@ -162,12 +166,13 @@ const bottomBtnText = ['智能数据大屏', '业务板块', '核心亮点']
 const carouselIndex = ref(0)
 function handleCarouselIndexChange(index: number) {
   carouselIndex.value = index
+  carouselIndexChangeBus.emit(index)
 }
 </script>
 
 <template>
   <div class="h-screen w-screen">
-    <div style="aspect-ratio: 16/9;">
+    <div style="aspect-ratio: 288/177;">
       <div class="canvas_parent relative h-full w-full overflow-hidden">
         <HeaderBar ref="headerBarRef"></HeaderBar>
         <canvas ref="canvasRef"></canvas>

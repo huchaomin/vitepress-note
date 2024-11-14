@@ -89,7 +89,7 @@ cameraPositionStartBus.on(() => {
 </script>
 
 <template>
-  <div class="page1_wrapper absolute h-full w-full">
+  <div class="page1_wrapper h-full w-full">
     <RefundScroll ref="refundScrollRef"></RefundScroll>
     <AssetDistribution ref="assetDistributionRef"></AssetDistribution>
     <RefundUser ref="refundUserRef"></RefundUser>
@@ -103,9 +103,6 @@ cameraPositionStartBus.on(() => {
 <style scoped>
 .page1_wrapper {
   --x-padding: 1.8vw;
-
-  top: 0;
-  left: 0;
 
   .refund_user_wrapper,
   .asset_distribution_wrapper,
