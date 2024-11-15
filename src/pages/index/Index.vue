@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-15 00:33:40
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-15 10:59:15
  * @Description  :
 -->
 <script setup lang="ts">
@@ -100,6 +100,7 @@ watch(
 
 const shareData: Record<string, any> = reactive({})
 shareData.mainData = mainData
+shareData.repayDataList = repayDataList
 provide('shareData', shareData)
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
