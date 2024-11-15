@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 17:48:24
+ * @LastEditTime : 2024-11-15 14:32:53
  * @Description  :
 -->
 <script setup lang="ts">
@@ -18,20 +18,23 @@ import { formatNumber } from '@/utils/format'
 
 const shareData: Record<string, any> = inject('shareData')!
 
-// const total = toRef(() => shareData.mainData.totalRepayAmt)
-
 use([GridComponent, PieChart, CanvasRenderer])
 
-const data = reactive([
-  {
-    name: '法诉回款',
-    value: computed(() => shareData.mainData.fasuRepayAmt),
-  },
-  {
-    name: '调解回款',
-    value: computed(() => shareData.mainData.tiaojieRepayAmt),
-  },
-])
+const refundTotalEnd = computed(() => shareData.refundTotalStartEnd?.[1] ?? 0)
+const data = computed(() => {
+  const { fasuRepayAmt, totalRepayAmt } = shareData.mainData
+  const rate = fasuRepayAmt / (totalRepayAmt + fasuRepayAmt)
+  return [
+    {
+      name: '法诉回款',
+      value: rate * refundTotalEnd.value,
+    },
+    {
+      name: '调解回款',
+      value: (1 - rate) * refundTotalEnd.value,
+    },
+  ]
+})
 
 const colorList = [colors.blueHover, colors.lineHover]
 
@@ -58,7 +61,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
     },
     series: [
       {
-        data,
+        data: data.value,
         itemStyle: {
           borderRadius: 5,
           color: itemColor,
@@ -71,6 +74,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
           formatter: ({ name, value }) => {
             return `{name|${name}}\n{value|${formatNumber(value, {
               notation: 'compact',
+              roundingMode: 'floor',
             })}}`
           },
           rich: {
@@ -86,7 +90,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
         ...itemOthers,
       },
       {
-        data,
+        data: data.value,
         itemStyle: {
           borderRadius: [5, 0],
           color: itemColor,
@@ -99,7 +103,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
         ...itemOthers,
       },
       {
-        data,
+        data: data.value,
         itemStyle: {
           borderRadius: [0, 5],
           color: itemColor,
@@ -121,17 +125,18 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
     <ChartTitle :data="pie_chart" title="回款方式"></ChartTitle>
     <div class="relative flex-auto">
       <VChart :option="option" autoresize></VChart>
-      <!-- <div
+      <div
         class="absolute flex h-full w-full flex-col items-center justify-center"
         style="top: 0; left: 0; z-index: -1;"
       >
         <span>累计回款金额</span>
         <span style="font-size: 2rem;">{{
-          formatNumber(total, {
+          formatNumber(refundTotalEnd, {
             notation: 'compact',
+            roundingMode: 'floor',
           })
         }}</span>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

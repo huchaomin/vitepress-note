@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 13:47:35
+ * @LastEditTime : 2024-11-15 14:19:56
  * @Description  :
 -->
 <script setup lang="ts">
@@ -27,6 +27,7 @@ bus.on(({ index }) => {
 })
 
 const startEnd = reactive<[] | [number, number]>([])
+shareData.refundTotalStartEnd = startEnd
 watchEffect(() => {
   if (repayItemIndex.value === 0) {
     startEnd[0] = 0

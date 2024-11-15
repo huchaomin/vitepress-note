@@ -1,4 +1,24 @@
-function formatNumber(n: any, config?: ConstructorParameters<typeof Intl.NumberFormat>[1]): string {
+/*
+ * @Author       : peter peter@qingcongai.com
+ * @Date         : 2024-11-05 16:54:50
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-15 14:32:07
+ * @Description  :
+ */
+type FormatNumberConfig = {
+  roundingMode?:
+    | 'ceil'
+    | 'expand'
+    | 'floor'
+    | 'halfCeil'
+    | 'halfEven'
+    | 'halfExpand'
+    | 'halfFloor'
+    | 'halfTrunc'
+    | 'trunc'
+} & ConstructorParameters<typeof Intl.NumberFormat>[1]
+
+function formatNumber(n: any, config?: FormatNumberConfig): string {
   const number = Number(n)
   if (Number.isFinite(number) === false) {
     return ''
