@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 15:35:05
+ * @LastEditTime : 2024-11-15 15:28:54
  * @Description  :
 -->
 <script setup lang="ts">
@@ -205,7 +205,6 @@ const option = computed<
 
 <style scoped>
 .asset_distribution_wrapper {
-  top: 3vw;
-  height: 22vw;
+  height: 17vw;
 }
 </style>

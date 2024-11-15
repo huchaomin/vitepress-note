@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 16:29:31
+ * @LastEditTime : 2024-11-15 16:25:59
  * @Description  :
 -->
 <script setup lang="ts">
@@ -61,10 +61,10 @@ const option = computed<
   const color = {
     backgroundBar: 'rgba(1, 80, 207,  0.3)',
     backgroundHat: 'rgba(1, 80, 207, 0.6)',
-    barBottom: colors.blueHover,
+    barBottom: colors.lineHover,
     barHat: 'rgba(14, 195, 255,  1)',
-    barTop: colors.blue,
-    bottomEffectScatter: 'rgba(102, 155, 255, 1)',
+    barTop: colors.line,
+    bottomEffectScatter: 'rgba(102, 155, 255, 0.8)',
   }
   const fontSize = useDynamicPx(chartFontSize).value
   const gridXGap = useDynamicPx(20).value
@@ -219,9 +219,3 @@ const option = computed<
     ></VChart>
   </div>
 </template>
-
-<style scoped>
-.refund_user_wrapper {
-  height: 23vw;
-}
-</style>

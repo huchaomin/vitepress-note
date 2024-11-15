@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:36:42
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 14:10:19
+ * @LastEditTime : 2024-11-15 15:22:25
  * @Description  :
  */
 
@@ -20,9 +20,9 @@ function createPointLight(
   return pointLight
 }
 export default (_this: CanvasRenderType) => {
-  const sun = new AmbientLight(0xffffff, 2)
+  const sun = new AmbientLight(0x056a96, 2)
   // 方向光
-  const directionalLight = new DirectionalLight(0xffffff, 4)
+  const directionalLight = new DirectionalLight(0x056a96, 4)
   directionalLight.position.set(-30, -8, 6)
   directionalLight.castShadow = true
   directionalLight.shadow.radius = 20

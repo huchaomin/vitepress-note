@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 14:50:04
+ * @LastEditTime : 2024-11-15 16:30:46
  * @Description  :
 -->
 <script setup lang="ts">
@@ -176,7 +176,7 @@ function handleCarouselIndexChange(index: number) {
 
 <template>
   <div class="h-screen w-screen">
-    <div style="aspect-ratio: 288/177;">
+    <div style="aspect-ratio: 16/9;">
       <div class="canvas_parent relative h-full w-full overflow-hidden">
         <HeaderBar ref="headerBarRef"></HeaderBar>
         <canvas ref="canvasRef"></canvas>
@@ -312,7 +312,7 @@ canvas {
     .badges_label {
       position: relative;
       bottom: 48px;
-      padding: 8px;
+      padding: 10px 18px;
       background: #0e1937;
       border: 1px solid #1e7491;
 

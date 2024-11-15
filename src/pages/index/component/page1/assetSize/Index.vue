@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 14:56:35
+ * @LastEditTime : 2024-11-15 16:11:58
  * @Description  :
 -->
 <script setup lang="ts">
@@ -50,8 +50,6 @@ const totalSplitArr = computed(() => {
 
 <style scoped>
 .asset_size_wrapper {
-  top: 6.2vw;
-  font-size: 2.4rem;
   opacity: 0;
   transform: translateY(-2rem);
 }
@@ -64,13 +62,13 @@ const totalSplitArr = computed(() => {
 }
 
 .border_box {
-  width: 2.2vw;
-  height: 2.2vw;
+  width: 2.1vw;
+  height: 2.1vw;
   margin-left: 0.3vw;
 
   .border_icon {
-    top: 68%;
-    left: 46%;
+    top: 60%;
+    left: 39%;
     width: 450%;
     transform: translate(-50%, -50%);
   }

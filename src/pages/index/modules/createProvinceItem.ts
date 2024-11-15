@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 16:26:22
+ * @LastEditTime : 2024-11-15 16:18:30
  * @Description  :
  */
 import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
@@ -29,7 +29,7 @@ function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstanc
     position,
     (name: string, amt: number | string) => {
       label.element.querySelector('.name')!.textContent = name
-      label.element.querySelector('.amt')!.textContent = String(amt)
+      label.element.querySelector('.amt')!.textContent = `${amt}`
     },
   )
   return label

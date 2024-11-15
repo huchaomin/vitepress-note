@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 15:30:19
+ * @LastEditTime : 2024-11-15 16:21:23
  * @Description  :
 -->
 <script setup lang="ts">
@@ -102,13 +102,13 @@ cameraPositionStartBus.on(() => {
 
 <style scoped>
 .page1_wrapper {
-  --x-padding: 1.8vw;
+  --x-padding: 2.5vw;
 
   .refund_user_wrapper,
   .asset_distribution_wrapper,
   .refund_type_wrapper,
   .refund_trend_wrapper {
-    width: 23vw;
+    width: 20vw;
   }
 
   .refund_user_wrapper,
@@ -125,13 +125,29 @@ cameraPositionStartBus.on(() => {
     transform: translateX(calc(100% + var(--x-padding)));
   }
 
+  .refund_total_wrapper,
   .asset_size_wrapper {
+    top: 6.2vw;
+    font-size: 2rem;
+  }
+
+  .asset_size_wrapper {
+    left: calc(var(--x-padding) + 4vw);
+  }
+
+  .refund_total_wrapper {
     right: var(--x-padding);
   }
 
   .refund_user_wrapper,
   .refund_trend_wrapper {
     bottom: 5vw;
+    height: 20vw;
+  }
+
+  .asset_distribution_wrapper,
+  .refund_type_wrapper {
+    top: 11vw;
   }
 }
 </style>

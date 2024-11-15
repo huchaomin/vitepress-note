@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-12 16:28:23
+ * @LastEditTime : 2024-11-15 16:22:45
  * @Description  :
 -->
 <script setup lang="ts">
@@ -174,9 +174,3 @@ const option = computed<
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>
-
-<style scoped>
-.refund_trend_wrapper {
-  height: 18vw;
-}
-</style>

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 14:32:53
+ * @LastEditTime : 2024-11-15 15:29:02
  * @Description  :
 -->
 <script setup lang="ts">
@@ -143,7 +143,6 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
 
 <style scoped>
 .refund_type_wrapper {
-  top: 13vw;
   height: 18vw;
 }
 </style>

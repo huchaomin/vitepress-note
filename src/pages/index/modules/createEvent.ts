@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 16:25:43
+ * @LastEditTime : 2024-11-15 15:20:15
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -115,7 +115,7 @@ export default (
       if (g.userData.type === 'shape') {
         g.children.forEach((m) => {
           const o = m as THREE.Mesh<any, THREE.MeshStandardMaterial[], any>
-          o.material[0].emissive.setHex(0x0e86b2)
+          o.material[0].emissive.setHex(0x528e58)
         })
       }
     })

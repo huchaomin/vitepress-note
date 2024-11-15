@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:53:12
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 16:32:04
+ * @LastEditTime : 2024-11-15 16:27:19
  * @Description  :
  */
 import type { EventBusKey } from '@vueuse/core'
@@ -25,11 +25,11 @@ const cameraPositionReadyKey = Symbol('camera_position_ready_key')
 const carouselIndexChangeKey: EventBusKey<number> = Symbol('carousel_index_change_key')
 
 const colors = {
-  blue: 'rgba(0, 72, 203, 0.8)',
-  blueHover: 'rgba(14, 195, 255, 0.8)',
+  blue: 'rgba(0, 72, 203, 0.7)',
+  blueHover: 'rgba(14, 195, 255, 0.7)',
   line: '#0C4269',
   lineHover: '#00CED1',
-  white: '#fff',
+  white: '#FFF2DB',
   yellow: '#ffe70b',
 }
 

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 11:02:47
+ * @LastEditTime : 2024-11-15 15:18:19
  * @Description  :
  */
 import {
@@ -27,7 +27,7 @@ function createProvinceMaterial(_this: CanvasRenderType) {
   const topMap = _this.getAssetsData('mapTop') as THREE.Texture
   topMap.wrapS = topMap.wrapT = RepeatWrapping
   const topMaterial = new MeshStandardMaterial({
-    color: 0x132e64,
+    color: 0x77c4bb,
     emissive: 0x000000,
     map: topMap,
     normalMap: topMap,
