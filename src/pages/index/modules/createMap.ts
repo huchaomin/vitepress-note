@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-22 11:43:47
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-05 00:35:13
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-15 11:02:47
  * @Description  :
  */
 import {
@@ -27,7 +27,7 @@ function createProvinceMaterial(_this: CanvasRenderType) {
   const topMap = _this.getAssetsData('mapTop') as THREE.Texture
   topMap.wrapS = topMap.wrapT = RepeatWrapping
   const topMaterial = new MeshStandardMaterial({
-    color: 0x061e47,
+    color: 0x132e64,
     emissive: 0x000000,
     map: topMap,
     normalMap: topMap,
@@ -41,7 +41,6 @@ function createProvinceMaterial(_this: CanvasRenderType) {
   sideMap.repeat.set(1, 0.2)
   sideMap.offset.y += 0.01
   const sideMaterial = new MeshStandardMaterial({
-    // color: 0x62c3d1,
     color: 0xffffff,
     fog: false,
     map: sideMap,

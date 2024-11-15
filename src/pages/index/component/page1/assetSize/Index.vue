@@ -13,7 +13,6 @@ import { formatNumber } from '@/utils/format'
 
 const shareData: Record<string, any> = inject('shareData')!
 
-const key = useVwToPx(1)
 const total = toRef(() => shareData.mainData.orgTotalAmt)
 const totalSplitArr = computed(() => {
   return formatNumber(total.value, {
@@ -24,11 +23,21 @@ const totalSplitArr = computed(() => {
 
 <template>
   <div class="asset_size_wrapper align-center absolute flex">
-    <DotLottieVue :key="key" class="icon absolute" autoplay loop :data="assets_size"></DotLottieVue>
+    <DotLottieVue
+      :render-config="{
+        autoResize: true,
+      }"
+      class="icon absolute"
+      autoplay
+      loop
+      :data="assets_size"
+    ></DotLottieVue>
     <span>资产规模：</span>
     <div v-for="(item, index) in totalSplitArr" :key="index" class="border_box relative">
       <DotLottieVue
-        :key="key"
+        :render-config="{
+          autoResize: true,
+        }"
         class="border_icon absolute"
         autoplay
         loop

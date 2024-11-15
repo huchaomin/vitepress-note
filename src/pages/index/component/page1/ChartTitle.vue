@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 18:03:18
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 09:23:31
+ * @LastEditTime : 2024-11-15 11:23:08
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,15 +16,15 @@ withDefaults(
   }>(),
   {},
 )
-
-const key = useVwToPx(1)
 </script>
 
 <template>
   <div>
     <div class="-mb-3 flex items-center">
       <DotLottieVue
-        :key="key"
+        :render-config="{
+          autoResize: true,
+        }"
         style="width: 3vw; height: 3vw;"
         autoplay
         loop
@@ -33,7 +33,9 @@ const key = useVwToPx(1)
       <h3 class="ml-2">{{ title }}</h3>
     </div>
     <DotLottieVue
-      :key="key"
+      :render-config="{
+        autoResize: true,
+      }"
       mode="bounce"
       style="height: 1.5vw;"
       autoplay

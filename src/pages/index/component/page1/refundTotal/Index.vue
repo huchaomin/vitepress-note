@@ -2,11 +2,11 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 10:57:07
+ * @LastEditTime : 2024-11-15 13:47:35
  * @Description  :
 -->
 <script setup lang="ts">
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import { DotLottieVue, type DotLottieVueInstance } from '@lottiefiles/dotlottie-vue'
 import refund_gather from '@/pages/index/assets/json/lottie/refund_gather.json?raw'
 import { repayItemChangeKey } from '@/pages/index/utils/others'
 
@@ -37,21 +37,40 @@ watchEffect(() => {
     startEnd[1] = startEnd[0] + item.repayAmt
   }
 })
+
+const dotLottieVueRef = ref<DotLottieVueInstance | null>(null)
+
 const numberAnimationActive = ref(false)
 watch(startEnd, (arr) => {
-  numberAnimationActive.value = arr[0] !== arr[1]
+  if (arr[0] !== arr[1]) {
+    numberAnimationActive.value = true
+    const instance = dotLottieVueRef.value?.getDotLottieInstance()
+    if (instance) {
+      instance.play()
+    }
+  }
 })
 
-const key = useVwToPx(1)
+onMounted(() => {
+  const instance = dotLottieVueRef.value!.getDotLottieInstance()
+  instance!.addEventListener('complete', () => {
+    instance!.play()
+    setTimeout(() => {
+      instance!.pause()
+    }, 2000)
+  })
+})
 </script>
 
 <template>
   <div class="refund_total_wrapper align-center absolute flex">
     <DotLottieVue
-      :key="key"
+      ref="dotLottieVueRef"
+      :render-config="{
+        autoResize: true,
+      }"
+      :speed="2"
       class="icon absolute"
-      autoplay
-      loop
       :data="refund_gather"
     ></DotLottieVue>
     累计回款：
