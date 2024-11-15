@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 10:59:15
+ * @LastEditTime : 2024-11-15 14:50:04
  * @Description  :
 -->
 <script setup lang="ts">
@@ -38,7 +38,7 @@ const { data: mainData, send: mainSend } = useRequest(getMainData, {
   queryFlayMap.prev.date = dayjs().format('YYYY-MM-DD')
 })
 
-const { data: repayDataList, send: repaySend } = useRequest(getRepayList(), {
+const { data: repayDataList, send: repaySend } = useRequest(getRepayList, {
   initialData: [],
 }).onSuccess(() => {
   showCurrentRepayItem(30000)
@@ -110,6 +110,9 @@ onMounted(() => {
   const instance = new CanvasRender(canvasRef.value!)
   carouselIndexChangeBus.on((index) => {
     instance.mapSceneGroup.visible = index === 0
+    if (index !== 0) {
+      instance.camera.controls.reset()
+    }
   })
 })
 
