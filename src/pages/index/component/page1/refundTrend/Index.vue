@@ -2,13 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 16:22:45
+ * @LastEditTime : 2024-11-18 10:55:36
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
 import line_chart from '@/pages/index/assets/json/lottie/line_chart.json?raw'
-import { use, type ComposeOption, graphic } from 'echarts/core'
+import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'
 import {
   GridComponent,
@@ -18,51 +18,131 @@ import {
   type GridComponentOption,
   type GraphicComponentOption,
 } from 'echarts/components'
-import { LineChart, type LineSeriesOption } from 'echarts/charts'
+import {
+  LineChart,
+  BarChart,
+  EffectScatterChart,
+  PictorialBarChart,
+  type EffectScatterSeriesOption,
+  type PictorialBarSeriesOption,
+  type BarSeriesOption,
+  type LineSeriesOption,
+} from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 import dayjs from 'dayjs'
+import bar3d from '@/pages/index/assets/img/bar_3d.png?url'
+import line from '@/pages/index/assets/img/line.png?url'
 
-use([GridComponent, LegendComponent, LineChart, CanvasRenderer, GraphicComponent])
+use([
+  GridComponent,
+  BarChart,
+  EffectScatterChart,
+  PictorialBarChart,
+  LegendComponent,
+  LineChart,
+  CanvasRenderer,
+  GraphicComponent,
+])
 
 const shareData: Record<string, any> = inject('shareData')!
 
 const data = computed(() => {
+  const repayUserList = shareData.mainData.repayUserList ?? []
   return (shareData.mainData.repayMonthlyList ?? [])
     .map((item: any) => {
       return {
-        fasuMonthRepayAmt: item.fasuMonthRepayAmt / 10000,
+        monthRepayAmt: item.monthRepayAmt / 10000000,
         name: item.yearMonths,
-        tiaojieMonthRepayAmt: item.tiaojieMonthRepayAmt / 10000,
       }
     })
     .sort((a: any, b: any) => {
       return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
     })
-    .slice(-7)
+    .slice(-6)
+    .map((item: any) => {
+      const repayUser = repayUserList.find((user: any) => user.yearMonths === item.name)
+      return {
+        ...item,
+        repayUserQty: (repayUser?.repayUserQty ?? 0) / 10000,
+      }
+    })
 })
+
+const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
+const maxValue = ref(0)
+
+// TODO 这个方法一直触发
+function rendered() {
+  const chart = vChartRef.value!.chart!
+  // @ts-expect-error https://github.com/apache/echarts/issues/18302
+  const yAxis = chart.getModel().getComponent('yAxis') // 获取 右边的y轴的话 ('yAxis'， 1)
+  maxValue.value = yAxis.axis.scale.getExtent()[1]
+}
 
 const option = computed<
   ComposeOption<
-    GraphicComponentOption | GridComponentOption | LegendComponentOption | LineSeriesOption
+    | BarSeriesOption
+    | EffectScatterSeriesOption
+    | GraphicComponentOption
+    | GridComponentOption
+    | LegendComponentOption
+    | LineSeriesOption
+    | PictorialBarSeriesOption
   >
 >(() => {
   const xAxisOffset = useDynamicPx(15).value
   const fontSize = useDynamicPx(chartFontSize).value
   const symbolSize = useDynamicPx(10).value
+  const yAxisCommonConfig = {
+    axisLabel: {
+      color: colors.white,
+      fontFamily: chartFontFamily,
+      fontSize,
+    },
+    splitLine: {
+      lineStyle: {
+        color: colors.line,
+      },
+    },
+  }
+  const barWidth = useDynamicPx(18).value
+  const bottomEffectScatterWidth = useDynamicPx(26).value
+  const bottomEffectScatterHeight = useDynamicPx(10).value
+  const color = {
+    backgroundBar: 'rgba(1, 80, 207,  0.3)',
+    backgroundHat: 'rgba(1, 80, 207, 0.6)',
+    barBottom: colors.lineHover,
+    barHat: 'rgba(14, 195, 255,  1)',
+    barTop: colors.line,
+    bottomEffectScatter: 'rgba(102, 155, 255, 0.8)',
+  }
   return {
     graphic: {
       elements: [
         {
-          left: 'left',
+          left: 0,
           style: {
             fill: colors.white,
             fontFamily: chartFontFamily,
             fontSize,
             lineHeight: fontSize + useDynamicPx(3).value,
-            text: '（万元）',
+            text: '回款额(千万元)',
           },
-          top: fontSize * 0.5,
+          top: fontSize * 2.5,
+          type: 'text',
+        },
+        {
+          right: 0,
+          style: {
+            fill: colors.white,
+            fontFamily: chartFontFamily,
+            fontSize,
+            lineHeight: fontSize + useDynamicPx(3).value,
+            text: '回款人数(万个)',
+            textAlign: 'right',
+          },
+          top: fontSize * 2.5,
           type: 'text',
         },
       ],
@@ -70,65 +150,143 @@ const option = computed<
     grid: {
       bottom: xAxisOffset,
       containLabel: true,
-      left: useDynamicPx(4).value,
-      right: useDynamicPx(32).value,
-      top: fontSize * 3,
+      left: 0,
+      right: 0,
+      top: fontSize * 5,
     },
     legend: {
+      align: 'right',
+      data: [
+        {
+          icon: `image://${bar3d}`,
+          name: '回款额',
+        },
+        {
+          icon: `image://${line}`,
+          name: '回款人数',
+        },
+      ],
+      itemHeight: (bottomEffectScatterWidth * 1.8 * 62) / 114,
+      itemWidth: bottomEffectScatterWidth * 1.8,
       padding: 0,
       right: 0,
       textStyle: {
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
-        lineHeight: fontSize + useDynamicPx(3).value,
+        lineHeight: fontSize,
       },
-      top: fontSize * 0.5,
+      top: 0,
     },
     series: [
       {
-        areaStyle: {
-          color: new graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              color: colors.blueHover,
-              offset: 0,
-            },
-            {
-              color: 'transparent',
-              offset: 1,
-            },
-          ]),
+        data: data.value.map((item: any) => item.repayUserQty),
+        itemStyle: {
+          color: colors.white,
         },
-        data: data.value.map((item: any) => item.fasuMonthRepayAmt),
-        lineStyle: {
-          color: colors.blueHover,
-        },
-        name: '法诉回款',
-        symbol: 'circle',
-        symbolSize,
-        type: 'line',
-      },
-      {
-        areaStyle: {
-          color: new graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              color: colors.lineHover,
-              offset: 0,
-            },
-            {
-              color: 'transparent',
-              offset: 1,
-            },
-          ]),
-        },
-        data: data.value.map((item: any) => item.tiaojieMonthRepayAmt),
         lineStyle: {
           color: colors.lineHover,
         },
-        name: '调解回款',
+        name: '回款人数',
         symbol: 'circle',
         symbolSize,
         type: 'line',
+        yAxisIndex: 1,
+      },
+
+      // '最底下的涟漪圆片',
+      {
+        data: data.value.map(() => ({
+          itemStyle: {
+            color: color.bottomEffectScatter,
+          },
+          value: '0',
+        })),
+        symbolSize: [bottomEffectScatterWidth, bottomEffectScatterHeight], // 宽高
+        type: 'effectScatter', // 带有涟漪特效动画的散点（气泡）图
+        z: 1,
+      },
+      // 下半截柱状图
+      {
+        barWidth,
+        data: data.value.map((item: any) => ({
+          itemStyle: {
+            color: {
+              colorStops: [
+                {
+                  color: color.barTop,
+                  offset: 0,
+                },
+                {
+                  color: color.barBottom,
+                  offset: 1,
+                },
+              ],
+              global: false,
+              type: 'linear',
+              x: 0,
+              x2: 0,
+              y: 0,
+              y2: 1,
+            },
+          },
+          value: item.monthRepayAmt,
+        })),
+        name: '回款额',
+        type: 'bar',
+        z: 2,
+      },
+      // 下半截stack 透明柱状图
+      {
+        barWidth,
+        data: data.value.map((item: any) => item.monthRepayAmt),
+        itemStyle: {
+          color: 'transparent',
+        },
+        stack: 'forStack',
+        type: 'bar',
+      },
+      // 圆柱的顶部
+      {
+        data: data.value.map((item: any) => ({
+          itemStyle: {
+            color: color.barHat,
+          },
+          symbolPosition: 'end',
+          value: item.monthRepayAmt,
+        })),
+        symbolOffset: [0, -bottomEffectScatterHeight / 2],
+        symbolSize: [barWidth, bottomEffectScatterHeight],
+        type: 'pictorialBar',
+        z: 3,
+      },
+      // 背景
+      {
+        barGap: '-100%',
+        barWidth,
+        data: data.value.map((item: any) => ({
+          itemStyle: {
+            color: color.backgroundBar,
+          },
+          value: maxValue.value - item.monthRepayAmt,
+        })),
+        stack: 'forStack',
+        type: 'bar',
+        z: 1,
+      },
+      // 背景的顶部
+      {
+        data: data.value.map(() => ({
+          itemStyle: {
+            color: color.backgroundHat,
+          },
+          symbolPosition: 'end',
+          value: maxValue.value,
+        })),
+        symbolOffset: [0, -bottomEffectScatterHeight / 2],
+        symbolSize: [barWidth, bottomEffectScatterHeight],
+        type: 'pictorialBar',
+        z: 5,
       },
     ],
     xAxis: {
@@ -136,9 +294,10 @@ const option = computed<
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
-        formatter: (yearMonths) => {
+        formatter: (yearMonths: string) => {
           return dayjs(yearMonths).format('YY年M月')
         },
+        interval: 0,
       },
       axisLine: {
         lineStyle: {
@@ -148,22 +307,18 @@ const option = computed<
       axisTick: {
         show: false,
       },
-      boundaryGap: false,
       data: data.value.map((item: any) => item.name),
       offset: xAxisOffset,
     },
-    yAxis: {
-      axisLabel: {
-        color: colors.white,
-        fontFamily: chartFontFamily,
-        fontSize,
+    yAxis: [
+      {
+        ...yAxisCommonConfig,
       },
-      splitLine: {
-        lineStyle: {
-          color: colors.line,
-        },
+      {
+        ...yAxisCommonConfig,
+        alignTicks: true,
       },
-    },
+    ],
   }
 })
 </script>
@@ -171,6 +326,12 @@ const option = computed<
 <template>
   <div class="refund_trend_wrapper absolute flex flex-col">
     <ChartTitle :data="line_chart" title="回款趋势"></ChartTitle>
-    <VChart :option="option" autoresize class="flex-auto"></VChart>
+    <VChart
+      ref="vChartRef"
+      :option="option"
+      autoresize
+      class="flex-auto"
+      @rendered="rendered"
+    ></VChart>
   </div>
 </template>
