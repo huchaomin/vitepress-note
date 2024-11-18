@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 15:55:15
+ * @LastEditTime : 2024-11-18 17:06:42
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,7 +10,7 @@ import gsap from 'gsap'
 import RefundScroll from './refundScroll/Index.vue'
 import RefundRate from './refundRate/Index.vue'
 import AssetDistribution from './assetDistribution/Index.vue'
-// import RefundType from './refundType/Index.vue'
+import AssetTrend from './assetTrend/Index.vue'
 import RefundTrend from './refundTrend/Index.vue'
 import RefundTotal from './refundTotal/Index.vue'
 import AssetSize from './assetSize/Index.vue'
@@ -19,7 +19,7 @@ import { cameraPositionStartKey } from '@/pages/index/utils/others'
 const refundScrollRef = ref<InstanceType<typeof RefundScroll> | null>(null)
 const refundRateRef = ref<InstanceType<typeof RefundRate> | null>(null)
 const assetDistributionRef = ref<InstanceType<typeof AssetDistribution> | null>(null)
-// const refundTypeRef = ref<InstanceType<typeof RefundType> | null>(null)
+const assetTrendRef = ref<InstanceType<typeof AssetTrend> | null>(null)
 const refundTrendRef = ref<InstanceType<typeof RefundTrend> | null>(null)
 const refundTotalRef = ref<InstanceType<typeof RefundTotal> | null>(null)
 const assetSizeRef = ref<InstanceType<typeof AssetSize> | null>(null)
@@ -32,24 +32,6 @@ cameraPositionStartBus.on(() => {
   tl.addLabel('bottom', 5.5)
   tl.addLabel('head', 6)
   tl.add(
-    gsap.to(assetDistributionRef.value!.$el, {
-      duration: 2,
-      ease: 'circ.out',
-      opacity: 1,
-      translateX: 0,
-    }),
-    'top',
-  )
-  // tl.add(
-  //   gsap.to(refundTypeRef.value!.$el, {
-  //     duration: 2,
-  //     ease: 'circ.out',
-  //     opacity: 1,
-  //     translateX: 0,
-  //   }),
-  //   'top',
-  // )
-  tl.add(
     gsap.to(refundRateRef.value!.$el, {
       duration: 2,
       ease: 'circ.out',
@@ -57,6 +39,24 @@ cameraPositionStartBus.on(() => {
       translateX: 0,
     }),
     'top',
+  )
+  tl.add(
+    gsap.to(assetTrendRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'top',
+  )
+  tl.add(
+    gsap.to(assetDistributionRef.value!.$el, {
+      duration: 2,
+      ease: 'circ.out',
+      opacity: 1,
+      translateX: 0,
+    }),
+    'bottom',
   )
   tl.add(
     gsap.to(refundTrendRef.value!.$el, {
@@ -90,11 +90,11 @@ cameraPositionStartBus.on(() => {
 
 <template>
   <div class="page1_wrapper h-full w-full">
-    <RefundScroll ref="refundScrollRef"></RefundScroll>
-    <AssetDistribution ref="assetDistributionRef"></AssetDistribution>
+    <AssetTrend ref="assetTrendRef"></AssetTrend>
     <RefundRate ref="refundRateRef"></RefundRate>
-    <!-- <RefundType ref="refundTypeRef"></RefundType> -->
+    <AssetDistribution ref="assetDistributionRef"></AssetDistribution>
     <RefundTrend ref="refundTrendRef"></RefundTrend>
+    <RefundScroll ref="refundScrollRef"></RefundScroll>
     <RefundTotal ref="refundTotalRef"></RefundTotal>
     <AssetSize ref="assetSizeRef"></AssetSize>
   </div>
@@ -106,11 +106,13 @@ cameraPositionStartBus.on(() => {
 
   .refund_rate_wrapper,
   .asset_distribution_wrapper,
-  .refund_type_wrapper,
+  .asset_trend_wrapper,
   .refund_trend_wrapper {
     width: 20vw;
+    height: 18vw;
   }
 
+  .asset_trend_wrapper,
   .asset_distribution_wrapper {
     left: var(--x-padding);
     opacity: 0;
@@ -118,7 +120,6 @@ cameraPositionStartBus.on(() => {
   }
 
   .refund_rate_wrapper,
-  .refund_type_wrapper,
   .refund_trend_wrapper {
     right: var(--x-padding);
     opacity: 0;
@@ -142,12 +143,11 @@ cameraPositionStartBus.on(() => {
   .asset_distribution_wrapper,
   .refund_trend_wrapper {
     bottom: 5vw;
-    height: 20vw;
   }
 
+  .asset_trend_wrapper,
   .refund_rate_wrapper {
     top: 11vw;
-    height: 20vw;
   }
 }
 </style>

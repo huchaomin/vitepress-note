@@ -1,5 +1,17 @@
 {
-  "docs": {
-    "description": "dist目录"
-  }
+    "docs": {
+        "description": "dist目录"
+    },
+    "src/pages/index/component/page1/refundUserBak": {
+        "description": "圆柱形"
+    },
+    "src/pages/index/component/page1/refundTypeBak": {
+        "description": "圆环"
+    },
+    "src/pages/index/component/page1/refundTrendBak": {
+        "description": "双折线"
+    },
+    "src/pages/index/component/page1/assetDistributionBak": {
+        "description": "双线stack"
+    }
 }
