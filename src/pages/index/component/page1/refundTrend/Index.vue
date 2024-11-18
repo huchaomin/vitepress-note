@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 11:01:27
+ * @LastEditTime : 2024-11-18 14:02:41
  * @Description  :
 -->
 <script setup lang="ts">
@@ -48,25 +48,18 @@ use([
 const shareData: Record<string, any> = inject('shareData')!
 
 const data = computed(() => {
-  const repayUserList = shareData.mainData.repayUserList ?? []
-  return (shareData.mainData.repayMonthlyList ?? [])
+  return (shareData.mainData.repaySumList ?? [])
     .map((item: any) => {
       return {
-        monthRepayAmt: item.monthRepayAmt / 10000000,
-        name: item.yearMonths,
+        name: item.sort,
+        repayAmt: item.repayAmt / 10000000,
+        repayUserQty: item.repayUserQty / 10000,
       }
     })
     .sort((a: any, b: any) => {
-      return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
+      return b.name - a.name
     })
     .slice(-6)
-    .map((item: any) => {
-      const repayUser = repayUserList.find((user: any) => user.yearMonths === item.name)
-      return {
-        ...item,
-        repayUserQty: (repayUser?.repayUserQty ?? 0) / 10000,
-      }
-    })
 })
 
 const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
@@ -230,7 +223,7 @@ const option = computed<
               y2: 1,
             },
           },
-          value: item.monthRepayAmt,
+          value: item.repayAmt,
         })),
         name: '回款额',
         type: 'bar',
@@ -239,7 +232,7 @@ const option = computed<
       // 下半截stack 透明柱状图
       {
         barWidth,
-        data: data.value.map((item: any) => item.monthRepayAmt),
+        data: data.value.map((item: any) => item.repayAmt),
         itemStyle: {
           color: 'transparent',
         },
@@ -253,7 +246,7 @@ const option = computed<
             color: color.barHat,
           },
           symbolPosition: 'end',
-          value: item.monthRepayAmt,
+          value: item.repayAmt,
         })),
         symbolOffset: [0, -bottomEffectScatterHeight / 2],
         symbolSize: [barWidth, bottomEffectScatterHeight],
@@ -268,7 +261,7 @@ const option = computed<
           itemStyle: {
             color: color.backgroundBar,
           },
-          value: maxValue.value - item.monthRepayAmt,
+          value: maxValue.value - item.repayAmt,
         })),
         stack: 'forStack',
         type: 'bar',
@@ -294,8 +287,8 @@ const option = computed<
         color: colors.white,
         fontFamily: chartFontFamily,
         fontSize,
-        formatter: (yearMonths: string) => {
-          return dayjs(yearMonths).format('YY年M月')
+        formatter: (sort: number) => {
+          return sort
         },
         interval: 0,
       },

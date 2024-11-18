@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 11:03:23
+ * @LastEditTime : 2024-11-18 13:49:14
  * @Description  :
 -->
 <script setup lang="ts">
@@ -28,7 +28,7 @@ use([GridComponent, LegendComponent, LineChart, CanvasRenderer, GraphicComponent
 const shareData: Record<string, any> = inject('shareData')!
 
 const data = computed(() => {
-  return (shareData.mainData.repayMonthlyList ?? [])
+  return (shareData.mainData.monthlyIdxList ?? [])
     .map((item: any) => {
       return {
         fasuMonthRepayAmt: item.fasuMonthRepayAmt / 10000,
