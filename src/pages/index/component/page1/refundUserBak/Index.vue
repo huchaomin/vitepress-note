@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
- * @Date         : 2024-11-04 09:57:29
+ * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 11:01:27
+ * @LastEditTime : 2024-11-15 16:25:59
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,102 +10,51 @@ import ChartTitle from '../ChartTitle.vue'
 import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?raw'
 import { use, type ComposeOption } from 'echarts/core'
 import VChart from 'vue-echarts'
+import { GridComponent, type GridComponentOption } from 'echarts/components'
 import {
-  GridComponent,
-  LegendComponent,
-  GraphicComponent,
-  type LegendComponentOption,
-  type GridComponentOption,
-  type GraphicComponentOption,
-} from 'echarts/components'
-import {
-  LineChart,
   BarChart,
   EffectScatterChart,
   PictorialBarChart,
   type EffectScatterSeriesOption,
   type PictorialBarSeriesOption,
   type BarSeriesOption,
-  type LineSeriesOption,
 } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
-import dayjs from 'dayjs'
-import bar3d from '@/pages/index/assets/img/bar_3d.png?url'
-import line from '@/pages/index/assets/img/line.png?url'
 
-use([
-  GridComponent,
-  BarChart,
-  EffectScatterChart,
-  PictorialBarChart,
-  LegendComponent,
-  LineChart,
-  CanvasRenderer,
-  GraphicComponent,
-])
+use([GridComponent, BarChart, CanvasRenderer, PictorialBarChart, EffectScatterChart])
 
 const shareData: Record<string, any> = inject('shareData')!
 
 const data = computed(() => {
-  const repayUserList = shareData.mainData.repayUserList ?? []
-  return (shareData.mainData.repayMonthlyList ?? [])
+  return (shareData.mainData.repayUserList ?? [])
     .map((item: any) => {
       return {
-        monthRepayAmt: item.monthRepayAmt / 10000000,
         name: item.yearMonths,
+        value: item.repayUserQty,
       }
     })
     .sort((a: any, b: any) => {
       return dayjs(a.yearMonths).isBefore(dayjs(b.yearMonths)) ? 1 : -1
     })
-    .slice(-6)
-    .map((item: any) => {
-      const repayUser = repayUserList.find((user: any) => user.yearMonths === item.name)
-      return {
-        ...item,
-        repayUserQty: (repayUser?.repayUserQty ?? 0) / 10000,
-      }
-    })
+    .slice(-7)
 })
 
 const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
 const maxValue = ref(0)
 
-// TODO 这个方法一直触发
 function rendered() {
   const chart = vChartRef.value!.chart!
   // @ts-expect-error https://github.com/apache/echarts/issues/18302
-  const yAxis = chart.getModel().getComponent('yAxis') // 获取 右边的y轴的话 ('yAxis'， 1)
+  const yAxis = chart.getModel().getComponent('yAxis')
   maxValue.value = yAxis.axis.scale.getExtent()[1]
 }
 
 const option = computed<
   ComposeOption<
-    | BarSeriesOption
-    | EffectScatterSeriesOption
-    | GraphicComponentOption
-    | GridComponentOption
-    | LegendComponentOption
-    | LineSeriesOption
-    | PictorialBarSeriesOption
+    BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption
   >
 >(() => {
-  const xAxisOffset = useDynamicPx(15).value
-  const fontSize = useDynamicPx(chartFontSize).value
-  const symbolSize = useDynamicPx(10).value
-  const yAxisCommonConfig = {
-    axisLabel: {
-      color: colors.white,
-      fontFamily: chartFontFamily,
-      fontSize,
-    },
-    splitLine: {
-      lineStyle: {
-        color: colors.line,
-      },
-    },
-  }
   const barWidth = useDynamicPx(18).value
   const bottomEffectScatterWidth = useDynamicPx(26).value
   const bottomEffectScatterHeight = useDynamicPx(10).value
@@ -117,83 +66,17 @@ const option = computed<
     barTop: colors.line,
     bottomEffectScatter: 'rgba(102, 155, 255, 0.8)',
   }
+  const fontSize = useDynamicPx(chartFontSize).value
+  const gridXGap = useDynamicPx(20).value
   return {
-    graphic: {
-      elements: [
-        {
-          left: 0,
-          style: {
-            fill: colors.white,
-            fontFamily: chartFontFamily,
-            fontSize,
-            lineHeight: fontSize + useDynamicPx(3).value,
-            text: '回款额(千万元)',
-          },
-          top: fontSize * 2.5,
-          type: 'text',
-        },
-        {
-          right: 0,
-          style: {
-            fill: colors.white,
-            fontFamily: chartFontFamily,
-            fontSize,
-            lineHeight: fontSize + useDynamicPx(3).value,
-            text: '回款人数(万个)',
-            textAlign: 'right',
-          },
-          top: fontSize * 2.5,
-          type: 'text',
-        },
-      ],
-    },
     grid: {
-      bottom: xAxisOffset,
+      bottom: gridXGap,
       containLabel: true,
       left: 0,
-      right: 0,
-      top: fontSize * 5,
-    },
-    legend: {
-      align: 'right',
-      data: [
-        {
-          icon: `image://${bar3d}`,
-          name: '回款额',
-        },
-        {
-          icon: `image://${line}`,
-          name: '回款人数',
-        },
-      ],
-      itemHeight: (bottomEffectScatterWidth * 1.8 * 62) / 114,
-      itemWidth: bottomEffectScatterWidth * 1.8,
-      padding: 0,
-      right: 0,
-      textStyle: {
-        color: colors.white,
-        fontFamily: chartFontFamily,
-        fontSize,
-        lineHeight: fontSize,
-      },
-      top: 0,
+      right: useDynamicPx(10).value,
+      top: fontSize * 1.5,
     },
     series: [
-      {
-        data: data.value.map((item: any) => item.repayUserQty),
-        itemStyle: {
-          color: colors.white,
-        },
-        lineStyle: {
-          color: colors.lineHover,
-        },
-        name: '回款人数',
-        symbol: 'circle',
-        symbolSize,
-        type: 'line',
-        yAxisIndex: 1,
-      },
-
       // '最底下的涟漪圆片',
       {
         data: data.value.map(() => ({
@@ -230,16 +113,15 @@ const option = computed<
               y2: 1,
             },
           },
-          value: item.monthRepayAmt,
+          value: item.value,
         })),
-        name: '回款额',
         type: 'bar',
         z: 2,
       },
       // 下半截stack 透明柱状图
       {
         barWidth,
-        data: data.value.map((item: any) => item.monthRepayAmt),
+        data: data.value.map((item: any) => item.value),
         itemStyle: {
           color: 'transparent',
         },
@@ -253,7 +135,7 @@ const option = computed<
             color: color.barHat,
           },
           symbolPosition: 'end',
-          value: item.monthRepayAmt,
+          value: item.value,
         })),
         symbolOffset: [0, -bottomEffectScatterHeight / 2],
         symbolSize: [barWidth, bottomEffectScatterHeight],
@@ -268,7 +150,7 @@ const option = computed<
           itemStyle: {
             color: color.backgroundBar,
           },
-          value: maxValue.value - item.monthRepayAmt,
+          value: maxValue.value - item.value,
         })),
         stack: 'forStack',
         type: 'bar',
@@ -297,7 +179,6 @@ const option = computed<
         formatter: (yearMonths: string) => {
           return dayjs(yearMonths).format('YY年M月')
         },
-        interval: 0,
       },
       axisLine: {
         lineStyle: {
@@ -308,24 +189,27 @@ const option = computed<
         show: false,
       },
       data: data.value.map((item: any) => item.name),
-      offset: xAxisOffset,
+      offset: gridXGap,
     },
-    yAxis: [
-      {
-        ...yAxisCommonConfig,
+    yAxis: {
+      axisLabel: {
+        color: colors.white,
+        fontFamily: chartFontFamily,
+        fontSize,
       },
-      {
-        ...yAxisCommonConfig,
-        alignTicks: true,
+      splitLine: {
+        lineStyle: {
+          color: colors.line,
+        },
       },
-    ],
+    },
   }
 })
 </script>
 
 <template>
-  <div class="refund_trend_wrapper absolute flex flex-col">
-    <ChartTitle :data="bar_chart" title="回款趋势"></ChartTitle>
+  <div class="refund_user_wrapper absolute flex flex-col">
+    <ChartTitle :data="bar_chart" title="回款客户数据"></ChartTitle>
     <VChart
       ref="vChartRef"
       :option="option"
