@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 14:33:33
+ * @LastEditTime : 2024-11-18 15:55:15
  * @Description  :
 -->
 <script setup lang="ts">
@@ -139,19 +139,15 @@ cameraPositionStartBus.on(() => {
     right: var(--x-padding);
   }
 
+  .asset_distribution_wrapper,
   .refund_trend_wrapper {
     bottom: 5vw;
     height: 20vw;
   }
 
   .refund_rate_wrapper {
-    height: 20vw;
-  }
-
-  .refund_rate_wrapper,
-  .asset_distribution_wrapper,
-  .refund_type_wrapper {
     top: 11vw;
+    height: 20vw;
   }
 }
 </style>

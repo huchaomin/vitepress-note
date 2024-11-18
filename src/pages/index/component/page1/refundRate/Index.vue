@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 15:43:04
+ * @LastEditTime : 2024-11-18 16:37:05
  * @Description  :
 -->
 <script setup lang="ts">
@@ -39,7 +39,7 @@ const data = computed(() => {
     .sort((a: any, b: any) => {
       return dayjs(a.name).isBefore(dayjs(b.name)) ? -1 : 1
     })
-    .slice(-12)
+    .slice(-24)
 })
 
 const option = computed<
@@ -87,6 +87,18 @@ const option = computed<
     },
     series: [
       {
+        data: data.value.map((item: any) => item.targetRate),
+        lineStyle: {
+          color: colors.blueHover,
+          type: 'dashed',
+        },
+        name: '评估回收率',
+        showSymbol: false,
+        smooth: true,
+        type: 'line',
+        z: 1,
+      },
+      {
         areaStyle: {
           color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
@@ -108,18 +120,6 @@ const option = computed<
         smooth: true,
         type: 'line',
         z: 2,
-      },
-      {
-        data: data.value.map((item: any) => item.targetRate),
-        lineStyle: {
-          color: colors.blueHover,
-          type: 'dashed',
-        },
-        name: '评估回收率',
-        showSymbol: false,
-        smooth: true,
-        type: 'line',
-        z: 1,
       },
     ],
     xAxis: {
@@ -164,7 +164,7 @@ const option = computed<
 
 <template>
   <div class="refund_rate_wrapper absolute flex flex-col">
-    <ChartTitle :data="line_chart" title="回收率测算"></ChartTitle>
+    <ChartTitle :data="line_chart" title="评估准确度"></ChartTitle>
     <VChart :option="option" autoresize class="flex-auto"></VChart>
   </div>
 </template>
