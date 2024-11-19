@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 17:10:41
+ * @LastEditTime : 2024-11-19 11:43:55
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,7 +41,7 @@ const data = computed(() => {
       value: thirdPartyAmt,
     },
     {
-      name: '自持资产',
+      name: '权益资产',
       value: notThirdPartyAmt,
     },
   ]
