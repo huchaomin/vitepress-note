@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 14:02:41
+ * @LastEditTime : 2024-11-19 11:36:30
  * @Description  :
 -->
 <script setup lang="ts">
@@ -288,7 +288,7 @@ const option = computed<
         fontFamily: chartFontFamily,
         fontSize,
         formatter: (sort: number) => {
-          return sort
+          return `近${sort * 3}月`
         },
         interval: 0,
       },

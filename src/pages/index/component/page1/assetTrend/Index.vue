@@ -2,12 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 11:00:04
+ * @LastEditTime : 2024-11-19 11:31:44
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?raw'
+import bar_up from '@/pages/index/assets/json/lottie/bar_up.json?raw'
 import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import { GridComponent, type GridComponentOption } from 'echarts/components'
@@ -346,7 +346,7 @@ const option = computed<
 
 <template>
   <div class="asset_trend_wrapper absolute flex flex-col">
-    <ChartTitle :data="bar_chart" title="资产规模"></ChartTitle>
+    <ChartTitle :data="bar_up" title="资产规模"></ChartTitle>
     <VChart
       ref="vChartRef"
       :option="option"
