@@ -2,33 +2,33 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 17:02:51
+ * @LastEditTime : 2024-11-19 11:00:04
  * @Description  :
 -->
 <script setup lang="ts">
 import ChartTitle from '../ChartTitle.vue'
 import bar_chart from '@/pages/index/assets/json/lottie/bar_chart.json?raw'
-import { use, type ComposeOption } from 'echarts/core'
+import { use, type ComposeOption, graphic } from 'echarts/core'
 import VChart from 'vue-echarts'
 import { GridComponent, type GridComponentOption } from 'echarts/components'
 import {
   BarChart,
   EffectScatterChart,
-  PictorialBarChart,
+  CustomChart,
+  type CustomSeriesOption,
   type EffectScatterSeriesOption,
-  type PictorialBarSeriesOption,
   type BarSeriesOption,
 } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { colors, chartFontFamily, chartFontSize } from '@/pages/index/utils/others'
 import { formatNumber } from '@/utils/format'
 
-use([GridComponent, BarChart, CanvasRenderer, PictorialBarChart, EffectScatterChart])
+use([GridComponent, BarChart, CustomChart, CanvasRenderer, EffectScatterChart])
 
 const shareData: Record<string, any> = inject('shareData')!
 
 const data = computed(() => {
-  return (shareData.mainData.assetSumList ?? [])
+  const arr = (shareData.mainData.assetSumList ?? [])
     .map((item: any) => {
       return {
         name: item.bizYear,
@@ -39,6 +39,13 @@ const data = computed(() => {
       return dayjs(a.name).isBefore(dayjs(b.name)) ? -1 : 1
     })
     .slice(-7)
+  let total = 0
+  return arr.map((item: any) => {
+    return {
+      name: item.name,
+      value: (total += item.value),
+    }
+  })
 })
 
 const vChartRef = ref<InstanceType<typeof VChart> | null>(null)
@@ -51,12 +58,85 @@ function rendered() {
   maxValue.value = yAxis.axis.scale.getExtent()[1]
 }
 
+watchEffect(() => {
+  const downDistance = useDynamicPx(5).value
+  // 绘制顶面
+  const CubeTop = graphic.extendShape({
+    buildPath(ctx, shape) {
+      const c0 = [shape.x, shape.y + downDistance] // 下
+      const c1 = [shape.x + useDynamicPx(10).value, shape.y - useDynamicPx(5).value + downDistance] // 右
+      const c2 = [shape.x, shape.y - useDynamicPx(10).value + downDistance] // 上
+      const c3 = [shape.x - useDynamicPx(10).value, shape.y - useDynamicPx(5).value + downDistance] // 左
+      ctx
+        .moveTo(c0[0], c0[1])!
+        .lineTo(c1[0], c1[1])
+        .lineTo(c2[0], c2[1])
+        .lineTo(c3[0], c3[1])
+        .closePath()
+    },
+    shape: {
+      x: 0,
+      y: 0,
+    },
+  })
+  // 绘制左侧面
+  const CubeLeft = graphic.extendShape({
+    buildPath(ctx, shape) {
+      // 会canvas的应该都能看得懂，shape是从custom传入的
+      const xAxisPoint = shape.xAxisPoint
+      const c0 = [shape.x, shape.y + downDistance] // 右上
+      const c1 = [shape.x - useDynamicPx(10).value, shape.y - useDynamicPx(5).value + downDistance] // 左上
+      const c2 = [
+        xAxisPoint[0] - useDynamicPx(10).value,
+        xAxisPoint[1] - useDynamicPx(5).value + downDistance,
+      ] // 左下
+      const c3 = [xAxisPoint[0], xAxisPoint[1] + downDistance] // 右下
+      ctx
+        .moveTo(c0[0], c0[1])!
+        .lineTo(c1[0], c1[1])
+        .lineTo(c2[0], c2[1])
+        .lineTo(c3[0], c3[1])
+        .closePath()
+    },
+    shape: {
+      x: 0,
+      y: 0,
+    },
+  })
+  // 绘制右侧面
+  const CubeRight = graphic.extendShape({
+    buildPath(ctx, shape) {
+      const xAxisPoint = shape.xAxisPoint
+      const c1 = [shape.x, shape.y + downDistance] // 左上
+      const c2 = [xAxisPoint[0], xAxisPoint[1] + downDistance] // 左下
+      const c3 = [
+        xAxisPoint[0] + useDynamicPx(10).value,
+        xAxisPoint[1] - useDynamicPx(5).value + downDistance,
+      ] // 右下
+      const c4 = [shape.x + useDynamicPx(10).value, shape.y - useDynamicPx(5).value + downDistance] // 右上
+      ctx
+        .moveTo(c1[0], c1[1])!
+        .lineTo(c2[0], c2[1])
+        .lineTo(c3[0], c3[1])
+        .lineTo(c4[0], c4[1])
+        .closePath()
+    },
+    shape: {
+      x: 0,
+      y: 0,
+    },
+  })
+  // 注册三个面图形
+  graphic.registerShape('CubeLeft', CubeLeft)
+  graphic.registerShape('CubeRight', CubeRight)
+  graphic.registerShape('CubeTop', CubeTop)
+})
+
 const option = computed<
   ComposeOption<
-    BarSeriesOption | EffectScatterSeriesOption | GridComponentOption | PictorialBarSeriesOption
+    BarSeriesOption | CustomSeriesOption | EffectScatterSeriesOption | GridComponentOption
   >
 >(() => {
-  const barWidth = useDynamicPx(18).value
   const bottomEffectScatterWidth = useDynamicPx(26).value
   const bottomEffectScatterHeight = useDynamicPx(10).value
   const color = {
@@ -90,86 +170,135 @@ const option = computed<
         type: 'effectScatter', // 带有涟漪特效动画的散点（气泡）图
         z: 1,
       },
-      // 下半截柱状图
-      {
-        barWidth,
-        data: data.value.map((item: any) => ({
-          itemStyle: {
-            color: {
-              colorStops: [
-                {
-                  color: color.barTop,
-                  offset: 0,
-                },
-                {
-                  color: color.barBottom,
-                  offset: 1,
-                },
-              ],
-              global: false,
-              type: 'linear',
-              x: 0,
-              x2: 0,
-              y: 0,
-              y2: 1,
-            },
-          },
-          value: item.value,
-        })),
-        type: 'bar',
-        z: 2,
-      },
-      // 下半截stack 透明柱状图
-      {
-        barWidth,
-        data: data.value.map((item: any) => item.value),
-        itemStyle: {
-          color: 'transparent',
-        },
-        stack: 'forStack',
-        type: 'bar',
-      },
-      // 圆柱的顶部
-      {
-        data: data.value.map((item: any) => ({
-          itemStyle: {
-            color: color.barHat,
-          },
-          symbolPosition: 'end',
-          value: item.value,
-        })),
-        symbolOffset: [0, -bottomEffectScatterHeight / 2],
-        symbolSize: [barWidth, bottomEffectScatterHeight],
-        type: 'pictorialBar',
-        z: 3,
-      },
       // 背景
       {
-        barGap: '-100%',
-        barWidth,
-        data: data.value.map((item: any) => ({
-          itemStyle: {
-            color: color.backgroundBar,
-          },
-          value: maxValue.value - item.value,
-        })),
-        stack: 'forStack',
-        type: 'bar',
-        z: 1,
+        data: data.value.map(() => maxValue.value),
+        renderItem(_, api) {
+          const location = api.coord([api.value(0), api.value(1)])
+          return {
+            children: [
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  y: location[1],
+                },
+                style: {
+                  fill: '#1b83bb80',
+                },
+                type: 'CubeLeft',
+              },
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  y: location[1],
+                },
+                style: {
+                  fill: '#1b83bb60',
+                },
+                type: 'CubeRight',
+              },
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  y: location[1],
+                },
+                style: {
+                  fill: '#1779b5',
+                },
+                type: 'CubeTop',
+              },
+            ],
+            type: 'group',
+          }
+        },
+        type: 'custom',
       },
-      // 背景的顶部
       {
-        data: data.value.map(() => ({
-          itemStyle: {
-            color: color.backgroundHat,
-          },
-          symbolPosition: 'end',
-          value: maxValue.value,
-        })),
-        symbolOffset: [0, -bottomEffectScatterHeight / 2],
-        symbolSize: [barWidth, bottomEffectScatterHeight],
-        type: 'pictorialBar',
-        z: 5,
+        data: data.value.map((item: any) => item.value),
+        renderItem: (_, api) => {
+          const location = api.coord([api.value(0), api.value(1)])
+          return {
+            children: [
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  xValue: api.value(0),
+                  y: location[1],
+                  yValue: api.value(1),
+                },
+                style: {
+                  fill: new graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      color: '#5cc4eb',
+                      offset: 0,
+                    },
+                    {
+                      color: '#21658c',
+                      offset: 0.8,
+                    },
+                  ]),
+                },
+                type: 'CubeLeft',
+              },
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  xValue: api.value(0),
+                  y: location[1],
+                  yValue: api.value(1),
+                },
+                style: {
+                  fill: new graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      color: '#048fd4',
+                      offset: 0,
+                    },
+                    {
+                      color: '#195684',
+                      offset: 0.8,
+                    },
+                  ]),
+                },
+                type: 'CubeRight',
+              },
+              {
+                shape: {
+                  api,
+                  x: location[0],
+                  xAxisPoint: api.coord([api.value(0), 0]),
+                  xValue: api.value(0),
+                  y: location[1],
+                  yValue: api.value(1),
+                },
+                style: {
+                  fill: new graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      color: '#65c7ec',
+                      offset: 0,
+                    },
+                    {
+                      color: '#65c7ec',
+                      offset: 1,
+                    },
+                  ]),
+                },
+                type: 'CubeTop',
+              },
+            ],
+            type: 'group',
+          }
+        },
+        type: 'custom',
       },
     ],
     xAxis: {
@@ -209,7 +338,9 @@ const option = computed<
         },
       },
     },
-  }
+  } as ComposeOption<
+    BarSeriesOption | CustomSeriesOption | EffectScatterSeriesOption | GridComponentOption
+  >
 })
 </script>
 

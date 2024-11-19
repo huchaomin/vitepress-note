@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 16:37:05
+ * @LastEditTime : 2024-11-19 10:49:02
  * @Description  :
 -->
 <script setup lang="ts">
@@ -75,6 +75,7 @@ const option = computed<
     },
     legend: {
       align: 'right',
+      itemWidth: useDynamicPx(46).value,
       padding: 0,
       right: 0,
       textStyle: {
@@ -93,7 +94,7 @@ const option = computed<
           type: 'dashed',
         },
         name: '评估回收率',
-        showSymbol: false,
+        // showSymbol: false,
         smooth: true,
         type: 'line',
         z: 1,
@@ -116,7 +117,7 @@ const option = computed<
           color: colors.lineHover,
         },
         name: '实际回收率',
-        showSymbol: false,
+        // showSymbol: false,
         smooth: true,
         type: 'line',
         z: 2,
@@ -151,7 +152,7 @@ const option = computed<
         fontFamily: chartFontFamily,
         fontSize,
       },
-      scale: true, // 不包含 0
+      // scale: true, // 不包含 0
       splitLine: {
         lineStyle: {
           color: colors.line,
