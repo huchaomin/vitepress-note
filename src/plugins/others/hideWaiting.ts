@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 11:48:52
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-17 21:15:43
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-19 17:22:14
  * @Description  :
  */
 import { inBrowser } from 'vitepress'
@@ -13,6 +13,7 @@ if (inBrowser && import.meta.env.PROD) {
     waiting.addEventListener('transitionend', () => {
       waiting.remove()
     })
-    waiting.style.opacity = '0'
+    // https://cloud.tencent.com/developer/ask/sof/170326
+    waiting.classList.add('hide')
   })
 }

@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-17 20:22:30
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-19 17:16:46
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -32,7 +32,11 @@ export default (code: string): string => {
           align-items: center;
           top: 0;
           left: 0;
-          transition: opacity 0.8s;
+          transition: opacity 1s ease-in-out;
+        }
+
+        #waiting.hide {
+          opacity: 0;
         }
 
         #waiting .loader {

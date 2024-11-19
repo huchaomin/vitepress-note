@@ -5,7 +5,7 @@
   "description": "木林子的笔记-记住自己的点滴",
   "productName": "vite",
   "engines": {
-    "node": "20 || >=22",
+    "node": "^20.9.0 || >=21.1.0",
     "pnpm": ">= 9.1.4"
   },
   "scripts": {
