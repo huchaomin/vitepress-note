@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 16:30:46
+ * @LastEditTime : 2024-11-19 11:04:10
  * @Description  :
 -->
 <script setup lang="ts">
@@ -197,7 +197,11 @@ function handleCarouselIndexChange(index: number) {
               active: carouselIndex === 1,
             }"
           ></Page2>
-          <Page3></Page3>
+          <Page3
+            :class="{
+              active: carouselIndex === 2,
+            }"
+          ></Page3>
           <template #dots="{ total, currentIndex, to }">
             <div ref="bottomMenuRef" class="bottom_menu absolute flex w-full justify-center">
               <NButton

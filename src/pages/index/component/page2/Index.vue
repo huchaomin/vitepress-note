@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-14 11:39:30
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 16:32:33
+ * @LastEditTime : 2024-11-19 11:19:03
  * @Description  :
 -->
 <template>
@@ -18,8 +18,8 @@
   }
 
   img {
-    width: 79vw;
-    transform: translate(0.47vw, -0.6vw);
+    width: 53.8vw;
+    transform: translate(-0.43vw, 0.3vw);
   }
 }
 </style>
