@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 17:16:46
+ * @LastEditTime : 2024-11-19 17:48:53
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -33,10 +33,6 @@ export default (code: string): string => {
           top: 0;
           left: 0;
           transition: opacity 1s ease-in-out;
-        }
-
-        #waiting.hide {
-          opacity: 0;
         }
 
         #waiting .loader {
