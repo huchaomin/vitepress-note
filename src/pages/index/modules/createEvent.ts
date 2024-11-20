@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 09:43:51
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 15:20:15
+ * @LastEditTime : 2024-11-20 13:50:08
  * @Description  :
  */
 import type { CanvasRenderType } from '../index'
@@ -54,10 +54,13 @@ export default (
         group.traverse((g) => {
           if (g.userData.type === 'inner') {
             if (type === 'up') {
-              const callback = (delta: number) => {
-                g.rotation.z += delta * 2
+              let callback = g.userData.callback as ((...args: any[]) => void) | undefined
+              if (callback === undefined) {
+                callback = (delta: number) => {
+                  g.rotation.z += delta * 2
+                }
+                g.userData.callback = callback
               }
-              g.userData.callback = callback
               _this.time.on('tick', callback)
             } else {
               _this.time.off('tick', g.userData.callback as (...args: any[]) => void)
