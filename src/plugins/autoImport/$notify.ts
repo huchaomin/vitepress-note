@@ -2,7 +2,7 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-07-20 09:00:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-09 10:52:34
+ * @LastEditTime : 2024-11-20 11:12:19
  * @Description  :
  */
 
@@ -16,11 +16,11 @@ enum NotificationTypes {
   warning = 'warning',
 }
 
-type createFnOptions = {
-  type?: keyof typeof NotificationTypes
-} & Omit<NotificationOptions, 'content' | 'type'>
-
 type createFn = (content: string, options?: createFnOptions) => void
+
+type createFnOptions = Omit<NotificationOptions, 'content' | 'type'> & {
+  type?: keyof typeof NotificationTypes
+}
 
 type createMap = {
   // 映射类型和函数类型不能写在一起

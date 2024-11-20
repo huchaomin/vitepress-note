@@ -324,6 +324,7 @@ declare global {
   export type { CInputPropsType } from '@/components/autoImport/CInput.vue'
   import('@/components/autoImport/CInput.vue')
 }
+
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
