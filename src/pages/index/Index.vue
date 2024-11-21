@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 11:04:10
+ * @LastEditTime : 2024-11-20 14:48:46
  * @Description  :
 -->
 <script setup lang="ts">
@@ -165,7 +165,7 @@ cameraPositionStartBus.on(() => {
   })
 })
 
-const bottomBtnText = ['智能数据大屏', '业务板块', '核心亮点']
+const bottomBtnText = ['智能数据大屏', '业务模式', '核心亮点']
 
 const carouselIndex = ref(0)
 function handleCarouselIndexChange(index: number) {

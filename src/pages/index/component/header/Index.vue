@@ -2,14 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:20:35
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 13:56:20
+ * @LastEditTime : 2024-11-20 15:01:23
  * @Description  :
 -->
 <script setup lang="ts"></script>
 
 <template>
   <div class="header_wrapper absolute">
-    <h1 class="header_title absolute">擎聪智慧大屏系统</h1>
+    <h1 class="header_title absolute">擎聪智能</h1>
     <img src="@/pages/index/assets/svg/header.svg" alt="" />
   </div>
 </template>
@@ -29,7 +29,7 @@
   left: 50%;
   font-family: system-ui;
   font-size: 2.2vw;
-  letter-spacing: 1.2vw;
+  letter-spacing: 2vw;
   fill: var(--color-white);
   transform: translateX(calc(-50% + 0.6vw));
 }
