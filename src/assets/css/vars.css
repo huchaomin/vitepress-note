@@ -2,6 +2,7 @@
   --font-family-others: 'JetBrainsMonoMedium';
   --font-family-semi-bold-others: 'JetBrainsMonoSemiBold';
   --font-family-zh: 'SmileySans-Oblique';
+  /* tailwindcss 使用的两种字体 */
   --default-mono-font-family: var(--font-family-semi-bold-others), var(--font-family-zh);
   --default-font-family: var(--default-mono-font-family);
 
