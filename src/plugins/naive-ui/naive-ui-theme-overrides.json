@@ -2,8 +2,8 @@
   "common": {
     "borderRadius": "4px",
     "lineHeight": "1.5",
-    "fontFamily": "var(--font-family-base)",
-    "fontFamilyMono": "var(--font-family-mono)",
+    "fontFamily": "var(--default-font-family)",
+    "fontFamilyMono": "var(--default-mono-font-family)",
     "infoColor": "#697FEDFF",
     "infoColorHover": "#9AADFEFF",
     "infoColorPressed": "#596CDBFF",

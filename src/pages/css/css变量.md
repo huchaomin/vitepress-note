@@ -14,7 +14,7 @@
   --main-bg2: rgb(255 0 0 / var(--opacity, 0.8));
   --base-line-height: 1.428;
   --transition-duration: 0.35s;
-  --external-link: "external link";
+  --external-link: 'external link';
   --margin-top: calc(2vh + 20px);
 }
 ```
@@ -26,7 +26,7 @@
 
   ```css
   /* 第二个参数不处理内部的逗号或空格，都视作参数的一部分 */
-  --font: var(--font-stack, "Roboto", "Helvetica"); /* 不要认为有第三个参数 */
+  --font: var(--font-stack, 'Roboto', 'Helvetica'); /* 不要认为有第三个参数 */
   --pad: var(--pad, 10px 15px 20px);
   ```
 
@@ -39,12 +39,12 @@
 
    ```css
     :root {
-      --bar: "hello";
-      --foo: var(--bar) " world";
+      --bar: 'hello';
+      --foo: var(--bar) ' world';
     }
 
     body::after {
-      content: "--screen-category : "var(--screen-category, "some content");
+      content: '--screen-category : 'var(--screen-category, 'some content');
     }
 
    ```
@@ -68,7 +68,7 @@
    ```css
     /* 无效 */
     .foo {
-      --foo: "20px";
+      --foo: '20px';
 
       font-size: var(--foo);
     }

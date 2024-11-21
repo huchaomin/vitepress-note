@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     CForm: typeof import('./../src/components/autoImport/CForm.vue')['default']
     CInput: typeof import('./../src/components/autoImport/CInput.vue')['default']
+    ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
+    ICustomAaa: typeof import('~icons/custom/aaa')['default']
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCarousel: typeof import('naive-ui')['NCarousel']

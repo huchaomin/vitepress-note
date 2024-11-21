@@ -1,22 +1,15 @@
-/* stylelint-disable custom-property-pattern */
-
 /* @import "tailwindcss"; */
+/* 等同于 @layer theme, base, components, utilities; 不过 tailwindcss 暂时没有 components 预设 */
 
-/* 不使用默认的 theme layer */
 @import 'tailwindcss/preflight' layer(base);
 @import 'tailwindcss/utilities' layer(utilities);
 
-/* 处理 @layer theme {} */
-/* stylelint-disable-next-line at-rule-no-unknown */
+/* 处理 @layer theme {}， 不使用默认的 theme layer */
 @theme {
   /* text-yellow bg-yellow */
-  --color-*: initial;
   --color-black: #000;
   --color-white: #fff2db;
   --color-yellow: #ffe70b;
-
-  /* TODO --font-family-*: initial; */
-  --font-family-sans: var(--vp-font-family-base);
 
   /* Spacing */
   --spacing-px: 1px;
