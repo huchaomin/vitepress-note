@@ -2,11 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 10:48:06
+ * @LastEditTime : 2024-11-22 14:30:53
  * @Description  :
 -->
 <script setup lang="ts">
 import SiteHeader from '../components/SiteHeader.vue'
+import SiteFooter from '../components/SiteFooter.vue'
 import LeftDrawer from '../components/LeftDrawer.vue'
 import { inBrowser, useData } from 'vitepress'
 
@@ -53,7 +54,7 @@ if (inBrowser) {
     >
       <Content></Content>
       <!-- 底部 -->
-      <!-- <SiteFooter /> -->
+      <SiteFooter></SiteFooter>
     </NLayout>
   </NLayout>
 </template>

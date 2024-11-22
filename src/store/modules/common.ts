@@ -2,12 +2,11 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-09 10:55:56
+ * @LastEditTime : 2024-11-22 14:22:16
  * @Description  :
  */
-import { baseSize, designWidth } from '@/utils/config'
 import { useLoadingBar } from '@/plugins/naive-ui/discreteApi'
-import type { LoadingBarProviderInst } from 'naive-ui'
+import type { LoadingBarApi } from 'naive-ui'
 
 export default defineStore('common', () => {
   // 全局加载状态
@@ -16,7 +15,7 @@ export default defineStore('common', () => {
   watch(loadingCount, (val) => {
     loading.value = val > 0
   })
-  let loadingBar: LoadingBarProviderInst | null = null
+  let loadingBar: LoadingBarApi | null = null
   watch(loading, (val) => {
     if (loadingBar === null) {
       loadingBar = useLoadingBar()
@@ -28,22 +27,6 @@ export default defineStore('common', () => {
     }
   })
   const screenWidth = ref(0)
-  if (import.meta.env.SSR === false) {
-    screenWidth.value = window.innerWidth
-    window.addEventListener('resize', () => {
-      screenWidth.value = window.innerWidth
-    })
-    // 根据屏幕宽度设置根字体大小
-    function setRootFontSize(): void {
-      // 计算比例
-      const scale = screenWidth.value / designWidth
-      // 设置根字体大小
-      document.documentElement.style.fontSize = `${baseSize * scale}px`
-    }
-    watch(screenWidth, setRootFontSize, {
-      immediate: true,
-    })
-  }
 
   return {
     loading,

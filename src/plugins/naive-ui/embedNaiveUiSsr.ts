@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 17:12:15
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-11 00:24:05
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-22 13:49:03
  * @Description  :
  */
 import type { App, Component } from 'vue'
@@ -23,6 +23,7 @@ import {
   modalProviderProps,
   messageProviderProps,
 } from './providerProps'
+import { inBrowser } from 'vitepress'
 
 const CssRenderStyle = defineComponent({
   render() {
@@ -37,13 +38,6 @@ const CssRenderStyle = defineComponent({
     }
   },
 })
-
-function provideCssRenderCollect(app: App) {
-  if (import.meta.env.SSR) {
-    const { collect } = setup(app)
-    app.provide('css-render-collect', collect)
-  }
-}
 
 function NaiveUIProvider(AppEntry: Component) {
   return defineComponent({
@@ -61,7 +55,7 @@ function NaiveUIProvider(AppEntry: Component) {
                           h(NMessageProvider, messageProviderProps, {
                             default: () => [
                               h(AppEntry, null, { default: this.$slots.default?.() }),
-                              import.meta.env.SSR ? [h(CssRenderStyle)] : null,
+                              inBrowser ? null : [h(CssRenderStyle)],
                             ],
                           }),
                       }),
@@ -71,6 +65,13 @@ function NaiveUIProvider(AppEntry: Component) {
       })
     },
   })
+}
+
+function provideCssRenderCollect(app: App) {
+  if (!inBrowser) {
+    const { collect } = setup(app)
+    app.provide('css-render-collect', collect)
+  }
 }
 
 export { NaiveUIProvider, provideCssRenderCollect }
