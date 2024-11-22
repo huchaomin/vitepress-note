@@ -5,10 +5,10 @@
  * @LastEditTime : 2024-11-13 17:47:37
  * @Description  :
  */
-import { designWidth } from '@/utils/config'
+import { designScreenWidth } from '@/utils/config'
 
 export default (PX: number | Ref<number>) => {
   const commonStore = useCommonStore(piniaInstance)
   const n = isRef(PX) ? PX.value : PX
-  return computed(() => (commonStore.screenWidth / designWidth) * n)
+  return computed(() => (commonStore.screenWidth / designScreenWidth) * n)
 }

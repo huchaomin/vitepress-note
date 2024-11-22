@@ -79,7 +79,7 @@
 ```css
 @layer framework {
   @layer layout {
-    margin-block: 1rem;
+    margin-block: 1px;
   }
 }
 ```
@@ -89,7 +89,7 @@
 ```css
 @layer framework.layout {
   p {
-    margin-block: 1rem;
+    margin-block: 1px;
   }
 }
 ```

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 15:29:02
+ * @LastEditTime : 2024-11-22 15:32:49
  * @Description  :
 -->
 <script setup lang="ts">
@@ -130,7 +130,7 @@ const option = computed<ComposeOption<GridComponentOption | PieSeriesOption>>(()
         style="top: 0; left: 0; z-index: -1;"
       >
         <span>累计回款金额</span>
-        <span style="font-size: 2rem;">{{
+        <span style="font-size: 1.67vw;">{{
           formatNumber(refundTotalEnd, {
             notation: 'compact',
             roundingMode: 'floor',

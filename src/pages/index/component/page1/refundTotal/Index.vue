@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 15:39:17
+ * @LastEditTime : 2024-11-22 15:32:32
  * @Description  :
 -->
 <script setup lang="ts">
@@ -90,7 +90,7 @@ onMounted(() => {
 <style scoped>
 .refund_total_wrapper {
   opacity: 0;
-  transform: translateY(2rem);
+  transform: translateY(1.67vw);
 }
 
 .icon {

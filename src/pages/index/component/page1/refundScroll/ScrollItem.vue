@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 22:14:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 11:47:32
+ * @LastEditTime : 2024-11-22 15:51:51
  * @Description  :
 -->
 <script setup lang="ts">
@@ -35,7 +35,7 @@ const time = ref(dayjs().format('HH:mm:ss'))
       <div>
         <div>
           <span>{{ time }}</span>
-          <span class="ml-3_5">{{ item.clientName }}</span>
+          <span class="ml-3">{{ item.clientName }}</span>
         </div>
         <div class="mt-1_5">
           回款:
@@ -57,6 +57,6 @@ const time = ref(dayjs().format('HH:mm:ss'))
 .arrow {
   position: relative;
   bottom: 0.1vw;
-  font-size: 1.5rem;
+  font-size: 1.25vw;
 }
 </style>

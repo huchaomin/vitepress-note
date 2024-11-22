@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-26 21:54:57
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-18 17:06:42
+ * @LastEditTime : 2024-11-22 15:31:23
  * @Description  :
 -->
 <script setup lang="ts">
@@ -129,7 +129,7 @@ cameraPositionStartBus.on(() => {
   .refund_total_wrapper,
   .asset_size_wrapper {
     top: 6.2vw;
-    font-size: 2rem;
+    font-size: 1.67vw;
   }
 
   .asset_size_wrapper {

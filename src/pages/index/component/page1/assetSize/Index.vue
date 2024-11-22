@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-05 14:42:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 16:11:58
+ * @LastEditTime : 2024-11-22 15:31:49
  * @Description  :
 -->
 <script setup lang="ts">
@@ -51,7 +51,7 @@ const totalSplitArr = computed(() => {
 <style scoped>
 .asset_size_wrapper {
   opacity: 0;
-  transform: translateY(-2rem);
+  transform: translateY(-1.67vw);
 }
 
 .icon {

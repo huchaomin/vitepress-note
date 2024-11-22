@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-20 14:48:46
+ * @LastEditTime : 2024-11-22 15:41:33
  * @Description  :
 -->
 <script setup lang="ts">
@@ -175,7 +175,7 @@ function handleCarouselIndexChange(index: number) {
 </script>
 
 <template>
-  <div class="h-screen w-screen">
+  <div class="h-screen w-screen" style="font-size: 0.83vw;">
     <div style="aspect-ratio: 16/9;">
       <div class="canvas_parent relative h-full w-full overflow-hidden">
         <HeaderBar ref="headerBarRef"></HeaderBar>
@@ -268,7 +268,7 @@ canvas {
 
   .n-button {
     --n-height: 2.5vw;
-    --n-font-size: 1.2rem;
+    --n-font-size: 1vw;
 
     min-width: calc(var(--n-height) * 200 / 64);
     pointer-events: auto;
@@ -303,7 +303,7 @@ canvas {
   color: var(--color-white);
 
   & :deep(.provinces_name) {
-    top: -0.177rem;
+    top: -2.55px;
     font-size: 16px;
     text-shadow: 1px 1px 0 #000;
     opacity: 0;
@@ -363,8 +363,8 @@ canvas {
 
   & :deep() {
     h3 {
-      font-size: 1.2rem;
-      letter-spacing: 0.25rem;
+      font-size: 1vw;
+      letter-spacing: 0.21vw;
     }
   }
 }

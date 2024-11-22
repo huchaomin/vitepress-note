@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-25 18:15:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 11:40:57
+ * @LastEditTime : 2024-11-22 15:51:32
  * @Description  :
 -->
 <script setup lang="ts">
@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
   <div class="refund_scroll_wrapper absolute">
     <StreamerBorder style="padding: 1vw 0.3vw;" class="flex h-full flex-col">
-      <h3 class="ml-9">回款实时监控</h3>
+      <h3 class="ml-8">回款实时监控</h3>
       <div ref="scrollWrapperRef" class="mt-2 flex-1 overflow-hidden">
         <ScrollItem
           v-for="(item, index) in scrollItems"
