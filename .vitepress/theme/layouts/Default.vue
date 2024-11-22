@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-18 23:18:08
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-22 10:48:06
  * @Description  :
 -->
 <script setup lang="ts">
@@ -30,6 +30,7 @@ if (inBrowser) {
 
 <template>
   <SiteHeader v-if="showHeader"></SiteHeader>
+  <!-- TODO id -->
   <NLayout
     id="doc-layout"
     :has-sider="!isTablet && !isMobile"
@@ -40,12 +41,14 @@ if (inBrowser) {
   >
     <!-- 左侧菜单 -->
     <LeftDrawer></LeftDrawer>
+    <!-- TODO document-scroll-container -->
+    <!-- position absolute 时，右侧的 toc position sticky 才会生效 -->
     <NLayout
       :scrollbar-props="{
         containerClass: 'document-scroll-container',
       }"
       :native-scrollbar="false"
-      :position="isMobile || (!isTablet && !isMobile) ? 'static' : 'absolute'"
+      :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
       <Content></Content>

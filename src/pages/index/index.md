@@ -1,5 +1,4 @@
 ---
-header: false
 layout: full
 title: 擎聪智慧大屏系统
 ---

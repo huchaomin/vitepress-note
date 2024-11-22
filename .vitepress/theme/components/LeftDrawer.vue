@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-18 13:56:30
+ * @LastEditTime : 2024-11-22 11:43:54
  * @Description  :
 -->
 <script setup lang="ts">
@@ -19,6 +19,7 @@ interface SidebarItem {
   text: string
 }
 
+// 递归添加 key
 function addKey(items: Omit<SidebarItem, 'key'>[], level: number) {
   return [...items].map((_item) => {
     const item = { ..._item, key: `${level}-${_item.text}` }
@@ -40,6 +41,13 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
   return 'default'
 }
 
+// 有可能长度为 0, 但是 一般不展示这个视图, 比如首页
+function getCurrentTreeKeys() {
+  const keys: string[] = []
+  pushKeys(null, sidebar.value, decodeURIComponent(route.path), keys)
+  return keys
+}
+
 function pushKeys(
   parent: null | SidebarItem,
   arr: SidebarItem[],
@@ -59,13 +67,6 @@ function pushKeys(
   }
   return false
 }
-
-// 有可能长度为 0, 但是 一般不展示这个视图
-function getCurrentTreeKeys() {
-  const keys: string[] = []
-  pushKeys(null, sidebar.value, decodeURIComponent(route.path), keys)
-  return keys
-}
 const selectedKeys = ref<string[]>([])
 const expandedKeys = ref<string[]>([])
 
@@ -82,7 +83,7 @@ watch(
 )
 
 function renderLabel({ option }: { option: TreeOption }) {
-  if (option.link) {
+  if (option.link !== undefined) {
     return h(
       'a',
       {
