@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 10:49:02
+ * @LastEditTime : 2024-11-22 15:58:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -75,6 +75,7 @@ const option = computed<
     },
     legend: {
       align: 'right',
+      itemHeight: useDynamicPx(16).value,
       itemWidth: useDynamicPx(46).value,
       padding: 0,
       right: 0,

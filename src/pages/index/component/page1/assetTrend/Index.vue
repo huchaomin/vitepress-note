@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-01 16:43:13
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 11:31:44
+ * @LastEditTime : 2024-11-22 16:08:29
  * @Description  :
 -->
 <script setup lang="ts">
@@ -185,7 +185,7 @@ const option = computed<
                   y: location[1],
                 },
                 style: {
-                  fill: '#1b83bb80',
+                  fill: 'rgba(27, 131, 187, 0.15)',
                 },
                 type: 'CubeLeft',
               },
@@ -197,7 +197,7 @@ const option = computed<
                   y: location[1],
                 },
                 style: {
-                  fill: '#1b83bb60',
+                  fill: 'rgba(27, 131, 187, 0.1)',
                 },
                 type: 'CubeRight',
               },
@@ -209,7 +209,7 @@ const option = computed<
                   y: location[1],
                 },
                 style: {
-                  fill: '#1779b5',
+                  fill: 'rgba(23, 121, 181, 0.3)',
                 },
                 type: 'CubeTop',
               },
