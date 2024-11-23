@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 14:30:53
+ * @LastEditTime : 2024-11-23 12:07:17
  * @Description  :
 -->
 <script setup lang="ts">
@@ -27,6 +27,14 @@ if (inBrowser) {
     },
   )
 }
+
+const contentWrapperClass = computed(() => {
+  return isMobile.value ? 'px-4 pt-4 pb-6' : 'flex pt-8 pr-6 pb-14 pl-14'
+})
+
+const contentClass = computed(() => {
+  return isMobile.value ? 'pr-3' : 'mr-9 flex-1'
+})
 </script>
 
 <template>
@@ -52,7 +60,12 @@ if (inBrowser) {
       :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <Content></Content>
+      <div class="doc" :class="contentWrapperClass">
+        <Content :class="contentClass"></Content>
+        <div v-if="!isMobile" style="width: 240px;">
+          <!-- <Anchor></Anchor> -->
+        </div>
+      </div>
       <!-- 底部 -->
       <SiteFooter></SiteFooter>
     </NLayout>
