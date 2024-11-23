@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-08 09:29:19
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-10-19 23:51:09
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-23 11:38:54
  * @Description  :
  */
 import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
@@ -12,6 +12,7 @@ import viteCompression from 'vite-plugin-compression'
 import packageJson from '../package.json'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
 import sidebar from '../build/plugins/generateSidebar.ts'
+import mdPlugin from '../build/plugins/md/index.ts'
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -51,6 +52,18 @@ export default defineConfig(({ mode }) => {
     lang: 'zh-CN',
     lastUpdated: true,
     markdown: {
+      // markdown-it-anchor 的选项 这里只需提供一个id其他的，下面config里面自定义
+      // https://github.com/valeriangalliat/markdown-it-anchor#usage
+      anchor: {
+        permalink: undefined,
+        tabIndex: false,
+      },
+      // @mdit-vue/plugin-toc 的选项
+      // https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc#options
+      // toc: { level: [1, 2] },
+      config: (md) => {
+        md.use(mdPlugin)
+      },
       container: {
         dangerLabel: '危险',
         detailsLabel: '详细信息',
@@ -61,18 +74,6 @@ export default defineConfig(({ mode }) => {
       image: {
         lazyLoading: true,
       },
-      // markdown-it-anchor 的选项
-      // https://github.com/valeriangalliat/markdown-it-anchor#usage
-      // anchor: {
-      //   permalink: markdownItAnchor.permalink.headerLink()
-      // },
-      // @mdit-vue/plugin-toc 的选项
-      // https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc#options
-      // toc: { level: [1, 2] },
-      // config: (md) => {
-      //   // 使用更多的 Markdown-it 插件！
-      //   md.use(markdownItFoo)
-      // }
     },
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     rewrites: {
@@ -84,6 +85,7 @@ export default defineConfig(({ mode }) => {
       sidebar,
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
+    titleTemplate: false, // 去掉标题里面的 ’| vite‘
     transformHead({ assets }) {
       const smileySansFontFileArr = assets.filter((str: string) =>
         /SmileySans[\w\-.]+\.woff2/.test(str),

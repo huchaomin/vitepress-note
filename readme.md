@@ -45,6 +45,7 @@
 - npm install --save-dev seemly
 - 左侧树的搜索功能， 收起全部功能
 - /deep/ 限制使用
+- markdown-it-toc-done-right
 
 ## threejs
 

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 11:34:42
+ * @LastEditTime : 2024-11-23 10:27:17
  * @Description  : index.md 或 同文件夹名称的文件都可以做入口文件，但不要同时存在
  */
 import { generateSidebar, type SidebarItem } from 'vitepress-sidebar'
@@ -36,6 +36,6 @@ function handleLink(arr: SidebarItem[]): SidebarItem[] {
     return item
   })
 }
-console.log(handleLink(sidebar))
+// console.log(handleLink(sidebar))
 
 export default handleLink(sidebar)
