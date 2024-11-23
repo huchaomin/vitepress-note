@@ -1,19 +1,21 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 09:18:38
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:48:34
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-23 22:51:47
  * @Description  :
  */
 import type * as THREE from 'three'
+
 import { PerspectiveCamera } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
 import type { ThreeCore } from './index'
 
 export default class Camera {
-  private isClicked: boolean
   readonly controls: InstanceType<typeof OrbitControls>
   readonly instance: THREE.PerspectiveCamera
+  private isClicked: boolean
 
   constructor({ canvas, scene, sizes, time }: ThreeCore) {
     this.instance = new PerspectiveCamera(45, sizes.width / sizes.height, 1)

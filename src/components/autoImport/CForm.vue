@@ -1,14 +1,16 @@
 <!--
 * @Author       : huchaomin peter@qingcongai.com
 * @Date         : 2023-10-08 15:13:29
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 16:03:27
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-23 22:51:37
 * @Description  :
 -->
 <script setup lang="ts">
 /* eslint-disable vue/no-mutating-props */
-import type { FormInst, FormItemProps } from 'naive-ui'
 import type { CInputPropsType } from '@/components/autoImport/CInput.vue'
+import type { FormInst, FormItemProps } from 'naive-ui'
+
+export type FormItemType = (itemComponent | itemSlot)[]
 
 type componentType = 'CInput'
 
@@ -27,8 +29,6 @@ type itemSlot = {
   model?: string // 组件 v-model:value 绑定的值
   slot: string
 } & itemCommon
-
-export type FormItemType = (itemComponent | itemSlot)[]
 
 const props = withDefaults(
   defineProps<{

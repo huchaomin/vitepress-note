@@ -2,15 +2,15 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-11-02 15:23:39
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-11 22:47:53
+ * @LastEditTime : 2024-11-23 22:51:25
  * @Description  :
 -->
 <script setup lang="ts">
 import type { InputProps } from 'naive-ui'
 
-export type CInputPropsType = {
+export type CInputPropsType = Omit<InputProps, 'type'> & {
   type?: 'password' | 'text' | 'textarea'
-} & Omit<InputProps, 'type'>
+}
 
 // TODO https://github.com/vuejs/core/issues/8286
 const props = withDefaults(

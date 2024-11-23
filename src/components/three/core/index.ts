@@ -1,18 +1,20 @@
+import type * as THREE from 'three'
+
+import { geoMercator } from 'd3-geo'
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:21:36
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-01 10:24:55
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-23 22:51:55
  * @Description  :
  */
-import { AxesHelper, Scene, Mesh } from 'three'
+import { AxesHelper, Mesh, Scene } from 'three'
+
 import EventEmitter from '../utils/EventEmitter'
 import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
-import Renderer from './Renderer'
 import Camera from './Camera'
-import { geoMercator } from 'd3-geo'
-import type * as THREE from 'three'
+import Renderer from './Renderer'
 
 interface geoProjectionConfig {
   geoProjectionCenter: [number, number]
@@ -20,14 +22,14 @@ interface geoProjectionConfig {
   geoProjectionTranslate: [number, number]
 }
 export class ThreeCore extends EventEmitter {
-  private config: geoProjectionConfig
-
   readonly camera: Camera
+
   readonly canvas: HTMLCanvasElement
   readonly renderer: Renderer
   readonly scene: THREE.Scene
   readonly sizes: Sizes
   readonly time: Time
+  private config: geoProjectionConfig
 
   constructor(canvas: HTMLCanvasElement, config?: Partial<geoProjectionConfig>) {
     super()

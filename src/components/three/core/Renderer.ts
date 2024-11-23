@@ -1,11 +1,12 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 10:17:33
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-25 11:05:49
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-23 22:52:00
  * @Description  :
  */
 import { WebGLRenderer } from 'three'
+
 import type { ThreeCore } from './index'
 
 export default class Renderer {

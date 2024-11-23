@@ -1,7 +1,7 @@
-import process from 'node:process'
 import antfu, { perfectionist as perfectionistWrapperFn } from '@antfu/eslint-config'
 import perfectionist from 'eslint-plugin-perfectionist'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import process from 'node:process'
 
 import prettierOptions from './prettier.config.mjs'
 
@@ -82,9 +82,9 @@ export default antfu(
       'antfu/consistent-chaining': 'off',
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      'perfectionist/sort-imports': 'off', // 有其他排序插件
-      'perfectionist/sort-named-imports': 'off', // 有其他排序插件
-      'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
+      // 'perfectionist/sort-imports': 'off', // 有其他排序插件
+      // 'perfectionist/sort-named-imports': 'off', // 有其他排序插件
+      // 'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
       'prefer-promise-reject-errors': 'off',
       'prettier/prettier': ['error'],
       'vue/component-name-in-template-casing': [
