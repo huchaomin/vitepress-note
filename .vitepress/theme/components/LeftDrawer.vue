@@ -1,12 +1,13 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 11:43:54
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-24 18:00:44
  * @Description  :
 -->
 <script setup lang="ts">
-import type { TreeOverrideNodeClickBehavior, TreeOption } from 'naive-ui'
+import type { TreeOption, TreeOverrideNodeClickBehavior } from 'naive-ui'
+
 import { useData, useRoute } from 'vitepress'
 
 const { theme } = useData()
@@ -110,6 +111,7 @@ function renderLabel({ option }: { option: TreeOption }) {
     trigger-style="top: 240px;"
     collapsed-trigger-style="top: 240px; right: -20px;"
     bordered
+    width="300"
     show-trigger="arrow-circle"
   >
     <NTree

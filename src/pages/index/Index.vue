@@ -6,22 +6,23 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import gsap from 'gsap'
-import CanvasRender from './index'
-import Page1 from './component/page1/Index.vue'
-import Page2 from './component/page2/Index.vue'
-import Page3 from './component/page3/Index.vue'
-import HeaderBar from './component/header/Index.vue'
-import FooterBar from './component/footer/Index.vue'
 import { getMainData, getRepayList } from '@/api/bigScreen'
 import { colors } from '@/pages/index/utils/others'
 import {
-  repayItemChangeKey,
   cameraPositionReadyKey,
   cameraPositionStartKey,
   carouselIndexChangeKey,
   type ItemType,
+  repayItemChangeKey,
 } from '@/pages/index/utils/others'
+import gsap from 'gsap'
+
+import FooterBar from './component/footer/Index.vue'
+import HeaderBar from './component/header/Index.vue'
+import Page1 from './component/page1/Index.vue'
+import Page2 from './component/page2/Index.vue'
+import Page3 from './component/page3/Index.vue'
+import CanvasRender from './index'
 
 const queryFlayMap = {
   next: {

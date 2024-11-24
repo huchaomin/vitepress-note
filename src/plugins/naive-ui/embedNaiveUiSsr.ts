@@ -6,24 +6,26 @@
  * @Description  :
  */
 import type { App, Component } from 'vue'
+
 import { setup } from '@css-render/vue3-ssr'
 import {
   NConfigProvider,
-  NLoadingBarProvider,
-  NNotificationProvider,
   NDialogProvider,
-  NModalProvider,
+  NLoadingBarProvider,
   NMessageProvider,
+  NModalProvider,
+  NNotificationProvider,
 } from 'naive-ui'
+import { inBrowser } from 'vitepress'
+
 import {
   configProviderProps,
-  loadingBarProviderProps,
-  notificationProviderProps,
   dialogProviderProps,
-  modalProviderProps,
+  loadingBarProviderProps,
   messageProviderProps,
+  modalProviderProps,
+  notificationProviderProps,
 } from './providerProps'
-import { inBrowser } from 'vitepress'
 
 const CssRenderStyle = defineComponent({
   render() {

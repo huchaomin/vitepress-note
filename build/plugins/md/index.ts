@@ -1,12 +1,13 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-23 11:05:18
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-24 23:31:43
  * @Description  :
  */
-import heading from './heading.ts'
 import type { defineConfig } from 'vitepress'
+
+import heading from './heading.ts'
 
 export type MarkdownIt = Parameters<
   NonNullable<NonNullable<ReturnType<typeof defineConfig>['markdown']>['config']>
