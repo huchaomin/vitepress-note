@@ -26,6 +26,7 @@ declare module 'vue' {
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NNumberAnimation: typeof import('naive-ui')['NNumberAnimation']
+    NP: typeof import('naive-ui')['NP']
     NText: typeof import('naive-ui')['NText']
     NTree: typeof import('naive-ui')['NTree']
   }
