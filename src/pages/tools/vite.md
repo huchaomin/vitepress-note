@@ -7,10 +7,10 @@
 JSON 可以被直接导入 —— 同样支持具名导入
 
 ```ts
-// 导入整个对象
-import json from './example.json'
 // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！
 import { field } from './example2.json'
+// 导入整个对象
+import json from './example.json'
 ```
 
 ### 动态导入

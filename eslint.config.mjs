@@ -58,7 +58,7 @@ export default antfu(
       },
     },
     typescript: {
-      overrides: {
+      overridesTypeAware: {
         'ts/strict-boolean-expressions': [
           'error',
           {
@@ -67,9 +67,6 @@ export default antfu(
             allowNullableString: true,
           },
         ],
-      },
-      parserOptions: {
-        projectService: true,
       },
       tsconfigPath: 'tsconfig.json',
     },

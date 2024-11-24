@@ -5,7 +5,7 @@
  * @LastEditTime : 2024-11-15 14:32:07
  * @Description  :
  */
-type FormatNumberConfig = {
+type FormatNumberConfig = ConstructorParameters<typeof Intl.NumberFormat>[1] & {
   roundingMode?:
     | 'ceil'
     | 'expand'
@@ -16,7 +16,7 @@ type FormatNumberConfig = {
     | 'halfFloor'
     | 'halfTrunc'
     | 'trunc'
-} & ConstructorParameters<typeof Intl.NumberFormat>[1]
+}
 
 function formatNumber(n: any, config?: FormatNumberConfig): string {
   const number = Number(n)
