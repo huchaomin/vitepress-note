@@ -9,6 +9,7 @@ import type { defineConfig } from 'vitepress'
 
 import heading from './heading.ts'
 import paragraph from './paragraph.ts'
+import table from './table.ts'
 
 export type MarkdownIt = Parameters<
   NonNullable<NonNullable<ReturnType<typeof defineConfig>['markdown']>['config']>
@@ -17,4 +18,5 @@ export type MarkdownIt = Parameters<
 export default (md: MarkdownIt) => {
   md.use(heading)
   md.use(paragraph)
+  md.use(table)
 }
