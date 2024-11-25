@@ -2,14 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-23 12:07:17
+ * @LastEditTime : 2024-11-25 15:53:34
  * @Description  :
 -->
 <script setup lang="ts">
-import SiteHeader from '../components/SiteHeader.vue'
-import SiteFooter from '../components/SiteFooter.vue'
-import LeftDrawer from '../components/LeftDrawer.vue'
 import { inBrowser, useData } from 'vitepress'
+
+import LeftDrawer from '../components/LeftDrawer.vue'
+import SiteFooter from '../components/SiteFooter.vue'
+import SiteHeader from '../components/SiteHeader.vue'
 
 const { frontmatter } = useData()
 
@@ -33,7 +34,7 @@ const contentWrapperClass = computed(() => {
 })
 
 const contentClass = computed(() => {
-  return isMobile.value ? 'pr-3' : 'mr-9 flex-1'
+  return isMobile.value ? 'pr-3 vp-doc' : 'mr-9 flex-1 vp-doc'
 })
 </script>
 
@@ -60,7 +61,7 @@ const contentClass = computed(() => {
       :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <div class="doc" :class="contentWrapperClass">
+      <div :class="contentWrapperClass">
         <Content :class="contentClass"></Content>
         <div v-if="!isMobile" style="width: 240px;">
           <!-- <Anchor></Anchor> -->

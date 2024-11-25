@@ -1,6 +1,7 @@
 /* stylelint-disable custom-property-pattern */
 
 /* @import "tailwindcss"; */
+
 /* 等同于 @layer theme, base, components, utilities; 不过 tailwindcss 暂时没有 components 预设 */
 
 @import 'tailwindcss/preflight' layer(base);

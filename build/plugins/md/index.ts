@@ -2,12 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 11:36:14
+ * @LastEditTime : 2024-11-25 14:28:32
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
 
 import codeInline from './codeInline.ts'
+import fence from './fence.ts'
 import heading from './heading.ts'
 import link from './link.ts'
 import paragraph from './paragraph.ts'
@@ -23,4 +24,5 @@ export default (md: MarkdownIt) => {
   md.use(table)
   md.use(link)
   md.use(codeInline)
+  md.use(fence)
 }

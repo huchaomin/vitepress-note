@@ -2,14 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 15:16:55
+ * @LastEditTime : 2024-11-25 16:35:27
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
-import layouts from './layouts/index'
-import { useData, inBrowser } from 'vitepress'
-import { getFilenameFromUrl } from '@/utils/url'
 import { designFontSize, designScreenWidth, minFontSize, minScreenWidth } from '@/utils/config'
+import { getFilenameFromUrl } from '@/utils/url'
+import { inBrowser, useData } from 'vitepress'
+
+import layouts from './layouts/index'
 
 const commonStore = useCommonStore(piniaInstance)
 
