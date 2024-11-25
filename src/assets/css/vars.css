@@ -10,4 +10,18 @@
   @media screen and (width <= 480px) {
     --default-mono-font-family: var(--font-family-others), var(--font-family-zh);
   }
+
+  --vp-c-gray-soft: rgb(142 150 170 / 14%);
+  --vp-c-red-soft: rgb(244 63 94 / 14%);
+  --vp-c-red-1: #b8272c;
+  --vp-c-green-soft: rgb(16 185 129 / 14%);
+  --vp-c-green-1: #18794e;
+}
+
+.dark {
+  --vp-c-gray-soft: rgb(101 117 133 / 16%);
+  --vp-c-red-soft: rgb(244 63 94 / 16%);
+  --vp-c-red-1: #f66f81;
+  --vp-c-green-soft: rgb(16 185 129 / 16%);
+  --vp-c-green-1: #3dd68c;
 }

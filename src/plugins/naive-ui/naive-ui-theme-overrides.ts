@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-11-09 22:55:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 10:01:37
+ * @LastEditTime : 2024-11-25 17:28:13
  * @Description  :
  */
 import type { GlobalThemeOverrides } from 'naive-ui'
@@ -34,6 +34,18 @@ export default {
     paddingSmall: `0 ${P(10)}`,
     paddingTiny: `0 ${P(6)}`,
   },
+  Card: {
+    closeIconSize: R(18),
+    closeSize: R(22),
+    paddingHuge: `${P(27)} ${P(40)} ${P(28)}`,
+    paddingLarge: `${P(23)} ${P(32)} ${P(24)}`,
+    paddingMedium: `${P(19)} ${P(24)} ${P(20)}`,
+    paddingSmall: `${P(12)} ${P(16)} ${P(12)}`,
+    titleFontSizeHuge: R(18),
+    titleFontSizeLarge: R(18),
+    titleFontSizeMedium: R(18),
+    titleFontSizeSmall: R(16),
+  },
   common: {
     fontFamily: 'var(--default-font-family)',
     fontFamilyMono: 'var(--default-mono-font-family)',
@@ -58,6 +70,11 @@ export default {
     primaryColorHover: '#9AADFEFF',
     primaryColorPressed: '#596CDBFF',
     primaryColorSuppl: '#9AADFEFF',
+  },
+  Scrollbar: {
+    borderRadius: '5px', // 这个不能转换
+    height: '5px',
+    width: '5px',
   },
   Table: {
     tdPaddingLarge: P(12),
