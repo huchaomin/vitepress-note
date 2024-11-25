@@ -1,13 +1,14 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-24 18:00:44
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-25 11:18:57
  * @Description  :
 -->
 <script setup lang="ts">
 import type { TreeOption, TreeOverrideNodeClickBehavior } from 'naive-ui'
 
+import { NEllipsis } from 'naive-ui'
 import { useData, useRoute } from 'vitepress'
 
 const { theme } = useData()
@@ -84,6 +85,15 @@ watch(
 )
 
 function renderLabel({ option }: { option: TreeOption }) {
+  const ellipsis = h(
+    NEllipsis,
+    {
+      tooltip: {
+        placement: 'right',
+      },
+    },
+    { default: () => option.text },
+  )
   if (option.link !== undefined) {
     return h(
       'a',
@@ -93,11 +103,11 @@ function renderLabel({ option }: { option: TreeOption }) {
         style: { height: 'var(--n-node-content-height)' },
       },
       {
-        default: () => option.text,
+        default: () => [ellipsis],
       },
     )
   } else {
-    return option.text as string
+    return ellipsis
   }
 }
 </script>
