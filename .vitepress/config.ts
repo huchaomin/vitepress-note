@@ -1,18 +1,20 @@
 /*
  * @Author       : peter peter@qingcongai.com
- * @Date         : 2024-10-08 09:29:19
+ * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-23 11:38:54
+ * @LastEditTime : 2024-11-25 09:44:07
  * @Description  :
  */
-import { resolveCwd, getEnv, normalizeJoinPath } from '../build/utils/index.ts'
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
+
 import { defineConfig, normalizePath } from 'vite'
 import viteCompression from 'vite-plugin-compression'
-import packageJson from '../package.json'
-import postHandleHtml from '../build/plugins/postHandleHtml.ts'
+
 import sidebar from '../build/plugins/generateSidebar.ts'
 import mdPlugin from '../build/plugins/md/index.ts'
+import postHandleHtml from '../build/plugins/postHandleHtml.ts'
+import { getEnv, normalizeJoinPath, resolveCwd } from '../build/utils/index.ts'
+import packageJson from '../package.json' assert { type: 'json' }
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -22,8 +24,8 @@ export default defineConfig(({ mode }) => {
     base: VITE_BASE_URL, // 终以斜杠开头和结尾(没有结尾vite会自动处理)
     async buildEnd(siteConfig) {
       const { outDir } = siteConfig.userConfig
-      /* eslint-disable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
-      // @ts-expect-error 不知为啥类型错误, 这里要压缩html, 才要这做，按照官方配置只能压缩非html文件，因为插件运行期间html还没生成
+      // @ts-expect-error TODO
+      // eslint-disable-next-line ts/no-unsafe-assignment
       const obj = viteCompression({
         filter: (file: string) => {
           const normalizePathFile = normalizePath(file)
@@ -36,13 +38,14 @@ export default defineConfig(({ mode }) => {
         },
         verbose: false,
       })
+      // eslint-disable-next-line ts/no-unsafe-call, ts/no-unsafe-member-access
       obj.configResolved({
         build: {
           outDir,
         },
       })
+      // eslint-disable-next-line ts/no-unsafe-call, ts/no-unsafe-member-access
       await obj.closeBundle()
-      /* eslint-enable ts/no-unsafe-assignment,ts/no-unsafe-call,ts/no-unsafe-member-access */
     },
     // srcExclude
     cacheDir: resolveCwd('build/.cache/vitepress'),

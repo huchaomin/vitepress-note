@@ -41,7 +41,7 @@
     "@iconify-json/line-md": "^1.2.2",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/vite": "4.0.0-alpha.33",
-    "@tsconfig/node20": "^20.1.4",
+    "@tsconfig/node-lts": "^22.0.0",
     "@types/d3-geo": "^3.1.0",
     "@types/node": "^22.9.3",
     "@types/three": "^0.170.0",
