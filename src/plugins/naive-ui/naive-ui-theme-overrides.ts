@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-11-09 22:55:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 09:51:10
+ * @LastEditTime : 2024-11-25 10:01:37
  * @Description  :
  */
 import type { GlobalThemeOverrides } from 'naive-ui'
@@ -58,6 +58,14 @@ export default {
     primaryColorHover: '#9AADFEFF',
     primaryColorPressed: '#596CDBFF',
     primaryColorSuppl: '#9AADFEFF',
+  },
+  Table: {
+    tdPaddingLarge: P(12),
+    tdPaddingMedium: P(12),
+    tdPaddingSmall: P(6),
+    thPaddingLarge: P(12),
+    thPaddingMedium: P(12),
+    thPaddingSmall: P(6),
   },
   Tree: {
     nodeHeight: '40px', // 这个不能转换

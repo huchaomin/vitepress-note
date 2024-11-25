@@ -1,13 +1,14 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-25 00:03:07
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-25 10:55:22
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
 
 import heading from './heading.ts'
+import link from './link.ts'
 import paragraph from './paragraph.ts'
 import table from './table.ts'
 
@@ -19,4 +20,5 @@ export default (md: MarkdownIt) => {
   md.use(heading)
   md.use(paragraph)
   md.use(table)
+  md.use(link)
 }
