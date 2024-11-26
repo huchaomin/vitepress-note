@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 09:44:07
+ * @LastEditTime : 2024-11-26 09:37:55
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -77,6 +77,7 @@ export default defineConfig(({ mode }) => {
       image: {
         lazyLoading: true,
       },
+      lineNumbers: true,
     },
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     rewrites: {
