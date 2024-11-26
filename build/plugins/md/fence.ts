@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:49:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 16:48:14
+ * @LastEditTime : 2024-11-26 10:55:49
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -15,7 +15,7 @@ export default (md: MarkdownIt) => {
     const result = defaultRender!(tokens, idx, options, env, self)
     const root = parse(result).clone() as unknown as HTMLElement
     root.classList.remove('vp-adaptive-theme')
-    return `<n-card embedded :bordered="false" content-style="padding: 0">
+    return `<n-card class="fence_card" :class="isMobile ? '-mx-12 w-auto' : ''" embedded :bordered="false" content-style="padding: 0">
       <n-scrollbar x-scrollable>
         ${root.outerHTML}
       </n-scrollbar>

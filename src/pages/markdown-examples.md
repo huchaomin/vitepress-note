@@ -102,8 +102,6 @@ Wraps in a
   const b = ref('b')
 </script>
 
-<Text></Text>
-
 ```ts-vue
 {{ a,b }}
 ```

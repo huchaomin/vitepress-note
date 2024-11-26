@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-25 23:02:52
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-26 10:53:22
  * @Description  :
 -->
 <script setup lang="ts">
@@ -30,11 +30,11 @@ if (inBrowser) {
 }
 
 const contentWrapperClass = computed(() => {
-  return isMobile.value ? 'px-4 pt-4 pb-6' : 'flex pt-8 pr-6 pb-14 pl-14'
+  return isMobile.value ? '' : 'flex'
 })
 
 const contentClass = computed(() => {
-  return isMobile.value ? 'pr-3 vp-doc overflow-hidden' : 'mr-9 flex-1 vp-doc overflow-hidden'
+  return isMobile.value ? 'p-12 vp_doc overflow-hidden' : 'p-8 mr-8 flex-1 vp_doc overflow-hidden'
 })
 </script>
 

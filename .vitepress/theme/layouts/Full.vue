@@ -6,5 +6,5 @@
  * @Description  :
 -->
 <template>
-  <Content class="vp-doc overflow-hidden"></Content>
+  <Content class="vp_doc overflow-hidden"></Content>
 </template>

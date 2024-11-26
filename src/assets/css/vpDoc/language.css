@@ -1,245 +1,228 @@
-/* .vp-doc div[class*='language-'],
-.vp-block {
-  position: relative;
-  margin: 16px -24px;
-  background-color: var(--vp-code-block-bg);
-  overflow-x: auto;
-  transition: background-color 0.5s;
+/* stylelint-disable selector-class-pattern */
+
+.fence_card + .fence_card {
+  @apply mt-8;
 }
 
-@media (min-width: 640px) {
-  .vp-doc div[class*='language-'],
-  .vp-block {
-    border-radius: 8px;
-    margin: 16px 0;
-  }
-}
+.vp_doc [class*='language-'] pre,
+.vp_doc [class*='language-'] code {
+  hyphens: none;
 
-@media (max-width: 639px) {
-  .vp-doc li div[class*='language-'] {
-    border-radius: 8px 0 0 8px;
-  }
-}
-
-.vp-doc div[class*='language-'] + div[class*='language-'],
-.vp-doc div[class$='-api'] + div[class*='language-'],
-.vp-doc div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
-  margin-top: -8px;
-} */
-
-.vp-doc [class*='language-'] pre,
-.vp-doc [class*='language-'] code {
-  /*rtl:ignore*/
-  direction: ltr;
-  /*rtl:ignore*/
+  /* rtl:ignore */
   text-align: left;
-  white-space: pre;
-  word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
+  white-space: pre;
+  word-spacing: normal;
+
+  /* rtl:ignore */
+  direction: ltr;
 }
 
-.vp-doc [class*='language-'] pre {
+.vp_doc [class*='language-'] pre {
   position: relative;
   z-index: 1;
   margin: 0;
+
   @apply py-5;
+
   background: transparent;
 }
 
-.vp-doc [class*='language-'] code {
+.vp_doc [class*='language-'] code {
   display: block;
+
   @apply px-6;
+
   width: fit-content;
   min-width: 100%;
   transition: color 0.5s;
+
+  & .highlighted {
+    display: inline-block;
+    width: calc(100% + 2 * var(--spacing-6));
+    background-color: var(--vp-c-gray-soft);
+    transition: background-color 0.5s;
+
+    @apply -mx-6;
+    @apply px-6;
+
+    &.error {
+      background-color: var(--vp-c-red-soft);
+    }
+
+    &.warning {
+      background-color: var(--vp-c-yellow-soft);
+    }
+  }
+
+  & .diff {
+    display: inline-block;
+    width: calc(100% + 2 * var(--spacing-6));
+    transition: background-color 0.5s;
+
+    @apply -mx-6;
+    @apply px-6;
+
+    &::before {
+      position: absolute;
+      left: var(--spacing-2);
+    }
+  }
 }
 
-.vp-doc [class*='language-'] code .highlighted {
-  background-color: var(--vp-c-gray-soft);
-  transition: background-color 0.5s;
-  @apply -mx-6;
-  @apply px-6;
-  width: calc(100% + 2 * var(--spacing-6));
-  display: inline-block;
-}
-
-.vp-doc [class*='language-'] code .highlighted.error {
-  background-color: var(--vp-c-red-soft);
-}
-
-.vp-doc [class*='language-'] code .highlighted.warning {
-  background-color: var(--vp-c-yellow-soft);
-}
-
-.vp-doc [class*='language-'] code .diff {
-  transition: background-color 0.5s;
-  @apply -mx-6;
-  @apply px-6;
-  width: calc(100% + 2 * var(--spacing-6));
-  display: inline-block;
-}
-
-.vp-doc [class*='language-'] code .diff::before {
-  position: absolute;
-  left: var(--spacing-2);
-}
-
-.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
+.vp_doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
   filter: blur(0.095rem);
-  opacity: 0.4;
-  transition:
-    filter 0.35s,
-    opacity 0.35s;
-}
-
-.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
   opacity: 0.7;
   transition:
     filter 0.35s,
     opacity 0.35s;
 }
 
-.vp-doc [class*='language-']:hover .has-focused-lines .line:not(.has-focus) {
+.vp_doc [class*='language-']:hover .has-focused-lines .line:not(.has-focus) {
   filter: blur(0);
   opacity: 1;
 }
 
-.vp-doc [class*='language-'] code .diff.remove {
+.vp_doc [class*='language-'] code .diff.remove {
   background-color: var(--vp-c-red-soft);
   opacity: 0.7;
+
+  &::before {
+    color: var(--vp-c-red-1);
+    content: '-';
+  }
 }
 
-.vp-doc [class*='language-'] code .diff.remove::before {
-  content: '-';
-  color: var(--vp-c-red-1);
-}
-
-.vp-doc [class*='language-'] code .diff.add {
+.vp_doc [class*='language-'] code .diff.add {
   background-color: var(--vp-c-green-soft);
+
+  &::before {
+    color: var(--vp-c-green-1);
+    content: '+';
+  }
 }
 
-.vp-doc [class*='language-'] code .diff.add::before {
-  content: '+';
-  color: var(--vp-c-green-1);
+.vp_doc div[class*='language-'].line-numbers-mode {
+  /* rtl:ignore */
+  padding-left: 2rem;
 }
 
-.vp-doc div[class*='language-'].line-numbers-mode {
-  /*rtl:ignore*/
-  @apply pl-8;
-}
-
-.vp-doc .line-numbers-wrapper {
+.vp_doc .line-numbers-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   left: 0;
   z-index: 3;
-  /*rtl:ignore*/
-  border-right: 1px solid var(--vp-c-gutter);
-  @apply pt-5;
-  width: var(--spacing-8);
-  text-align: center;
+  width: 2rem;
   color: var(--vp-c-text-3);
+  text-align: center;
+  background-color: var(--n-color-embedded);
+
+  /* rtl:ignore */
+  border-right: 1px solid var(--vp-c-gutter);
   transition:
     border-color 0.5s,
     color 0.5s;
+
+  @apply pt-5;
 }
 
 /* TODO */
-.vp-doc [class*='language-'] > button.copy {
-  /*rtl:ignore*/
-  direction: ltr;
+.vp_doc [class*='language-'] > button.copy {
   position: absolute;
   top: 12px;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   right: 12px;
   z-index: 3;
-  border: 1px solid var(--vp-code-copy-code-border-color);
-  border-radius: 4px;
   width: 40px;
   height: 40px;
-  background-color: var(--vp-code-copy-code-bg);
-  opacity: 0;
   cursor: pointer;
+  background-color: var(--vp-code-copy-code-bg);
   background-image: var(--vp-icon-copy);
+  background-repeat: no-repeat;
   background-position: 50%;
   background-size: 20px;
-  background-repeat: no-repeat;
+  border: 1px solid var(--vp-code-copy-code-border-color);
+  border-radius: 4px;
+  opacity: 0;
   transition:
     border-color 0.25s,
     background-color 0.25s,
     opacity 0.25s;
+
+  /* rtl:ignore */
+  direction: ltr;
 }
 
-.vp-doc [class*='language-']:hover > button.copy,
-.vp-doc [class*='language-'] > button.copy:focus {
+.vp_doc [class*='language-']:hover > button.copy,
+.vp_doc [class*='language-'] > button.copy:focus {
   opacity: 1;
 }
 
-.vp-doc [class*='language-'] > button.copy:hover,
-.vp-doc [class*='language-'] > button.copy.copied {
-  border-color: var(--vp-code-copy-code-hover-border-color);
+.vp_doc [class*='language-'] > button.copy:hover,
+.vp_doc [class*='language-'] > button.copy.copied {
   background-color: var(--vp-code-copy-code-hover-bg);
+  border-color: var(--vp-code-copy-code-hover-border-color);
 }
 
-.vp-doc [class*='language-'] > button.copy.copied,
-.vp-doc [class*='language-'] > button.copy:hover.copied {
-  /*rtl:ignore*/
-  border-radius: 0 4px 4px 0;
+.vp_doc [class*='language-'] > button.copy.copied,
+.vp_doc [class*='language-'] > button.copy:hover.copied {
   background-color: var(--vp-code-copy-code-hover-bg);
   background-image: var(--vp-icon-copied);
+
+  /* rtl:ignore */
+  border-radius: 0 4px 4px 0;
 }
 
-.vp-doc [class*='language-'] > button.copy.copied::before,
-.vp-doc [class*='language-'] > button.copy:hover.copied::before {
+.vp_doc [class*='language-'] > button.copy.copied::before,
+.vp_doc [class*='language-'] > button.copy:hover.copied::before {
   position: relative;
   top: -1px;
-  /*rtl:ignore*/
-  transform: translateX(calc(-100% - 1px));
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: 1px solid var(--vp-code-copy-code-hover-border-color);
-  /*rtl:ignore*/
-  border-right: 0;
-  border-radius: 4px 0 0 4px;
-  padding: 0 10px;
+  justify-content: center;
   width: fit-content;
   height: 40px;
-  text-align: center;
+  padding: 0 10px;
   font-size: 12px;
   font-weight: 500;
   color: var(--vp-code-copy-code-active-text);
-  background-color: var(--vp-code-copy-code-hover-bg);
+  text-align: center;
   white-space: nowrap;
   content: var(--vp-code-copy-copied-text-content);
+  background-color: var(--vp-code-copy-code-hover-bg);
+  border: 1px solid var(--vp-code-copy-code-hover-border-color);
+
+  /* rtl:ignore */
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+
+  /* rtl:ignore */
+  transform: translateX(calc(-100% - 1px));
 }
 
-.vp-doc [class*='language-'] > span.lang {
+.vp_doc [class*='language-'] > span.lang {
   position: absolute;
   top: 0.5rem;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   right: 1rem;
   z-index: 2;
   font-size: 0.9rem;
   font-weight: 500;
-  user-select: none;
   color: var(--vp-c-text-3);
+  user-select: none;
   transition:
     color 0.4s,
     opacity 0.4s;
 }
 
-.vp-doc [class*='language-']:hover > button.copy + span.lang,
-.vp-doc [class*='language-'] > button.copy:focus + span.lang {
+.vp_doc [class*='language-']:hover > button.copy + span.lang,
+.vp_doc [class*='language-'] > button.copy:focus + span.lang {
   opacity: 0;
 }
