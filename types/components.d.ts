@@ -15,6 +15,7 @@ declare module 'vue' {
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
     'IMaterialSymbols:contentCopyOutline': typeof import('~icons/material-symbols/content-copy-outline')['default']
     NA: typeof import('naive-ui')['NA']
+    NBlockquote: typeof import('naive-ui')['NBlockquote']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']

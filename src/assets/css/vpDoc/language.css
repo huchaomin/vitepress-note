@@ -1,9 +1,4 @@
 /* stylelint-disable selector-class-pattern */
-
-.fence_card + .fence_card {
-  @apply mt-8;
-}
-
 .vp_doc [class*='language-'] pre,
 .vp_doc [class*='language-'] code {
   hyphens: none;
