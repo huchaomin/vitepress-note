@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-26 11:32:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 16:10:03
+ * @LastEditTime : 2024-11-26 17:52:56
  * @Description  :
 -->
 <script setup lang="ts">
@@ -19,7 +19,7 @@ const { copied, copy, isSupported } = useClipboard({ legacy: true, source })
 
 <template>
   <NCard
-    class="fence_card my-8"
+    class="fence_card"
     :class="isMobile ? '-mx-12 !w-auto' : ''"
     embedded
     :bordered="false"

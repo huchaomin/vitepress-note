@@ -3,6 +3,7 @@
 @import './tailwindcss.css';
 @import './keyframes.css';
 @import './vpDoc/index.css';
+@import './naive_ui_reset.css';
 
 body {
   overflow: hidden;

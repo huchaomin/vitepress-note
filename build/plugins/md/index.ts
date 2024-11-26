@@ -9,6 +9,7 @@ import type { defineConfig } from 'vitepress'
 
 import blockquote from './blockquote.ts'
 import codeInline from './codeInline.ts'
+import container from './container.ts'
 import fence from './fence.ts'
 import heading from './heading.ts'
 import link from './link.ts'
@@ -27,4 +28,5 @@ export default (md: MarkdownIt) => {
   md.use(codeInline)
   md.use(fence)
   md.use(blockquote)
+  md.use(container)
 }

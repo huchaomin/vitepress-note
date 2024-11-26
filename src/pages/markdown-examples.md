@@ -86,9 +86,8 @@ Check out the documentation for the [full list of markdown extensions](https://v
 
 ::: raw
 Wraps in a
-:::
-
 <NButton>Hello World</NButton>
+:::
 
 <i-carbon-accessibility/>
 <i-custom-aaa/>

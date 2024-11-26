@@ -1,1 +1,8 @@
 @import './language.css';
+
+.vp_doc {
+  .fence_card,
+  .n-alert {
+    @apply my-8;
+  }
+}
