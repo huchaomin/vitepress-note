@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:49:38
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 10:55:49
+ * @LastEditTime : 2024-11-26 15:44:52
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -14,11 +14,11 @@ export default (md: MarkdownIt) => {
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const result = defaultRender!(tokens, idx, options, env, self)
     const root = parse(result).clone() as unknown as HTMLElement
+    root.querySelector('button.copy')?.remove()
     root.classList.remove('vp-adaptive-theme')
-    return `<n-card class="fence_card" :class="isMobile ? '-mx-12 w-auto' : ''" embedded :bordered="false" content-style="padding: 0">
-      <n-scrollbar x-scrollable>
-        ${root.outerHTML}
-      </n-scrollbar>
-    </n-card>`
+    return `<FenceWrapper content="${md.utils
+      .escapeHtml(tokens[idx].content)
+      .replace(/\/\/ \[!code .*\]/g, '')
+      .trim()}">${root.outerHTML}</FenceWrapper>`
   }
 }

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-11-09 22:55:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 17:28:13
+ * @LastEditTime : 2024-11-26 15:24:41
  * @Description  :
  */
 import type { GlobalThemeOverrides } from 'naive-ui'
@@ -83,6 +83,9 @@ export default {
     thPaddingLarge: P(12),
     thPaddingMedium: P(12),
     thPaddingSmall: P(6),
+  },
+  Tooltip: {
+    padding: `${P(8)} ${P(14)}`,
   },
   Tree: {
     nodeHeight: '40px', // 这个不能转换

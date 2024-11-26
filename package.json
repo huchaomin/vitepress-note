@@ -39,6 +39,7 @@
     "@css-render/vue3-ssr": "^0.15.14",
     "@iconify-json/carbon": "^1.2.4",
     "@iconify-json/line-md": "^1.2.2",
+    "@iconify-json/material-symbols": "^1.2.8",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/vite": "4.0.0-beta.2",
     "@tsconfig/node-lts": "^22.0.0",

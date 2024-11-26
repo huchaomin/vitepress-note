@@ -9,9 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     CForm: typeof import('./../src/components/autoImport/CForm.vue')['default']
     CInput: typeof import('./../src/components/autoImport/CInput.vue')['default']
+    FenceWrapper: typeof import('./../.vitepress/theme/components/autoImport/FenceWrapper.vue')['default']
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     ICustomAaa: typeof import('~icons/custom/aaa')['default']
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
+    'IMaterialSymbols:contentCopyOutline': typeof import('~icons/material-symbols/content-copy-outline')['default']
     NA: typeof import('naive-ui')['NA']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
@@ -33,6 +35,7 @@ declare module 'vue' {
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NTable: typeof import('naive-ui')['NTable']
     NText: typeof import('naive-ui')['NText']
+    NTooltip: typeof import('naive-ui')['NTooltip']
     NTree: typeof import('naive-ui')['NTree']
   }
 }
