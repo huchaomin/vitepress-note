@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 14:02:11
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-27 23:10:19
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -20,6 +20,7 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig, type ProxyOptions } from 'vite'
 import aliasImportChecker from 'vite-plugin-alias-import-checker'
 import { envParse } from 'vite-plugin-env-parse'
+import Font from 'vite-plugin-font'
 import Inspect from 'vite-plugin-inspect'
 
 import autoImportStoreList from './plugins/autoImportStores.ts'
@@ -95,6 +96,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
           custom: FileSystemIconLoader(resolveCwd('src/assets/icons')),
         },
       }),
+      Font.vite(),
       envParse({
         dtsPath: resolveCwd('types/env.d.ts'),
       }),

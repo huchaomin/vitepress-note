@@ -7,7 +7,8 @@
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "types": [
-      "node"
+      "node",
+      "vite-plugin-font/src/font"
     ],
     "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,

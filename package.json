@@ -76,6 +76,7 @@
     "vite-plugin-alias-import-checker": "^0.1.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-env-parse": "^1.0.15",
+    "vite-plugin-font": "^4.0.0",
     "vite-plugin-inspect": "^0.8.8",
     "vite-plugin-vue-devtools": "^7.6.4",
     "vitepress": "^1.5.0",

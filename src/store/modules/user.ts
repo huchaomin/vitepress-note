@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 10:35:34
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 14:12:32
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-28 00:03:55
  * @Description  :
  */
 import { login as loginMethod } from '@/api/root'
@@ -27,7 +27,7 @@ export default defineStore(
     }
 
     function showLoginModal(refresh = false): Promise<void> {
-      const loginInstance: Ref<InstanceType<typeof Login> | null> = ref(null)
+      const loginInstance = ref<InstanceType<typeof Login> | null>(null)
       return new Promise((resolve) => {
         $modal({
           closable: false,
