@@ -37,7 +37,6 @@
 - 本博客的图片处理
 - [css @property 与 css Houdini](https://www.cnblogs.com/coco1s/p/14661268.html)
 - npm install tailwindcss@next @tailwindcss/vite@next
-- [fix lightningcss dep url resolution with custom root](https://github.com/vitejs/vite/pull/18125/files) [6.0.0-beta.2](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md)
 - naive ui 字体和图标的使用
 - [onUpdateXxx](https://www.naiveui.com/zh-CN/light/docs/common-issues)
 - [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
@@ -46,6 +45,7 @@
 - 左侧树的搜索功能， 收起全部功能
 - /deep/ 限制使用
 - markdown-it-toc-done-right
+- 开发环境 和 生产环境 引入ui库的方式区分
 
 ## threejs
 

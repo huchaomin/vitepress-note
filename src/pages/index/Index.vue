@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 15:41:33
+ * @LastEditTime : 2024-11-27 10:13:34
  * @Description  :
 -->
 <script setup lang="ts">
@@ -176,7 +176,7 @@ function handleCarouselIndexChange(index: number) {
 </script>
 
 <template>
-  <div class="h-screen w-screen" style="font-size: 0.83vw;">
+  <div class="big_screen_root h-screen w-screen">
     <div style="aspect-ratio: 16/9;">
       <div class="canvas_parent relative h-full w-full overflow-hidden">
         <HeaderBar ref="headerBarRef"></HeaderBar>
@@ -224,6 +224,33 @@ function handleCarouselIndexChange(index: number) {
 </template>
 
 <style scoped>
+.big_screen_root {
+  font-size: 0.83vw;
+
+  /* Spacing */
+  /* stylelint-disable custom-property-pattern */
+  --spacing-px: 1px;
+  --spacing-0: 0px;
+  --spacing-0_5: 0.125vw;
+  --spacing-1: 0.25vw;
+  --spacing-1_5: 0.375vw;
+  --spacing-2: 0.5vw;
+  --spacing-2_5: 0.625vw;
+  --spacing-3: 0.75vw;
+  --spacing-3_5: 0.875vw;
+  --spacing-4: 1vw;
+  --spacing-5: 1.25vw;
+  --spacing-6: 1.5vw;
+  --spacing-7: 1.75vw;
+  --spacing-8: 2vw;
+  --spacing-9: 2.25vw;
+  --spacing-10: 2.5vw;
+  --spacing-11: 2.75vw;
+  --spacing-12: 3vw;
+  --spacing-14: 3.5vw;
+  --spacing-16: 4vw;
+}
+
 canvas {
   width: 100% !important;
   height: 100% !important;
