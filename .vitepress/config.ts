@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 09:37:55
+ * @LastEditTime : 2024-11-28 10:56:35
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -90,51 +90,51 @@ export default defineConfig(({ mode }) => {
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     titleTemplate: false, // 去掉标题里面的 ’| vite‘
-    transformHead({ assets }) {
-      const smileySansFontFileArr = assets.filter((str: string) =>
-        /SmileySans[\w\-.]+\.woff2/.test(str),
-      )
-      const interLinks: [string, Record<string, string>][] = smileySansFontFileArr.map(
-        (href: string) => {
-          return [
-            'link',
-            {
-              as: 'font',
-              crossorigin: '',
-              href,
-              rel: 'preload',
-              type: 'font/woff2',
-            },
-          ]
-        },
-      )
-      const JetBrainsMonoFontFileArr = assets.filter((str) =>
-        /JetBrainsMono[\w\-.]+\.woff2/.test(str),
-      )
-      const obj = {
-        Medium: 'screen and (max-width: 480px)',
-        SemiBold: 'screen and (min-width: 481px)',
-      }
-      const JetBrainsMonoLinks: [string, Record<string, string>][] = JetBrainsMonoFontFileArr.map(
-        (href) => {
-          // 这里[\w-]  和 [\w\-] 相同中间的 - 会被转义
-          const result = href.match(/JetBrainsMono-(\w+)\.[\w-]+\.woff2/)![1]
-          const key = result.endsWith('Italic') ? result.slice(0, -6) : result
-          return [
-            'link',
-            {
-              as: 'font',
-              crossorigin: '',
-              href,
-              media: obj[key as keyof typeof obj],
-              rel: 'preload',
-              type: 'font/woff2',
-            },
-          ]
-        },
-      )
-      return [...interLinks, ...JetBrainsMonoLinks]
-    },
+    // transformHead({ assets }) {
+    //   const smileySansFontFileArr = assets.filter((str: string) =>
+    //     /SmileySans[\w\-.]+\.woff2/.test(str),
+    //   )
+    //   const interLinks: [string, Record<string, string>][] = smileySansFontFileArr.map(
+    //     (href: string) => {
+    //       return [
+    //         'link',
+    //         {
+    //           as: 'font',
+    //           crossorigin: '',
+    //           href,
+    //           rel: 'preload',
+    //           type: 'font/woff2',
+    //         },
+    //       ]
+    //     },
+    //   )
+    //   const JetBrainsMonoFontFileArr = assets.filter((str) =>
+    //     /JetBrainsMono[\w\-.]+\.woff2/.test(str),
+    //   )
+    //   const obj = {
+    //     Medium: 'screen and (max-width: 480px)',
+    //     SemiBold: 'screen and (min-width: 481px)',
+    //   }
+    //   const JetBrainsMonoLinks: [string, Record<string, string>][] = JetBrainsMonoFontFileArr.map(
+    //     (href) => {
+    //       // 这里[\w-]  和 [\w\-] 相同中间的 - 会被转义
+    //       const result = href.match(/JetBrainsMono-(\w+)\.[\w-]+\.woff2/)![1]
+    //       const key = result.endsWith('Italic') ? result.slice(0, -6) : result
+    //       return [
+    //         'link',
+    //         {
+    //           as: 'font',
+    //           crossorigin: '',
+    //           href,
+    //           media: obj[key as keyof typeof obj],
+    //           rel: 'preload',
+    //           type: 'font/woff2',
+    //         },
+    //       ]
+    //     },
+    //   )
+    //   return [...interLinks, ...JetBrainsMonoLinks]
+    // },
     transformHtml(code) {
       return postHandleHtml(code)
     },

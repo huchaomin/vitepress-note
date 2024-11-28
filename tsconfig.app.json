@@ -15,7 +15,9 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      // 识别 ttf 字体文件
+      "vite-plugin-font/src/font"
     ],
     "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,

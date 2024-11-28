@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-27 23:10:19
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-11-28 14:08:10
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -96,7 +96,11 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
           custom: FileSystemIconLoader(resolveCwd('src/assets/icons')),
         },
       }),
-      Font.vite(),
+      // @ts-expect-error 这里类型错误
+      // eslint-disable-next-line ts/no-unsafe-call
+      Font.vite({
+        cacheDir: resolveCwd('build/.cache/fonts'),
+      }),
       envParse({
         dtsPath: resolveCwd('types/env.d.ts'),
       }),
