@@ -1,96 +1,27 @@
 # Markdown Extension Examples
 
-> This page demonstrates some of the built-in markdown extensions provided by VitePress.
+## 使用图标
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```html
+<i-carbon-accessibility/>
+<i-custom-aaa/> // 自定义图标
 ```
 
-## Custom Containers
+<div class="flex gap-1">
+  <i-carbon-accessibility/>
+  <i-custom-aaa/>
+</div>
 
-**Input**
+## 折叠展示
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
+::: details 折叠标题
 This is a details block.
 :::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
 
 ::: raw
 Wraps in a
 <NButton>Hello World</NButton>
 :::
-
-<i-carbon-accessibility/>
-<i-custom-aaa/>
 
 <<< @/tools/vite.md{2-8}
 

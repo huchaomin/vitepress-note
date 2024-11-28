@@ -2,6 +2,7 @@
 
 .vp_doc {
   .fence_card,
+  .details_container_card,
   .n-alert {
     @apply my-8;
   }
