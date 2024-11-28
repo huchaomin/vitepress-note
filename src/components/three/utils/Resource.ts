@@ -6,8 +6,9 @@
  * @Description  :
  */
 import type * as THREE from 'three'
-import EventEmitter from './EventEmitter'
 import type { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+
+import EventEmitter from './EventEmitter'
 
 type LoadersType = typeof GLTFLoader | typeof THREE.FileLoader | typeof THREE.TextureLoader
 
@@ -47,19 +48,6 @@ export default class Resource extends EventEmitter {
     // @ts-expect-error 这里类型不知道怎么写
     this.loaders = {}
     this.assets = []
-  }
-
-  protected async initDraco(loader: GLTFLoader): Promise<void> {
-    import('three/examples/jsm/loaders/DRACOLoader.js')
-      .then(({ DRACOLoader }) => {
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath(this.dracoPath)
-        dracoLoader.preload()
-        loader.setDRACOLoader(dracoLoader)
-      })
-      .catch(async (err) => {
-        return Promise.reject(err)
-      })
   }
 
   async addLoader(
@@ -146,5 +134,18 @@ export default class Resource extends EventEmitter {
           reject(err)
         })
     })
+  }
+
+  protected async initDraco(loader: GLTFLoader): Promise<void> {
+    import('three/examples/jsm/loaders/DRACOLoader.js')
+      .then(({ DRACOLoader }) => {
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath(this.dracoPath)
+        dracoLoader.preload()
+        loader.setDRACOLoader(dracoLoader)
+      })
+      .catch(async (err) => {
+        return Promise.reject(err)
+      })
   }
 }

@@ -24,19 +24,17 @@ console.log('Hello, VitePress!')
 
 :::
 
+## 可以直接写 `script` 和 `style` 标签
+
+::: warning
+请注意，这里的 `script` 和 `style` 标签是直接插入到页面中的，不会被 `markdown-it` 渲染。<br>
+实测：生产环境，展示有问题，开发环境正常
+:::
+
 ::: html
 Wraps in a
 <NButton>Hello World</NButton>
 :::
-
-<script setup lang="ts">
-  const a = import.meta.env.VITE_BASE_URL
-  const b = ref('b')
-</script>
-
-```ts-vue
-{{ a,b }}
-```
 
 ```js
 const a = test

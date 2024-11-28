@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-28 14:08:10
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-28 23:51:06
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -36,7 +36,7 @@ function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: Pr
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ command, isSsrBuild, mode }) => {
   const env = getEnv(mode)
-  const { VITE_API_PREFIX, VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET } = env
+  const { VITE_API_PREFIX, VITE_BASE_URL, VITE_PORT, VITE_PROXY_TARGET, VITE_SHOW_RIGHT_FONT } = env
   console.log({
     command,
     env,
@@ -97,10 +97,8 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         },
       }),
       // @ts-expect-error 这里类型错误
-      // eslint-disable-next-line ts/no-unsafe-call
-      Font.vite({
-        cacheDir: resolveCwd('build/.cache/fonts'),
-      }),
+      // eslint-disable-next-line ts/no-unsafe-assignment, ts/no-unsafe-call
+      ...(mode === 'production' || VITE_SHOW_RIGHT_FONT ? [Font.vite()] : []),
       envParse({
         dtsPath: resolveCwd('types/env.d.ts'),
       }),

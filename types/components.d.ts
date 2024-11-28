@@ -16,7 +16,6 @@ declare module 'vue' {
     'IMaterialSymbols:contentCopyOutline': typeof import('~icons/material-symbols/content-copy-outline')['default']
     NA: typeof import('naive-ui')['NA']
     NAlert: typeof import('naive-ui')['NAlert']
-    NBlockquote: typeof import('naive-ui')['NBlockquote']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']

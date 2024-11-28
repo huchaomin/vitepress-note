@@ -9,9 +9,15 @@
   }
 
   .details_container_card {
-    [class*='language-'] pre,
-    .line-numbers-wrapper {
-      @apply py-0;
+    .fence_card {
+      width: auto !important;
+      margin: 0 -13px -13px;
+      border-top: 1px solid var(--vp-c-gutter);
+
+      [class*='language-'] pre,
+      .line-numbers-wrapper {
+        @apply pt-0 pb-3;
+      }
     }
   }
 }
