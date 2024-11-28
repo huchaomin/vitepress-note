@@ -1,9 +1,17 @@
+/* stylelint-disable selector-class-pattern */
 @import './language.css';
 
 .vp_doc {
-  .fence_card,
+  .fence_card:not(.details_container_card .fence_card),
   .details_container_card,
   .n-alert {
     @apply my-8;
+  }
+
+  .details_container_card {
+    [class*='language-'] pre,
+    .line-numbers-wrapper {
+      @apply py-0;
+    }
   }
 }

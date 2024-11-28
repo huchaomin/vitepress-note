@@ -14,18 +14,20 @@
 
 ## 折叠展示
 
-::: details 折叠标题
-This is a details block.
+::: details 点我查看代码
+
+```js
+console.log('Hello, VitePress!')
+console.log('Hello, VitePress!')
+console.log('Hello, VitePress!')
+```
+
 :::
 
-::: raw
+::: html
 Wraps in a
 <NButton>Hello World</NButton>
 :::
-
-<<< @/tools/vite.md{2-8}
-
-<<< @/api-examples.md{2-3}
 
 <script setup lang="ts">
   const a = import.meta.env.VITE_BASE_URL
