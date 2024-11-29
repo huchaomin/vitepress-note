@@ -1,7 +1,7 @@
 @import './vars.css';
 @import './tailwindcss.css';
 @import './keyframes.css';
-@import './vpDoc/index.css';
+@import './docContent/index.css';
 @import './naive_ui_reset.css';
 
 body {

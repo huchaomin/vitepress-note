@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-27 11:07:48
+ * @LastEditTime : 2024-11-29 16:35:53
  * @Description  :
 -->
 <script setup lang="ts">
@@ -34,7 +34,7 @@ const contentWrapperClass = computed(() => {
 })
 
 const contentClass = computed(() => {
-  return isMobile.value ? 'p-3 vp_doc overflow-hidden' : 'p-8 flex-1 vp_doc overflow-hidden'
+  return isMobile.value ? 'p-3 overflow-hidden' : 'p-8 flex-1 overflow-hidden'
 })
 </script>
 

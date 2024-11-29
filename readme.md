@@ -36,8 +36,6 @@
 - [vite 插件市场，模板市场](https://github.com/vitejs/awesome-vite)
 - 本博客的图片处理
 - [css @property 与 css Houdini](https://www.cnblogs.com/coco1s/p/14661268.html)
-- npm install tailwindcss@next @tailwindcss/vite@next
-- naive ui 字体和图标的使用
 - [onUpdateXxx](https://www.naiveui.com/zh-CN/light/docs/common-issues)
 - [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
