@@ -28,15 +28,43 @@ console.log('Hello, VitePress!')
 
 ::: warning
 请注意，这里的 `script` 和 `style` 标签是直接插入到页面中的，不会被 `markdown-it` 渲染。<br>
-实测：生产环境，展示有问题，开发环境正常
+实测：生产环境，展示可能有问题，开发环境正常
 :::
 
-::: html
-Wraps in a
-<NButton>Hello World</NButton>
-:::
+```md{1}
+<script setup>
+import { useData } from 'vitepress'
 
-```js
-const a = test
-console.log('hello')
+const {site,  theme, page, frontmatter } = useData() // [!code focus]
+</script>
+
+## Results // [!code highlight]
+
+<pre>{{ theme }}</pre> // [!code --]
+<pre>{{ page }}</pre> // [!code ++]
+
+### Page Frontmatter // [!code error]
+<pre>{{ frontmatter }}</pre> // [!code warning]
 ```
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { site, theme, page, frontmatter } = useData()
+</script>
+
+## Theme Data
+
+::: v-pre
+{{ theme }}
+:::
+
+::: js-vue
+{{ theme }}
+:::
+
+<pre>{{ site }}</pre>
+
+## 可以直接写组件
+
+<NButton>Hello World</NButton>
