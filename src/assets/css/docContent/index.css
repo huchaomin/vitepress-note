@@ -4,7 +4,7 @@
 .fence_card:not(.details_container_card .fence_card),
 .details_container_card,
 .n-alert {
-  @apply my-8;
+  @apply my-6;
 }
 
 .details_container_card {
@@ -13,9 +13,9 @@
     margin: 0 -13px -13px;
     border-top: 1px solid var(--vp-c-gutter);
 
-    [class*='language-'] pre,
+    pre,
     .line-numbers-wrapper {
-      @apply pt-0 pb-3;
+      @apply pt-2 pb-3;
     }
   }
 }
