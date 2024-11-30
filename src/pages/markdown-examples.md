@@ -76,6 +76,10 @@ const { site, theme, page, frontmatter } = useData()
 }
 </style>
 
+::: tip 更多runtime api
+Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+:::
+
 ## `::: details` 可折叠内容
 
 ::: tip
@@ -90,6 +94,29 @@ const { site, theme, page, frontmatter } = useData()
 
 <NButton>Hello World</NButton>
 
-## More
+## 代码组
 
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+::: code-group
+
+```js [config.js]
+/**
+ * @type {import('vitepress').UserConfig}
+ */
+const config = {
+  // ...
+}
+
+export default config
+```
+
+```ts [config.ts]
+import type { UserConfig } from 'vitepress'
+
+const config: UserConfig = {
+  // ...
+}
+
+export default config
+```
+
+:::

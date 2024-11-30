@@ -2,14 +2,16 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 14:28:32
+ * @LastEditTime : 2024-11-30 11:11:15
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
 
 import blockquote from './blockquote.ts'
 import codeInline from './codeInline.ts'
-import container from './container.ts'
+import containerCodeGroup from './container_code_group.ts'
+import containerDetail from './container_detail.ts'
+import containerOthers from './container_others.ts'
 import fence from './fence.ts'
 import heading from './heading.ts'
 import link from './link.ts'
@@ -28,5 +30,7 @@ export default (md: MarkdownIt) => {
   md.use(codeInline)
   md.use(fence)
   md.use(blockquote)
-  md.use(container)
+  md.use(containerDetail)
+  md.use(containerOthers)
+  // md.use(containerCodeGroup)
 }

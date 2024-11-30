@@ -3,4 +3,4 @@ node_modules
 /docs
 /build/.cache
 
-*.local
+# *.local
