@@ -1,17 +1,17 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 17:53:52
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-20 11:20:52
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 23:48:24
  * @Description  :
  */
 import {
-  createDiscreteApi,
-  useLoadingBar as _useLoadingBar,
-  useNotification as _useNotification,
   useDialog as _useDialog,
-  useModal as _useModal,
+  useLoadingBar as _useLoadingBar,
   useMessage as _useMessage,
+  useModal as _useModal,
+  useNotification as _useNotification,
+  createDiscreteApi,
   type DialogApi,
   type LoadingBarApi,
   type MessageApi,
@@ -21,11 +21,11 @@ import {
 
 import {
   configProviderProps,
-  loadingBarProviderProps,
-  notificationProviderProps,
   dialogProviderProps,
-  modalProviderProps,
+  loadingBarProviderProps,
   messageProviderProps,
+  modalProviderProps,
+  notificationProviderProps,
 } from './providerProps'
 
 export type DiscreteApiType = 'dialog' | 'loadingBar' | 'message' | 'modal' | 'notification'
@@ -92,8 +92,6 @@ function useModal() {
 }
 
 function useNotify() {
-  console.log(isInSetup())
-
   return isInSetup() ? _useNotification() : getApi('notification')
 }
 

@@ -37,6 +37,8 @@ declare module 'vue' {
     NP: typeof import('naive-ui')['NP']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NTable: typeof import('naive-ui')['NTable']
+    NTabPane: typeof import('naive-ui')['NTabPane']
+    NTabs: typeof import('naive-ui')['NTabs']
     NText: typeof import('naive-ui')['NText']
     NTooltip: typeof import('naive-ui')['NTooltip']
     NTree: typeof import('naive-ui')['NTree']

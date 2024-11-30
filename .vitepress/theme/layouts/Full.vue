@@ -1,10 +1,10 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:19:23
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-29 16:36:00
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 23:31:29
  * @Description  :
 -->
 <template>
-  <Content class="overflow-hidden"></Content>
+  <Content></Content>
 </template>

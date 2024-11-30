@@ -1,14 +1,13 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-30 10:22:15
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-30 10:22:55
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 22:34:57
  * @Description  :
  */
 import type { MarkdownIt } from './index.ts'
 
 export default (md: MarkdownIt) => {
-  console.log(Object.keys(md.renderer.rules))
   md.renderer.rules.container_details_open = (tokens, idx, options) => {
     const { info } = tokens[idx]
     // eslint-disable-next-line ts/no-unsafe-assignment

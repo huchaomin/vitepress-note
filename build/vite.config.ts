@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-28 23:51:06
+ * @LastEditTime : 2024-11-30 17:27:05
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -49,9 +49,6 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
     clearScreen: false,
     css: {
       lightningcss: {
-        // nonStandard: {
-        //   deepSelectorCombinator: true, // TODO 好像不支持  :deep
-        // },
         // TODO https://cn.vitejs.dev/config/shared-options#css-lightningcss
         targets: browserslistToTargets(browserslist('>= 0.25%')),
       },

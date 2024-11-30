@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-30 11:11:15
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 22:45:06
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
@@ -32,5 +32,5 @@ export default (md: MarkdownIt) => {
   md.use(blockquote)
   md.use(containerDetail)
   md.use(containerOthers)
-  // md.use(containerCodeGroup)
+  md.use(containerCodeGroup)
 }

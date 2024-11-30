@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:49:38
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 15:44:52
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-01 00:19:52
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -11,14 +11,23 @@ import type { MarkdownIt } from './index.ts'
 
 export default (md: MarkdownIt) => {
   const defaultRender = md.renderer.rules.fence
-  md.renderer.rules.fence = (tokens, idx, options, env, self) => {
-    const result = defaultRender!(tokens, idx, options, env, self)
+  md.renderer.rules.fence = (...arg) => {
+    const result = defaultRender!(...arg)
     const root = parse(result).clone() as unknown as HTMLElement
     root.querySelector('button.copy')?.remove()
     root.classList.remove('vp-adaptive-theme')
-    return `<FenceWrapper content="${md.utils
+    const [tokens, idx] = arg
+    const token = tokens[idx]
+    const tabName = token.attrGet('tabName')
+    let prev = ''
+    let post = ''
+    if (tabName) {
+      prev = `<n-tab-pane name="${tabName}" tab="${tabName}">`
+      post = '</n-tab-pane>'
+    }
+    return `${prev}<FenceWrapper content="${md.utils
       .escapeHtml(tokens[idx].content)
       .replace(/\/\/ \[!code .*\]/g, '')
-      .trim()}">${root.outerHTML}</FenceWrapper>`
+      .trim()}">${root.outerHTML}</FenceWrapper>${post}`
   }
 }

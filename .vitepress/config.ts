@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-28 10:56:35
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 23:30:53
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -50,6 +50,9 @@ export default defineConfig(({ mode }) => {
     // srcExclude
     cacheDir: resolveCwd('build/.cache/vitepress'),
     cleanUrls: true, // TODO 查看托管平添是否支持
+    contentProps: {
+      class: 'overflow-hidden',
+    },
     description: packageJson.description,
     head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
     lang: 'zh-CN',

@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-29 16:35:53
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-11-30 23:31:20
  * @Description  :
 -->
 <script setup lang="ts">
@@ -34,7 +34,7 @@ const contentWrapperClass = computed(() => {
 })
 
 const contentClass = computed(() => {
-  return isMobile.value ? 'p-3 overflow-hidden' : 'p-8 flex-1 overflow-hidden'
+  return isMobile.value ? 'p-3' : 'p-8 flex-1'
 })
 </script>
 

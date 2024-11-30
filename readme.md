@@ -44,6 +44,7 @@
 - /deep/ 限制使用
 - markdown-it-toc-done-right
 - 开发环境 和 生产环境 引入ui库的方式区分
+- <https://vitepress.yiov.top/plugin.html>
 
 ## threejs
 
