@@ -1,16 +1,19 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-26 11:32:37
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-27 11:10:07
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-01 23:18:10
  * @Description  :
 -->
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
     content: string
+    inCodeGroup?: boolean
   }>(),
-  {},
+  {
+    inCodeGroup: false,
+  },
 )
 
 const source = computed(() => props.content)
@@ -20,7 +23,7 @@ const { copied, copy, isSupported } = useClipboard({ legacy: true, source })
 <template>
   <NCard
     class="fence_card"
-    :class="isMobile ? '-mx-3 !w-auto' : ''"
+    :class="isMobile && !inCodeGroup ? '-mx-3 !w-auto' : ''"
     embedded
     :bordered="false"
     content-class="!p-0"

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:49:38
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-01 00:19:52
+ * @LastEditTime : 2024-12-01 23:35:01
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -19,13 +19,14 @@ export default (md: MarkdownIt) => {
     const [tokens, idx] = arg
     const token = tokens[idx]
     const tabName = token.attrGet('tabName')
+    token.attrSet('tabName', '')
     let prev = ''
     let post = ''
     if (tabName) {
       prev = `<n-tab-pane name="${tabName}" tab="${tabName}">`
       post = '</n-tab-pane>'
     }
-    return `${prev}<FenceWrapper content="${md.utils
+    return `${prev}<FenceWrapper :inCodeGroup=${!!tabName} content="${md.utils
       .escapeHtml(tokens[idx].content)
       .replace(/\/\/ \[!code .*\]/g, '')
       .trim()}">${root.outerHTML}</FenceWrapper>${post}`

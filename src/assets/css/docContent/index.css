@@ -1,7 +1,7 @@
 /* stylelint-disable selector-class-pattern */
 @import './fence_card.css';
 
-.fence_card:not(.details_container_card .fence_card),
+.fence_card:not(.details_container_card .fence_card, .code_group_card .fence_card),
 .details_container_card,
 .n-alert {
   @apply my-6;
@@ -17,5 +17,11 @@
     .line-numbers-wrapper {
       @apply pt-2 pb-3;
     }
+  }
+}
+
+.code_group_card{
+  .n-tabs{
+    --n-pane-padding-top: 0;
   }
 }
