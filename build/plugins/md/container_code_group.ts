@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-30 10:22:15
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-01 23:32:08
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-12-02 09:17:47
  * @Description  :
  */
 import type { MarkdownIt } from './index.ts'
@@ -25,7 +25,7 @@ export default (md: MarkdownIt) => {
       :bordered="false"
       content-class="!p-0"
     >
-      <n-tabs type="line" animated :tabs-padding="16">
+      <n-tabs type="line" animated>
     `
   }
   md.renderer.rules['container_code-group_close'] = () => {
