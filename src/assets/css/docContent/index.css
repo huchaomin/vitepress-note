@@ -20,3 +20,13 @@
     }
   }
 }
+
+.code_group_card {
+  .n-tabs {
+    --n-pane-padding-top: 0;
+  }
+
+  .n-tabs-scroll-padding {
+    width: var(--spacing-3) !important;
+  }
+}
