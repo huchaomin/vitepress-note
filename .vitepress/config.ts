@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-30 23:30:53
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-12-02 09:54:04
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
