@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-02 09:54:04
+ * @LastEditTime : 2024-12-02 15:39:28
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -81,6 +81,7 @@ export default defineConfig(({ mode }) => {
         lazyLoading: true,
       },
       lineNumbers: true,
+      theme: { dark: 'github-dark', light: 'github-light' },
     },
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     rewrites: {

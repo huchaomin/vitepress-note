@@ -1,5 +1,6 @@
 /* stylelint-disable selector-class-pattern */
 @import './fence_card.css';
+@import 'vitepress/dist/client/theme-default/styles/components/vp-code.css';
 
 .fence_card:not(.details_container_card .fence_card, .code_group_card .fence_card),
 .details_container_card,
@@ -17,14 +18,5 @@
     .line-numbers-wrapper {
       @apply pt-2 pb-3;
     }
-  }
-}
-
-.code_group_card{
-  .n-tabs{
-    --n-pane-padding-top: 0;
-  }
-  .n-tabs-scroll-padding{
-    width: var(--spacing-3) !important;
   }
 }
