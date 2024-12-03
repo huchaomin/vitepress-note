@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-30 10:22:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-03 10:25:49
+ * @LastEditTime : 2024-12-03 14:06:33
  * @Description  :
  */
 import type { MarkdownIt } from './index.ts'
@@ -20,7 +20,7 @@ export default (md: MarkdownIt) => {
     fenceTokenArray.forEach((t) => {
       const isHtml = t.type === 'html_block'
       const title = extractTitle(isHtml ? t.content : t.info, isHtml)
-      t.attrSet('tabName', title) // TODO 这里放什么以后就加什么 html_block
+      t.attrSet('tabName', title)
     })
     return `<n-card
       :class="isMobile ? '-mx-3 !w-auto' : ''"
