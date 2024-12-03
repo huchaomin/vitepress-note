@@ -5,7 +5,7 @@
 .fence_card:not(.details_container_card .fence_card, .code_group_card .fence_card),
 .details_container_card,
 .n-alert {
-  @apply my-6;
+  @apply my-4;
 }
 
 .details_container_card {
