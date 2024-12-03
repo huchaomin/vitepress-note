@@ -2,10 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-30 10:22:15
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-02 09:17:47
+ * @LastEditTime : 2024-12-03 10:25:49
  * @Description  :
  */
 import type { MarkdownIt } from './index.ts'
+
+import { extractTitle } from '../../utils/index.ts'
 
 export default (md: MarkdownIt) => {
   md.renderer.rules['container_code-group_open'] = (tokens, idx) => {
@@ -16,7 +18,9 @@ export default (md: MarkdownIt) => {
       .slice(idx + 1, closeTokenIndex)
       .filter((t) => t.level === tokens[idx].level + 1)
     fenceTokenArray.forEach((t) => {
-      t.attrSet('tabName', t.info) // TODO 这里放什么以后就加什么 html_block
+      const isHtml = t.type === 'html_block'
+      const title = extractTitle(isHtml ? t.content : t.info, isHtml)
+      t.attrSet('tabName', title) // TODO 这里放什么以后就加什么 html_block
     })
     return `<n-card
       :class="isMobile ? '-mx-3 !w-auto' : ''"

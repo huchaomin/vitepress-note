@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 13:40:01
+ * @LastEditTime : 2024-12-03 10:30:03
  * @Description  :
  */
 
@@ -18,6 +18,23 @@ function resolveCwd(p: string): string {
 
 const envDir = resolveCwd('build/env')
 
+function extractLang(info: string): string {
+  return info
+    .trim()
+    .replace(/=\d*/, '')
+    .replace(/:(?:no-)?line-numbers(?:[{ ]|$|=).*/, '')
+    .replace(/(?:-vue|\{| ).*$/, '')
+    .replace(/^vue-html$/, 'template')
+    .replace(/^ansi$/, '')
+}
+
+function extractTitle(info: string, html = false) {
+  if (html) {
+    return info.replace(/<!--[\s\S]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
+  }
+  return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
+}
+
 function firstUpperCase(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
@@ -26,9 +43,8 @@ function getEnv(mode: string): ImportMetaEnv {
   // loadEnv 设置第三个参数为空 来加载所有环境变量，而不管是否有 `VITE_` 前缀
   return parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
 }
-
 function normalizeJoinPath(...paths: string[]): string {
   return normalizePath(path.join(...paths))
 }
 
-export { envDir, firstUpperCase, getEnv, normalizeJoinPath, resolveCwd }
+export { envDir, extractTitle, firstUpperCase, getEnv, normalizeJoinPath, resolveCwd }
