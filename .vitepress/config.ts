@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-02 15:39:28
+ * @LastEditTime : 2024-12-04 14:15:59
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -76,9 +76,6 @@ export default defineConfig(({ mode }) => {
         infoLabel: '信息',
         tipLabel: '提示',
         warningLabel: '警告',
-      },
-      image: {
-        lazyLoading: true,
       },
       lineNumbers: true,
       theme: { dark: 'github-dark', light: 'github-light' },

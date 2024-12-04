@@ -72,7 +72,7 @@
 }
 ```
 
-![layer](../../../assets/images/css/layer.png)
+![layer](./layer.png)
 
 ## 嵌套层
 

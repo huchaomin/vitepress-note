@@ -27,7 +27,7 @@
   }
 
   .n-tab-pane:not(:has(.fence_card)) {
-    @apply py-5 px-4;
+    @apply px-4 py-5;
   }
 
   .n-tabs-scroll-padding {
@@ -35,13 +35,15 @@
   }
 }
 
-ol, ul, menu{
+.n-ol,
+.n-ul {
   list-style: initial;
 }
 
-.n-alert--show-icon{
+.n-alert--show-icon {
   .n-alert-body__content {
-    > .n-ol, > .n-ul {
+    > .n-ol,
+    > .n-ul {
       padding-left: 0;
     }
   }
