@@ -33,7 +33,9 @@ declare module 'vue' {
     NLayoutFooter: typeof import('naive-ui')['NLayoutFooter']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
+    NLi: typeof import('naive-ui')['NLi']
     NNumberAnimation: typeof import('naive-ui')['NNumberAnimation']
+    NOl: typeof import('naive-ui')['NOl']
     NP: typeof import('naive-ui')['NP']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NTable: typeof import('naive-ui')['NTable']
@@ -42,5 +44,6 @@ declare module 'vue' {
     NText: typeof import('naive-ui')['NText']
     NTooltip: typeof import('naive-ui')['NTooltip']
     NTree: typeof import('naive-ui')['NTree']
+    NUl: typeof import('naive-ui')['NUl']
   }
 }

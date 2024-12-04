@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-03 13:52:56
+ * @LastEditTime : 2024-12-04 09:44:03
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
@@ -16,6 +16,7 @@ import fence from './fence.ts'
 import heading from './heading.ts'
 import htmlBlock from './html_block.ts'
 import link from './link.ts'
+import list from './list.ts'
 import paragraph from './paragraph.ts'
 import table from './table.ts'
 
@@ -35,4 +36,5 @@ export default (md: MarkdownIt) => {
   md.use(containerOthers)
   md.use(containerCodeGroup)
   md.use(htmlBlock)
+  md.use(list)
 }

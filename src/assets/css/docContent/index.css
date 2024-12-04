@@ -30,3 +30,15 @@
     width: var(--spacing-3) !important;
   }
 }
+
+ol, ul, menu{
+  list-style: initial;
+}
+
+.n-alert--show-icon{
+  .n-alert-body__content {
+    > .n-ol, > .n-ul {
+      padding-left: 0;
+    }
+  }
+}
