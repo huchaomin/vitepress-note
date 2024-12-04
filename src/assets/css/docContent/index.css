@@ -26,8 +26,12 @@
     --n-pane-padding-top: 0;
   }
 
+  .n-tab-pane:not(:has(.fence_card)) {
+    @apply py-5 px-4;
+  }
+
   .n-tabs-scroll-padding {
-    width: var(--spacing-3) !important;
+    width: var(--spacing-4) !important;
   }
 }
 
