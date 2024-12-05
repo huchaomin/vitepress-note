@@ -2,49 +2,22 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-15 16:18:30
+ * @LastEditTime : 2024-12-04 14:56:43
  * @Description  :
  */
-import { Vector3, Group, PlaneGeometry, MeshBasicMaterial, AdditiveBlending, Mesh } from 'three'
-import type { CanvasRenderType } from '../index'
-import type * as THREE from 'three'
 import type { labelInstance } from '@/components/three/utils/Label3d'
+import type * as THREE from 'three'
+
+import { AdditiveBlending, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Vector3 } from 'three'
+
+import type { CanvasRenderType } from '../index'
+
 import arrowDown from '../assets/texture/arrow_down.gif'
 
 interface province {
   adcode: number
   centroid: [number, number]
   name: string
-}
-
-function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstance {
-  const label = _this.label3d.create('badges_label_wrapper')
-  label.init(
-    `<div class="badges_label">
-      <p class="name"></p>
-      <p>
-        回款：<span class="amt"></span>元
-      </p>
-    </div>`,
-    position,
-    (name: string, amt: number | string) => {
-      label.element.querySelector('.name')!.textContent = name
-      label.element.querySelector('.amt')!.textContent = `${amt}`
-    },
-  )
-  return label
-}
-
-function addLabelName(_this: CanvasRenderType, position: Vector3, data: province): labelInstance {
-  const label = _this.label3d.create('provinces_name')
-  label.init(`${data.name}`, position)
-  return label
-}
-
-function addLabelArrow(_this: CanvasRenderType, position: Vector3): labelInstance {
-  const label = _this.label3d.create('arrow_down_icon_wrapper')
-  label.init(`<img class="arrow_down_icon" src="${arrowDown}" alt="" />`, position)
-  return label
 }
 
 function addCenterCircle(_this: CanvasRenderType, position: THREE.Vector3) {
@@ -84,6 +57,36 @@ function addCenterCircle(_this: CanvasRenderType, position: THREE.Vector3) {
   group.add(mesh1, mesh2)
   group.position.copy(position)
   return group
+}
+
+function addLabelArrow(_this: CanvasRenderType, position: Vector3): labelInstance {
+  const label = _this.label3d.create('arrow_down_icon_wrapper')
+  label.init(`<img class="arrow_down_icon" src="${arrowDown}" alt="" />`, position)
+  return label
+}
+
+function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstance {
+  const label = _this.label3d.create('badges_label_wrapper')
+  label.init(
+    `<div class="badges_label">
+      <p class="name"></p>
+      <p>
+        回款：<span class="amt"></span>元
+      </p>
+    </div>`,
+    position,
+    (name: string, amt: number | string) => {
+      label.element.querySelector('.name')!.textContent = name
+      label.element.querySelector('.amt')!.textContent = `${amt}`
+    },
+  )
+  return label
+}
+
+function addLabelName(_this: CanvasRenderType, position: Vector3, data: province): labelInstance {
+  const label = _this.label3d.create('provinces_name')
+  label.init(`${data.name}`, position)
+  return label
 }
 
 export default (_this: CanvasRenderType, mapGroup: THREE.Group) => {
