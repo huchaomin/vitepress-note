@@ -1,18 +1,23 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-30 23:31:20
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-12-05 18:04:14
  * @Description  :
 -->
 <script setup lang="ts">
 import { inBrowser, useData } from 'vitepress'
+import { useLocalNav } from 'vitepress/theme'
 
 import LeftDrawer from '../components/LeftDrawer.vue'
+import SiteAnchor from '../components/SiteAnchor.vue'
 import SiteFooter from '../components/SiteFooter.vue'
 import SiteHeader from '../components/SiteHeader.vue'
 
 const { frontmatter } = useData()
+const { hasLocalNav, headers } = useLocalNav()
+
+window.headers = headers
 
 const showHeader = computed(() => {
   return frontmatter.value.header !== false
@@ -40,7 +45,6 @@ const contentClass = computed(() => {
 
 <template>
   <SiteHeader v-if="showHeader"></SiteHeader>
-  <!-- TODO id -->
   <NLayout
     id="doc-layout"
     :has-sider="!isTablet && !isMobile"
@@ -62,9 +66,10 @@ const contentClass = computed(() => {
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="contentWrapperClass">
-        <Content :class="contentClass"></Content>
-        <div v-if="!isMobile" style="width: 240px;">
-          <!-- <Anchor></Anchor> -->
+        <!-- VPDoc 获取 anchor 时使用 -->
+        <Content :class="contentClass" class="VPDoc"></Content>
+        <div v-if="!isMobile && hasLocalNav" style="width: 240px;">
+          <SiteAnchor :headers="headers"></SiteAnchor>
         </div>
       </div>
       <!-- 底部 -->

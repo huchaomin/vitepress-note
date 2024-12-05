@@ -46,6 +46,7 @@
 - 开发环境 和 生产环境 引入ui库的方式区分
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
+- 开发和生产使用不同的入口文件
 
 ## threejs
 

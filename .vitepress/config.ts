@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-04 14:15:59
+ * @LastEditTime : 2024-12-05 18:18:14
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -87,6 +87,10 @@ export default defineConfig(({ mode }) => {
     srcDir: resolveCwd('src/pages'),
     // https://vitepress.dev/reference/default-theme-config
     themeConfig: {
+      // 右边的导航栏
+      outline: {
+        level: 2,
+      },
       sidebar,
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
