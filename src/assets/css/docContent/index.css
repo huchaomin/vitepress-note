@@ -43,20 +43,19 @@
   .n-alert {
     @apply my-4;
   }
-  .n-ol{
+  .n-ol {
     list-style: decimal;
     li::marker {
-      content: counter(list-item) "」  ";
+      content: counter(list-item) '◈  ';
     }
   }
   .n-ul {
     list-style: disc;
     li::marker {
-      content: "●    ";
+      content: '●    ';
     }
   }
 }
-
 
 .n-alert--show-icon {
   .n-alert-body__content {
@@ -70,8 +69,16 @@
 .site_anchor {
   .n-anchor-link-background,
   .n-anchor-rail__bar {
-    height: 26px !important;
+    height: 27.5px !important;
     border-radius: inherit !important;
-    transform: translateY(-3px);
+  }
+  .n-anchor-link {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    .n-anchor-link__title {
+      padding: var(--n-link-padding);
+      padding-left: 0 !important;
+    }
   }
 }
