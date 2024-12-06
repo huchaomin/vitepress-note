@@ -43,12 +43,20 @@
   .n-alert {
     @apply my-4;
   }
+  .n-ol{
+    list-style: decimal;
+    li::marker {
+      content: counter(list-item) "」  ";
+    }
+  }
+  .n-ul {
+    list-style: disc;
+    li::marker {
+      content: "●    ";
+    }
+  }
 }
 
-.n-ol,
-.n-ul {
-  list-style: initial;
-}
 
 .n-alert--show-icon {
   .n-alert-body__content {
