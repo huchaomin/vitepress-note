@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-11-09 22:55:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-26 16:27:35
+ * @LastEditTime : 2024-12-06 11:19:07
  * @Description  :
  */
 import type { GlobalThemeOverrides } from 'naive-ui'
@@ -16,6 +16,9 @@ function R(px: number) {
 }
 
 export default {
+  Anchor: {
+    linkPadding: '4px 0 4px 12px',
+  },
   // Button: {
   //   iconMarginLarge: P(6),
   //   iconMarginMedium: P(6),

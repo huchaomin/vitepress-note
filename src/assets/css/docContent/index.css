@@ -3,8 +3,7 @@
 @import 'vitepress/dist/client/theme-default/styles/components/vp-code.css';
 
 .fence_card:not(.details_container_card .fence_card, .code_group_card .fence_card),
-.details_container_card,
-.n-alert {
+.details_container_card {
   @apply my-4;
 }
 
@@ -35,6 +34,17 @@
   }
 }
 
+.VPDoc {
+  .n-h2,
+  .n-h3 {
+    @apply !mt-0 !pt-7;
+  }
+
+  .n-alert {
+    @apply my-4;
+  }
+}
+
 .n-ol,
 .n-ul {
   list-style: initial;
@@ -46,5 +56,14 @@
     > .n-ul {
       padding-left: 0;
     }
+  }
+}
+
+.site_anchor {
+  .n-anchor-link-background,
+  .n-anchor-rail__bar {
+    height: 26px !important;
+    border-radius: inherit !important;
+    transform: translateY(-3px);
   }
 }

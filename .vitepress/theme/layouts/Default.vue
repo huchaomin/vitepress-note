@@ -2,12 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-05 18:04:14
+ * @LastEditTime : 2024-12-06 11:12:18
  * @Description  :
 -->
 <script setup lang="ts">
+import type { DefaultTheme } from 'vitepress/theme'
+
 import { inBrowser, useData } from 'vitepress'
-import { useLocalNav } from 'vitepress/theme'
+// @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
+import { useLocalNav } from 'vitepress/dist/client/theme-default/composables/local-nav.js'
 
 import LeftDrawer from '../components/LeftDrawer.vue'
 import SiteAnchor from '../components/SiteAnchor.vue'
@@ -15,9 +18,7 @@ import SiteFooter from '../components/SiteFooter.vue'
 import SiteHeader from '../components/SiteHeader.vue'
 
 const { frontmatter } = useData()
-const { hasLocalNav, headers } = useLocalNav()
-
-window.headers = headers
+const { hasLocalNav, headers } = (useLocalNav as () => DefaultTheme.DocLocalNav)()
 
 const showHeader = computed(() => {
   return frontmatter.value.header !== false
@@ -39,7 +40,7 @@ const contentWrapperClass = computed(() => {
 })
 
 const contentClass = computed(() => {
-  return isMobile.value ? 'p-3' : 'p-8 flex-1'
+  return isMobile.value ? 'p-3' : 'p-8 pr-3 flex-1'
 })
 </script>
 
@@ -66,11 +67,13 @@ const contentClass = computed(() => {
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="contentWrapperClass">
-        <!-- VPDoc 获取 anchor 时使用 -->
+        <!-- VPDoc class 获取 h标题 时使用 -->
         <Content :class="contentClass" class="VPDoc"></Content>
-        <div v-if="!isMobile && hasLocalNav" style="width: 240px;">
-          <SiteAnchor :headers="headers"></SiteAnchor>
-        </div>
+        <SiteAnchor
+          v-if="!isMobile && hasLocalNav"
+          style="width: 240px;"
+          :headers="headers"
+        ></SiteAnchor>
       </div>
       <!-- 底部 -->
       <SiteFooter></SiteFooter>

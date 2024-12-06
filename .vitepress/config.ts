@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-05 18:18:14
+ * @LastEditTime : 2024-12-06 09:58:30
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -89,7 +89,7 @@ export default defineConfig(({ mode }) => {
     themeConfig: {
       // 右边的导航栏
       outline: {
-        level: 2,
+        level: [2, 3],
       },
       sidebar,
     },
