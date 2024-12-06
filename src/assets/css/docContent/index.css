@@ -40,17 +40,27 @@
     @apply !mt-0 !pt-7;
   }
 
+  .n-h1 {
+    + .n-divider {
+      display: none;
+    }
+  }
+
   .n-alert {
     @apply my-4;
   }
+
   .n-ol {
     list-style: decimal;
+
     li::marker {
       content: counter(list-item) '◈  ';
     }
   }
+
   .n-ul {
     list-style: disc;
+
     li::marker {
       content: '●    ';
     }
@@ -72,10 +82,12 @@
     height: 27.5px !important;
     border-radius: inherit !important;
   }
+
   .n-anchor-link {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-top: 0 !important;
+
     .n-anchor-link__title {
       padding: var(--n-link-padding);
       padding-left: 0 !important;
