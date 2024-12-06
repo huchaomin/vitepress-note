@@ -47,6 +47,7 @@
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
 - 开发和生产使用不同的入口文件
+- meta discription 带上文件夹名称
 
 ## threejs
 
