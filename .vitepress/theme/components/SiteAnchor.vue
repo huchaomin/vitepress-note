@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-05 15:40:49
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-06 11:32:40
+ * @LastEditTime : 2024-12-06 11:48:49
  * @Description  :
 -->
 <script setup lang="ts">
@@ -23,7 +23,7 @@ withDefaults(
 <template>
   <NAnchor
     internal-scrollable
-    :bound="86"
+    :bound="72"
     offset-target="#doc-layout"
     class="site_anchor !sticky p-4 pl-0"
     style="top: 0; max-height: calc(100vh - var(--header-height));"

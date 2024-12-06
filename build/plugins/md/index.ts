@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:51:43
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-04 14:20:47
+ * @LastEditTime : 2024-12-06 13:49:24
  * @Description  :
  */
 import type { defineConfig } from 'vitepress'
