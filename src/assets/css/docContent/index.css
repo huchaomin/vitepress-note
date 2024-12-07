@@ -50,11 +50,12 @@
     @apply my-4;
   }
 
+  /* https://web.dev/articles/css-marker-pseudo-element?hl=zh-cn */
   .n-ol {
     list-style: decimal;
 
     li::marker {
-      content: counter(list-item) '◈  ';
+      content: counter(list-item) ' ◈ ';
     }
   }
 
