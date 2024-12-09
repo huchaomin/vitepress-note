@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-04 16:58:48
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-09 14:43:13
+ * @LastEditTime : 2024-12-09 15:04:42
  * @Description  :
 -->
 
@@ -16,8 +16,6 @@ const props = withDefaults(
   }>(),
   {},
 )
-
-console.log(assetImages)
 
 const realSrc = ref('')
 

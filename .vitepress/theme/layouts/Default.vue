@@ -2,13 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-06 11:12:18
+ * @LastEditTime : 2024-12-09 15:03:35
  * @Description  :
 -->
 <script setup lang="ts">
+import type { LayoutInst } from 'naive-ui'
 import type { DefaultTheme } from 'vitepress/theme'
 
-import { inBrowser, useData } from 'vitepress'
+import { inBrowser, useData, useRoute } from 'vitepress'
 // @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
 import { useLocalNav } from 'vitepress/dist/client/theme-default/composables/local-nav.js'
 
@@ -35,6 +36,14 @@ if (inBrowser) {
   )
 }
 
+const route = useRoute()
+const nLayoutRef = ref<LayoutInst | null>(null)
+watch(route, () => {
+  nLayoutRef.value!.scrollTo({
+    top: 0,
+  })
+})
+
 const contentWrapperClass = computed(() => {
   return isMobile.value ? '' : 'flex'
 })
@@ -59,6 +68,7 @@ const contentClass = computed(() => {
     <!-- TODO document-scroll-container -->
     <!-- position absolute 时，右侧的 toc position sticky 才会生效 -->
     <NLayout
+      ref="nLayoutRef"
       :scrollbar-props="{
         containerClass: 'document-scroll-container',
       }"
