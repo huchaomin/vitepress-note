@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-04 16:58:48
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-05 10:58:13
+ * @LastEditTime : 2024-12-09 14:43:13
  * @Description  :
 -->
 
@@ -22,8 +22,8 @@ console.log(assetImages)
 const realSrc = ref('')
 
 const promise = props.src.startsWith('img/')
-  ? assetImages[`./${props.src.substring(4)}`]
-  : pagesImages[`./${props.src}`]
+  ? assetImages[`./${decodeURI(props.src.substring(4))}`]
+  : pagesImages[`./${decodeURI(props.src)}`]
 promise().then((res) => {
   realSrc.value = res
 })
