@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-10 14:56:07
+ * @LastEditTime : 2024-12-10 14:58:40
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -115,8 +115,8 @@ function handleLink(arr: SidebarItem[], p: string): SidebarItem[] {
       if ((item as SidebarSingleItem).link !== undefined) {
         const i = index - folderOrderArr.filter((v) => v >= index).length
         createOrderFrontmatter(transformItemLinkToPath((item as SidebarSingleItem).link), i)
-        ;(item as SidebarSingleItem).link = (item as SidebarSingleItem).link.replace('index.md', '')
         item.order = i
+        ;(item as SidebarSingleItem).link = (item as SidebarSingleItem).link.replace('index.md', '')
       }
       return item
     })

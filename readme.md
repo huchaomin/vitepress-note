@@ -1,3 +1,10 @@
+---
+author       : peter peter@qingcongai.com
+date         : 2024-12-02 09:08:46
+lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-10 14:59:58
+description  :
+---
 # readme
 
 ## todo
@@ -42,7 +49,6 @@
 - npm install --save-dev seemly
 - 左侧树的搜索功能， 收起全部功能
 - /deep/ 限制使用
-- markdown-it-toc-done-right
 - 开发环境 和 生产环境 引入ui库的方式区分
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
