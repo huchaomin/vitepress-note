@@ -55,7 +55,7 @@
     list-style: decimal;
 
     li::marker {
-      content: counter(list-item) ' ◈ ';
+      content: counter(list-item) ' 】 ';
     }
   }
 

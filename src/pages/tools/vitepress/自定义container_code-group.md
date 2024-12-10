@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-10 10:24:46
 lastEditors  : peter peter@qingcongai.com
-lastEditTime : 2024-12-10 10:54:52
+lastEditTime : 2024-12-10 15:58:00
 description  :
 order        : 2
 ---
@@ -88,55 +88,22 @@ tokens[i].info += ' active'
 ## 结果
 
 ```md
-<script setup lang="ts">
-import { useData } from 'vitepress'
-const { site, theme, page, frontmatter } = useData()
-</script>
-
 ::: code-group
 <h1 data-title="我是标题">这里是html_block</h1>
 
 \```ts-vue [frontmatter]
-{{ frontmatter }}
+{{ $frontmatter }}
 \```
 
-\```ts-vue [site]
-{{ site }}
-\```
-
-\```ts-vue [theme]
-{{ theme }}
-\```
-
-\```ts-vue [page]
-{{ page }}
-\```
 :::
 ```
-
-<script setup lang="ts">
-import { useData } from 'vitepress'
-const { site, theme, page, frontmatter } = useData()
-</script>
 
 ::: code-group
 
 <h1 data-title="我是标题">这里是html_block</h1>
 
 ```ts-vue [frontmatter]
-{{ frontmatter }}
-```
-
-```ts-vue [site]
-{{ site }}
-```
-
-```ts-vue [theme]
-{{ theme }}
-```
-
-```ts-vue [page]
-{{ page }}
+{{ $frontmatter }}
 ```
 
 :::
