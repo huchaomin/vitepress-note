@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-03 10:30:03
+ * @LastEditTime : 2024-12-09 17:07:28
  * @Description  :
  */
 
@@ -17,6 +17,7 @@ function resolveCwd(p: string): string {
 }
 
 const envDir = resolveCwd('build/env')
+const mdPageDir = 'src/pages'
 
 function extractLang(info: string): string {
   return info
@@ -47,4 +48,4 @@ function normalizeJoinPath(...paths: string[]): string {
   return normalizePath(path.join(...paths))
 }
 
-export { envDir, extractTitle, firstUpperCase, getEnv, normalizeJoinPath, resolveCwd }
+export { envDir, extractTitle, firstUpperCase, getEnv, mdPageDir, normalizeJoinPath, resolveCwd }

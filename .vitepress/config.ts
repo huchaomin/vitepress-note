@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-09 14:28:21
+ * @LastEditTime : 2024-12-09 17:07:40
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -13,7 +13,7 @@ import viteCompression from 'vite-plugin-compression'
 import sidebar from '../build/plugins/generateSidebar.ts'
 import mdPlugin from '../build/plugins/md/index.ts'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
-import { getEnv, normalizeJoinPath, resolveCwd } from '../build/utils/index.ts'
+import { getEnv, mdPageDir, normalizeJoinPath, resolveCwd } from '../build/utils/index.ts'
 import packageJson from '../package.json' assert { type: 'json' }
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
@@ -84,7 +84,7 @@ export default defineConfig(({ mode }) => {
     rewrites: {
       'index/index.md': 'index.md',
     },
-    srcDir: resolveCwd('src/pages'),
+    srcDir: resolveCwd(mdPageDir),
     // https://vitepress.dev/reference/default-theme-config
     themeConfig: {
       // 右边的导航栏
