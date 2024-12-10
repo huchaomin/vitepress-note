@@ -1,3 +1,10 @@
+---
+author       : peter peter@qingcongai.com
+date         : 2024-11-26 17:54:53
+lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-10 10:55:02
+description  :
+---
 # tailwindcss
 
 ## 默认主题

@@ -1,3 +1,10 @@
+---
+author       : peter peter@qingcongai.com
+date         : 2024-11-25 14:23:03
+lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-10 10:55:21
+description  :
+---
 # vscode 使用经验
 
 ## 问题

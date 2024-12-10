@@ -1,3 +1,10 @@
+---
+author       : peter peter@qingcongai.com
+date         : 2024-12-09 10:24:13
+lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-10 10:53:39
+description  :
+---
 # @media
 
 ## 媒体类型
@@ -17,6 +24,7 @@
 @media (any-hover: hover) {
   /* 任意的输入装置⽀持悬停 */
 }
+
 @media (any-hover: none) {
   /* 任意的输入装置不⽀持悬停 */
 }
@@ -26,6 +34,7 @@
 @media (hover: hover) {
   /* 主输⼊装置⽀持悬停 */
 }
+
 @media (hover: none) {
   /* 主输⼊装置不⽀持悬停 */
 }
@@ -37,9 +46,11 @@
 @media (any-pointer: none) {
   /* 不⽀持点击 */
 }
+
 @media (any-pointer: coarse) {
   /* ⾄少⼀个装置点击不精准 */
 }
+
 @media (any-pointer: fine) {
   /* 有装置点击很精准 */
 }
@@ -49,9 +60,11 @@
 @media (pointer: none) {
   /* 主输⼊装置点击不可⽤ */
 }
+
 @media (pointer: coarse) {
   /* 主输⼊装置点击不精准 */
 }
+
 @media (pointer: fine) {
   /* 主输⼊装置点击精准 */
 }
@@ -62,6 +75,7 @@
 ```css
 /* 深⾊模式 */
 @media (prefers-color-scheme: dark) {}
+
 /* 浅⾊模式 */
 @media (prefers-color-scheme: light) {}
 ```
@@ -72,6 +86,7 @@
 @media (prefers-contrast: more) {
   /* ⽤户喜欢⾼对⽐度 */
 }
+
 @media (prefers-contrast: less) {
   /* ⽤户喜欢对⽐度 */
 }
@@ -92,10 +107,11 @@
 - 条件有重合部分时，范围更大的条件要写在范围更小条件之前
 
 ```css
-@media screen and (min-width: 640px) and (max-width: 768px){
+@media screen and (width >= 640px) and (width <= 768px) {
   /* 满足屏幕 且 宽度在640-768之间，包括等于 */
 }
-@media not screen and (min-width: 640px) and (max-width: 768px){
+
+@media not screen and (width >= 640px) and (width <= 768px) {
   /* 不是屏幕 或 宽度不在640-768之间，不包括等于 */
 }
 ```
@@ -103,7 +119,7 @@
 ## @import 媒体查询
 
 ```css
-@import url("landscape.css") screen and (orientation: landscape);
+@import 'landscape.css' screen and (orientation: landscape);
 ```
 
 ## `HTML` 和 `js` 中的媒体查询
