@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-10 14:52:41
+ * @LastEditTime : 2024-12-10 14:56:07
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -83,13 +83,18 @@ const copySidebarFolderOrder: Record<string, number> = {}
 function generate() {
   const result = handleLink(sidebar, '')
   const jsonString = JSON.stringify(copySidebarFolderOrder, null, 2)
-  fs.writeFile(resolveCwd('build/plugins/sidebarFolderOrder.json'), jsonString, 'utf8', (err) => {
-    if (err) {
-      console.error('Error writing to the file:', err)
-      return
-    }
-    console.log('File sidebarFolderOrder.json updated successfully.')
-  })
+  fs.writeFile(
+    resolveCwd('build/plugins/sidebarFolderOrder.json'),
+    `${jsonString}\n`,
+    'utf8',
+    (err) => {
+      if (err) {
+        console.error('Error writing to the file:', err)
+        return
+      }
+      console.log('File sidebarFolderOrder.json updated successfully.')
+    },
+  )
   return result
 }
 
