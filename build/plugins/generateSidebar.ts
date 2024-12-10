@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-10 10:51:35
+ * @LastEditTime : 2024-12-10 11:09:31
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -10,9 +10,16 @@ import utc from 'dayjs/plugin/utc.js'
 import matter from 'gray-matter'
 import fs from 'node:fs'
 import path from 'node:path'
-import { generateSidebar, type SidebarItem } from 'vitepress-sidebar'
+import { generateSidebar } from 'vitepress-sidebar'
 
 import { mdPageDir, resolveCwd } from '../utils/index.ts'
+
+export interface SidebarItem {
+  collapsed?: boolean
+  items?: SidebarItem[]
+  link?: string
+  text?: string
+}
 
 dayjs.extend(utc)
 
@@ -39,6 +46,9 @@ const sidebar = (
 function createOrderFrontmatter(p: string, order: number) {
   const { content, data } = matter.read(p)
   if (Object.keys(data).length !== 0) {
+    if (data.order === order) {
+      return
+    }
     data.order = order
     let str = '---\n'
     for (const key in data) {

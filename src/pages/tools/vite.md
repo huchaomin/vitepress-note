@@ -4,6 +4,7 @@ date         : 2024-11-25 14:25:34
 lastEditors  : peter peter@qingcongai.com
 lastEditTime : 2024-12-10 10:55:12
 description  :
+order        : 2
 ---
 # 使用vite构建自己的前端应用
 
