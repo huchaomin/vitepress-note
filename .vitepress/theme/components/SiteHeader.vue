@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NavSearch from './NavSearch.vue'
+
 const style = computed(() => {
   return isMobile.value
     ? {
@@ -22,6 +24,7 @@ function handleLogoClick() {
       <!-- <img src="./assets/images/naivelogo.svg" /> -->
       <span v-if="!isMobile">mu</span>
     </NText>
+    <NavSearch></NavSearch>
     <!-- 文档搜索功能 -->
     <!-- <NPopover
       v-if="isMobile || isTablet"

@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:25:34
 lastEditors  : peter peter@qingcongai.com
-lastEditTime : 2024-12-10 10:55:12
+lastEditTime : 2024-12-11 10:27:31
 description  :
 order        : 2
 ---
@@ -63,6 +63,10 @@ NODE_ENV=development vite build
 ::: warning 无法在 SSR 中使用
 因为 import.meta.url 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
 :::
+
+## 性能优化
+
+- 开发环境 和 生产环境 引入ui库的方式区分 开发和生产使用不同的入口文件
 
 ## 参考资料
 

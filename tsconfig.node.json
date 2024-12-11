@@ -23,6 +23,7 @@
     "prettier.config.*",
     "stylelint.config.*",
     ".vitepress/config.*",
+    ".vitepress/zh.*",
     "types/**/*"
   ],
   "exclude": [

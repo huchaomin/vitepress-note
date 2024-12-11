@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 09:31:50
+ * @LastEditTime : 2024-12-11 15:07:43
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -204,6 +204,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
       strictPort: true,
     },
     ssr: {
+      // TODO '@docsearch/css' ?
       noExternal: ['naive-ui', 'date-fns', 'vueuc'],
     },
   }

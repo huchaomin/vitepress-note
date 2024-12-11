@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-09 17:07:40
+ * @LastEditTime : 2024-12-11 16:38:48
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -15,6 +15,7 @@ import mdPlugin from '../build/plugins/md/index.ts'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
 import { getEnv, mdPageDir, normalizeJoinPath, resolveCwd } from '../build/utils/index.ts'
 import packageJson from '../package.json' assert { type: 'json' }
+import { search as zhSearch } from './zh.ts'
 
 // https://vitepress.dev/reference/site-config 这里面定义了的， vite.config.ts 里面就不能定义了
 export default defineConfig(({ mode }) => {
@@ -55,8 +56,7 @@ export default defineConfig(({ mode }) => {
     },
     description: packageJson.description,
     head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
-    lang: 'zh-CN',
-    lastUpdated: true,
+    lang: 'zh-Hans',
     markdown: {
       // markdown-it-anchor 的选项 这里只需提供一个id其他的，下面config里面自定义
       // https://github.com/valeriangalliat/markdown-it-anchor#usage
@@ -80,6 +80,7 @@ export default defineConfig(({ mode }) => {
       lineNumbers: true,
       theme: { dark: 'github-dark', light: 'github-light' },
     },
+    metaChunk: true,
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     rewrites: {
       'index/index.md': 'index.md',
@@ -90,6 +91,17 @@ export default defineConfig(({ mode }) => {
       // 右边的导航栏
       outline: {
         level: [2, 3],
+      },
+      search: {
+        options: {
+          apiKey: '1b6e75dc35a57ba306ecd953d4ed8172',
+          appId: 'ZHEDSTO6YB',
+          indexName: 'mulinzi',
+          locales: {
+            ...zhSearch,
+          },
+        },
+        provider: 'algolia',
       },
       sidebar,
     },
