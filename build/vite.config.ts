@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
- * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-30 17:27:05
+ * @LastEditors  : peter peter@qingcongai.com
+ * @LastEditTime : 2024-12-11 09:31:50
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -24,7 +24,6 @@ import Font from 'vite-plugin-font'
 import Inspect from 'vite-plugin-inspect'
 
 import autoImportStoreList from './plugins/autoImportStores.ts'
-// import vueDevTools from 'vite-plugin-vue-devtools'
 import { envDir, getEnv, normalizeJoinPath, resolveCwd } from './utils/index.ts'
 
 function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
