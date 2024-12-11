@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 16:45:51
+ * @LastEditTime : 2024-12-11 16:53:33
  * @Description  :
 -->
 
@@ -128,7 +128,7 @@ function poll() {
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
-        ><span class="DocSearch-Button-Placeholder">Search</span></span
+        ><span class="DocSearch-Button-Placeholder">搜索文档</span></span
       ><span class="DocSearch-Button-Keys"
         ><kbd class="DocSearch-Button-Key"
           ><svg width="15" height="15" class="DocSearch-Control-Key-Icon">
