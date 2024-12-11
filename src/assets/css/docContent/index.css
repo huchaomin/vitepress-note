@@ -55,7 +55,7 @@
     list-style: decimal;
 
     li::marker {
-      content: counter(list-item) ' 】 ';
+      content: counter(list-item) '】 ';
     }
   }
 
@@ -63,7 +63,7 @@
     list-style: disc;
 
     li::marker {
-      content: '●    ';
+      content: '●  ';
     }
   }
 }

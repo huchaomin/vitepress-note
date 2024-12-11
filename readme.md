@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : peter peter@qingcongai.com
-lastEditTime : 2024-12-10 14:59:58
+lastEditTime : 2024-12-11 09:56:09
 description  :
 ---
 # readme
@@ -11,8 +11,6 @@ description  :
 
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [部署到GitHub Pages](https://cn.vitejs.dev/guide/static-deploy.html#github-pages)
-- [whyframe](https://whyframe.dev/)
-- [shiki.style](https://shiki.style/)
 - [路由过度动画](https://vitepress.dev/zh/guide/extending-default-theme#on-route-change)
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
 - [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
@@ -24,15 +22,12 @@ description  :
 - ite-ssg
 - vite-ssg-sitemap
 - vite-plugin-markdown-preview | vitepress-demo-preview
-- vitepress-sidebar | vite-plugin-vitepress-auto-sidebar
 - vitepress-plugin-sandpack
 - vitepress-plugin-comment-with-giscus giscus 评论插件
 - vitepress-plugin-pagefind
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
 - vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.
-- vite-plugin-windicss
-- 使用 lightning-css build.cssMinify [vite](https://cn.vitejs.dev/guide/features.html#lightning-css)
 - [NPM](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity), [社区插件列表](https://github.com/vitejs/awesome-vite#plugins), [rollup](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [Monorepo 和链接依赖](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [预热常用文件 优化](https://cn.vitejs.dev/guide/performance#warm-up-frequently-used-files)
@@ -48,7 +43,6 @@ description  :
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
 - npm install --save-dev seemly
 - 左侧树的搜索功能， 收起全部功能
-- /deep/ 限制使用
 - 开发环境 和 生产环境 引入ui库的方式区分
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
