@@ -52,5 +52,5 @@ jobs:
         uses: actions/deploy-pages@main
         with:
           # The name of the artifact to deploy
-          artifact_name: github-pages-upload-artifact
+          artifact_name: github-pages-uploadartifact
         id: deployment
