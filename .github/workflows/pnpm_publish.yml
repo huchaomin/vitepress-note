@@ -23,3 +23,5 @@ jobs:
           cache: pnpm
       - name: 安装依赖
         run: pnpm install
+      - name: 构建
+        run: pnpm build
