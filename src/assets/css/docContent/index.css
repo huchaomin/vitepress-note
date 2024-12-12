@@ -63,7 +63,7 @@
     list-style: disc;
 
     li::marker {
-      content: '● ';
+      content: '●〕';
     }
   }
 }
