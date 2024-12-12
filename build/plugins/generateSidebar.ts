@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-12 22:08:39
+ * @LastEditTime : 2024-12-12 22:13:56
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -117,7 +117,6 @@ function handleLink(arr: SidebarItem[], p: string): SidebarItem[] {
       if ((item as SidebarSingleItem).link !== undefined) {
         let fileIndex = index - folderOrderArr.length
         while (folderOrderArr.find((v) => v <= fileIndex) !== undefined) {
-          console.log('fileIndex:', fileIndex)
           folderOrderArr.shift()
           fileIndex++
         }

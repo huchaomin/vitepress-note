@@ -1,8 +1,7 @@
-name: pnpm 安装和缓存
+name: pnpm 安装、构建、发布
 on:
   push:
-    branches:
-      - main
+    branches: [master, main]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -13,15 +12,17 @@ permissions:
   id-token: write
 
 concurrency:
-  group: branches-main
+  # The workflow will run only once per branch
+  group: ci-${{ github.ref }}
+  # 确保在新的工作流运行时，取消正在进行的相同类型的工作流
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      name: demo
-      url: ${{ steps.deploy_to_pages.outputs.github_pages_url }}
+    # environment:
+    #   name: demo
+    #   url: ${{ steps.deploy_to_pages.outputs.github_pages_url }}
     strategy:
       matrix:
         node-version: [20]
@@ -42,13 +43,14 @@ jobs:
       - name: 构建
         run: pnpm build
         shell: bash
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@main
         with:
           path: ./docs
-          name: github-pages
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+          name: github-pages-upload-artifact
+      - name: 部署到 GitHub Pages
+        uses: actions/deploy-pages@main
         with:
-          artifact_name: github-pages
+          # The name of the artifact to deploy
+          artifact_name: github-pages-upload-artifact
         id: deployment
