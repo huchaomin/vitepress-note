@@ -1,4 +1,4 @@
-name: pnpm 安装、构建、发布
+name: pnpm 安装、构建、发布到 GitHub Pages
 on:
   push:
     branches: [master, main]
