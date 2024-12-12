@@ -22,8 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       # Name could be whatever you wish. It'll be visible publicly under the environments tab.
+      # 在 Settings --> Environments 中查看
       name: environment_name
       # https://github.com/marketplace/actions/vite-github-pages-deployer#61-not-releasing-the-environment
+      # 字段可以为环境指定一个访问地址，方便在工作流中引用和使用
       url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
