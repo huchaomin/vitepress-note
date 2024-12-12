@@ -2,11 +2,16 @@
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-12 14:58:21
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-12 15:07:18
+lastEditTime : 2024-12-12 16:10:20
 description  :
 ---
 
 # github workflows
+
+## actions
+
+[官方市场](https://github.com/marketplace?type=actions)
+[awesome-actions](https://github.com/sdras/awesome-actions)
 
 ## 使用 pnpm 安装和缓存你的依赖项
 

@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -23,5 +25,17 @@ jobs:
           cache: pnpm
       - name: 安装依赖
         run: pnpm install
+        shell: bash
       - name: 构建
         run: pnpm build
+        shell: bash
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+          name: github-pages
+      - name: Deploy
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
+        id: deployment
