@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 10:03:35
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-12 22:08:39
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -18,6 +18,7 @@ import sidebarFolderOrder from './sidebarFolderOrder.json' assert { type: 'json'
 export type SidebarItem = SidebarGroupItem | SidebarSingleItem
 
 interface SidebarGroupItem {
+  _folderKey: string
   items: SidebarItem[]
   order: number
   text: string
@@ -100,28 +101,40 @@ function generate() {
 
 function handleLink(arr: SidebarItem[], p: string): SidebarItem[] {
   const folderOrderArr: number[] = []
-  return arr
+  const result = arr
     .map((item, index) => {
       // sortFolderTo 先处理文件夹
       if ((item as SidebarGroupItem).items !== undefined) {
         const folderKey = `${p}/${item.text}`
+        ;(item as SidebarGroupItem)._folderKey = folderKey
         ;(item as SidebarGroupItem).items = handleLink((item as SidebarGroupItem).items, folderKey)
         const order = (sidebarFolderOrder as Record<string, number>)[folderKey] ?? index
         ;(item as SidebarGroupItem).order = order
         folderOrderArr.push(order)
-        copySidebarFolderOrder[folderKey] = order
       }
 
+      folderOrderArr.sort((a, b) => a - b)
       if ((item as SidebarSingleItem).link !== undefined) {
-        const i = index - folderOrderArr.filter((v) => v >= index).length
-        createOrderFrontmatter(transformItemLinkToPath((item as SidebarSingleItem).link), i)
-        item.order = i
+        let fileIndex = index - folderOrderArr.length
+        while (folderOrderArr.find((v) => v <= fileIndex) !== undefined) {
+          console.log('fileIndex:', fileIndex)
+          folderOrderArr.shift()
+          fileIndex++
+        }
+        createOrderFrontmatter(transformItemLinkToPath((item as SidebarSingleItem).link), fileIndex)
+        item.order = fileIndex
         ;(item as SidebarSingleItem).link = (item as SidebarSingleItem).link.replace('index.md', '')
       }
       item.text = item.text.replace(/\s+/g, '') // 把莫名其妙生成的空格去掉
       return item
     })
     .sort((a, b) => a.order - b.order)
+  result.forEach((item, index) => {
+    if ((item as SidebarGroupItem)._folderKey) {
+      copySidebarFolderOrder[(item as SidebarGroupItem)._folderKey] = index
+    }
+  })
+  return result
 }
 
 /**
