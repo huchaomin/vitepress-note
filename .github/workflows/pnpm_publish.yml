@@ -20,9 +20,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: demo
-    #   url: ${{ steps.deploy_to_pages.outputs.github_pages_url }}
+    environment:
+      # Name could be whatever you wish. It'll be visible publicly under the environments tab.
+      name: environment_name
+      # https://github.com/marketplace/actions/vite-github-pages-deployer#61-not-releasing-the-environment
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [20]
@@ -51,6 +53,7 @@ jobs:
       - name: 部署到 GitHub Pages
         uses: actions/deploy-pages@main
         with:
-          # The name of the artifact to deploy
-          artifact_name: github-pages-uploadartifact
+          # The name of the artifact to deploy 必须和上面一样
+          artifact_name: github-pages-upload-artifact
+        # id 用于获取步骤： 例如获取步骤的输出 ${{ steps.[id].outputs.*** }}
         id: deployment
