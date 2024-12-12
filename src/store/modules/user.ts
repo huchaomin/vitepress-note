@@ -6,7 +6,7 @@
  * @Description  :
  */
 import { login as loginMethod } from '@/api/root'
-import Login from '@/pages/index/component/Login.vue'
+import Login from '@/pages/bigScreen/component/Login.vue'
 
 export default defineStore(
   'user',

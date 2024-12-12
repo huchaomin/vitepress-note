@@ -50,7 +50,7 @@ const sidebar = (
     useTitleFromFileHeading: true,
     useTitleFromFrontmatter: true,
   }) as SidebarItem[]
-).filter((item) => (item as SidebarSingleItem).link !== '/index/index.md') // excludeFilesByFrontmatterFieldName 和 excludePattern 对这个文件起不了作用
+).filter((item) => (item as SidebarSingleItem).link !== '/index/index.md') // TODO excludeFilesByFrontmatterFieldName 和 excludePattern 对这个文件起不了作用
 function createOrderFrontmatter(p: string, order: number) {
   const { content, data } = matter.read(p)
   if (Object.keys(data).length !== 0) {
