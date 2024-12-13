@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-13 09:49:03
+lastEditTime : 2024-12-13 10:39:21
 description  :
 ---
 # readme
@@ -22,6 +22,7 @@ description  :
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-plugin-sandpack
 - vitepress-plugin-comment-with-giscus giscus 评论插件
+- [引入gitalk](https://blog.goalonez.site/blog/VitePress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html#node-js%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85)
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
 - vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.

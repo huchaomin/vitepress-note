@@ -17,6 +17,27 @@ export default (code: string): string => {
     head.insertAdjacentHTML('beforeend', cssRenderStyleInner)
     cssRenderStyle.remove()
   }
+  const head = root.querySelector('head')!
+  // 记得开启单页设置
+  head.insertAdjacentHTML(
+    'beforeend',
+    `<script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ed1ab63bfd0067ce75ba91ad9b7b4d37";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+      _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+        shouldTrackUrlChange: function (newPath, oldPath) {
+          newPath = newPath.split('?')[0];
+          oldPath = oldPath.split('?')[0];
+          return newPath != oldPath;
+        }}
+      ]);
+    </script>`,
+  )
   app.insertAdjacentHTML(
     'afterend',
     `<div id="waiting">
