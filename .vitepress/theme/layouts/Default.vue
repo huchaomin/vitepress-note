@@ -1,14 +1,15 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-09 15:03:35
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-13 18:25:12
  * @Description  :
 -->
 <script setup lang="ts">
 import type { LayoutInst } from 'naive-ui'
 import type { DefaultTheme } from 'vitepress/theme'
 
+import autoAnimate from '@formkit/auto-animate'
 import { inBrowser, useData, useRoute } from 'vitepress'
 // @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
 import { useLocalNav } from 'vitepress/dist/client/theme-default/composables/local-nav.js'
@@ -51,6 +52,11 @@ const contentWrapperClass = computed(() => {
 const contentClass = computed(() => {
   return isMobile.value ? 'p-3' : 'p-8 pr-3 flex-1'
 })
+
+const contentRef = ref<any | null>(null)
+onMounted(() => {
+  autoAnimate(contentRef.value!.$el)
+})
 </script>
 
 <template>
@@ -78,7 +84,7 @@ const contentClass = computed(() => {
     >
       <div :class="contentWrapperClass">
         <!-- VPDoc class 获取 h标题 时使用 -->
-        <Content :class="contentClass" class="VPDoc"></Content>
+        <Content ref="contentRef" :class="contentClass" class="VPDoc"></Content>
         <SiteAnchor
           v-if="!isMobile && hasLocalNav"
           style="width: 240px;"

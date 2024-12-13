@@ -6,11 +6,12 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import gsap from 'gsap'
-import StreamerBorder from './StreamerBorder.vue'
-import ScrollItem from './ScrollItem.vue'
+import { type ItemType, repayItemChangeKey } from '@/pages/bigScreen/utils/others'
 import autoAnimate from '@formkit/auto-animate'
-import { repayItemChangeKey, type ItemType } from '@/pages/bigScreen/utils/others'
+import gsap from 'gsap'
+
+import ScrollItem from './ScrollItem.vue'
+import StreamerBorder from './StreamerBorder.vue'
 
 const { proxy } = getCurrentInstance()!
 const scrollWrapperRef = ref<HTMLDivElement | null>(null)

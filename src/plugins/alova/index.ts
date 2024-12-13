@@ -1,16 +1,24 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 09:30:06
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-13 17:48:54
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-13 17:56:22
  * @Description  : 添加 fetch 通用请求 配置
  */
+import type { Arg } from 'alova'
+
 import { createAlova } from 'alova'
 import adapterFetch from 'alova/fetch'
 import VueHook from 'alova/vue'
-import type { Arg } from 'alova'
 
 const NETWORK_ERR_MSG = '网络错误，请稍后再试'
+
+type AddMethodMetaType = Omit<
+  Parameters<NonNullable<Parameters<typeof createAlova>[0]['beforeRequest']>>[0],
+  'meta'
+> & {
+  meta: MetaType
+}
 
 interface MetaType {
   useDataResult: boolean
@@ -24,10 +32,6 @@ interface MetaType {
   useSuccessMsg: boolean
   useToken: boolean
 }
-
-type AddMethodMetaType = {
-  meta: MetaType
-} & Omit<Parameters<NonNullable<Parameters<typeof createAlova>[0]['beforeRequest']>>[0], 'meta'>
 
 export default createAlova({
   baseURL:

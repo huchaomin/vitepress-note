@@ -2,7 +2,7 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-13 13:57:26
+ * @LastEditTime : 2024-12-13 17:58:35
  * @Description  :
  */
 import type { Theme } from 'vitepress'
@@ -20,7 +20,11 @@ export default {
   enhanceApp: ({ app, router }) => {
     app.use(piniaInstance)
     provideCssRenderCollect(app)
+    router.onBeforeRouteChange = () => {
+      $loading.show()
+    }
     router.onAfterRouteChanged = (to: string) => {
+      $loading.hide()
       if (inBrowser && window._hmt) {
         window._hmt.push(['_trackPageview', to])
       }
