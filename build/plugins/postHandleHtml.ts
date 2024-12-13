@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-13 11:34:22
+ * @LastEditTime : 2024-12-13 13:58:45
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -18,25 +18,17 @@ export default (code: string): string => {
     cssRenderStyle.remove()
   }
   const head = root.querySelector('head')!
-  // 记得开启单页设置
   head.insertAdjacentHTML(
     'beforeend',
     `<script>
       var _hmt = _hmt || [];
+      _hmt.push(['_setAutoPageview', false]);
       (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?ed1ab63bfd0067ce75ba91ad9b7b4d37";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
-      _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
-        shouldTrackUrlChange: function (newPath, oldPath) {
-          newPath = newPath.split('?')[0];
-          oldPath = oldPath.split('?')[0];
-          console.log(newPath, oldPath);
-          return newPath != oldPath;
-        }}
-      ]);
     </script>`,
   )
   app.insertAdjacentHTML(
