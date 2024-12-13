@@ -1,8 +1,8 @@
 ---
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
-lastEditors  : peter peter@qingcongai.com
-lastEditTime : 2024-12-11 16:11:16
+lastEditors  : huchaomin iisa_peter@163.com
+lastEditTime : 2024-12-13 09:49:03
 description  :
 ---
 # readme
@@ -10,11 +10,9 @@ description  :
 ## todo
 
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
-- [部署到GitHub Pages](https://cn.vitejs.dev/guide/static-deploy.html#github-pages)
 - [路由过度动画](https://vitepress.dev/zh/guide/extending-default-theme#on-route-change)
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
 - [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
-- 添加百度统计
 - [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
 - [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
 - gsap
@@ -24,7 +22,6 @@ description  :
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-plugin-sandpack
 - vitepress-plugin-comment-with-giscus giscus 评论插件
-- vitepress-plugin-pagefind
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
 - vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.

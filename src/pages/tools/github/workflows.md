@@ -2,7 +2,7 @@
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-12 14:58:21
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-13 00:25:11
+lastEditTime : 2024-12-13 09:28:15
 description  :
 order        : 0
 ---
@@ -23,3 +23,4 @@ order        : 0
 - [pnpm](https://pnpm.io/continuous-integration#github-actions)
 - [vite-github-pages-deployer 使用说明](https://github.com/marketplace/actions/vite-github-pages-deployer)
 - [vite-github-pages-deployer 内部调用](https://github.com/skywarth/vite-github-pages-deployer/blob/master/action.yml)
+- [vite应用 部署到 github-pages](https://cn.vitejs.dev/guide/static-deploy#github-pages)

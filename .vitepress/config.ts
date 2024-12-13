@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 16:38:48
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-13 09:48:50
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -55,7 +55,23 @@ export default defineConfig(({ mode }) => {
       class: 'overflow-hidden',
     },
     description: packageJson.description,
-    head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
+    head: [
+      ['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }],
+      // 记得开启单页设置
+      [
+        'script',
+        {},
+        `
+          var _hmt = _hmt || [];
+          (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?ed1ab63bfd0067ce75ba91ad9b7b4d37";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+          })();
+        `,
+      ],
+    ],
     lang: 'zh-Hans',
     markdown: {
       // markdown-it-anchor 的选项 这里只需提供一个id其他的，下面config里面自定义
