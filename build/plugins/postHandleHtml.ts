@@ -1,8 +1,8 @@
 /*
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-13 18:04:17
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 17:48:53
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-13 11:34:22
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -33,6 +33,7 @@ export default (code: string): string => {
         shouldTrackUrlChange: function (newPath, oldPath) {
           newPath = newPath.split('?')[0];
           oldPath = oldPath.split('?')[0];
+          console.log(newPath, oldPath);
           return newPath != oldPath;
         }}
       ]);
