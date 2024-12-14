@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-25 11:18:57
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-14 23:25:44
  * @Description  :
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ import { useData, useRoute } from 'vitepress'
 const { theme } = useData()
 const route = useRoute()
 
-interface SidebarItem {
+export interface SidebarItem {
   items?: SidebarItem[]
   key: string
   link: string
@@ -22,7 +22,7 @@ interface SidebarItem {
 }
 
 // 递归添加 key
-function addKey(items: Omit<SidebarItem, 'key'>[], level: number) {
+function addKey(items: SidebarItem[], level: number) {
   return [...items].map((_item) => {
     const item = { ..._item, key: `${level}-${_item.text}` }
     if (item.items) {
