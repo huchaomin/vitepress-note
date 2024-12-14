@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-13 09:48:50
+ * @LastEditTime : 2024-12-14 11:18:15
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -84,6 +84,9 @@ export default defineConfig(({ mode }) => {
     outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
     rewrites: {
       'index/index.md': 'index.md',
+    },
+    sitemap: {
+      hostname: 'https://mulinzi.cn/',
     },
     srcDir: resolveCwd(mdPageDir),
     // https://vitepress.dev/reference/default-theme-config
