@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-14 23:40:31
+ * @LastEditTime : 2024-12-15 13:08:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -137,7 +137,7 @@ onMounted(() => {
       :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <div :class="contentWrapperClass">
+      <div :class="contentWrapperClass" class="flex-auto">
         <!-- VPDoc class 获取 h标题 时使用 -->
         <Content ref="contentRef" :class="contentClass" class="VPDoc"></Content>
         <SiteAnchor

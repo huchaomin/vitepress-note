@@ -2,10 +2,12 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-05 15:40:49
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-06 23:01:42
+ * @LastEditTime : 2024-12-15 13:06:09
  * @Description  :
 -->
 <script setup lang="ts">
+import autoAnimate from '@formkit/auto-animate'
+
 interface HeaderItem {
   children: HeaderItem[]
   link: string
@@ -18,6 +20,12 @@ withDefaults(
   }>(),
   {},
 )
+
+const nAnchorRef = ref<HTMLDivElement | null>(null)
+
+onMounted(() => {
+  autoAnimate(nAnchorRef.value!)
+})
 </script>
 
 <template>
@@ -29,11 +37,13 @@ withDefaults(
     style="top: 0; max-height: calc(100vh - var(--header-height));"
     :ignore-gap="true"
   >
-    <NAnchorLink v-for="item of headers" :key="item.link" :title="item.title" :href="item.link">
-      <template v-if="item.children.length">
-        <NAnchorLink v-for="c of item.children" :key="c.link" :title="c.title" :href="c.link">
-        </NAnchorLink>
-      </template>
-    </NAnchorLink>
+    <div ref="nAnchorRef">
+      <NAnchorLink v-for="item of headers" :key="item.link" :title="item.title" :href="item.link">
+        <template v-if="item.children.length">
+          <NAnchorLink v-for="c of item.children" :key="c.link" :title="c.title" :href="c.link">
+          </NAnchorLink>
+        </template>
+      </NAnchorLink>
+    </div>
   </NAnchor>
 </template>
