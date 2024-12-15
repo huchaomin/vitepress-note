@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 09:45:38
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-14 23:25:44
+ * @LastEditTime : 2024-12-15 22:18:34
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,6 +13,7 @@ import { useData, useRoute } from 'vitepress'
 
 const { theme } = useData()
 const route = useRoute()
+const commonStore = useCommonStore(piniaInstance)
 
 export interface SidebarItem {
   items?: SidebarItem[]
@@ -118,11 +119,10 @@ function renderLabel({ option }: { option: TreeOption }) {
     :native-scrollbar="false"
     :collapsed-width="0"
     collapse-mode="transform"
-    trigger-style="top: 240px;"
-    collapsed-trigger-style="top: 240px; right: -20px;"
     bordered
     width="300"
-    show-trigger="arrow-circle"
+    :show-trigger="false"
+    :collapsed="commonStore.showLeftDrawer"
   >
     <NTree
       v-model:expanded-keys="expandedKeys"

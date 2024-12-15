@@ -1,12 +1,13 @@
 /*
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 14:22:16
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-15 22:13:01
  * @Description  :
  */
-import { useLoadingBar } from '@/plugins/naive-ui/discreteApi'
 import type { LoadingBarApi } from 'naive-ui'
+
+import { useLoadingBar } from '@/plugins/naive-ui/discreteApi'
 
 export default defineStore('common', () => {
   // 全局加载状态
@@ -27,10 +28,12 @@ export default defineStore('common', () => {
     }
   })
   const screenWidth = ref(0)
+  const showLeftDrawer = ref(false)
 
   return {
     loading,
     loadingCount,
     screenWidth,
+    showLeftDrawer,
   }
 })
