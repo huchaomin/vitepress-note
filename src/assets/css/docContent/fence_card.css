@@ -149,3 +149,11 @@
     }
   }
 }
+
+@media only screen and (width <= 639px) {
+  .fence_card {
+    code {
+      @apply px-3;
+    }
+  }
+}

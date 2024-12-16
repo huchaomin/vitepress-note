@@ -6,6 +6,7 @@
 
 body {
   --sider-width: 300px;
+
   overflow: hidden;
 
   /* isMobile */
