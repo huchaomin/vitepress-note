@@ -5,7 +5,9 @@
 @import './naive_ui_reset.css';
 
 body {
+  --sider-width: 300px;
   overflow: hidden;
+
 
   /* isMobile */
   @media only screen and (width <= 639px) {

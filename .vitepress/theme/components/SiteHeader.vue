@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-16 23:23:20
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-15 22:10:17
+ * @LastEditTime : 2024-12-16 10:53:06
  * @Description  :
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ const style = computed(() => {
         'grid-template-columns': 'auto 1fr auto',
       }
     : {
-        'grid-template-columns': '300px 1fr auto',
+        'grid-template-columns': 'var(--sider-width) 1fr auto',
       }
 })
 

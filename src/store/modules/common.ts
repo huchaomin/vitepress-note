@@ -2,7 +2,7 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-15 22:13:01
+ * @LastEditTime : 2024-12-16 09:40:35
  * @Description  :
  */
 import type { LoadingBarApi } from 'naive-ui'
@@ -28,7 +28,7 @@ export default defineStore('common', () => {
     }
   })
   const screenWidth = ref(0)
-  const showLeftDrawer = ref(false)
+  const showLeftDrawer = ref(true)
 
   return {
     loading,
