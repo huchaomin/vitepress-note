@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 16:32:26
+ * @LastEditTime : 2024-12-16 16:42:11
  * @Description  :
 -->
 <script setup lang="ts">
@@ -84,20 +84,18 @@ function clickOutside(e: MouseEvent) {
 .n-button {
   --n-height: var(--header-height);
 
-  :deep() {
-    /* stylelint-disable-next-line selector-class-pattern */
-    .hamburger-box,
-    .hamburger-inner,
-    .hamburger-inner::after,
-    .hamburger-inner::before {
-      width: 24px;
-      height: 2px;
-    }
+  /* stylelint-disable-next-line selector-class-pattern */
+  .hamburger-box,
+  .hamburger-inner,
+  .hamburger-inner::after,
+  .hamburger-inner::before {
+    width: 24px;
+    height: 2px;
+  }
 
-    /* stylelint-disable-next-line selector-class-pattern */
-    .hamburger-box {
-      height: auto;
-    }
+  /* stylelint-disable-next-line selector-class-pattern */
+  .hamburger-box {
+    height: auto;
   }
 }
 </style>
