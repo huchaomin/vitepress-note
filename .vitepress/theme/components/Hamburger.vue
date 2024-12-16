@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 15:24:54
+ * @LastEditTime : 2024-12-16 16:32:26
  * @Description  :
 -->
 <script setup lang="ts">
@@ -39,6 +39,14 @@ watch(
     }
   },
 )
+
+function clickOutside(e: MouseEvent) {
+  const hamburgerBtn = document.querySelector('#hamburger')
+  if (hamburgerBtn && hamburgerBtn.contains(e.target as HTMLElement)) {
+    return
+  }
+  commonStore.showLeftDrawer = false
+}
 </script>
 
 <template>
@@ -49,6 +57,7 @@ watch(
     trigger="manual"
     :show="commonStore.showLeftDrawer"
     scrollable
+    :on-clickoutside="clickOutside"
     content-style="max-height: calc(var(--inner-height) - var(--header-height) - 20px); width: var(--sider-width); padding: 0;"
   >
     <template #trigger>
