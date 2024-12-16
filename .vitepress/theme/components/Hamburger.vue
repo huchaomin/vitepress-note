@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 14:05:21
+ * @LastEditTime : 2024-12-16 15:24:54
  * @Description  :
 -->
 <script setup lang="ts">
@@ -34,7 +34,7 @@ if (inBrowser && (isMobile || isTablet)) {
 watch(
   () => route.path,
   () => {
-    if (inBrowser && (isTablet || isMobile)) {
+    if (inBrowser && (isTablet.value || isMobile.value)) {
       commonStore.showLeftDrawer = false
     }
   },
