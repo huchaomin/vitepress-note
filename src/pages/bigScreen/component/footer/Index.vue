@@ -6,8 +6,9 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import SvgLineAnimation from './SvgLineAnimation.vue'
 import { colors } from '@/pages/bigScreen/utils/others'
+
+import SvgLineAnimation from './SvgLineAnimation.vue'
 </script>
 
 <template>

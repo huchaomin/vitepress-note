@@ -2,12 +2,13 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 09:40:35
+ * @LastEditTime : 2024-12-16 13:50:11
  * @Description  :
  */
 import type { LoadingBarApi } from 'naive-ui'
 
 import { useLoadingBar } from '@/plugins/naive-ui/discreteApi'
+import { inBrowser } from 'vitepress'
 
 export default defineStore('common', () => {
   // 全局加载状态
@@ -18,6 +19,9 @@ export default defineStore('common', () => {
   })
   let loadingBar: LoadingBarApi | null = null
   watch(loading, (val) => {
+    if (!inBrowser) {
+      return
+    }
     if (loadingBar === null) {
       loadingBar = useLoadingBar()
     }
@@ -28,11 +32,13 @@ export default defineStore('common', () => {
     }
   })
   const screenWidth = ref(0)
+  const screenHeight = ref(0)
   const showLeftDrawer = ref(true)
 
   return {
     loading,
     loadingCount,
+    screenHeight,
     screenWidth,
     showLeftDrawer,
   }

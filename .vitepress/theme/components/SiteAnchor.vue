@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-05 15:40:49
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-15 13:06:09
+ * @LastEditTime : 2024-12-16 13:56:11
  * @Description  :
 -->
 <script setup lang="ts">
@@ -34,7 +34,7 @@ onMounted(() => {
     :bound="72"
     offset-target="#doc-layout"
     class="site_anchor !sticky p-4 pl-0"
-    style="top: 0; max-height: calc(100vh - var(--header-height));"
+    style="top: 0; max-height: calc(var(--inner-height) - var(--header-height));"
     :ignore-gap="true"
   >
     <div ref="nAnchorRef">

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-15 13:08:28
+ * @LastEditTime : 2024-12-16 14:09:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ import { inBrowser, useData, useRoute } from 'vitepress'
 // @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
 import { useLocalNav } from 'vitepress/dist/client/theme-default/composables/local-nav.js'
 
-import type { SidebarItem } from '../components/LeftDrawer.vue'
+import type { SidebarItem } from '../components/LeftDrawerTree.vue'
 
 import LeftDrawer from '../components/LeftDrawer.vue'
 import SiteAnchor from '../components/SiteAnchor.vue'
@@ -41,11 +41,14 @@ if (inBrowser) {
 
 const route = useRoute()
 const nLayoutRef = ref<LayoutInst | null>(null)
-watch(route, () => {
-  nLayoutRef.value!.scrollTo({
-    top: 0,
-  })
-})
+watch(
+  () => route.path,
+  () => {
+    nLayoutRef.value!.scrollTo({
+      top: 0,
+    })
+  },
+)
 
 const contentWrapperClass = computed(() => {
   return isMobile.value ? '' : 'flex'
@@ -135,7 +138,7 @@ onMounted(() => {
       }"
       :native-scrollbar="false"
       :position="isTablet ? 'absolute' : 'static'"
-      content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
+      content-style="min-height: calc(var(--inner-height) - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="contentWrapperClass" class="flex-auto">
         <!-- VPDoc class 获取 h标题 时使用 -->

@@ -2,38 +2,54 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 10:56:05
+ * @LastEditTime : 2024-12-16 14:05:21
  * @Description  :
 -->
 <script setup lang="ts">
 import 'hamburgers/dist/hamburgers.min.css'
+import { inBrowser, useRoute } from 'vitepress'
 
 import LeftDrawerTree from './LeftDrawerTree.vue'
 
 const commonStore = useCommonStore(piniaInstance)
-
-function clickOutside(e: MouseEvent) {
-  const hamburgerBtn = document.querySelector('#hamburger')
-  if (hamburgerBtn && hamburgerBtn.contains(e.target as HTMLElement)) {
-    return
-  }
-  commonStore.showLeftDrawer = false
-}
+const route = useRoute()
 
 function toggleLeftDrawer() {
   commonStore.showLeftDrawer = !commonStore.showLeftDrawer
 }
+
+if (inBrowser && (isMobile || isTablet)) {
+  watch(
+    () => commonStore.showLeftDrawer,
+    (val) => {
+      if (val) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    },
+  )
+}
+
+watch(
+  () => route.path,
+  () => {
+    if (inBrowser && (isTablet || isMobile)) {
+      commonStore.showLeftDrawer = false
+    }
+  },
+)
 </script>
 
 <template>
   <NPopover
     :disabled="!isMobile && !isTablet"
-    style="width: var(--sider-width); padding: 0;"
     placement="bottom-start"
     display-directive="show"
     trigger="manual"
     :show="commonStore.showLeftDrawer"
-    :on-clickoutside="clickOutside"
+    scrollable
+    content-style="max-height: calc(var(--inner-height) - var(--header-height) - 20px); width: var(--sider-width); padding: 0;"
   >
     <template #trigger>
       <NButton
@@ -51,9 +67,7 @@ function toggleLeftDrawer() {
         </span>
       </NButton>
     </template>
-    <div style="max-height: calc(100vh - var(--header-height) - 20px); overflow: auto;">
-      <LeftDrawerTree></LeftDrawerTree>
-    </div>
+    <LeftDrawerTree></LeftDrawerTree>
   </NPopover>
 </template>
 
