@@ -2,7 +2,7 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-10-30 15:31:12
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 13:50:11
+ * @LastEditTime : 2024-12-16 14:14:50
  * @Description  :
  */
 import type { LoadingBarApi } from 'naive-ui'
@@ -33,7 +33,7 @@ export default defineStore('common', () => {
   })
   const screenWidth = ref(0)
   const screenHeight = ref(0)
-  const showLeftDrawer = ref(true)
+  const showLeftDrawer = ref(!(inBrowser && (isTablet.value || isMobile.value)))
 
   return {
     loading,
