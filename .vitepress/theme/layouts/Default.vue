@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 15:59:26
+ * @LastEditTime : 2024-12-17 22:49:30
  * @Description  :
 -->
 <script setup lang="ts">
@@ -50,14 +50,6 @@ watch(
     })
   },
 )
-
-const contentWrapperClass = computed(() => {
-  return isMobile.value ? '' : 'flex'
-})
-
-const contentClass = computed(() => {
-  return isMobile.value ? 'p-3' : 'p-8 pr-3 flex-1'
-})
 
 function findLeafIndex(root: SidebarItem[], link: string) {
   let index = -1
@@ -116,6 +108,10 @@ onMounted(() => {
     return new KeyframeEffect(el, keyframes, { duration: 400, easing: 'ease-in-out' })
   })
 })
+
+const contentClass = computed(() => {
+  return isMobile.value ? 'p-3' : 'p-8 pr-3'
+})
 </script>
 
 <template>
@@ -141,11 +137,11 @@ onMounted(() => {
       :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(var(--inner-height) - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <div :class="contentWrapperClass" class="flex-auto">
-        <div :class="contentClass" class="flex flex-col">
+      <div :class="isMobile ? '' : 'flex'" class="flex-auto">
+        <div :class="isMobile ? '' : 'flex-1'" class="flex flex-col">
           <!-- VPDoc class 获取h标题时使用/爬虫时的配置使用 -->
-          <Content ref="contentRef" class="VPDoc"></Content>
-          <Comment class="mt-auto"></Comment>
+          <Content ref="contentRef" :class="contentClass" class="VPDoc"></Content>
+          <Comment class="mt-auto" :class="contentClass"></Comment>
         </div>
         <SiteAnchor
           v-if="!isMobile && hasLocalNav"
