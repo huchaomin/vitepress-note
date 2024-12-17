@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-17 15:37:18
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 16:52:36
+ * @LastEditTime : 2024-12-17 16:55:05
  * @Description  :
 -->
 <!-- Comment.vue -->
@@ -31,5 +31,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="gitalk-container"></div>
+  <div id="gitalk-container" :key="frontmatter.uuid"></div>
 </template>
