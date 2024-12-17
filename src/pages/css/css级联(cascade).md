@@ -1,10 +1,11 @@
 ---
+uuid         : 34c1c526-fcae-4738-ad9b-4b340f16a5ba
+order        : 1
 author       : peter peter@qingcongai.com
 date         : 2024-12-09 10:24:13
-lastEditors  : peter peter@qingcongai.com
 lastEditTime : 2024-12-10 11:42:52
+lastEditors  : peter peter@qingcongai.com
 description  :
-order        : 1
 ---
 # css级联(cascade)
 

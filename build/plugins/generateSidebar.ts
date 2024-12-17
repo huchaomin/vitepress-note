@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-12 22:13:56
+ * @LastEditTime : 2024-12-17 16:26:07
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -10,6 +10,7 @@ import utc from 'dayjs/plugin/utc.js'
 import matter from 'gray-matter'
 import fs from 'node:fs'
 import path from 'node:path'
+import { v4 as uuidv4 } from 'uuid'
 import { generateSidebar } from 'vitepress-sidebar'
 
 import { mdPageDir, resolveCwd } from '../utils/index.ts'
@@ -55,12 +56,17 @@ const sidebar = (
 function createOrderFrontmatter(p: string, order: number) {
   const { content, data } = matter.read(p)
   if (Object.keys(data).length !== 0) {
-    if (data.order === order) {
+    if (data.order === order && data.uuid !== undefined) {
       return
     }
     data.order = order
+    data.uuid = uuidv4()
     let str = '---\n'
-    for (const key in data) {
+    const arr = ['uuid', 'order', 'author', 'date', 'lastEditTime', 'lastEditors', 'description']
+    const keys = Object.keys(data).sort((a, b) => {
+      return arr.indexOf(a) - arr.indexOf(b)
+    })
+    for (const key of keys) {
       let value = (data[key] as string) ?? ''
       if (['date', 'lastEditTime'].includes(key)) {
         value = dayjs.utc(value).format('YYYY-MM-DD HH:mm:ss')

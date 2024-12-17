@@ -1,10 +1,11 @@
 ---
+uuid         : 331bfebc-1d1d-497a-ad64-3a9ac7c0bb52
+order        : 1
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:25:34
-lastEditors  : peter peter@qingcongai.com
 lastEditTime : 2024-12-11 10:27:31
+lastEditors  : peter peter@qingcongai.com
 description  :
-order        : 1
 ---
 # 使用vite构建自己的前端应用
 

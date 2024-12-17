@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 09:29:59
+ * @LastEditTime : 2024-12-17 15:59:26
  * @Description  :
 -->
 <script setup lang="ts">
@@ -23,6 +23,7 @@ import SiteHeader from '../components/SiteHeader.vue'
 
 const { frontmatter, theme } = useData()
 const { hasLocalNav, headers } = (useLocalNav as () => DefaultTheme.DocLocalNav)()
+const Comment = defineAsyncComponent(() => import('../components/Comment.vue'))
 
 const showHeader = computed(() => {
   return frontmatter.value.header !== false
@@ -141,8 +142,11 @@ onMounted(() => {
       content-style="min-height: calc(var(--inner-height) - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="contentWrapperClass" class="flex-auto">
-        <!-- VPDoc class 获取h标题时使用/爬虫时的配置使用 -->
-        <Content ref="contentRef" :class="contentClass" class="VPDoc"></Content>
+        <div :class="contentClass" class="flex flex-col">
+          <!-- VPDoc class 获取h标题时使用/爬虫时的配置使用 -->
+          <Content ref="contentRef" class="VPDoc"></Content>
+          <Comment class="mt-auto"></Comment>
+        </div>
         <SiteAnchor
           v-if="!isMobile && hasLocalNav"
           style="width: 240px;"

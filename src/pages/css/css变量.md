@@ -1,10 +1,11 @@
 ---
+uuid         : f68696fa-7814-48f3-aa06-c65b66915d6c
+order        : 0
 author       : peter peter@qingcongai.com
 date         : 2024-12-10 10:24:20
-lastEditors  : peter peter@qingcongai.com
 lastEditTime : 2024-12-10 11:43:23
+lastEditors  : peter peter@qingcongai.com
 description  :
-order        : 0
 ---
 # css 变量
 

@@ -1,10 +1,11 @@
 ---
+uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
+order        : 2
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditors  : peter peter@qingcongai.com
 lastEditTime : 2024-12-10 10:55:21
+lastEditors  : peter peter@qingcongai.com
 description  :
-order        : 2
 ---
 # vscode 使用经验
 
