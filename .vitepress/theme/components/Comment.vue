@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-17 15:37:18
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 17:47:36
+ * @LastEditTime : 2024-12-17 17:59:40
  * @Description  :
 -->
 <!-- Comment.vue -->
@@ -16,10 +16,14 @@ const { frontmatter } = useData()
 const gitalkContainer = ref<HTMLElement | null>(null)
 
 watchEffect(() => {
-  // 依赖要写在这里才能，被 watchEffect（同步） 监听到
-  const id = frontmatter.value.uuid
-  nextTick(() => {
-    if (inBrowser) {
+  if (inBrowser) {
+    // 依赖要写在这里才能，被 watchEffect（同步） 监听到
+    const id = frontmatter.value.uuid
+    nextTick(() => {
+      gitalkContainer.value!.innerHTML = ''
+      if (!id) {
+        return
+      }
       const gitTalk = new Gitalk({
         admin: ['huchaomin'],
         clientID: 'de01e27a69cdede2a898',
@@ -30,10 +34,9 @@ watchEffect(() => {
         owner: 'huchaomin', // GitHub repository 所有者
         repo: 'vitepress-note',
       })
-      gitalkContainer.value!.innerHTML = ''
       gitTalk.render(gitalkContainer.value!)
-    }
-  })
+    })
+  }
 })
 </script>
 
