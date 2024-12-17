@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 09:30:17
+ * @LastEditTime : 2024-12-17 10:45:10
  * @Description  :
 -->
 <script setup lang="ts">
@@ -124,6 +124,15 @@ function renderLabel({ option }: { option: TreeOption }) {
     expand-on-click
     :data="sidebar"
     :override-default-node-click-behavior="override"
+    :render-label="renderLabel"
+  ></NTree>
+  <!-- 爬虫用 -->
+  <NTree
+    class="hidden"
+    label-field="text"
+    children-field="items"
+    :data="sidebar"
+    default-expand-all
     :render-label="renderLabel"
   ></NTree>
 </template>
