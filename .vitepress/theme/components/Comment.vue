@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-17 15:37:18
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 16:46:47
+ * @LastEditTime : 2024-12-17 16:52:36
  * @Description  :
 -->
 <!-- Comment.vue -->
@@ -23,7 +23,7 @@ onMounted(() => {
       id: frontmatter.value.uuid, // 可选。默认为 location.href
       labels: ['GitTalk'], // GitHub issue 标签
       owner: 'huchaomin', // GitHub repository 所有者
-      repo: 'https://github.com/huchaomin/vitepress-note.git',
+      repo: 'vitepress-note',
     })
     gitTalk.render('gitalk-container')
   }
