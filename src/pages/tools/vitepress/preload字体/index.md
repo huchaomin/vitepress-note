@@ -3,7 +3,7 @@ uuid         : 39c9b242-5831-44f3-92fb-fa3b60232552
 order        : 1
 author       : peter peter@qingcongai.com
 date         : 2024-12-09 14:15:22
-lastEditTime : 2024-12-17 16:26:58
+lastEditTime : 2024-12-18 21:55:53
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -53,11 +53,14 @@ description  :
 
 ```css
 :root {
+  /* 其他字体 */
   --font-family-others: 'JetBrainsMonoMedium';
-  --font-family-semi-bold-others: 'JetBrainsMonoSemiBold';
-  --font-family-zh: 'SmileySans-Oblique';
 
-  /* tailwindcss 使用的两种字体 */
+  /* 其他字体 粗体 */
+  --font-family-semi-bold-others: 'JetBrainsMonoSemiBold';
+
+  /* 中文字体 */
+  --font-family-zh: 'SmileySans-Oblique';
   --default-mono-font-family: var(--font-family-semi-bold-others), var(--font-family-zh);
   --default-font-family: var(--default-mono-font-family);
 
@@ -68,6 +71,11 @@ description  :
 }
 ```
 
+- `--default-mono-font-family` 和 `--default-font-family` 是 tailwindcss 使用的两种字体
+- JetBrainsMono 是一款等宽的英文字体，一般这些字体都不会包含中文字符
+- 上面的配置会使所有的英文都使用 JetBrainsMonoSemiBold 字体， 中文使用 SmileySans 字体
+- 在小屏幕下，英文使用 JetBrainsMonoMedium (不变粗)字体，中文使用 SmileySans 字体
+
 ## 头部预加载字体
 
 ```ts
@@ -77,7 +85,7 @@ const obj = {
     const smileySansFontFileArr = assets.filter((str: string) =>
       /SmileySans[\w\-.]+\.woff2/.test(str),
     )
-    const interLinks: [string, Record<string, string>][] = smileySansFontFileArr.map(
+    const smileySansLinks: [string, Record<string, string>][] = smileySansFontFileArr.map(
       (href: string) => {
         return [
           'link',
@@ -116,7 +124,7 @@ const obj = {
         ]
       },
     )
-    return [...interLinks, ...JetBrainsMonoLinks]
+    return [...smileySansLinks, ...JetBrainsMonoLinks]
   }
 }
 ```

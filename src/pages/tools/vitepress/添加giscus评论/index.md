@@ -3,7 +3,7 @@ uuid         : 1224c000-efcb-4cd0-b75a-bf38a4f859af
 order        : 4
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 14:51:46
-lastEditTime : 2024-12-18 17:24:43
+lastEditTime : 2024-12-18 22:06:42
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -19,12 +19,12 @@ description  :
   ![discussions功能已启用](./discussions功能已启用.png)
 4. 打开[giscus 官网](https://giscus.app/zh-CN)
 5. 填写仓库：`owner/repo`，例如：`huchaomin/vitepress`
-6. 页面 与 discussion 映射关系，勾选 pathname
+6. 页面 与 discussion 映射关系，勾选 pathname， 建议勾选'使用严格的标题匹配'
 7. discussion 分类 按照推荐选择 announcements
 8. 只搜索该分类中的 discussion 建议勾选
 9. 特性建议全部勾上
 
-然后你就在 ‘启用 giscus‘ 下面看到你的配置了
+然后你就在 '启用 giscus' 下面看到你的配置了
 
 ## 安装 vue 组件
 
@@ -38,12 +38,11 @@ pnpm add @giscus/vue
 
 ## 本博客配置
 
-如上，我这里使用的与上述步骤生成的有亮点不同：
+如上，我这里使用的与上述步骤生成的有一点不同：
 
-- strict:'1'
-- mapping:'og:title'
+1. `mapping:'og:title'`
 
-因为我把我的页面的 uuid 作为 og:title 传给了 giscus，这样就可以在 giscus 中通过 og:title 来查找对应的 discussion
+因为我把我的页面的 uuid 作为 og:title 的 content 传给了 giscus，这样就可以在 giscus 中通过 og:title 来查找对应的 discussion
 
 ```ts
 // enhanceApp 方法里面

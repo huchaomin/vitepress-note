@@ -3,8 +3,8 @@ uuid         : 2d6b1c06-7bff-4ff1-8e7d-5982457b287f
 order        : 2
 author       : peter peter@qingcongai.com
 date         : 2024-12-10 10:24:46
-lastEditTime : 2024-12-10 15:58:00
-lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-18 21:59:38
+lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 # 自定义 vitepress 的 container_code-group
@@ -53,16 +53,16 @@ tokens[i].info += ' active'
 
 ### 代码分析
 
-1. `token type` 的开始和结束是 `container_code-group_open` 和 `container_code-group_close`
-2. 拿到这两个 `token` 之间的所有 `token`，然后根据他们 `token` 的类型来判断是 `fence` 和 `html_block`
-3. 获取 `title`，然后生成 `tabs` 和 `blocks`，最后返回 `html` 字符串
+1. token type 的开始和结束是 `container_code-group_open` 和 `container_code-group_close`
+2. 拿到这两个 token 之间的所有 token，然后根据他们 token 的类型来判断是 fence 和 html_block
+3. 获取 title，然后生成 tabs 和 blocks，最后返回 html 字符串
 
 ## 自定义 `code_group`
 
-1. 由于我是用 `naive-ui` 来做的主题，所以这种 `tab` 切换的效果我是用 `naive-ui` 的 `n-tabs` 来实现的
+1. 由于我是用 `naive-ui` 来做的主题，所以这种 tab 切换的效果我是用 `naive-ui` 的 `n-tabs` 来实现的
 2. 但是 `n-tabs` 是需要 `n-tab-pane` 来配合使用的，
-  所以我需要包裹在 `container_code-group_open` 和 `container_code-group_close`
-  里面的 `fence` 和 `html_block` token，然后生成 `n-tab-pane` 的 `html` 字符串
+  所以我需要找到包裹在 `container_code-group_open` 和 `container_code-group_close`
+  里面的 fence 和 html_block token，然后使用 `n-tab-pane` 包裹这两个类型的 token
 3. 由于本人水平实在有限，没有认真研究 `markdown-it` 里面的 `ruler/token` 的用法，
   （不知道 `Ruler.before/after` 能不能够实现）
 4. 已下是我变通的实践
