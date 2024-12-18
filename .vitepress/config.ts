@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 23:34:02
+ * @LastEditTime : 2024-12-18 23:39:55
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -54,7 +54,6 @@ export default defineConfig(({ mode }) => {
     contentProps: {
       class: 'overflow-hidden',
     },
-    description: packageJson.description,
     head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
     lang: 'zh-Hans',
     markdown: {
@@ -119,7 +118,6 @@ export default defineConfig(({ mode }) => {
         pageStr = pageStr.replace('.md', '')
       }
       const keywords = pageStr.split('/').reverse().join(',')
-      console.log(keywords)
       const headArr = [] as Array<[string, Record<string, string>]>
       if (
         pageData.description === null &&

@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-18 22:13:23
+lastEditTime : 2024-12-18 23:35:40
 description  :
 ---
 # readme
@@ -41,7 +41,6 @@ description  :
 - 左侧树的搜索功能， 收起全部功能
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
-- meta discription 带上文件夹名称
 - vite 组件开发 [参考](https://sugarat.top/technology/works/vitepress-plugin-announcement.html)
 - `['meta', { name: 'theme-color', content: '#5f67ee' }]`,
 - 评论系统错误捕获
