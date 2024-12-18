@@ -3,7 +3,7 @@ uuid         : 932e6f10-285f-4eb9-bd4b-2b8f1afbca90
 order        : 3
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 11:34:34
-lastEditTime : 2024-12-18 14:28:30
+lastEditTime : 2024-12-18 14:46:33
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -14,7 +14,8 @@ description  :
 
 ![创建 GitHub Application](./创建GitHubApplication.png)
 
-填写完后点击 Register application，就会进到下面这个页面，点击 Generate a new client secret 创建一个新的 secret，创建完后记得先复制一下，后面再刷新页面就看不到 secret 了
+填写完后点击 `Register application`，就会进到下面这个页面，点击 `Generate a new client secret` 创建一个新的 secret，<br>
+创建完后记得先复制一下，后面再刷新页面就看不到 secret 了
 
 ![创建 GitHub Application](./创建GitHubApplication2.png)
 

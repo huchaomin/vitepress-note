@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 11:17:07
+ * @LastEditTime : 2024-12-18 15:19:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -10,11 +10,13 @@ import Giscus from '@giscus/vue'
 import { useData } from 'vitepress'
 
 const { frontmatter } = useData()
+
+const isProd = import.meta.env.PROD
 </script>
 
 <template>
   <Giscus
-    v-if="frontmatter.uuid"
+    v-if="frontmatter.uuid && isProd"
     :key="frontmatter.uuid"
     repo="huchaomin/vitepress-note"
     repo-id="R_kgDOMZ-wiw"
@@ -23,7 +25,7 @@ const { frontmatter } = useData()
     mapping="og:title"
     strict="1"
     reactions-enabled="1"
-    emit-metadata="0"
+    emit-metadata="1"
     input-position="top"
     theme="preferred_color_scheme"
     lang="zh-CN"
