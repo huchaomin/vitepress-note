@@ -3,7 +3,7 @@ uuid         : 1224c000-efcb-4cd0-b75a-bf38a4f859af
 order        : 4
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 14:51:46
-lastEditTime : 2024-12-18 22:06:42
+lastEditTime : 2024-12-18 22:22:04
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -38,7 +38,7 @@ pnpm add @giscus/vue
 
 ## 本博客配置
 
-如上，我这里使用的与上述步骤生成的有一点不同：
+### 如上，我这里使用的与上述步骤生成的有一点不同
 
 1. `mapping:'og:title'`
 
@@ -65,3 +65,24 @@ router.onAfterRouteChanged = (to: string) => {
 推荐大家也这样做，第六步其他选项 pathname、URL、title 大部分情况下没有问题<br>
 但如果你想给你的博客页面移动一下位置，导致你的url变了，那么你的评论就找不到了。 <br>
 上一篇：[添加gitalk评论](../添加gitalk评论/index.md) 也有这个问题，至于怎么生成 uuid, 可以看这个博客的源码，写的不好可以使用这个评论喷我
+
+### 动态插入 `og:title` 不能这么写
+
+```ts
+function transformHead({ pageData }) {
+  const uuid = pageData.frontmatter.uuid as string | undefined
+  if (uuid) {
+    return [
+      [
+        'meta',
+        {
+          content: uuid,
+          property: 'oa:title',
+        },
+      ],
+    ]
+  }
+}
+```
+
+这样写是不行的，因为这个函数只会在页面加载的时候执行一次，而不会在页面切换的时候执行，所以不会动态更新 `og:title` 的值
