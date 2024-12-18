@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 22:22:36
+ * @LastEditTime : 2024-12-18 10:30:43
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -82,6 +82,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         'alova/vue',
         'dayjs',
         'gitalk',
+        '@giscus/vue',
       ],
     },
     plugins: [

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 09:12:29
+ * @LastEditTime : 2024-12-18 11:20:01
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -112,6 +112,19 @@ export default defineConfig(({ mode }) => {
     titleTemplate: false, // 去掉标题里面的 ’| vite‘
     transformHtml(code) {
       return postHandleHtml(code)
+    },
+    transformPageData(pageData) {
+      const uuid = pageData.frontmatter.uuid as string | undefined
+      if (uuid) {
+        pageData.frontmatter.head ??= []
+        ;(pageData.frontmatter.head as any[]).push([
+          'meta',
+          {
+            content: uuid,
+            property: 'og:title',
+          },
+        ])
+      }
     },
     vite: {
       configFile: resolveCwd('build/vite.config.ts'),
