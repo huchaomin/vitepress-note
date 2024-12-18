@@ -3,7 +3,7 @@ uuid         : 932e6f10-285f-4eb9-bd4b-2b8f1afbca90
 order        : 3
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 11:34:34
-lastEditTime : 2024-12-18 14:18:27
+lastEditTime : 2024-12-18 14:28:30
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -79,3 +79,4 @@ watchEffect(() => {
 ## 参考
 
 - [Gitalk 运作原理](https://carl-zk.github.io/blog/2020/03/03/gitalk-%E8%BF%90%E4%BD%9C%E5%8E%9F%E7%90%86/)
+- [richard 的博客](https://richard-docs.netlify.app/blogs/b-027)

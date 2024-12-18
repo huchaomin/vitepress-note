@@ -1,45 +1,34 @@
 <!--
  * @Author       : huchaomin iisa_peter@163.com
- * @Date         : 2024-12-17 15:37:18
+ * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 17:59:40
+ * @LastEditTime : 2024-12-18 11:17:07
  * @Description  :
 -->
-<!-- Comment.vue -->
-<script lang="ts" setup>
-import Gitalk from 'gitalk'
-import { inBrowser, useData } from 'vitepress'
-import 'gitalk/dist/gitalk.css'
+<script setup lang="ts">
+import Giscus from '@giscus/vue'
+import { useData } from 'vitepress'
 
 const { frontmatter } = useData()
-
-const gitalkContainer = ref<HTMLElement | null>(null)
-
-watchEffect(() => {
-  if (inBrowser) {
-    // 依赖要写在这里才能，被 watchEffect（同步） 监听到
-    const id = frontmatter.value.uuid
-    nextTick(() => {
-      gitalkContainer.value!.innerHTML = ''
-      if (!id) {
-        return
-      }
-      const gitTalk = new Gitalk({
-        admin: ['huchaomin'],
-        clientID: 'de01e27a69cdede2a898',
-        clientSecret: '47d398bbe1cb55331f915eeca89329c881137325',
-        createIssueManually: true, // TODO 如果当前页面没有相应的 issue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
-        id, // 可选。默认为 location.href
-        labels: ['GitTalk'], // GitHub issue 标签
-        owner: 'huchaomin', // GitHub repository 所有者
-        repo: 'vitepress-note',
-      })
-      gitTalk.render(gitalkContainer.value!)
-    })
-  }
-})
 </script>
 
 <template>
-  <div ref="gitalkContainer"></div>
+  <Giscus
+    v-if="frontmatter.uuid"
+    :key="frontmatter.uuid"
+    repo="huchaomin/vitepress-note"
+    repo-id="R_kgDOMZ-wiw"
+    category="Announcements"
+    category-id="DIC_kwDOMZ-wi84ClUQt"
+    mapping="og:title"
+    strict="1"
+    reactions-enabled="1"
+    emit-metadata="0"
+    input-position="top"
+    theme="preferred_color_scheme"
+    lang="zh-CN"
+    loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></Giscus>
 </template>
