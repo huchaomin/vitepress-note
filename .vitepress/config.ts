@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 22:18:44
+ * @LastEditTime : 2024-12-18 23:34:02
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -110,6 +110,28 @@ export default defineConfig(({ mode }) => {
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     titleTemplate: false, // 去掉标题里面的 ’| vite‘
+    transformHead({ page, pageData }) {
+      let pageStr = page
+      if (pageStr.endsWith('/index.md')) {
+        pageStr = pageStr.replace('/index.md', '')
+      }
+      if (pageStr.endsWith('.md')) {
+        pageStr = pageStr.replace('.md', '')
+      }
+      const keywords = pageStr.split('/').reverse().join(',')
+      console.log(keywords)
+      const headArr = [] as Array<[string, Record<string, string>]>
+      if (
+        pageData.description === null &&
+        headArr.find((h) => h[0] === 'meta' && h[1].name === 'description') === undefined
+      ) {
+        headArr.push(['meta', { content: keywords, name: 'description' }])
+      }
+      if (headArr.find((h) => h[0] === 'meta' && h[1].name === 'keywords') === undefined) {
+        headArr.push(['meta', { content: keywords, name: 'keywords' }])
+      }
+      return headArr
+    },
     transformHtml(code) {
       return postHandleHtml(code)
     },
