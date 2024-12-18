@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 10:47:55
+ * @LastEditTime : 2024-12-18 14:20:43
  * @Description  :
 -->
 <script setup lang="ts">
@@ -139,7 +139,7 @@ const contentClass = computed(() => {
       content-style="min-height: calc(var(--inner-height) - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="isMobile ? '' : 'flex'" class="flex-auto">
-        <div :class="isMobile ? '' : 'flex-1'" class="flex flex-col">
+        <div :class="isMobile ? '' : 'flex-1'" class="flex flex-col overflow-hidden">
           <!-- VPDoc class 获取h标题时使用/爬虫时的配置使用 -->
           <Content ref="contentRef" :class="contentClass" class="VPDoc"></Content>
           <Comment class="mt-auto" :class="contentClass"></Comment>

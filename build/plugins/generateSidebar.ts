@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 16:26:07
+ * @LastEditTime : 2024-12-18 13:44:46
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -60,7 +60,7 @@ function createOrderFrontmatter(p: string, order: number) {
       return
     }
     data.order = order
-    data.uuid = uuidv4()
+    data.uuid = (data.uuid as string | undefined) ?? uuidv4()
     let str = '---\n'
     const arr = ['uuid', 'order', 'author', 'date', 'lastEditTime', 'lastEditors', 'description']
     const keys = Object.keys(data).sort((a, b) => {
