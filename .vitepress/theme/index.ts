@@ -25,7 +25,6 @@ export default {
     }
     router.onAfterPageLoad = () => {}
     router.onAfterRouteChanged = (to: string) => {
-      console.log(router.route.data.frontmatter)
       $loading.hide()
       if (inBrowser) {
         if (window._hmt) {

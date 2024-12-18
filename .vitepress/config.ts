@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 15:49:21
+ * @LastEditTime : 2024-12-18 17:17:20
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -110,20 +110,6 @@ export default defineConfig(({ mode }) => {
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     titleTemplate: false, // 去掉标题里面的 ’| vite‘
-    transformHead({ pageData }) {
-      const uuid = pageData.frontmatter.uuid as string | undefined
-      if (uuid) {
-        return [
-          [
-            'meta',
-            {
-              content: uuid,
-              property: 'og:title',
-            },
-          ],
-        ]
-      }
-    },
     transformHtml(code) {
       return postHandleHtml(code)
     },
