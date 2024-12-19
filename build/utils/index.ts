@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-10 18:37:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-09 17:07:28
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-19 10:18:30
  * @Description  :
  */
 
@@ -18,6 +18,16 @@ function resolveCwd(p: string): string {
 
 const envDir = resolveCwd('build/env')
 const mdPageDir = 'src/pages'
+
+function extractKeywordsFromPath(path: string): string {
+  if (path.endsWith('/index.md')) {
+    path = path.replace('/index.md', '')
+  }
+  if (path.endsWith('.md')) {
+    path = path.replace('.md', '')
+  }
+  return path.split('/').reverse().join(' ')
+}
 
 function extractLang(info: string): string {
   return info
@@ -39,13 +49,22 @@ function extractTitle(info: string, html = false) {
 function firstUpperCase(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
-
 function getEnv(mode: string): ImportMetaEnv {
   // loadEnv 设置第三个参数为空 来加载所有环境变量，而不管是否有 `VITE_` 前缀
   return parseLoadedEnv(loadEnv(mode, envDir)) as ImportMetaEnv
 }
+
 function normalizeJoinPath(...paths: string[]): string {
   return normalizePath(path.join(...paths))
 }
 
-export { envDir, extractTitle, firstUpperCase, getEnv, mdPageDir, normalizeJoinPath, resolveCwd }
+export {
+  envDir,
+  extractKeywordsFromPath,
+  extractTitle,
+  firstUpperCase,
+  getEnv,
+  mdPageDir,
+  normalizeJoinPath,
+  resolveCwd,
+}

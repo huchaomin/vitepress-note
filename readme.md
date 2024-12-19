@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-19 09:06:56
+lastEditTime : 2024-12-19 10:34:59
 description  :
 ---
 # readme
@@ -41,7 +41,7 @@ description  :
 - vite 组件开发 [参考](https://sugarat.top/technology/works/vitepress-plugin-announcement.html)
 - `['meta', { name: 'theme-color', content: '#5f67ee' }]`,
 - 评论系统错误捕获
-- description 还未定义成功
+- 404页面
 
 ## threejs
 

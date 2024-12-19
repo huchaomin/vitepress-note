@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 23:39:55
+ * @LastEditTime : 2024-12-19 10:38:24
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -13,7 +13,13 @@ import viteCompression from 'vite-plugin-compression'
 import sidebar from '../build/plugins/generateSidebar.ts'
 import mdPlugin from '../build/plugins/md/index.ts'
 import postHandleHtml from '../build/plugins/postHandleHtml.ts'
-import { getEnv, mdPageDir, normalizeJoinPath, resolveCwd } from '../build/utils/index.ts'
+import {
+  extractKeywordsFromPath,
+  getEnv,
+  mdPageDir,
+  normalizeJoinPath,
+  resolveCwd,
+} from '../build/utils/index.ts'
 import packageJson from '../package.json' assert { type: 'json' }
 import { search as zhSearch } from './zh.ts'
 
@@ -54,6 +60,7 @@ export default defineConfig(({ mode }) => {
     contentProps: {
       class: 'overflow-hidden',
     },
+    description: packageJson.description,
     head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
     lang: 'zh-Hans',
     markdown: {
@@ -109,29 +116,24 @@ export default defineConfig(({ mode }) => {
     },
     title: packageJson.productName, // 没有 titleTemplate 它将用作所有单独页面标题的默认后缀
     titleTemplate: false, // 去掉标题里面的 ’| vite‘
-    transformHead({ page, pageData }) {
-      let pageStr = page
-      if (pageStr.endsWith('/index.md')) {
-        pageStr = pageStr.replace('/index.md', '')
-      }
-      if (pageStr.endsWith('.md')) {
-        pageStr = pageStr.replace('.md', '')
-      }
-      const keywords = pageStr.split('/').reverse().join(',')
-      const headArr = [] as Array<[string, Record<string, string>]>
-      if (
-        pageData.description === null &&
-        headArr.find((h) => h[0] === 'meta' && h[1].name === 'description') === undefined
-      ) {
-        headArr.push(['meta', { content: keywords, name: 'description' }])
-      }
+    // transformPageData(dev/prod) -> transformHead(prod) -> transformHtml(prod)
+    transformHead({ pageData }) {
+      const { filePath, frontmatter } = pageData
+      const keywords = extractKeywordsFromPath(filePath)
+      const headArr = (frontmatter.head ?? []) as Array<[string, Record<string, string>]>
+      // 也可以不需要 https://blog.skk.moe/post/say-no-to-meta-keywords/
       if (headArr.find((h) => h[0] === 'meta' && h[1].name === 'keywords') === undefined) {
-        headArr.push(['meta', { content: keywords, name: 'keywords' }])
+        return [['meta', { content: keywords, name: 'keywords' }]]
       }
-      return headArr
     },
     transformHtml(code) {
       return postHandleHtml(code)
+    },
+    transformPageData(pageData, { siteConfig }) {
+      const keywords = extractKeywordsFromPath(pageData.filePath)
+      if (pageData.description === null) {
+        pageData.description = `${keywords} web 前端 ${siteConfig.site.description}`
+      }
     },
     vite: {
       configFile: resolveCwd('build/vite.config.ts'),
