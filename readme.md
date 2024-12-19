@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-19 13:42:42
+lastEditTime : 2024-12-19 15:14:21
 description  :
 ---
 # readme
@@ -12,13 +12,12 @@ description  :
 - build.rollupOptions.output 好像不支持
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
-- [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
 - [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
 - [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
 - gsap
 - vite-plugin-pwa
-- ite-ssg
-- vite-ssg-sitemap
+   globPatterns <https://vite-pwa-org-zh.netlify.app/guide/service-worker-precache.html>
+   <https://vite-pwa-org-zh.netlify.app/guide/pwa-minimal-requirements.html#icons-images>
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-plugin-sandpack
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
@@ -41,6 +40,7 @@ description  :
 - `['meta', { name: 'theme-color', content: '#5f67ee' }]`,
 - 评论系统错误捕获
 - 404页面
+- 参考一下大神：<https://github.com/jynba/jynba.github.io>
 
 ## threejs
 

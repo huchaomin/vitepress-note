@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 13:54:07
+ * @LastEditTime : 2024-12-19 15:03:49
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -53,12 +53,15 @@ if (inBrowser) {
 }
 
 const { frontmatter } = useData()
+
+const PWAReloadPrompt = defineAsyncComponent(() => import('./components/PWAReloadPrompt.vue'))
 </script>
 
 <template>
   <NLayout :position="isMobile ? 'static' : 'absolute'" class="root-layout">
     <component :is="layoutMap[frontmatter.layout ?? 'default']"></component>
   </NLayout>
+  <PWAReloadPrompt></PWAReloadPrompt>
   <NGlobalStyle></NGlobalStyle>
   <!-- 有些 tailwindcss 的预设没有被扫到，所以这里手动使用一下 -->
   <div class="-mr-3 -ml-8 hidden"></div>
