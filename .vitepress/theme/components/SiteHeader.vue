@@ -2,12 +2,10 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-16 23:23:20
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 10:53:06
+ * @LastEditTime : 2024-12-19 10:55:56
  * @Description  :
 -->
 <script setup lang="ts">
-import NavSearch from './NavSearch.vue'
-
 const style = computed(() => {
   return isMobile.value
     ? {
@@ -23,6 +21,7 @@ function handleLogoClick() {
 }
 
 const Hamburgers = defineAsyncComponent(() => import('./Hamburger.vue'))
+const NavSearch = defineAsyncComponent(() => import('./NavSearch.vue'))
 </script>
 
 <template>

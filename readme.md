@@ -2,13 +2,14 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-19 10:34:59
+lastEditTime : 2024-12-19 13:42:42
 description  :
 ---
 # readme
 
 ## todo
 
+- build.rollupOptions.output 好像不支持
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
 - [自定义主题](https://vitepress.dev/zh/reference/site-config#typed-theme-config)
@@ -21,8 +22,6 @@ description  :
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-plugin-sandpack
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
-- build.rollupOptions.output
-- vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.
 - [NPM](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity), [社区插件列表](https://github.com/vitejs/awesome-vite#plugins), [rollup](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [Monorepo 和链接依赖](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity)
 - [预热常用文件 优化](https://cn.vitejs.dev/guide/performance#warm-up-frequently-used-files)
