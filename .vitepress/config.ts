@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 18:17:36
+ * @LastEditTime : 2024-12-19 22:46:59
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -126,7 +126,7 @@ export default withPwa(
         srcDir: resolveCwd(`${mdPageDir}/public`),
         strategies: 'generateSW',
         workbox: {
-          globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
+          globPatterns: ['**/*.{css,js,html,svg,png,jpg,gif,ico,txt,woff2,gz,xml,json}'],
           maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3MB
         },
       },

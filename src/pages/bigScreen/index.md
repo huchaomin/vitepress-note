@@ -1,12 +1,12 @@
 ---
 layout       : full
-title        : 擎聪智慧大屏系统
+title        : 智慧大屏
 uuid         : eef3293e-a729-40a7-bcfd-b30f248d1754
 order        : 4
 author       : peter peter@qingcongai.com
 date         : 2024-11-29 11:20:04
-lastEditTime : 2024-12-10 10:54:16
-lastEditors  : peter peter@qingcongai.com
+lastEditTime : 2024-12-19 22:37:13
+lastEditors  : huchaomin iisa_peter@163.com
 ---
 
 <script setup lang="ts">
