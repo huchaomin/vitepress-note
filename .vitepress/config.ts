@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 17:54:29
+ * @LastEditTime : 2024-12-19 18:17:36
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -92,6 +92,8 @@ export default withPwa(
       metaChunk: true,
       outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
       pwa: {
+        base: VITE_BASE_URL,
+        buildBase: VITE_BASE_URL, // PWA 相关资源生成的路径
         // https://vite-pwa-org-zh.netlify.app/frameworks/vitepress.html
         experimental: {
           includeAllowlist: true, // TODO
@@ -120,6 +122,7 @@ export default withPwa(
           theme_color: '#ffffff',
         },
         outDir: resolveCwd('docs'),
+        scope: VITE_BASE_URL,
         srcDir: resolveCwd(`${mdPageDir}/public`),
         strategies: 'generateSW',
         workbox: {
