@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 10:30:43
+ * @LastEditTime : 2024-12-18 17:54:23
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -24,6 +24,7 @@ import Font from 'vite-plugin-font'
 import Inspect from 'vite-plugin-inspect'
 
 import autoImportStoreList from './plugins/autoImportStores.ts'
+import { assetFileNames } from './plugins/output.ts'
 import { envDir, getEnv, normalizeJoinPath, resolveCwd } from './utils/index.ts'
 
 function bypass(req: http.IncomingMessage, res: http.ServerResponse, options: ProxyOptions): void {
@@ -44,6 +45,11 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
   return {
     build: {
       cssMinify: 'lightningcss',
+      rollupOptions: {
+        output: {
+          assetFileNames,
+        },
+      },
     },
     clearScreen: false,
     css: {

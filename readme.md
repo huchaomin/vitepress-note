@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-18 23:45:11
+lastEditTime : 2024-12-19 09:06:56
 description  :
 ---
 # readme
@@ -20,8 +20,6 @@ description  :
 - vite-ssg-sitemap
 - vite-plugin-markdown-preview | vitepress-demo-preview
 - vitepress-plugin-sandpack
-- vitepress-plugin-comment-with-giscus giscus 评论插件
-- [引入gitalk](https://blog.goalonez.site/blog/VitePress%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html#node-js%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85)
 - [参考 vue3 + vite 工程](https://github.com/vitejs/awesome-vite#templates)
 - build.rollupOptions.output
 - vite-plugin-icons 可以配合vcode的Iconify IntelliSense插件使用.
@@ -38,7 +36,6 @@ description  :
 - [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
 - npm install --save-dev seemly
-- 左侧树的搜索功能， 收起全部功能
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
 - vite 组件开发 [参考](https://sugarat.top/technology/works/vitepress-plugin-announcement.html)
