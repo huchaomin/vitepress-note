@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 16:42:26
+ * @LastEditTime : 2024-12-19 17:54:29
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -60,7 +60,8 @@ export default withPwa(
       cacheDir: resolveCwd('build/.cache/vitepress'),
       cleanUrls: true, // TODO 查看托管平添是否支持
       contentProps: {
-        class: 'overflow-hidden',
+        // VPDoc class 获取h标题时使用/爬虫时的配置使用
+        class: 'VPDoc',
       },
       description: packageJson.description,
       head: [['link', { href: normalizeJoinPath(VITE_BASE_URL, 'favicon.ico'), rel: 'icon' }]],
@@ -91,11 +92,6 @@ export default withPwa(
       metaChunk: true,
       outDir: resolveCwd('docs'), // 不能放到 vite.config.ts 里面，否则会报错
       pwa: {
-        devOptions: {
-          enabled: true,
-          navigateFallback: '/',
-          suppressWarnings: true,
-        },
         // https://vite-pwa-org-zh.netlify.app/frameworks/vitepress.html
         experimental: {
           includeAllowlist: true, // TODO
@@ -123,9 +119,12 @@ export default withPwa(
           short_name: 'VitePressPWA',
           theme_color: '#ffffff',
         },
+        outDir: resolveCwd('docs'),
+        srcDir: resolveCwd(`${mdPageDir}/public`),
         strategies: 'generateSW',
         workbox: {
           globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
+          maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3MB
         },
       },
       rewrites: {
