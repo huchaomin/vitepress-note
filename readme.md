@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-20 14:09:52
+lastEditTime : 2024-12-20 17:15:18
 description  :
 ---
 # readme
@@ -13,7 +13,6 @@ description  :
 - autoImport utils 实在不行 使[用桶文件](https://cn.vitejs.dev/guide/performance.html#avoid-barrel-files)
 - [暗黑明亮切换](https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle)
 - [生成 favicon.ico](https://vitepress.dev/zh/reference/site-config#head)
-- [Algolia Search](https://vitepress.dev/zh/reference/default-theme-search#algolia-search)
 - gsap
 - vite-plugin-pwa
    globPatterns <https://vite-pwa-org-zh.netlify.app/guide/service-worker-precache.html>

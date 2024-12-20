@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 09:40:30
+ * @LastEditTime : 2024-12-20 18:19:40
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -146,6 +146,9 @@ export default withPwa(
             indexName: 'mulinzi_note',
             locales: {
               ...zhSearch,
+            },
+            searchParameters: {
+              attributesToSnippet: ['*:21'],
             },
           },
           provider: 'algolia',

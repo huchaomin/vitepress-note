@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-20 17:13:17
+lastEditTime : 2024-12-20 18:31:03
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -44,7 +44,7 @@ new Crawler({
       },
     },
   ],
-  apiKey: 'your api key **331e5',
+  apiKey: 'your_api_key***331e5',
   appId: 'ZHEDSTO6YB',
   discoveryPatterns: ['https://www.mulinzi.cn/**'],
   exclusionPatterns: [], // 排除的路径
@@ -63,15 +63,22 @@ new Crawler({
       attributesForFaceting: ['lang'],
       // 指定在搜索结果中要高亮显示的属性
       attributesToHighlight: ['hierarchy', 'content'],
-      // 指定在搜索结果中要检索的属性
+      // 指定在搜索结果中要检索的属性 （这里设置无效，前端默认传了）
       attributesToRetrieve: [
-        'hierarchy',
+        'hierarchy.lvl0',
+        'hierarchy.lvl1',
+        'hierarchy.lvl2',
+        'hierarchy.lvl3',
+        'hierarchy.lvl4',
+        'hierarchy.lvl5',
+        'hierarchy.lvl6',
         'content',
-        'anchor',
+        'type',
         'url',
       ],
-      // 允许指定一个属性列表，Algolia 在返回搜索结果时会对这些属性进行截取，并在搜索结果中显示部分内容
+      // 允许指定一个属性列表，Algolia 在返回搜索结果时会对这些属性进行截取，并在搜索结果中显示部分内容（这里设置无效，前端默认传了）
       attributesToSnippet: ['*:30'],
+      // 拆分驼峰的单词 allow users to find “camelCaseAttributes” when searching for “case”
       camelCaseAttributes: ['hierarchy', 'content'],
       // 自定义排序权重
       customRanking: [
