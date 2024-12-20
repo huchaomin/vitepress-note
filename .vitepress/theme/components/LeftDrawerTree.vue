@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 23:13:36
+ * @LastEditTime : 2024-12-20 23:43:29
  * @Description  :
 -->
 <script setup lang="ts">
@@ -88,16 +88,14 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
   const ellipsis = h(
     NEllipsis,
     {
-      // class: isParent && isHidden ? 'algolia_lvl0' : '',
-      class: isTheClosestParent && isHidden ? 'algolia_lvl0' : '',
+      class: isParent && isHidden ? 'algolia_lvl0' : '',
       tooltip: {
         placement: 'right',
       },
     },
     {
-      // default: () =>
-      //   isHidden && isParent && !isTheClosestParent ? `${option.text} --> ` : option.text,
-      default: () => option.text,
+      default: () =>
+        isHidden && isParent && !isTheClosestParent ? `${option.text} --› ` : option.text,
     },
   )
   if (option.link !== undefined) {
