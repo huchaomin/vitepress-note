@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-20 22:50:27
+lastEditTime : 2024-12-20 22:58:52
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -20,7 +20,9 @@ new Crawler({
       indexName: 'mulinzi_note',
       pathsToMatch: ['https://www.mulinzi.cn/**'],
       recordExtractor: ({ $, helpers }) => {
-        const pageRank = $('.algolia_page_rank')?.text() ?? 0
+        const pageRank = $('.algolia_page_rank')
+          ? $('.algolia_page_rank').text()
+          : 0
         return helpers
           .docsearch({
             aggregateContent: true, // 是否聚合内容,防止爬虫爬的内容过多
