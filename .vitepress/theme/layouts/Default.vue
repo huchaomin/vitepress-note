@@ -2,19 +2,18 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 17:54:57
+ * @LastEditTime : 2024-12-20 22:29:12
  * @Description  :
 -->
 <script setup lang="ts">
 import type { LayoutInst } from 'naive-ui'
 import type { DefaultTheme } from 'vitepress/theme'
 
+import { findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
 import autoAnimate from '@formkit/auto-animate'
 import { inBrowser, useData, useRoute } from 'vitepress'
 // @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
 import { useLocalNav } from 'vitepress/dist/client/theme-default/composables/local-nav.js'
-
-import type { SidebarItem } from '../components/LeftDrawerTree.vue'
 
 import LeftDrawer from '../components/LeftDrawer.vue'
 import SiteAnchor from '../components/SiteAnchor.vue'
@@ -51,33 +50,13 @@ watch(
   },
 )
 
-function findLeafIndex(root: SidebarItem[], link: string) {
-  let index = -1
-  let currentIndex = 0
-  function dfs(node: SidebarItem[]) {
-    for (const child of node) {
-      if (!child.items || child.items.length === 0) {
-        // 这是一个叶子节点
-        if (child.link === link) {
-          index = currentIndex
-        }
-        currentIndex++
-      } else {
-        dfs(child.items)
-      }
-    }
-  }
-  dfs(root)
-  return index
-}
-
 const pageTranslateDirection = ref<'left' | 'right'>('left')
 watch(
   () => route.path,
   (newVal, oldVal) => {
     const sidebar: SidebarItem[] = theme.value.sidebar
-    const prevIndex = findLeafIndex(sidebar, decodeURI(oldVal))
-    const nextIndex = findLeafIndex(sidebar, decodeURI(newVal))
+    const prevIndex = findSidebarLeafIndex(sidebar, decodeURI(oldVal))
+    const nextIndex = findSidebarLeafIndex(sidebar, decodeURI(newVal))
     pageTranslateDirection.value = nextIndex > prevIndex ? 'left' : 'right'
   },
 )

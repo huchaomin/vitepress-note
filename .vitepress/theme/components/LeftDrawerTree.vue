@@ -2,24 +2,18 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 16:56:30
+ * @LastEditTime : 2024-12-20 22:39:14
  * @Description  :
 -->
 <script setup lang="ts">
 import type { TreeOption, TreeOverrideNodeClickBehavior } from 'naive-ui'
 
+import { findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
 import { NEllipsis } from 'naive-ui'
 import { useData, useRoute } from 'vitepress'
 
 const { theme } = useData()
 const route = useRoute()
-
-export interface SidebarItem {
-  items?: SidebarItem[]
-  key: string
-  link: string
-  text: string
-}
 
 // 递归添加 key
 function addKey(items: SidebarItem[], level: number) {
@@ -66,13 +60,15 @@ function pushKeys(
 const selectedKeys = ref<string[]>([])
 const expandedKeys = ref<string[]>([])
 const currentKeys = ref<string[]>([])
+const pageRank = ref<string>('')
 watch(
   () => route.path, // hash 和 query 都改变不了 path
-  () => {
+  (val) => {
     const ck = getCurrentTreeKeys()
     currentKeys.value = ck
     selectedKeys.value = ck.length ? [ck.pop()!] : []
     expandedKeys.value = [...new Set([...ck, ...expandedKeys.value])]
+    pageRank.value = String(findSidebarLeafIndex(theme.value.sidebar, decodeURI(val)))
   },
   {
     immediate: true,
@@ -87,17 +83,20 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
 }
 
 function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
-  console.log('option', option)
+  const isParent = currentKeys.value.includes(option.key as string)
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
   const ellipsis = h(
     NEllipsis,
     {
-      class: isTheClosestParent && isHidden ? 'algolia_lvl0' : '',
+      class: isParent && isHidden ? 'algolia_lvl0' : '',
       tooltip: {
         placement: 'right',
       },
     },
-    { default: () => option.text },
+    {
+      default: () =>
+        isHidden && isParent && !isTheClosestParent ? `${option.text} --> ` : option.text,
+    },
   )
   if (option.link !== undefined) {
     return h(
@@ -140,4 +139,5 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
     default-expand-all
     :render-label="(...arg) => renderLabel(true, ...arg)"
   ></NTree>
+  <div class="algolia_page_rank hidden">{{ `-${pageRank}` }}</div>
 </template>

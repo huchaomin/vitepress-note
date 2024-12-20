@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-20 18:31:03
+lastEditTime : 2024-12-20 22:50:27
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -19,15 +19,16 @@ new Crawler({
     {
       indexName: 'mulinzi_note',
       pathsToMatch: ['https://www.mulinzi.cn/**'],
-      recordExtractor: ({ helpers }) => {
+      recordExtractor: ({ $, helpers }) => {
+        const pageRank = $('.algolia_page_rank')?.text() ?? 0
         return helpers
           .docsearch({
             aggregateContent: true, // 是否聚合内容,防止爬虫爬的内容过多
             indexHeadings: true, // 是否索引标题 还可以控制哪些标题级别会被索引
             recordProps: {
               content: ['.VPDoc p, .VPDoc li'],
-              // lang: 'zh-Hans', // 查询结果中添加 language 属性,我确定没有看错，这两个注释都放开的话，则结果中两个属性都没了。为了防止你们逗我，我两个都不加，他会从页面html lang属性中获取
-              // language: 'zh-Hans', // 查询结果中添加 lang 属性,我确定没有看错，这两个注释都放开的话，则结果中两个属性都没了。为了防止你们逗我，我两个都不加，他会从页面html lang属性中获取
+              // lang: '', // 不加，他会从页面html lang属性中获取
+              // language: '', // 不加，他会从页面html lang属性中获取
               lvl0: {
                 defaultValue: '木林子的笔记-记住自己的点滴',
                 selectors: '.algolia_lvl0',
@@ -38,6 +39,7 @@ new Crawler({
               lvl4: ['.VPDoc h4'],
               lvl5: ['.VPDoc h5'],
               lvl6: ['.VPDoc h6'],
+              pageRank,
             },
             recordVersion: 'v3', // 最新版本
           })

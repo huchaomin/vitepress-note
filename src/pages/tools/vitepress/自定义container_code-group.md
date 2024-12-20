@@ -3,11 +3,11 @@ uuid         : 2d6b1c06-7bff-4ff1-8e7d-5982457b287f
 order        : 2
 author       : peter peter@qingcongai.com
 date         : 2024-12-10 10:24:46
-lastEditTime : 2024-12-18 21:59:38
+lastEditTime : 2024-12-20 21:58:19
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
-# 自定义 vitepress 的 container_code-group
+# 自定义 container_code-group
 
 ## 先看看 `vitepress` 的源码
 
