@@ -1,17 +1,13 @@
 ---
 uuid         : 331bfebc-1d1d-497a-ad64-3a9ac7c0bb52
-head:
-  - - meta
-    - name: description
-      content: hello
 order        : 1
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:25:34
-lastEditTime : 2024-12-18 23:21:12
+lastEditTime : 2024-12-20 11:31:03
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
-# 使用vite构建自己的前端应用
+# 使用 vite 构建自己的前端应用
 
 ## 功能
 

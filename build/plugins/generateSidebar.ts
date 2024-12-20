@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-19 23:43:41
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 13:44:46
+ * @LastEditTime : 2024-12-20 10:59:31
  * @Description  : index.md 的文件可以做入口文件
  */
 import dayjs from 'dayjs'
@@ -130,7 +130,6 @@ function handleLink(arr: SidebarItem[], p: string): SidebarItem[] {
         item.order = fileIndex
         ;(item as SidebarSingleItem).link = (item as SidebarSingleItem).link.replace('index.md', '')
       }
-      item.text = item.text.replace(/\s+/g, '') // 把莫名其妙生成的空格去掉
       return item
     })
     .sort((a, b) => a.order - b.order)

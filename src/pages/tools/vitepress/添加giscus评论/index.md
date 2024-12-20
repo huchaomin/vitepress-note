@@ -3,12 +3,12 @@ uuid         : 1224c000-efcb-4cd0-b75a-bf38a4f859af
 order        : 4
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 14:51:46
-lastEditTime : 2024-12-18 22:22:04
+lastEditTime : 2024-12-20 11:01:02
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 
-# 添加giscus评论
+# 添加 giscus 评论
 
 ## 配置 giscus
 
