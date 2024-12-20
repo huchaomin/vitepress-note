@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 11:53:13
+ * @LastEditTime : 2024-12-20 16:56:30
  * @Description  :
 -->
 <script setup lang="ts">
@@ -86,13 +86,13 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
   return 'default'
 }
 
-function renderLabel({ option }: { option: TreeOption }) {
+function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
   console.log('option', option)
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
   const ellipsis = h(
     NEllipsis,
     {
-      class: isTheClosestParent ? 'algolia_lvl0' : '',
+      class: isTheClosestParent && isHidden ? 'algolia_lvl0' : '',
       tooltip: {
         placement: 'right',
       },
@@ -129,7 +129,7 @@ function renderLabel({ option }: { option: TreeOption }) {
     expand-on-click
     :data="sidebar"
     :override-default-node-click-behavior="override"
-    :render-label="renderLabel"
+    :render-label="(...arg) => renderLabel(false, ...arg)"
   ></NTree>
   <!-- 爬虫用 -->
   <NTree
@@ -138,6 +138,6 @@ function renderLabel({ option }: { option: TreeOption }) {
     children-field="items"
     :data="sidebar"
     default-expand-all
-    :render-label="renderLabel"
+    :render-label="(...arg) => renderLabel(true, ...arg)"
   ></NTree>
 </template>

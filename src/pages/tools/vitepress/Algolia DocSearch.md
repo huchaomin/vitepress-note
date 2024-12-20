@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-20 16:33:52
+lastEditTime : 2024-12-20 17:13:17
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -44,7 +44,7 @@ new Crawler({
       },
     },
   ],
-  apiKey: 'c0328584ea02561c5e46c635aeb331e5',
+  apiKey: 'your api key **331e5',
   appId: 'ZHEDSTO6YB',
   discoveryPatterns: ['https://www.mulinzi.cn/**'],
   exclusionPatterns: [], // 排除的路径
@@ -71,7 +71,7 @@ new Crawler({
         'url',
       ],
       // 允许指定一个属性列表，Algolia 在返回搜索结果时会对这些属性进行截取，并在搜索结果中显示部分内容
-      attributesToSnippet: ['content:14', 'url:20'],
+      attributesToSnippet: ['*:30'],
       camelCaseAttributes: ['hierarchy', 'content'],
       // 自定义排序权重
       customRanking: [
@@ -81,8 +81,6 @@ new Crawler({
       ],
       // 是否启用去重
       distinct: true,
-      highlightPostTag: '</span>',
-      highlightPreTag: '<span class="algolia-docsearch-suggestion--highlight">',
       // 启用忽略复数功能 其中单数和复数被视为等同 (foot = feet)
       ignorePlurals: true,
       // 控制邻近排名标准的精度
@@ -93,7 +91,7 @@ new Crawler({
       minWordSizefor2Typos: 7,
       // 排名标准
       ranking: [
-        'words', // 按匹配查询词的数量对结果进行排序，从匹配次数最多的开始 // TODO optionalWords
+        'words', // 按匹配查询词的数量对结果进行排序，从匹配次数最多的开始
         'filters', // 按过滤分数对结果进行排序。如果您想使用，此选项必不可少optionalFilters。
         'typo', // 按拼写错误最少的顺序对结果进行排序。
         'attribute', // 根据您在 searchableAttributes 中设置的属性顺序对结果进行排序
