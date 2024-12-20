@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-17 10:45:10
+ * @LastEditTime : 2024-12-20 11:53:13
  * @Description  :
 -->
 <script setup lang="ts">
@@ -65,10 +65,12 @@ function pushKeys(
 
 const selectedKeys = ref<string[]>([])
 const expandedKeys = ref<string[]>([])
+const currentKeys = ref<string[]>([])
 watch(
   () => route.path, // hash 和 query 都改变不了 path
   () => {
     const ck = getCurrentTreeKeys()
+    currentKeys.value = ck
     selectedKeys.value = ck.length ? [ck.pop()!] : []
     expandedKeys.value = [...new Set([...ck, ...expandedKeys.value])]
   },
@@ -85,9 +87,12 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
 }
 
 function renderLabel({ option }: { option: TreeOption }) {
+  console.log('option', option)
+  const isTheClosestParent = option.key === currentKeys.value.at(-1)
   const ellipsis = h(
     NEllipsis,
     {
+      class: isTheClosestParent ? 'algolia_lvl0' : '',
       tooltip: {
         placement: 'right',
       },
