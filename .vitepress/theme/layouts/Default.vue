@@ -2,14 +2,14 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 22:29:12
+ * @LastEditTime : 2024-12-21 11:17:41
  * @Description  :
 -->
 <script setup lang="ts">
 import type { LayoutInst } from 'naive-ui'
 import type { DefaultTheme } from 'vitepress/theme'
 
-import { findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
+import { findSidebarLeafIndex } from '@/utils/index'
 import autoAnimate from '@formkit/auto-animate'
 import { inBrowser, useData, useRoute } from 'vitepress'
 // @ts-expect-error import { useLocalNav } from 'vitepress/theme' 回导入很多不需要的东西
@@ -20,7 +20,7 @@ import SiteAnchor from '../components/SiteAnchor.vue'
 import SiteFooter from '../components/SiteFooter.vue'
 import SiteHeader from '../components/SiteHeader.vue'
 
-const { frontmatter, theme } = useData()
+const { frontmatter } = useData()
 const { hasLocalNav, headers } = (useLocalNav as () => DefaultTheme.DocLocalNav)()
 const Comment = defineAsyncComponent(() => import('../components/Comment.vue'))
 
@@ -49,14 +49,13 @@ watch(
     })
   },
 )
-
+const sidebar = useSidebar()
 const pageTranslateDirection = ref<'left' | 'right'>('left')
 watch(
   () => route.path,
   (newVal, oldVal) => {
-    const sidebar: SidebarItem[] = theme.value.sidebar
-    const prevIndex = findSidebarLeafIndex(sidebar, decodeURI(oldVal))
-    const nextIndex = findSidebarLeafIndex(sidebar, decodeURI(newVal))
+    const prevIndex = findSidebarLeafIndex(sidebar.value, decodeURI(oldVal))
+    const nextIndex = findSidebarLeafIndex(sidebar.value, decodeURI(newVal))
     pageTranslateDirection.value = nextIndex > prevIndex ? 'left' : 'right'
   },
 )

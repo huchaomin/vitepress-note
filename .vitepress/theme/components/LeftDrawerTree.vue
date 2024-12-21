@@ -2,34 +2,18 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 23:43:29
+ * @LastEditTime : 2024-12-21 11:40:58
  * @Description  :
 -->
 <script setup lang="ts">
 import type { TreeOption, TreeOverrideNodeClickBehavior } from 'naive-ui'
 
-import { findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
+import { findSidebarItemByKey, findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
 import { NEllipsis } from 'naive-ui'
-import { useData, useRoute } from 'vitepress'
+import { useRoute } from 'vitepress'
 
-const { theme } = useData()
 const route = useRoute()
-
-// 递归添加 key
-function addKey(items: SidebarItem[], level: number) {
-  return [...items].map((_item) => {
-    const item = { ..._item, key: `${level}-${_item.text}` }
-    if (item.items) {
-      item.items = addKey(item.items, level + 1)
-    }
-    return item
-  })
-}
-
-const sidebar = computed(() => {
-  return addKey(theme.value.sidebar, 0)
-})
-
+const sidebar = useSidebar()
 // 有可能长度为 0, 但是 一般不展示这个视图, 比如首页
 function getCurrentTreeKeys() {
   const keys: string[] = []
@@ -68,7 +52,7 @@ watch(
     currentKeys.value = ck
     selectedKeys.value = ck.length ? [ck.pop()!] : []
     expandedKeys.value = [...new Set([...ck, ...expandedKeys.value])]
-    pageRank.value = String(findSidebarLeafIndex(theme.value.sidebar, decodeURI(val)))
+    pageRank.value = String(findSidebarLeafIndex(sidebar.value, decodeURI(val)))
   },
   {
     immediate: true,
@@ -83,19 +67,21 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
 }
 
 function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
-  const isParent = currentKeys.value.includes(option.key as string)
+  // const isParent = currentKeys.value.includes(option.key as string)
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
+  const prefix = currentKeys.value
+    .map((k) => findSidebarItemByKey(sidebar.value, k)!.text)
+    .join(' / ')
   const ellipsis = h(
     NEllipsis,
     {
-      class: isParent && isHidden ? 'algolia_lvl0' : '',
+      class: isTheClosestParent && isHidden ? 'algolia_lvl0' : '',
       tooltip: {
         placement: 'right',
       },
     },
     {
-      default: () =>
-        isHidden && isParent && !isTheClosestParent ? `${option.text} --› ` : option.text,
+      default: () => (isHidden && isTheClosestParent ? prefix : option.text),
     },
   )
   if (option.link !== undefined) {
