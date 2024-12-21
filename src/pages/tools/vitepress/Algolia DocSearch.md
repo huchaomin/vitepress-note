@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-21 12:10:27
+lastEditTime : 2024-12-21 12:25:41
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -23,7 +23,6 @@ new Crawler({
         const pageRank = $('.algolia_page_rank')
           ? $('.algolia_page_rank').text()
           : 0
-        const lvl0Text = $('.algolia_lvl0_text') ? $('.algolia_lvl0_text').text() : ''
         return helpers
           .docsearch({
             aggregateContent: true, // 是否聚合内容,防止爬虫爬的内容过多
@@ -36,7 +35,10 @@ new Crawler({
                 defaultValue: '木林子的笔记-记住自己的点滴',
                 selectors: '.algolia_lvl0',
               },
-              lvl0Text,
+              lvl0Text: {
+                defaultValue: '',
+                selectors: '.algolia_lvl0_text',
+              },
               lvl1: ['.VPDoc h1'],
               lvl2: ['.VPDoc h2'],
               lvl3: ['.VPDoc h3'],
@@ -69,7 +71,7 @@ new Crawler({
       attributesForFaceting: ['lang'],
       // 指定在搜索结果中要高亮显示的属性
       attributesToHighlight: ['hierarchy', 'content'],
-      // 指定在搜索结果中要检索的属性 （这里设置无效，前端默认传了）
+      // 指定在搜索结果中要返回的属性 （这里设置无效，前端默认传了）
       attributesToRetrieve: [
         'hierarchy.lvl0',
         'hierarchy.lvl1',
@@ -80,6 +82,7 @@ new Crawler({
         'hierarchy.lvl6',
         'content',
         'type',
+        'lvl0Text',
         'url',
       ],
       // 允许指定一个属性列表，Algolia 在返回搜索结果时会对这些属性进行截取，并在搜索结果中显示部分内容（这里设置无效，前端默认传了）

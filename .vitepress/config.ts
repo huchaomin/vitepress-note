@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-20 18:19:40
+ * @LastEditTime : 2024-12-21 12:24:42
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -148,6 +148,19 @@ export default withPwa(
               ...zhSearch,
             },
             searchParameters: {
+              attributesToRetrieve: [
+                'hierarchy.lvl0',
+                'hierarchy.lvl1',
+                'hierarchy.lvl2',
+                'hierarchy.lvl3',
+                'hierarchy.lvl4',
+                'hierarchy.lvl5',
+                'hierarchy.lvl6',
+                'content',
+                'type',
+                'lvl0Text',
+                'url',
+              ],
               attributesToSnippet: ['*:21'],
             },
           },
