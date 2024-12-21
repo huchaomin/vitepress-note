@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-21 11:40:58
+ * @LastEditTime : 2024-12-21 12:07:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -66,12 +66,12 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
   return 'default'
 }
 
+const lvl0Text = computed(() =>
+  currentKeys.value.map((k) => findSidebarItemByKey(sidebar.value, k)!.text).join(' / '),
+)
+
 function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
-  // const isParent = currentKeys.value.includes(option.key as string)
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
-  const prefix = currentKeys.value
-    .map((k) => findSidebarItemByKey(sidebar.value, k)!.text)
-    .join(' / ')
   const ellipsis = h(
     NEllipsis,
     {
@@ -81,7 +81,7 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
       },
     },
     {
-      default: () => (isHidden && isTheClosestParent ? prefix : option.text),
+      default: () => option.text,
     },
   )
   if (option.link !== undefined) {
@@ -126,4 +126,5 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
     :render-label="(...arg) => renderLabel(true, ...arg)"
   ></NTree>
   <div class="algolia_page_rank hidden">{{ `-${pageRank}` }}</div>
+  <div class="algolia_lvl0_text hidden">{{ lvl0Text }}</div>
 </template>

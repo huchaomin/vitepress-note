@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-20 22:58:52
+lastEditTime : 2024-12-21 12:10:27
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -23,6 +23,7 @@ new Crawler({
         const pageRank = $('.algolia_page_rank')
           ? $('.algolia_page_rank').text()
           : 0
+        const lvl0Text = $('.algolia_lvl0_text') ? $('.algolia_lvl0_text').text() : ''
         return helpers
           .docsearch({
             aggregateContent: true, // 是否聚合内容,防止爬虫爬的内容过多
@@ -35,6 +36,7 @@ new Crawler({
                 defaultValue: '木林子的笔记-记住自己的点滴',
                 selectors: '.algolia_lvl0',
               },
+              lvl0Text,
               lvl1: ['.VPDoc h1'],
               lvl2: ['.VPDoc h2'],
               lvl3: ['.VPDoc h3'],
