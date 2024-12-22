@@ -3,7 +3,7 @@ uuid         : d52168bd-6420-4e21-9986-e56cbca68e3e
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-20 10:51:03
-lastEditTime : 2024-12-21 12:25:41
+lastEditTime : 2024-12-22 09:57:25
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -66,7 +66,7 @@ new Crawler({
       allowTyposOnNumericTokens: false,
       attributeCriteriaComputedByMinProximity: true,
       // 去重使用的属性
-      attributeForDistinct: 'url',
+      attributeForDistinct: 'url_without_anchor',
       // 指定哪些属性可以用来进行筛选 vitepress 里面指定了 type 我感觉多余
       attributesForFaceting: ['lang'],
       // 指定在搜索结果中要高亮显示的属性
@@ -81,7 +81,6 @@ new Crawler({
         'hierarchy.lvl5',
         'hierarchy.lvl6',
         'content',
-        'type',
         'lvl0Text',
         'url',
       ],
