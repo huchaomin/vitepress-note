@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 14:56:09
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 22:59:49
+ * @LastEditTime : 2024-12-22 23:19:41
  * @Description  :
 -->
 <script setup lang="ts">
@@ -63,7 +63,10 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
       transformItems(items) {
         return items.map((item) => {
           // @ts-expect-error 自定义类型
-          const lvl0Text = (item.lvl0Text ?? '') as string
+          const lvl0TextTmp = item.lvl0Text as any[] | string
+          const lvl0Text = Array.isArray(lvl0TextTmp)
+            ? lvl0TextTmp.join('')
+            : ((lvl0TextTmp ?? '') as string)
           if (lvl0Text !== '') {
             item.hierarchy.lvl0 = item.hierarchy.lvl0 ? lvl0Text : item.hierarchy.lvl0
             item._highlightResult.hierarchy.lvl0.value = item._highlightResult.hierarchy.lvl0.value
