@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 14:56:09
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 16:32:07
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-22 10:21:21
  * @Description  :
 -->
 <script setup lang="ts">
@@ -63,6 +63,11 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
       transformItems(items) {
         return items.map((item) => {
           return Object.assign({}, item, {
+            hierarchy: {
+              ...item.hierarchy,
+              // @ts-expect-error 自定义属性
+              lvl0: item.lvl0Text,
+            },
             url: getRelativePath(item.url),
           })
         })

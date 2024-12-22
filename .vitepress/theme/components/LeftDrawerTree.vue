@@ -2,13 +2,13 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 09:58:12
+ * @LastEditTime : 2024-12-22 10:15:02
  * @Description  :
 -->
 <script setup lang="ts">
 import type { TreeOption, TreeOverrideNodeClickBehavior } from 'naive-ui'
 
-import { findSidebarItemByKey, findSidebarLeafIndex, type SidebarItem } from '@/utils/index'
+import { findSidebarItemByKey, type SidebarItem } from '@/utils/index'
 import { NEllipsis } from 'naive-ui'
 import { useRoute } from 'vitepress'
 
@@ -44,15 +44,13 @@ function pushKeys(
 const selectedKeys = ref<string[]>([])
 const expandedKeys = ref<string[]>([])
 const currentKeys = ref<string[]>([])
-const pageRank = ref<number>(0)
 watch(
   () => route.path, // hash 和 query 都改变不了 path
-  (val) => {
+  () => {
     const ck = getCurrentTreeKeys()
     currentKeys.value = ck
     selectedKeys.value = ck.length ? [ck.pop()!] : []
     expandedKeys.value = [...new Set([...ck, ...expandedKeys.value])]
-    pageRank.value = findSidebarLeafIndex(sidebar.value, decodeURI(val))
   },
   {
     immediate: true,
@@ -125,6 +123,5 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
     default-expand-all
     :render-label="(...arg) => renderLabel(true, ...arg)"
   ></NTree>
-  <div class="algolia_page_rank hidden">{{ `-${pageRank * 1000}` }}</div>
   <div class="algolia_lvl0_text hidden">{{ lvl0Text }}</div>
 </template>
