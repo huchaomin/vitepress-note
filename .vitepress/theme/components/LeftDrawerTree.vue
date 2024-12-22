@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 10:15:02
+ * @LastEditTime : 2024-12-22 23:00:47
  * @Description  :
 -->
 <script setup lang="ts">
@@ -64,9 +64,13 @@ const override: TreeOverrideNodeClickBehavior = ({ option }) => {
   return 'default'
 }
 
-const lvl0Text = computed(() =>
-  currentKeys.value.map((k) => findSidebarItemByKey(sidebar.value, k)!.text).join(' / '),
-)
+const lvl0TextPrefix = computed(() => {
+  const arr = [...currentKeys.value]
+  if (arr.length > 0) {
+    arr.pop()
+  }
+  return arr.map((k) => findSidebarItemByKey(sidebar.value, k)!.text).join(' / ')
+})
 
 function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
@@ -123,5 +127,5 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
     default-expand-all
     :render-label="(...arg) => renderLabel(true, ...arg)"
   ></NTree>
-  <div class="algolia_lvl0_text hidden">{{ lvl0Text }}</div>
+  <div class="algolia_lvl0_text hidden">{{ lvl0TextPrefix }}</div>
 </template>

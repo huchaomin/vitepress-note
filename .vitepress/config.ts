@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-21 21:16:11
+ * @LastEditTime : 2024-12-22 10:32:39
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -157,6 +157,7 @@ export default withPwa(
                 'hierarchy.lvl5',
                 'hierarchy.lvl6',
                 'content',
+                'type',
                 'lvl0Text',
                 'url',
               ],

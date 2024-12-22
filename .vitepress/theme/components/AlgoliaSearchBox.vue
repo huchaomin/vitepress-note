@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 14:56:09
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 10:21:21
+ * @LastEditTime : 2024-12-22 22:59:49
  * @Description  :
 -->
 <script setup lang="ts">
@@ -62,12 +62,18 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
 
       transformItems(items) {
         return items.map((item) => {
+          // @ts-expect-error 自定义类型
+          const lvl0Text = (item.lvl0Text ?? '') as string
+          if (lvl0Text !== '') {
+            item.hierarchy.lvl0 = item.hierarchy.lvl0 ? lvl0Text : item.hierarchy.lvl0
+            item._highlightResult.hierarchy.lvl0.value = item._highlightResult.hierarchy.lvl0.value
+              ? `${lvl0Text} / ${item._highlightResult.hierarchy.lvl0.value}`
+              : item._highlightResult.hierarchy.lvl0.value
+            item._snippetResult.hierarchy.lvl0.value = item._snippetResult.hierarchy.lvl0.value
+              ? `${lvl0Text} / ${item._snippetResult.hierarchy.lvl0.value}`
+              : item._snippetResult.hierarchy.lvl0.value
+          }
           return Object.assign({}, item, {
-            hierarchy: {
-              ...item.hierarchy,
-              // @ts-expect-error 自定义属性
-              lvl0: item.lvl0Text,
-            },
             url: getRelativePath(item.url),
           })
         })
