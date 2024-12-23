@@ -2,13 +2,14 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-18 17:13:40
+ * @LastEditTime : 2024-12-23 11:13:09
  * @Description  :
  */
 import type { Theme } from 'vitepress'
 
 import { NaiveUIProvider, provideCssRenderCollect } from '@/plugins/naive-ui/embedNaiveUiSsr'
 import { inBrowser } from 'vitepress'
+import '@/plugins/others/errorCatch'
 import '@/plugins/others/hideWaiting'
 import '@/plugins/others/setFontFamily'
 
