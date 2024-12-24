@@ -75,11 +75,12 @@
 }
 
 .n-alert--show-icon {
-  .n-alert-body__content {
-    > .n-ol,
-    > .n-ul {
-      padding-left: 0;
-    }
+  .n-alert-body {
+    padding-left: var(--n-padding) !important;
+  }
+
+  .n-alert-body__title {
+    padding-left: calc(var(--n-icon-margin-left) + var(--n-icon-size) + var(--n-icon-margin-right) - var(--n-padding));
   }
 }
 
