@@ -40,6 +40,10 @@
     @apply !mt-0 !pt-7;
   }
 
+  .n-h2:has(+ .n-h3) {
+    margin-bottom: 0;
+  }
+
   .n-h1 {
     margin-bottom: 0;
 

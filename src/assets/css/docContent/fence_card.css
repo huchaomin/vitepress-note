@@ -152,8 +152,17 @@
 
 @media only screen and (width <= 639px) {
   .fence_card {
+    pre{
+      @apply py-3;
+    }
     code {
       @apply px-3;
+    }
+    .line-numbers-mode{
+      padding-left: 0;
+      .line-numbers-wrapper{
+        display: none;
+      }
     }
   }
 }
