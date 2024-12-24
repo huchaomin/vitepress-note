@@ -3,7 +3,7 @@ uuid         : 13526969-fd51-47c0-8f3f-ae1db46283c0
 order        : 0
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-24 09:20:23
-lastEditTime : 2024-12-24 10:24:00
+lastEditTime : 2024-12-24 18:13:05
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -107,7 +107,7 @@ observer.disconnect()
 
 ## 实战
 
-使用MutationObserver对象封装一个监听 DOM 生成的函数(TODO 使用Class)
+### 使用MutationObserver对象封装一个监听 DOM 生成的函数(TODO 使用Class)
 
 ```ts
 (function (win) {
@@ -162,6 +162,44 @@ observer.disconnect()
 ready('.foo', function (element) {
   // ...
 })
+```
+
+### 获取 `GISCUS-WIDGET` iframe
+
+```vue
+<script setup lang="ts">
+const rootRef = ref<HTMLElement | null>(null)
+const observeConfig = {
+  childList: true,
+  subtree: true,
+}
+let observer: MutationObserver
+onMounted(() => {
+  observer = new MutationObserver((mutationsList) => {
+    outerLoop: for (const mutation of mutationsList) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeName === 'GISCUS-WIDGET') {
+          const innerObserver = new MutationObserver((mutationsList) => {
+            innerObserver.disconnect()
+            // @ts-expect-error shadowRoot 存在
+            const iframe = mutationsList[0].target.shadowRoot.querySelector('iframe')
+            console.log(iframe.contentWindow)
+          })
+          innerObserver.observe(node, {
+            attributes: true,
+          })
+          break outerLoop
+        }
+      }
+    }
+  })
+  observer.observe(rootRef.value!, observeConfig)
+})
+
+onUnmounted(() => {
+  observer.disconnect()
+})
+</script>
 ```
 
 ## 参考

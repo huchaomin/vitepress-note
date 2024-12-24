@@ -2,12 +2,11 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-23 09:59:50
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-23 15:00:51
+ * @LastEditTime : 2024-12-24 18:09:42
  * @Description  :
  */
-import { inBrowser } from 'vitepress'
 
-if (inBrowser) {
+export default (win: typeof globalThis & Window) => {
   const notifyConfig = {
     closable: true,
     duration: 0,
@@ -24,7 +23,7 @@ if (inBrowser) {
   /**
    * description: 可以捕获在脚本执行过程中发生的运行时错误，例如语法错误、引用错误等。
    */
-  window.onerror = function (...arg) {
+  win.onerror = function (...arg) {
     const e = arg[4]
     if (e === undefined) {
       $notify.error(`window.onerror 捕获到异常：${JSON.stringify(arg)}`, notifyConfig)
@@ -35,7 +34,7 @@ if (inBrowser) {
     return true
   }
 
-  window.addEventListener(
+  win.addEventListener(
     'error',
     function (event) {
       // eslint-disable-next-line ts/no-unsafe-assignment
@@ -61,7 +60,7 @@ if (inBrowser) {
     true, // 捕获阶段触发
   )
 
-  window.addEventListener(
+  win.addEventListener(
     'unhandledrejection',
     function (event) {
       event.preventDefault() // 去掉控制台的显示异常

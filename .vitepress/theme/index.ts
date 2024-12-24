@@ -2,20 +2,24 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-23 11:13:09
+ * @LastEditTime : 2024-12-24 14:05:09
  * @Description  :
  */
 import type { Theme } from 'vitepress'
 
 import { NaiveUIProvider, provideCssRenderCollect } from '@/plugins/naive-ui/embedNaiveUiSsr'
+import errorCatch from '@/plugins/others/errorCatch'
 import { inBrowser } from 'vitepress'
-import '@/plugins/others/errorCatch'
 import '@/plugins/others/hideWaiting'
 import '@/plugins/others/setFontFamily'
 
 import AppEntry from './App.vue'
 
 import '@/assets/css/index.css'
+
+if (inBrowser) {
+  errorCatch(window)
+}
 
 export default {
   enhanceApp: ({ app, router }) => {
