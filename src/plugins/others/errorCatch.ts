@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-23 09:59:50
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-24 18:09:42
+ * @LastEditTime : 2024-12-25 09:41:09
  * @Description  :
  */
 
@@ -11,12 +11,15 @@ export default (win: typeof globalThis & Window) => {
     closable: true,
     duration: 0,
   }
-  const errorArr: Error[] = []
+  const errorWeakSet = new WeakSet<Error>()
 
   function handleError(e: Error, prefix: string) {
-    if (!errorArr.includes(e)) {
-      errorArr.push(e)
-      $notify.error(`${prefix}, 捕获到异常：${e.message}`, notifyConfig)
+    if (!errorWeakSet.has(e)) {
+      errorWeakSet.add(e)
+      $notify.error(
+        `${prefix}, 捕获到异常：${JSON.stringify(e, Object.getOwnPropertyNames(e))}`,
+        notifyConfig,
+      )
     }
   }
 

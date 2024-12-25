@@ -3,7 +3,7 @@ uuid         : 932e6f10-285f-4eb9-bd4b-2b8f1afbca90
 order        : 3
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 11:34:34
-lastEditTime : 2024-12-20 11:01:08
+lastEditTime : 2024-12-25 10:06:33
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -14,7 +14,8 @@ description  :
 
 ![创建 GitHub Application](./创建GitHubApplication.png)
 
-填写完后点击 `Register application`，就会进到下面这个页面，点击 `Generate a new client secret` 创建一个新的 secret，<br>
+填写完后点击 `Register application`，就会进到下面这个页面，点击 `Generate a new client secret` 创建一个新的 secret
+
 创建完后记得先复制一下，后面再刷新页面就看不到 secret 了
 
 ![创建 GitHub Application](./创建GitHubApplication2.png)
@@ -68,8 +69,10 @@ watchEffect(() => {
 ```
 
 ::: warning
-`frontmatter.value.uuid` 是当前页面对应 md 文件的 uuid，这个是我自己工程里面创建的。<br>
-这样的好处是: 当你的文件夹结构发生变化或者文件名发生变化导致 url 发生变化。<br>
+`frontmatter.value.uuid` 是当前页面对应 md 文件的 uuid，这个是我自己工程里面创建的。
+
+这样的好处是: 当你的文件夹结构发生变化或者文件名发生变化导致 url 发生变化。
+
 使用 `location.pathname` 或者 `location.href` 作为 id 会导致评论数据丢失，而使用 uuid 作为 id 则不会有这个问题。
 :::
 

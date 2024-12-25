@@ -3,7 +3,7 @@ uuid         : 1224c000-efcb-4cd0-b75a-bf38a4f859af
 order        : 4
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-18 14:51:46
-lastEditTime : 2024-12-20 11:01:02
+lastEditTime : 2024-12-25 10:06:02
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -62,8 +62,10 @@ router.onAfterRouteChanged = (to: string) => {
 }
 ```
 
-推荐大家也这样做，第六步其他选项 pathname、URL、title 大部分情况下没有问题<br>
-但如果你想给你的博客页面移动一下位置，导致你的url变了，那么你的评论就找不到了。 <br>
+推荐大家也这样做，第六步其他选项 pathname、URL、title 大部分情况下没有问题
+
+但如果你想给你的博客页面移动一下位置，导致你的url变了，那么你的评论就找不到了。
+
 上一篇：[添加gitalk评论](../添加gitalk评论/index.md) 也有这个问题，至于怎么生成 uuid, 可以看这个博客的源码，写的不好可以使用这个评论喷我
 
 ### 动态插入 `og:title` 不能这么写

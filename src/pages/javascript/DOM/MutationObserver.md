@@ -3,7 +3,7 @@ uuid         : 13526969-fd51-47c0-8f3f-ae1db46283c0
 order        : 0
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-24 09:20:23
-lastEditTime : 2024-12-24 18:13:05
+lastEditTime : 2024-12-25 10:05:38
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -71,7 +71,8 @@ box.textContent = 'Hi' // 不触发回调
 ```
 
 ::: warning
-对一个节点添加观察器，就像使用addEventListener()方法一样，多次添加同一个观察器是无效的，回调函数依然只会触发一次。<br>
+对一个节点添加观察器，就像使用addEventListener()方法一样，多次添加同一个观察器是无效的，回调函数依然只会触发一次。
+
 如果指定不同的options对象，以后面添加的那个为准，类似覆盖
 :::
 
