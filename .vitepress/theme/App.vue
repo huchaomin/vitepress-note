@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 15:03:49
+ * @LastEditTime : 2024-12-25 16:53:59
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -20,20 +20,16 @@ Object.keys(layouts).forEach((key) => {
 })
 
 if (inBrowser) {
-  commonStore.screenWidth = window.innerWidth
-  commonStore.screenHeight = window.innerHeight
-  window.addEventListener('resize', () => {
-    commonStore.screenWidth = window.innerWidth
-    commonStore.screenHeight = window.innerHeight
-  })
+  const { height, width } = useWindowSize()
   // 根据屏幕宽度设置根字体大小
   function setRootFontSize(): void {
     const rate = (designFontSize - minFontSize) / (designScreenWidth - minScreenWidth)
     document.documentElement.style.fontSize = `${minFontSize + rate * (commonStore.screenWidth - minScreenWidth)}px`
   }
   watch(
-    () => commonStore.screenWidth,
-    () => {
+    width,
+    (val) => {
+      commonStore.screenWidth = val
       setRootFontSize()
       document.body.style.setProperty('--inner-width', `${commonStore.screenWidth}px`)
     },
@@ -42,8 +38,9 @@ if (inBrowser) {
     },
   )
   watch(
-    () => commonStore.screenHeight,
-    () => {
+    height,
+    (val) => {
+      commonStore.screenHeight = val
       document.body.style.setProperty('--inner-height', `${commonStore.screenHeight}px`)
     },
     {

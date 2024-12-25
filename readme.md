@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-25 14:51:25
+lastEditTime : 2024-12-25 16:58:53
 description  :
 ---
 # readme
@@ -41,6 +41,7 @@ description  :
 - 404页面
 - 参考一下大神：<https://github.com/jynba/jynba.github.io>
 - 滚动到 评论区域 提示
+- IntersectionObserver
 
 ## threejs
 
