@@ -2,13 +2,14 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-25 10:40:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 14:49:11
+ * @LastEditTime : 2024-12-25 15:39:14
  * @Description  :
  */
 import type { MessageOptions, MessageReactive } from 'naive-ui'
 import type { VNodeChild } from 'vue'
 
 import { useMessage } from '@/plugins/naive-ui/discreteApi'
+import { messagePlacement, type MessagePlacementType } from '@/plugins/naive-ui/providerProps'
 
 enum MessageTypes {
   default = 'create',
@@ -30,7 +31,9 @@ type CreateMethodsOthers = {
 
 type MessageProviderInjectionMethodsOthers = (
   content: (() => VNodeChild) | string,
-  options?: Omit<MessageOptions, 'type'>,
+  options?: Omit<MessageOptions, 'type'> & {
+    placement?: MessagePlacementType
+  },
 ) => MessageReactive
 
 type MessageTypesValues = `${MessageTypes}`
@@ -41,10 +44,15 @@ function useInject(
   options: Parameters<MessageProviderInjectionMethodsOthers>[1],
 ) {
   const message = useMessage()
+  const obj = {
+    ...(options ?? {}),
+  }
+  messagePlacement.value = obj.placement ?? 'top'
+  delete obj.placement
   return message[type](content, {
     duration: 2500,
     keepAliveOnHover: true,
-    ...(options ?? {}),
+    ...obj,
   })
 }
 

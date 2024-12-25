@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 18:18:43
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-24 17:51:19
+ * @LastEditTime : 2024-12-25 15:32:14
  * @Description  :
  */
 import {
@@ -27,8 +27,22 @@ export const configProviderProps: ConfigProviderProps = {
   themeOverrides: naiveUiThemeConfig,
 }
 
+export type MessagePlacementType =
+  | 'bottom'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'top'
+  | 'top-left'
+  | 'top-right'
+
+const messagePlacement = ref<MessagePlacementType>('top')
+
+export { messagePlacement }
+
 export const loadingBarProviderProps: LoadingBarProviderProps = {}
 export const notificationProviderProps: NotificationProviderProps = {}
 export const dialogProviderProps: DialogProviderProps = {}
 export const modalProviderProps: ModalProviderProps = {}
-export const messageProviderProps: MessageProviderProps = {}
+export const messageProviderProps: MessageProviderProps = reactive({
+  placement: messagePlacement,
+})
