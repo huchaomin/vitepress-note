@@ -1,13 +1,14 @@
 /*
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-07-20 09:00:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-20 11:12:19
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-25 10:41:11
  * @Description  :
  */
 
-import { useNotify } from '@/plugins/naive-ui/discreteApi'
 import type { NotificationOptions } from 'naive-ui'
+
+import { useNotify } from '@/plugins/naive-ui/discreteApi'
 
 enum NotificationTypes {
   error = 'error',

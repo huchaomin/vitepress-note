@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-19 09:41:48
+ * @LastEditTime : 2024-12-25 14:53:05
  * @Description  :
 -->
 <script setup lang="ts">
@@ -16,6 +16,33 @@ defineOptions({
 const { frontmatter } = useData()
 
 const isProd = import.meta.env.PROD
+
+interface IErrorMessage {
+  error: string
+}
+
+function handleMessage(event: MessageEvent) {
+  if (
+    event.origin !== 'https://giscus.app' ||
+    !(typeof event.data === 'object' && event.data.giscus) ||
+    !isProd
+  ) {
+    return
+  }
+  const giscusData = event.data.giscus
+  if ('error' in giscusData) {
+    const errorMessage: IErrorMessage = giscusData
+    if (errorMessage.error === 'Discussion not found') {
+      $msg.info('暂无评论，可占一楼进行评论')
+    }
+  }
+}
+
+window.addEventListener('message', handleMessage)
+
+onBeforeUnmount(() => {
+  window.removeEventListener('message', handleMessage)
+})
 </script>
 
 <template>

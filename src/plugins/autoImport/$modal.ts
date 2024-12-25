@@ -1,12 +1,13 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-11 09:24:19
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-11 11:41:04
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-25 10:33:33
  * @Description  :
  */
-import { useModal } from '@/plugins/naive-ui/discreteApi'
 import type { ModalOptions } from 'naive-ui'
+
+import { useModal } from '@/plugins/naive-ui/discreteApi'
 
 export default (config: ModalOptions) => {
   return useModal().create({

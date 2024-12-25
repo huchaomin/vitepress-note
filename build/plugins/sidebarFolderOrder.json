@@ -6,7 +6,8 @@
   "/html": 0,
   "/css": 1,
   "/javascript": 2,
-  "/tools": 3,
-  "/utils": 4,
-  "/杂谈": 5
+  "/typescript": 3,
+  "/tools": 4,
+  "/utils": 5,
+  "/杂谈": 6
 }
