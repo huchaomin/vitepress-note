@@ -9,8 +9,9 @@ import type { MessageOptions, MessageReactive } from 'naive-ui'
 import type { VNodeChild } from 'vue'
 
 import { useMessage } from '@/plugins/naive-ui/discreteApi'
-import { messagePlacement, type MessagePlacementType } from '@/plugins/naive-ui/providerProps'
+import { messagePlacement, type PlacementType } from '@/plugins/naive-ui/providerProps'
 
+// key 暂时没有用到 $msg.create option.type 就为 default
 enum MessageTypes {
   default = 'create',
   error = 'error',
@@ -32,7 +33,7 @@ type CreateMethodsOthers = {
 type MessageProviderInjectionMethodsOthers = (
   content: (() => VNodeChild) | string,
   options?: Omit<MessageOptions, 'type'> & {
-    placement?: MessagePlacementType
+    placement?: PlacementType
   },
 ) => MessageReactive
 

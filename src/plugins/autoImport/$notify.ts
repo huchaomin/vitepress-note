@@ -2,58 +2,77 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-07-20 09:00:28
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 10:41:11
+ * @LastEditTime : 2024-12-25 16:32:02
  * @Description  :
  */
 
-import type { NotificationOptions } from 'naive-ui'
+import type { NotificationOptions, NotificationReactive } from 'naive-ui'
 
 import { useNotify } from '@/plugins/naive-ui/discreteApi'
+import { notificationPlacement, type PlacementType } from '@/plugins/naive-ui/providerProps'
 
+// key 暂时没有用到 $notify.create option.type 就为 default
 enum NotificationTypes {
+  default = 'create',
   error = 'error',
   info = 'info',
   success = 'success',
   warning = 'warning',
 }
 
-type createFn = (content: string, options?: createFnOptions) => void
-
-type createFnOptions = Omit<NotificationOptions, 'content' | 'type'> & {
-  type?: keyof typeof NotificationTypes
+interface CreateMethodsDestroyAll {
+  destroyAll: () => void
 }
 
-type createMap = {
+type CreateMethodsOthers = {
   // 映射类型和函数类型不能写在一起
-  [key in NotificationTypes]: createFn
+  [value in NotificationTypes]: NotificationProviderInjectionMethodsOthers
 }
 
-const create: createFn = (
-  content,
-  {
-    duration = 2000,
-    keepAliveOnHover = true,
-    title = '提示',
-    type = NotificationTypes.success,
-    ...options
-  } = {},
-) => {
+type NotificationContentOptions = NotificationOptions['content']
+
+type NotificationProviderInjectionMethodsOthers = (
+  content: NotificationContentOptions,
+  options?: Omit<NotificationOptions, 'content' | 'type'> & {
+    placement?: PlacementType
+  },
+) => NotificationReactive
+
+type NotificationTypesValues = `${NotificationTypes}`
+
+const create: NotificationProviderInjectionMethodsOthers = (...arg) => {
+  return useInject('success', ...arg)
+}
+
+function useInject(
+  type: NotificationTypesValues,
+  content: Parameters<NotificationProviderInjectionMethodsOthers>[0],
+  options?: Parameters<NotificationProviderInjectionMethodsOthers>[1],
+) {
   const notification = useNotify()
-  notification[type]({
+  const obj = {
+    ...(options ?? {}),
+  }
+  notificationPlacement.value = obj.placement ?? 'top-right'
+  delete obj.placement
+  return notification[type]({
     content,
-    duration,
-    keepAliveOnHover,
-    title,
-    ...options,
+    duration: 2500,
+    keepAliveOnHover: true,
+    title: '提示',
+    ...obj,
   })
 }
 
 Object.values(NotificationTypes).forEach((type) => {
-  ;(create as unknown as createMap)[type] = (content, options = {}) => {
-    create(content, {
-      type,
-      ...options,
-    })
+  ;(create as unknown as CreateMethodsOthers)[type] = (...arg) => {
+    return useInject(type, ...arg)
   }
 })
-export default create as createFn & createMap
+;(create as unknown as CreateMethodsDestroyAll).destroyAll = () => {
+  const notification = useNotify()
+  return notification.destroyAll()
+}
+export default create as CreateMethodsDestroyAll &
+  CreateMethodsOthers &
+  NotificationProviderInjectionMethodsOthers
