@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-26 09:35:31
+lastEditTime : 2024-12-26 14:00:25
 description  :
 ---
 # readme
@@ -40,9 +40,8 @@ description  :
 - 评论系统错误捕获，所有类型的错误 fetch xhr vue iframe，service worker 处理
 - 404页面
 - 参考一下大神：<https://github.com/jynba/jynba.github.io>
-- 滚动到 评论区域 提示 json 文件位置
 - 搜索 h0 异常
-- IntersectionObserver
+- Window.requestIdleCallback()。
 
 ## threejs
 

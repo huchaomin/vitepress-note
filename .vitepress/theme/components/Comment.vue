@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 10:34:35
+ * @LastEditTime : 2024-12-26 13:59:28
  * @Description  :
 -->
 <script setup lang="ts">
@@ -62,12 +62,26 @@ window.addEventListener('message', handleMessage)
 onBeforeUnmount(() => {
   window.removeEventListener('message', handleMessage)
 })
+
+const giscusRef = ref<InstanceType<typeof Giscus> | null>(null)
+useIntersectionObserver(
+  giscusRef,
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      showCommentInfoState.inView = true
+    }
+  },
+  {
+    threshold: 0.5,
+  },
+)
 </script>
 
 <template>
   <ClientOnly>
     <Giscus
       v-if="frontmatter.uuid && isProd"
+      ref="giscusRef"
       :key="frontmatter.uuid"
       v-bind="$attrs"
       repo="huchaomin/vitepress-note"
