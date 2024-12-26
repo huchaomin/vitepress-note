@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-11 16:53:33
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-26 22:34:24
  * @Description  :
 -->
 
@@ -13,9 +13,9 @@ import type { DefaultTheme } from 'vitepress/theme'
 
 import { useData } from 'vitepress'
 
-const { theme } = useData()
+import AlgoliaSearchBox from './AlgoliaSearchBox.vue'
 
-const AlgoliaSearchBox = defineAsyncComponent(() => import('./AlgoliaSearchBox.vue'))
+const { theme } = useData()
 
 // to avoid loading the docsearch js upfront (which is more than 1/3 of the
 // payload), we delay initializing it until the user has actually clicked or

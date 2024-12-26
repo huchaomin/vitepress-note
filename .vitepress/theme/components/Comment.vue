@@ -63,9 +63,9 @@ onBeforeUnmount(() => {
   window.removeEventListener('message', handleMessage)
 })
 
-const giscusRef = ref<InstanceType<typeof Giscus> | null>(null)
+const rootRef = ref<HTMLDivElement | null>(null)
 useIntersectionObserver(
-  giscusRef,
+  rootRef,
   ([entry]) => {
     if (entry.isIntersecting) {
       showCommentInfoState.inView = true
@@ -79,25 +79,26 @@ useIntersectionObserver(
 
 <template>
   <ClientOnly>
-    <Giscus
-      v-if="frontmatter.uuid && isProd"
-      ref="giscusRef"
-      :key="frontmatter.uuid"
-      v-bind="$attrs"
-      repo="huchaomin/vitepress-note"
-      repo-id="R_kgDOMZ-wiw"
-      category="Announcements"
-      category-id="DIC_kwDOMZ-wi84ClUQt"
-      mapping="og:title"
-      strict="1"
-      reactions-enabled="1"
-      emit-metadata="1"
-      input-position="top"
-      theme="preferred_color_scheme"
-      lang="zh-CN"
-      loading="lazy"
-      crossorigin="anonymous"
-      async
-    ></Giscus>
+    <div ref="rootRef">
+      <Giscus
+        v-if="frontmatter.uuid && isProd"
+        :key="frontmatter.uuid"
+        v-bind="$attrs"
+        repo="huchaomin/vitepress-note"
+        repo-id="R_kgDOMZ-wiw"
+        category="Announcements"
+        category-id="DIC_kwDOMZ-wi84ClUQt"
+        mapping="og:title"
+        strict="1"
+        reactions-enabled="1"
+        emit-metadata="1"
+        input-position="top"
+        theme="preferred_color_scheme"
+        lang="zh-CN"
+        loading="lazy"
+        crossorigin="anonymous"
+        async
+      ></Giscus>
+    </div>
   </ClientOnly>
 </template>
