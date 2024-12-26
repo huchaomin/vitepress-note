@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 14:56:09
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 23:19:41
+ * @LastEditTime : 2024-12-26 22:19:34
  * @Description  :
 -->
 <script setup lang="ts">
@@ -61,12 +61,12 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
       },
 
       transformItems(items) {
-        return items.map((item) => {
-          // @ts-expect-error 自定义类型
-          const lvl0TextTmp = item.lvl0Text as any[] | string
-          const lvl0Text = Array.isArray(lvl0TextTmp)
-            ? lvl0TextTmp.join('')
-            : ((lvl0TextTmp ?? '') as string)
+        return items.map((i) => {
+          const item = JSON.parse(JSON.stringify(i))
+          const lvl0TextTmp = item.lvl0Text as string | string[]
+          console.log('lvl0TextTmp', lvl0TextTmp)
+
+          const lvl0Text = Array.isArray(lvl0TextTmp) ? lvl0TextTmp.join('') : lvl0TextTmp
           if (lvl0Text !== '') {
             item.hierarchy.lvl0 = item.hierarchy.lvl0 ? lvl0Text : item.hierarchy.lvl0
             item._highlightResult.hierarchy.lvl0.value = item._highlightResult.hierarchy.lvl0.value
@@ -76,9 +76,8 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
               ? `${lvl0Text} / ${item._snippetResult.hierarchy.lvl0.value}`
               : item._snippetResult.hierarchy.lvl0.value
           }
-          return Object.assign({}, item, {
-            url: getRelativePath(item.url),
-          })
+          item.url = getRelativePath(item.url)
+          return item
         })
       },
     },
