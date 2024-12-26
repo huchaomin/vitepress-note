@@ -2,16 +2,12 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 13:59:28
+ * @LastEditTime : 2024-12-26 22:55:29
  * @Description  :
 -->
 <script setup lang="ts">
 import Giscus from '@giscus/vue'
 import { useData } from 'vitepress'
-
-defineOptions({
-  inheritAttrs: false,
-})
 
 const { frontmatter } = useData()
 
@@ -78,12 +74,11 @@ useIntersectionObserver(
 </script>
 
 <template>
-  <ClientOnly>
-    <div ref="rootRef">
+  <div ref="rootRef">
+    <ClientOnly>
       <Giscus
         v-if="frontmatter.uuid && isProd"
         :key="frontmatter.uuid"
-        v-bind="$attrs"
         repo="huchaomin/vitepress-note"
         repo-id="R_kgDOMZ-wiw"
         category="Announcements"
@@ -99,6 +94,6 @@ useIntersectionObserver(
         crossorigin="anonymous"
         async
       ></Giscus>
-    </div>
-  </ClientOnly>
+    </ClientOnly>
+  </div>
 </template>
