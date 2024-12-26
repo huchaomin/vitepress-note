@@ -1,0 +1,5 @@
+
+.DocSearch-Container{
+  width: var(--inner-width) !important;
+  height: var(--inner-height) !important;
+}

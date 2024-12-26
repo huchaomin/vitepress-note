@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 16:53:59
+ * @LastEditTime : 2024-12-26 23:11:27
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -31,7 +31,7 @@ if (inBrowser) {
     (val) => {
       commonStore.screenWidth = val
       setRootFontSize()
-      document.body.style.setProperty('--inner-width', `${commonStore.screenWidth}px`)
+      document.documentElement.style.setProperty('--inner-width', `${commonStore.screenWidth}px`)
     },
     {
       immediate: true,
@@ -41,7 +41,7 @@ if (inBrowser) {
     height,
     (val) => {
       commonStore.screenHeight = val
-      document.body.style.setProperty('--inner-height', `${commonStore.screenHeight}px`)
+      document.documentElement.style.setProperty('--inner-height', `${commonStore.screenHeight}px`)
     },
     {
       immediate: true,
