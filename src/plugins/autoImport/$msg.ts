@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-25 10:40:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 15:39:14
+ * @LastEditTime : 2024-12-26 09:34:42
  * @Description  :
  */
 import type { MessageOptions, MessageReactive } from 'naive-ui'
@@ -51,7 +51,6 @@ function useInject(
   messagePlacement.value = obj.placement ?? 'top'
   delete obj.placement
   return message[type](content, {
-    duration: 2500,
     keepAliveOnHover: true,
     ...obj,
   })
