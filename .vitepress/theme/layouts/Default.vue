@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 12:16:51
+ * @LastEditTime : 2024-12-28 22:14:42
  * @Description  :
 -->
 <script setup lang="ts">
@@ -27,6 +27,8 @@ const Comment = defineAsyncComponent(() => import('../components/Comment.vue'))
 const showHeader = computed(() => {
   return frontmatter.value.header !== false
 })
+const route = useRoute()
+const nLayoutRef = ref<LayoutInst | null>(null)
 if (inBrowser) {
   watch(
     showHeader,
@@ -37,26 +39,24 @@ if (inBrowser) {
       immediate: true,
     },
   )
+  watch(
+    () => route.path,
+    () => {
+      nextTick(() => {
+        const hash = decodeURI(location.hash)
+        if (!hash) {
+          nLayoutRef.value!.scrollTo({
+            top: 0,
+          })
+        }
+      })
+    },
+    {
+      immediate: true, // 这个layout 不一定是第一个，所以需要立即执行
+    },
+  )
 }
 
-const route = useRoute()
-const nLayoutRef = ref<LayoutInst | null>(null)
-watch(
-  () => route.path,
-  () => {
-    nextTick(() => {
-      const hash = decodeURI(location.hash)
-      if (!hash) {
-        nLayoutRef.value!.scrollTo({
-          top: 0,
-        })
-      }
-    })
-  },
-  {
-    immediate: true, // 这个layout 不一定是第一个，所以需要立即执行
-  },
-)
 const sidebar = useSidebar()
 const pageTranslateDirection = ref<'left' | 'right'>('left')
 watch(

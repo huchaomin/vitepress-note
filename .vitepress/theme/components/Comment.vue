@@ -2,12 +2,12 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 22:55:29
+ * @LastEditTime : 2024-12-28 22:22:59
  * @Description  :
 -->
 <script setup lang="ts">
 import Giscus from '@giscus/vue'
-import { useData } from 'vitepress'
+import { inBrowser, useData } from 'vitepress'
 
 const { frontmatter } = useData()
 
@@ -53,7 +53,9 @@ function handleMessage(event: MessageEvent) {
   }
 }
 
-window.addEventListener('message', handleMessage)
+if (inBrowser) {
+  window.addEventListener('message', handleMessage)
+}
 
 onBeforeUnmount(() => {
   window.removeEventListener('message', handleMessage)
