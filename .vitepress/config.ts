@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 10:20:34
+ * @LastEditTime : 2024-12-28 10:51:19
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -97,6 +97,7 @@ export default withPwa(
           includeAllowlist: true, // TODO
         },
         manifest: {
+          display: 'standalone', // 独立应用模式
           icons: [
             {
               sizes: '192x192',
@@ -116,6 +117,7 @@ export default withPwa(
             },
           ],
           name: 'VitePress PWA',
+          orientation: 'portrait', // 竖屏模式
           short_name: 'VitePressPWA',
           theme_color: '#ffffff',
         },
@@ -183,20 +185,6 @@ export default withPwa(
               content:
                 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no',
               name: 'viewport',
-            },
-          ],
-          [
-            'meta',
-            {
-              content: 'yes',
-              name: 'apple-mobile-web-app-capable', // Web 应用在 iOS 设备上作为全屏应用运行
-            },
-          ],
-          [
-            'meta',
-            {
-              content: 'black-translucent',
-              name: 'apple-mobile-web-app-status-bar-style', // 配置状态栏样式
             },
           ],
         ]

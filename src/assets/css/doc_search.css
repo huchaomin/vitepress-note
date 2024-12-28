@@ -7,7 +7,8 @@
   body {
     &.DocSearch--active {
       #app {
-        display: none;
+        height: 0;
+        overflow: hidden;
       }
       .DocSearch-Container {
         position: static !important;

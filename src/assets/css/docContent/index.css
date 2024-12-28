@@ -5,6 +5,10 @@
 .fence_card:not(.details_container_card .fence_card, .code_group_card .fence_card),
 .details_container_card {
   @apply my-6;
+
+  @media only screen and (width <= 639px) {
+    @apply my-3;
+  }
 }
 
 .details_container_card {
@@ -45,6 +49,12 @@
   }
 
   .n-h1 {
+    @apply pt-8;
+
+    @media only screen and (width <= 639px) {
+      @apply pt-3;
+    }
+
     margin-bottom: 0;
 
     + .n-divider {

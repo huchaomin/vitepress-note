@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-21 11:17:41
+ * @LastEditTime : 2024-12-28 12:16:51
  * @Description  :
 -->
 <script setup lang="ts">
@@ -44,9 +44,17 @@ const nLayoutRef = ref<LayoutInst | null>(null)
 watch(
   () => route.path,
   () => {
-    nLayoutRef.value!.scrollTo({
-      top: 0,
+    nextTick(() => {
+      const hash = decodeURI(location.hash)
+      if (!hash) {
+        nLayoutRef.value!.scrollTo({
+          top: 0,
+        })
+      }
     })
+  },
+  {
+    immediate: true, // 这个layout 不一定是第一个，所以需要立即执行
   },
 )
 const sidebar = useSidebar()
@@ -117,7 +125,7 @@ const contentClass = computed(() => {
     >
       <div :class="isMobile ? '' : 'flex'" class="flex-auto">
         <div :class="isMobile ? '' : 'flex-1'" class="flex flex-col overflow-hidden">
-          <Content ref="contentRef" :class="contentClass"></Content>
+          <Content ref="contentRef" class="pt-0" :class="contentClass"></Content>
           <Comment class="mt-auto" :class="contentClass"></Comment>
         </div>
         <SiteAnchor

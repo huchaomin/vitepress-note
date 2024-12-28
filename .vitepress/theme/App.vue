@@ -2,13 +2,13 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 23:11:27
+ * @LastEditTime : 2024-12-28 12:18:47
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
 import { designFontSize, designScreenWidth, minFontSize, minScreenWidth } from '@/utils/config'
 import { getFilenameFromUrl } from '@/utils/url'
-import { inBrowser, useData } from 'vitepress'
+import { inBrowser, onContentUpdated, useData } from 'vitepress'
 
 import layouts from './layouts/index'
 
@@ -52,6 +52,34 @@ if (inBrowser) {
 const { frontmatter } = useData()
 
 const PWAReloadPrompt = defineAsyncComponent(() => import('./components/PWAReloadPrompt.vue'))
+
+function scrollAnchorIntoView(): void {
+  const hash = decodeURI(location.hash)
+  if (hash) {
+    nextTick(() => {
+      setTimeout(() => {
+        const anchor = document.getElementById(hash.slice(1))
+        if (anchor) {
+          anchor.scrollIntoView({
+            behavior: 'smooth',
+          })
+        }
+      }, 400) // 翻页动画执行完毕
+    })
+  }
+}
+
+onContentUpdated(scrollAnchorIntoView)
+
+onMounted(() => {
+  // 初始化时调用一次: 第一次进来(有/无)hash, 同一个页面hash变化，都会进该方法
+  window.addEventListener('hashchange', scrollAnchorIntoView)
+  scrollAnchorIntoView() // 初始化时调用一次
+})
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', scrollAnchorIntoView)
+})
 </script>
 
 <template>
