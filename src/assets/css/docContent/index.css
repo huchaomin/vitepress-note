@@ -75,9 +75,11 @@
 
   .n-p {
     @apply !my-1.5;
+
     &:first-child {
       @apply !mt-0;
     }
+
     &:last-child {
       @apply !mb-0;
     }

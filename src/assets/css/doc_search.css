@@ -1,5 +1,22 @@
-
-.DocSearch-Container{
+.DocSearch-Container {
   width: var(--inner-width) !important;
   height: var(--inner-height) !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    &.DocSearch--active {
+      #app {
+        display: none;
+      }
+      .DocSearch-Container {
+        position: static !important;
+      }
+    }
+  }
+
+  .DocSearch-Modal {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }

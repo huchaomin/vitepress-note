@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 10:32:39
+ * @LastEditTime : 2024-12-28 10:20:34
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -176,9 +176,34 @@ export default withPwa(
         const keywords = extractKeywordsFromPath(filePath)
         const headArr = (frontmatter.head ?? []) as Array<[string, Record<string, string>]>
         // 也可以不需要 https://blog.skk.moe/post/say-no-to-meta-keywords/
+        const arr: Array<[string, Record<string, string>]> = [
+          [
+            'meta',
+            {
+              content:
+                'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no',
+              name: 'viewport',
+            },
+          ],
+          [
+            'meta',
+            {
+              content: 'yes',
+              name: 'apple-mobile-web-app-capable', // Web 应用在 iOS 设备上作为全屏应用运行
+            },
+          ],
+          [
+            'meta',
+            {
+              content: 'black-translucent',
+              name: 'apple-mobile-web-app-status-bar-style', // 配置状态栏样式
+            },
+          ],
+        ]
         if (headArr.find((h) => h[0] === 'meta' && h[1].name === 'keywords') === undefined) {
-          return [['meta', { content: keywords, name: 'keywords' }]]
+          arr.push(['meta', { content: keywords, name: 'keywords' }])
         }
+        return arr
       },
       transformHtml(code) {
         return postHandleHtml(code)

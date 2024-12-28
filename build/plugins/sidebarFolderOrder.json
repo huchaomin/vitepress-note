@@ -3,11 +3,13 @@
   "/javascript/DOM": 0,
   "/tools/github": 3,
   "/tools/vitepress": 4,
+  "/微信/公众号": 0,
   "/html": 0,
   "/css": 1,
   "/javascript": 2,
   "/typescript": 3,
   "/tools": 4,
   "/utils": 5,
-  "/杂谈": 6
+  "/微信": 6,
+  "/杂谈": 7
 }

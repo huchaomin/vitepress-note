@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 .fence_card {
   span.lang {
     position: absolute;
@@ -105,27 +106,24 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
   .has-focused-lines .line:not(.has-focus) {
     filter: blur(0.095rem);
     opacity: 0.7;
   }
 
   &:hover {
-    /* stylelint-disable-next-line selector-class-pattern */
     .has-focused-lines .line:not(.has-focus) {
       filter: blur(0);
       opacity: 1;
     }
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
   .line-numbers-mode {
     --width: 2rem;
 
     /* rtl:ignore */
     padding-left: var(--width);
-    /* stylelint-disable-next-line selector-class-pattern */
+
     .line-numbers-wrapper {
       position: absolute;
       top: 0;
@@ -148,18 +146,19 @@
       @apply pt-5;
     }
   }
-}
 
-@media only screen and (width <= 639px) {
-  .fence_card {
+  @media only screen and (width <= 639px) {
     pre {
       @apply py-3;
     }
+
     code {
       @apply px-3;
     }
+
     .line-numbers-mode {
       padding-left: 0;
+
       .line-numbers-wrapper {
         display: none;
       }
