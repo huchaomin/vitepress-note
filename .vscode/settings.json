@@ -23,6 +23,9 @@
     "tseslint",
     "vitepress"
   ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "eslint.useFlatConfig": true,
   // Disable the default formatter, use eslint instead
   "prettier.enable": true,

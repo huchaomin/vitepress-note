@@ -1,15 +1,17 @@
+/* stylelint-disable selector-class-pattern */
 .DocSearch-Container {
   width: var(--inner-width) !important;
   height: var(--inner-height) !important;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   body {
     &.DocSearch--active {
       #app {
         height: 0;
         overflow: hidden;
       }
+
       .DocSearch-Container {
         position: static !important;
       }
