@@ -40,6 +40,7 @@ description  :
 - 评论系统错误捕获，所有类型的错误 fetch xhr vue iframe，service worker 处理
 - 404页面
 - 参考一下大神：<https://github.com/jynba/jynba.github.io>
+- 浏览器 event loop
 
 ## threejs
 

@@ -1,6 +1,7 @@
 {
   "/css/@rules": 2,
-  "/javascript/DOM": 0,
+  "/javascript/BOM": 0,
+  "/javascript/DOM": 1,
   "/tools/github": 3,
   "/tools/vitepress": 4,
   "/微信/公众号": 0,
