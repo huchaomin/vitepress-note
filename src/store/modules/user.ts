@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 10:35:34
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-11-28 00:03:55
+ * @LastEditTime : 2024-12-30 18:17:24
  * @Description  :
  */
 import { login as loginMethod } from '@/api/root'
@@ -19,14 +19,12 @@ export default defineStore(
       })
       token.value = res.token
     }
-    function clearSession(showLogin = true) {
+    function clearSession() {
       token.value = ''
-      if (showLogin) {
-        void showLoginModal(true)
-      }
+      void showLoginModal()
     }
 
-    function showLoginModal(refresh = false): Promise<void> {
+    function showLoginModal(): Promise<void> {
       const loginInstance = ref<InstanceType<typeof Login> | null>(null)
       return new Promise((resolve) => {
         $modal({
@@ -36,9 +34,6 @@ export default defineStore(
           onPositiveClick: async () => {
             await loginInstance.value!.handleSubmit()
             $notify('登录成功')
-            if (refresh) {
-              location.reload()
-            }
             resolve()
           },
           title: '请登录',

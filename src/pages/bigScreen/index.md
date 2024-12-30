@@ -5,18 +5,26 @@ uuid         : eef3293e-a729-40a7-bcfd-b30f248d1754
 order        : 8
 author       : peter peter@qingcongai.com
 date         : 2024-11-29 11:20:04
-lastEditTime : 2024-12-19 22:37:13
+lastEditTime : 2024-12-30 18:24:34
 lastEditors  : huchaomin iisa_peter@163.com
 ---
 
 <script setup lang="ts">
 import { defineClientComponent } from 'vitepress'
+import Index from './Index.vue'
+
 const userStore = useUserStore(piniaInstance)
-const Index = defineClientComponent(async () => {
-  if(userStore.token === ''){
-    await userStore.showLoginModal()
+
+if(userStore.token === ''){
+  userStore.showLoginModal()
+}
+
+const compo = computed(() => {
+  if(userStore.token === '') {
+    return null
+  } else {
+    return Index
   }
-  return import('./Index.vue')
 })
 </script>
-<Index></Index>
+<component :is="compo"></component>

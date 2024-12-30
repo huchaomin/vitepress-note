@@ -2,7 +2,7 @@
  * @Author       : huchaomin peter@qingcongai.com
  * @Date         : 2023-07-20 09:00:28
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 09:34:47
+ * @LastEditTime : 2024-12-30 18:21:45
  * @Description  :
  */
 
@@ -57,6 +57,7 @@ function useInject(
   delete obj.placement
   return notification[type]({
     content,
+    duration: 3000,
     keepAliveOnHover: true,
     title: '提示',
     ...obj,

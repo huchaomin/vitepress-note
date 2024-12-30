@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-16 23:23:20
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-24 23:27:45
+ * @LastEditTime : 2024-12-30 17:36:21
  * @Description  :
 -->
 <script setup lang="ts">
@@ -22,6 +22,7 @@ function handleLogoClick() {
 
 const Hamburgers = defineAsyncComponent(() => import('./Hamburger.vue'))
 const NavSearch = defineAsyncComponent(() => import('./NavSearch.vue'))
+const ChangeTheme = defineAsyncComponent(() => import('./ChangeTheme.vue'))
 </script>
 
 <template>
@@ -34,6 +35,7 @@ const NavSearch = defineAsyncComponent(() => import('./NavSearch.vue'))
       </NText>
     </div>
     <NavSearch></NavSearch>
+    <ChangeTheme></ChangeTheme>
   </NLayoutHeader>
 </template>
 
