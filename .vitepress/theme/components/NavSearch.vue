@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-26 22:34:24
+ * @LastEditTime : 2024-12-30 16:58:49
  * @Description  :
 -->
 
@@ -25,7 +25,6 @@ const actuallyLoaded = ref(false)
 
 function preconnect() {
   const id = 'AlgoliaPreconnect'
-
   const rIC = window.requestIdleCallback || setTimeout
   rIC(() => {
     const preconnect = document.createElement('link')
@@ -41,7 +40,6 @@ function preconnect() {
 }
 onMounted(() => {
   preconnect()
-
   const handleSearchHotKey = (event: KeyboardEvent) => {
     if (
       (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) ||
@@ -53,20 +51,16 @@ onMounted(() => {
       remove()
     }
   }
-
   const remove = () => {
     window.removeEventListener('keydown', handleSearchHotKey)
   }
-
   window.addEventListener('keydown', handleSearchHotKey)
-
   onUnmounted(remove)
 })
 
 function isEditingContent(event: KeyboardEvent): boolean {
   const element = event.target as HTMLElement
   const tagName = element.tagName
-
   return (
     element.isContentEditable ||
     tagName === 'INPUT' ||
@@ -85,12 +79,9 @@ function load() {
 function poll() {
   // programmatically open the search box after initialize
   const e = new Event('keydown') as any
-
   e.key = 'k'
   e.metaKey = true
-
   window.dispatchEvent(e)
-
   setTimeout(() => {
     if (!document.querySelector('.DocSearch-Modal')) {
       poll()
@@ -105,7 +96,7 @@ function poll() {
     :algolia="theme.search?.options ?? theme.algolia"
     @vue:before-mount="actuallyLoaded = true"
   ></AlgoliaSearchBox>
-  <div v-if="!actuallyLoaded" id="docsearch">
+  <div v-if="!actuallyLoaded">
     <button
       type="button"
       aria-label="搜索文档 (Ctrl+K)"
