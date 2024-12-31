@@ -1,25 +1,29 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-21 14:24:06
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-14 18:06:56
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-31 14:14:52
  * @Description  :
  */
-import { Fog, Color, Group } from 'three'
-import { ThreeCore } from '@/components/three/core'
-import { InteractionManager } from 'three.interactive'
-import Label3d from '@/components/three/utils/Label3d'
-import loadAllAssets from './utils/loadAllAssets'
 import type { AssetType } from '@/components/three/utils/Resource'
-import createBgLight from './modules/createBgLight'
-import createHalo from './modules/createHalo'
-import createRotateBorder from './modules/createRotateBorder'
-import createEnvLight from './modules/createEnvLight'
-import createMap from './modules/createMap'
+
+import { ThreeCore } from '@/components/three/core'
+import Label3d from '@/components/three/utils/Label3d'
+import { Color, Fog, Group } from 'three'
+import { InteractionManager } from 'three.interactive'
+
 import createAnimation from './modules/createAnimation'
+import createBgLight from './modules/createBgLight'
+import createEnvLight from './modules/createEnvLight'
 import createEvent from './modules/createEvent'
-import createProvinceItem from './modules/createProvinceItem'
+import createHalo from './modules/createHalo'
+import createMap from './modules/createMap'
 import createMapStroke from './modules/createMapStroke'
+import createProvinceItem from './modules/createProvinceItem'
+import createRotateBorder from './modules/createRotateBorder'
+import loadAllAssets from './utils/loadAllAssets'
+
+export type CanvasRenderType = InstanceType<typeof CanvasRender>
 
 export default class CanvasRender extends ThreeCore {
   assets: AssetType[]
@@ -129,5 +133,3 @@ export default class CanvasRender extends ThreeCore {
     this.interactionManager.update()
   }
 }
-
-export type CanvasRenderType = InstanceType<typeof CanvasRender>

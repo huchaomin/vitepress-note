@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-30 15:51:22
+lastEditTime : 2024-12-31 14:03:19
 description  :
 ---
 # readme
@@ -41,7 +41,7 @@ description  :
 - 404页面
 - 参考一下大神：<https://github.com/jynba/jynba.github.io>
 - 浏览器 event loop
-- rel = 'preconnect'
+- bundle 分析 有多种模式
 
 ## threejs
 
