@@ -6,8 +6,8 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import title_underline from '@/pages/bigScreen/assets/json/lottie/title_underline.json?raw'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 
 withDefaults(
   defineProps<{
@@ -25,7 +25,7 @@ withDefaults(
         :render-config="{
           autoResize: true,
         }"
-        style="width: 3vw; height: 3vw;"
+        style="width: 3vw; height: 3vw"
         autoplay
         loop
         :data="data"
@@ -37,7 +37,7 @@ withDefaults(
         autoResize: true,
       }"
       mode="bounce"
-      style="height: 1.5vw;"
+      style="height: 1.5vw"
       autoplay
       loop
       :data="title_underline"

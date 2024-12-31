@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-23 09:59:50
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 09:41:09
+ * @LastEditTime : 2024-12-31 13:50:46
  * @Description  :
  */
 
@@ -16,10 +16,7 @@ export default (win: typeof globalThis & Window) => {
   function handleError(e: Error, prefix: string) {
     if (!errorWeakSet.has(e)) {
       errorWeakSet.add(e)
-      $notify.error(
-        `${prefix}, 捕获到异常：${JSON.stringify(e, Object.getOwnPropertyNames(e))}`,
-        notifyConfig,
-      )
+      $notify.error(`${prefix}, 捕获到异常：${e.message}`, notifyConfig)
     }
   }
 

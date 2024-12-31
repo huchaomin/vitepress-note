@@ -6,9 +6,9 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import { DotLottieVue, type DotLottieVueInstance } from '@lottiefiles/dotlottie-vue'
 import refund_gather from '@/pages/bigScreen/assets/json/lottie/refund_gather.json?raw'
 import { repayItemChangeKey } from '@/pages/bigScreen/utils/others'
+import { DotLottieVue, type DotLottieVueInstance } from '@lottiefiles/dotlottie-vue'
 
 const shareData: Record<string, any> = inject('shareData')!
 const initialTotal = computed(() => {
