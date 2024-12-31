@@ -3,7 +3,7 @@ uuid         : 9b352454-b1bc-42a0-bf20-37c1ac899289
 order        : 1
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-30 09:58:44
-lastEditTime : 2024-12-30 10:39:29
+lastEditTime : 2024-12-31 21:50:26
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -24,9 +24,9 @@ window.requestIdleCallback(callback, options)
 
 ### 参数
 
-- `callback`：一个在事件循环空闲时即将被调用的函数的引用。函数会接收到一个名为 IdleDeadline 的参数，这个参数可以获取当前空闲时间以及回调是否在超时时间前已经执行的状态
-- `options`：可选，一个配置对象，包含以下属性：
-  - `timeout`：如果指定了 timeout，并且有一个正值，而回调在 timeout 毫秒过后还没有被调用，那么回调任务将放入事件循环中排队，即使这样做有可能对性能产生负面影响
+1. `callback`：一个在事件循环空闲时即将被调用的函数的引用。函数会接收到一个名为 IdleDeadline 的参数，这个参数可以获取当前空闲时间以及回调是否在超时时间前已经执行的状态
+2. `options`：可选，一个配置对象，包含以下属性：
+    - `timeout`：如果指定了 timeout，并且有一个正值，而回调在 timeout 毫秒过后还没有被调用，那么回调任务将放入事件循环中排队，即使这样做有可能对性能产生负面影响
 
 ### 返回值
 

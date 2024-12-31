@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-16 16:42:11
+ * @LastEditTime : 2024-12-31 22:31:20
  * @Description  :
 -->
 <script setup lang="ts">
@@ -66,7 +66,8 @@ function clickOutside(e: MouseEvent) {
         :class="{
           'is-active': commonStore.showLeftDrawer,
         }"
-        class="hamburger hamburger--minus"
+        round
+        class="hamburger hamburger--minus !inline-flex"
         quaternary
         size="large"
         @click="toggleLeftDrawer"
@@ -81,12 +82,15 @@ function clickOutside(e: MouseEvent) {
 </template>
 
 <style scoped>
+/* stylelint-disable selector-class-pattern */
 .n-button {
-  --n-height: var(--header-height);
+  --n-height: 48px;
   --line-height: 2px;
   --line-width: 24px;
 
-  /* stylelint-disable-next-line selector-class-pattern */
+  width: var(--n-height);
+  padding: 0;
+
   .hamburger-inner,
   .hamburger-inner::after,
   .hamburger-inner::before {
@@ -95,7 +99,6 @@ function clickOutside(e: MouseEvent) {
     background-color: var(--n-text-color);
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
   .hamburger-box {
     width: var(--line-width);
   }

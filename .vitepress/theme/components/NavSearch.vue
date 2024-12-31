@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 17:59:09
+ * @LastEditTime : 2024-12-31 23:26:19
  * @Description  :
 -->
 
@@ -138,6 +138,12 @@ function poll() {
 
 <style>
 /* stylelint-disable selector-class-pattern */
+.DocSearch-Button {
+  height: 48px;
+  padding: 0 var(--spacing-6) !important;
+  margin-left: 0 !important;
+}
+
 .DocSearch-Container {
   width: var(--inner-width) !important;
   height: var(--inner-height) !important;
@@ -165,6 +171,17 @@ function poll() {
 
 .DocSearch-Form {
   background-color: var(--vp-c-white);
+}
+
+.DocSearch-Button-Key {
+  top: 0;
+  box-shadow: var(--docsearch-key-pressed-shadow);
+  transform: none !important;
+}
+
+.DocSearch-Button-Key--pressed {
+  font-size: 0.7em;
+  font-weight: 800;
 }
 
 [class*='DocSearch'] {
@@ -196,6 +213,7 @@ function poll() {
     --docsearch-hit-background: var(--vp-c-default-soft);
     --docsearch-hit-color: var(--vp-c-text-2);
     --docsearch-hit-shadow: none;
+    --docsearch-key-pressed-shadow: 0 0 2px 0px var(--vp-c-text-1);
   }
 }
 </style>

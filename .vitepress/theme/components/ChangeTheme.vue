@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-30 17:36:03
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 16:16:24
+ * @LastEditTime : 2024-12-31 23:29:00
  * @Description  :
 -->
 <script setup lang="ts">
@@ -13,22 +13,37 @@ import { useData } from 'vitepress'
 
 const { isDark } = useData()
 
+const initialMode = isDark.value ? 'reverse' : 'forward'
+
 watchEffect(() => {
   changeProviderTheme(isDark.value)
 })
 
 const dotLottieVueRef = ref<DotLottieVueInstance | null>(null)
+
+function changeTheme() {
+  isDark.value = !isDark.value
+  const instance = dotLottieVueRef.value?.getDotLottieInstance()
+  if (instance) {
+    instance.play()
+    instance!.addEventListener('complete', () => {
+      instance!.setMode(isDark.value ? 'reverse' : 'forward')
+    })
+  }
+}
 </script>
 
 <template>
-  <NButton quaternary size="large" @click="isDark = !isDark">
+  <NButton quaternary size="large" round class="overflow-hidden" @click="changeTheme">
     <DotLottieVue
       ref="dotLottieVueRef"
-      style="width: calc(var(--header-height) - 1px); height: calc(var(--header-height) - 1px);"
+      style="width: var(--n-height); height: var(--n-height);"
       :render-config="{
         autoResize: true,
       }"
-      :speed="1"
+      :mode="initialMode"
+      :autoplay="false"
+      :speed="2"
       :data="change_theme"
     ></DotLottieVue>
     <div class="mask absolute h-full w-full"></div>
@@ -37,7 +52,7 @@ const dotLottieVueRef = ref<DotLottieVueInstance | null>(null)
 
 <style scoped>
 .n-button {
-  --n-height: var(--header-height);
+  --n-height: 48px;
   --n-padding: 0;
 
   &:hover,
