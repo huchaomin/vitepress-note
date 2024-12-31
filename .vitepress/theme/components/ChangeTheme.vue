@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-30 17:36:03
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 23:29:00
+ * @LastEditTime : 2024-12-31 23:42:09
  * @Description  :
 -->
 <script setup lang="ts">
@@ -22,14 +22,20 @@ watchEffect(() => {
 const dotLottieVueRef = ref<DotLottieVueInstance | null>(null)
 
 function changeTheme() {
-  isDark.value = !isDark.value
   const instance = dotLottieVueRef.value?.getDotLottieInstance()
   if (instance) {
-    instance.play()
-    instance!.addEventListener('complete', () => {
-      instance!.setMode(isDark.value ? 'reverse' : 'forward')
-    })
+    if (!instance.isPlaying) {
+      instance.play()
+      isDark.value = !isDark.value
+    }
   }
+}
+
+function dotLottieMounted() {
+  const instance = dotLottieVueRef.value!.getDotLottieInstance()
+  instance!.addEventListener('complete', () => {
+    instance!.setMode(isDark.value ? 'reverse' : 'forward')
+  })
 }
 </script>
 
@@ -45,6 +51,7 @@ function changeTheme() {
       :autoplay="false"
       :speed="2"
       :data="change_theme"
+      @vue:mounted="dotLottieMounted"
     ></DotLottieVue>
     <div class="mask absolute h-full w-full"></div>
   </NButton>
