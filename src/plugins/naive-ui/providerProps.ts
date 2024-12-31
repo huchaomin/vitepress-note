@@ -2,13 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 18:18:43
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 15:59:39
+ * @LastEditTime : 2024-12-31 16:15:22
  * @Description  :
  */
 import {
   type ConfigProviderProps,
+  darkTheme,
   dateZhCN,
   type DialogProviderProps,
+  lightTheme,
   type LoadingBarProviderProps,
   type MessageProviderProps,
   type ModalProviderProps,
@@ -18,14 +20,17 @@ import {
 
 import naiveUiThemeConfig from './naive-ui-theme-overrides.ts'
 
-export const configProviderProps: ConfigProviderProps = {
+const isDark = ref(false)
+
+export const configProviderProps: ConfigProviderProps = reactive({
   abstract: true,
   breakpoints: breakpointsTailwind,
   dateLocale: dateZhCN,
   inlineThemeDisabled: true,
   locale: zhCN,
+  theme: computed(() => (isDark.value ? darkTheme : lightTheme)),
   themeOverrides: naiveUiThemeConfig,
-}
+})
 
 export type PlacementType =
   | 'bottom'
@@ -34,6 +39,10 @@ export type PlacementType =
   | 'top'
   | 'top-left'
   | 'top-right'
+
+export function changeProviderTheme(dark: boolean): void {
+  isDark.value = dark
+}
 
 const messagePlacement = ref<PlacementType>('top')
 const notificationPlacement = ref<PlacementType>('top-right')

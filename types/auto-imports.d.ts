@@ -36,6 +36,7 @@ declare global {
   const dayjs: typeof import('../src/plugins/autoImport/dayjs')['default']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
+  const defaultsDeep: typeof import('../src/plugins/autoImport/_')['defaultsDeep']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
@@ -364,6 +365,7 @@ declare module 'vue' {
     readonly dayjs: UnwrapRef<typeof import('../src/plugins/autoImport/dayjs')['default']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
+    readonly defaultsDeep: UnwrapRef<typeof import('../src/plugins/autoImport/_')['defaultsDeep']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>

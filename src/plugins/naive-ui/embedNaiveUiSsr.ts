@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-17 17:12:15
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-22 13:49:03
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2024-12-31 16:18:55
  * @Description  :
  */
 import type { App, Component } from 'vue'
@@ -19,6 +19,7 @@ import {
 import { inBrowser } from 'vitepress'
 
 import {
+  changeProviderTheme,
   configProviderProps,
   dialogProviderProps,
   loadingBarProviderProps,
@@ -41,9 +42,16 @@ const CssRenderStyle = defineComponent({
   },
 })
 
+let hasQueriedDark = false
 function NaiveUIProvider(AppEntry: Component) {
   return defineComponent({
     render() {
+      if (!hasQueriedDark) {
+        if (inBrowser) {
+          hasQueriedDark = true
+          changeProviderTheme(document.documentElement.classList.contains('dark'))
+        }
+      }
       return h(NConfigProvider, configProviderProps, {
         default: () =>
           h(NLoadingBarProvider, loadingBarProviderProps, {
