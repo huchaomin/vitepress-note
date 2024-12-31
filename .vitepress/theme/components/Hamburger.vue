@@ -83,19 +83,21 @@ function clickOutside(e: MouseEvent) {
 <style scoped>
 .n-button {
   --n-height: var(--header-height);
+  --line-height: 2px;
+  --line-width: 24px;
 
   /* stylelint-disable-next-line selector-class-pattern */
-  .hamburger-box,
   .hamburger-inner,
   .hamburger-inner::after,
   .hamburger-inner::before {
-    width: 24px;
-    height: 2px;
+    width: var(--line-width);
+    height: var(--line-height);
+    background-color: var(--n-text-color);
   }
 
   /* stylelint-disable-next-line selector-class-pattern */
   .hamburger-box {
-    height: auto;
+    width: var(--line-width);
   }
 }
 </style>

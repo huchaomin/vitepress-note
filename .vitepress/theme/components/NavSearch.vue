@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-30 16:58:49
+ * @LastEditTime : 2024-12-31 17:59:09
  * @Description  :
 -->
 
@@ -135,3 +135,67 @@ function poll() {
     </button>
   </div>
 </template>
+
+<style>
+/* stylelint-disable selector-class-pattern */
+.DocSearch-Container {
+  width: var(--inner-width) !important;
+  height: var(--inner-height) !important;
+}
+
+@media (width <= 768px) {
+  body {
+    &.DocSearch--active {
+      #app {
+        height: 0;
+        overflow: hidden;
+      }
+
+      .DocSearch-Container {
+        position: static !important;
+      }
+    }
+  }
+
+  .DocSearch-Modal {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.DocSearch-Form {
+  background-color: var(--vp-c-white);
+}
+
+[class*='DocSearch'] {
+  --docsearch-primary-color: var(--vp-c-brand-1);
+  --docsearch-highlight-color: var(--docsearch-primary-color);
+  --docsearch-text-color: var(--vp-c-text-1);
+  --docsearch-muted-color: var(--vp-c-text-2);
+  --docsearch-searchbox-background: var(--vp-c-bg-soft);
+  --docsearch-searchbox-focus-background: transparent;
+  --docsearch-modal-background: var(--vp-c-bg-soft);
+  --docsearch-footer-background: var(--vp-c-bg);
+}
+
+.dark {
+  .DocSearch-Footer {
+    border-top: 1px solid var(--vp-c-divider);
+  }
+
+  .DocSearch-Form {
+    background-color: var(--vp-c-default-soft);
+  }
+
+  [class*='DocSearch'] {
+    --docsearch-key-gradient: transparent;
+    --docsearch-searchbox-shadow: none;
+    --docsearch-modal-shadow: none;
+    --docsearch-footer-shadow: none;
+    --docsearch-searchbox-focus-background: var(--vp-c-default-soft);
+    --docsearch-hit-background: var(--vp-c-default-soft);
+    --docsearch-hit-color: var(--vp-c-text-2);
+    --docsearch-hit-shadow: none;
+  }
+}
+</style>

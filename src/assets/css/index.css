@@ -3,7 +3,6 @@
 @import './keyframes.css';
 @import './docContent/index.css';
 @import './naive_ui_reset.css';
-@import './doc_search.css';
 
 body {
   --sider-width: 300px;
