@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 10:51:19
+ * @LastEditTime : 2025-01-01 09:25:31
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -142,7 +142,7 @@ export default withPwa(
         },
         search: {
           options: {
-            apiKey: '8eb9aa5cd2e0608055af7b5dada2a2c5',
+            apiKey: '1b6e75dc35a57ba306ecd953d4ed8172',
             appId: 'ZHEDSTO6YB',
             indexName: 'mulinzi_note',
             locales: {
