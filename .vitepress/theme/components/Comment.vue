@@ -2,14 +2,14 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 11:15:18
+ * @LastEditTime : 2025-01-01 11:44:54
  * @Description  :
 -->
 <script setup lang="ts">
 import Giscus from '@giscus/vue'
 import { inBrowser, useData } from 'vitepress'
 
-const { frontmatter } = useData()
+const { frontmatter, isDark } = useData()
 
 const isProd = !import.meta.env.PROD
 
@@ -72,6 +72,8 @@ useIntersectionObserver(
     threshold: 0.5,
   },
 )
+
+const theme = computed(() => (isDark.value ? 'dark_tritanopia' : 'light_tritanopia'))
 </script>
 
 <template>
@@ -89,7 +91,7 @@ useIntersectionObserver(
         reactions-enabled="1"
         emit-metadata="1"
         input-position="top"
-        theme="preferred_color_scheme"
+        :theme="theme"
         lang="zh-CN"
         loading="lazy"
         crossorigin="anonymous"
