@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 12:38:17
+ * @LastEditTime : 2025-01-01 20:29:27
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -236,16 +236,6 @@ export default withPwa(
         return postHandleHtml(code)
       },
       transformPageData(pageData, { siteConfig }) {
-        // const { frontmatter } = pageData
-        // const headArr = (frontmatter.head ?? []) as Array<[string, Record<string, string>]>
-        // headArr.push([
-        //   'meta',
-        //   {
-        //     content: '#5468ff',
-        //     name: 'theme-color',
-        //   },
-        // ])
-        // frontmatter.head = headArr
         const keywords = extractKeywordsFromPath(pageData.filePath)
         if (pageData.description === null) {
           pageData.description = `${keywords} web 前端 ${siteConfig.site.description}`

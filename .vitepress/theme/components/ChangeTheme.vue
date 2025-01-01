@@ -2,14 +2,14 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-30 17:36:03
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 09:45:27
+ * @LastEditTime : 2025-01-01 20:37:30
  * @Description  :
 -->
 <script setup lang="ts">
 import change_theme from '@/assets/lottie/change_theme.json?raw'
 import { changeProviderTheme } from '@/plugins/naive-ui/providerProps'
 import { DotLottieVue, type DotLottieVueInstance } from '@lottiefiles/dotlottie-vue'
-import { useData } from 'vitepress'
+import { inBrowser, useData } from 'vitepress'
 
 const { isDark } = useData()
 
@@ -35,6 +35,18 @@ function dotLottieMounted() {
   const instance = dotLottieVueRef.value!.getDotLottieInstance()
   instance!.addEventListener('complete', () => {
     instance!.setMode(isDark.value ? 'reverse' : 'forward')
+  })
+}
+
+if (inBrowser) {
+  watchEffect(() => {
+    let meta = document.querySelector('meta[name="theme-color"]')
+    if (!meta) {
+      meta = document.createElement('meta')
+      meta.setAttribute('name', 'theme-color')
+      document.head.appendChild(meta)
+    }
+    meta.setAttribute('content', isDark.value ? '#101014' : '#ffffff')
   })
 }
 </script>
