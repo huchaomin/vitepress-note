@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 18:18:43
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 16:15:22
+ * @LastEditTime : 2025-01-01 14:01:01
  * @Description  :
  */
 import {
@@ -18,7 +18,11 @@ import {
   zhCN,
 } from 'naive-ui'
 
-import naiveUiThemeConfig from './naive-ui-theme-overrides.ts'
+import {
+  common as themeOverridesCommon,
+  dark as themeOverridesDark,
+  light as themeOverridesLight,
+} from './naive-ui-theme-overrides.ts'
 
 const isDark = ref(false)
 
@@ -29,7 +33,12 @@ export const configProviderProps: ConfigProviderProps = reactive({
   inlineThemeDisabled: true,
   locale: zhCN,
   theme: computed(() => (isDark.value ? darkTheme : lightTheme)),
-  themeOverrides: naiveUiThemeConfig,
+  themeOverrides: computed(() => {
+    const common = themeOverridesCommon
+    return isDark.value
+      ? _merge({}, common, themeOverridesDark)
+      : _merge({}, common, themeOverridesLight)
+  }),
 })
 
 export type PlacementType =

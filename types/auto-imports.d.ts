@@ -11,6 +11,7 @@ declare global {
   const $msg: typeof import('../src/plugins/autoImport/$msg')['default']
   const $notify: typeof import('../src/plugins/autoImport/$notify')['default']
   const EffectScope: typeof import('vue')['EffectScope']
+  const _merge: typeof import('../src/plugins/autoImport/_')['_merge']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
@@ -36,7 +37,6 @@ declare global {
   const dayjs: typeof import('../src/plugins/autoImport/dayjs')['default']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
-  const defaultsDeep: typeof import('../src/plugins/autoImport/_')['defaultsDeep']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
@@ -340,6 +340,7 @@ declare module 'vue' {
     readonly $msg: UnwrapRef<typeof import('../src/plugins/autoImport/$msg')['default']>
     readonly $notify: UnwrapRef<typeof import('../src/plugins/autoImport/$notify')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly _merge: UnwrapRef<typeof import('../src/plugins/autoImport/_')['_merge']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
@@ -365,7 +366,6 @@ declare module 'vue' {
     readonly dayjs: UnwrapRef<typeof import('../src/plugins/autoImport/dayjs')['default']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
-    readonly defaultsDeep: UnwrapRef<typeof import('../src/plugins/autoImport/_')['defaultsDeep']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
