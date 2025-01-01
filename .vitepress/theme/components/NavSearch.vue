@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 09:48:33
+ * @LastEditTime : 2025-01-01 20:57:00
  * @Description  :
 -->
 
@@ -192,8 +192,10 @@ function poll() {
   --docsearch-muted-color: var(--vp-c-text-2);
   --docsearch-searchbox-background: var(--vp-c-bg-soft);
   --docsearch-searchbox-focus-background: transparent;
-  --docsearch-modal-background: var(--vp-c-bg-soft);
+  --docsearch-modal-background: var(--vp-c-bg);
   --docsearch-footer-background: var(--vp-c-bg);
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: var(--vp-c-default-soft);
 }
 
 .dark {
@@ -211,9 +213,8 @@ function poll() {
     --docsearch-modal-shadow: none;
     --docsearch-footer-shadow: none;
     --docsearch-searchbox-focus-background: var(--vp-c-default-soft);
-    --docsearch-hit-background: var(--vp-c-default-soft);
     --docsearch-hit-color: var(--vp-c-text-2);
-    --docsearch-hit-shadow: none;
+    --docsearch-modal-background: rgb(16 16 20);
     --docsearch-key-pressed-shadow: 0 0 2px 0px var(--vp-c-text-1);
   }
 }
