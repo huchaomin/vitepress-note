@@ -1,6 +1,7 @@
 {
   "origins": [
-    "https://www.mulinzi.cn"
+    "https://www.mulinzi.cn",
+    "http://192.168.0.146:14007"
   ],
   "defaultCommentOrder": "newest"
 }

@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 23:26:19
+ * @LastEditTime : 2025-01-01 09:48:33
  * @Description  :
 -->
 
@@ -139,7 +139,7 @@ function poll() {
 <style>
 /* stylelint-disable selector-class-pattern */
 .DocSearch-Button {
-  height: 48px;
+  height: calc(var(--header-height) - 8px);
   padding: 0 var(--spacing-6) !important;
   margin-left: 0 !important;
 }
@@ -173,7 +173,8 @@ function poll() {
   background-color: var(--vp-c-white);
 }
 
-.DocSearch-Button-Key {
+.DocSearch-Button-Key,
+.DocSearch-Commands-Key {
   top: 0;
   box-shadow: var(--docsearch-key-pressed-shadow);
   transform: none !important;

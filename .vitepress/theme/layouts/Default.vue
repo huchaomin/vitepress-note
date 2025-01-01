@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 22:14:42
+ * @LastEditTime : 2025-01-01 09:42:07
  * @Description  :
 -->
 <script setup lang="ts">
@@ -33,7 +33,7 @@ if (inBrowser) {
   watch(
     showHeader,
     (val) => {
-      document.body.style.setProperty('--header-height', val ? '64px' : '0px')
+      document.body.style.setProperty('--header-height', val ? '52px' : '0px')
     },
     {
       immediate: true,

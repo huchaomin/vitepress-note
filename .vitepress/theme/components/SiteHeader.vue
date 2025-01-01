@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-10-16 23:23:20
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 22:27:10
+ * @LastEditTime : 2025-01-01 09:44:54
  * @Description  :
 -->
 <script setup lang="ts">
@@ -41,7 +41,7 @@ const ChangeTheme = defineAsyncComponent(() => import('./ChangeTheme.vue'))
 
 <style scoped>
 .n-layout-header {
-  --side-padding: 8px;
+  --side-padding: 2px;
 
   display: grid;
   grid-template-rows: calc(var(--header-height) - 1px);

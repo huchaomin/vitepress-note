@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 22:22:59
+ * @LastEditTime : 2025-01-01 11:15:18
  * @Description  :
 -->
 <script setup lang="ts">
@@ -11,7 +11,7 @@ import { inBrowser, useData } from 'vitepress'
 
 const { frontmatter } = useData()
 
-const isProd = import.meta.env.PROD
+const isProd = !import.meta.env.PROD
 
 const showCommentInfoState = reactive({
   inView: false,
@@ -55,11 +55,10 @@ function handleMessage(event: MessageEvent) {
 
 if (inBrowser) {
   window.addEventListener('message', handleMessage)
+  onUnmounted(() => {
+    window.removeEventListener('message', handleMessage)
+  })
 }
-
-onBeforeUnmount(() => {
-  window.removeEventListener('message', handleMessage)
-})
 
 const rootRef = ref<HTMLDivElement | null>(null)
 useIntersectionObserver(

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-30 17:36:03
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 23:42:09
+ * @LastEditTime : 2025-01-01 09:45:27
  * @Description  :
 -->
 <script setup lang="ts">
@@ -59,7 +59,7 @@ function dotLottieMounted() {
 
 <style scoped>
 .n-button {
-  --n-height: 48px;
+  --n-height: calc(var(--header-height) - 4px);
   --n-padding: 0;
 
   &:hover,

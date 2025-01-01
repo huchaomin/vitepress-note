@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-15 18:08:40
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 22:31:20
+ * @LastEditTime : 2025-01-01 09:44:31
  * @Description  :
 -->
 <script setup lang="ts">
@@ -84,7 +84,7 @@ function clickOutside(e: MouseEvent) {
 <style scoped>
 /* stylelint-disable selector-class-pattern */
 .n-button {
-  --n-height: 48px;
+  --n-height: calc(var(--header-height) - 4px);
   --line-height: 2px;
   --line-width: 24px;
 
