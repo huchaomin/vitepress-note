@@ -6,4 +6,8 @@
  * @Description  :
  */
 
-export { merge as _merge } from 'lodash-es'
+import { merge } from 'lodash-es'
+
+export default {
+  merge,
+}

@@ -11,6 +11,7 @@ declare global {
   const $msg: typeof import('../src/plugins/autoImport/$msg')['default']
   const $notify: typeof import('../src/plugins/autoImport/$notify')['default']
   const EffectScope: typeof import('vue')['EffectScope']
+  const _: typeof import('../src/plugins/autoImport/_')['default']
   const _merge: typeof import('../src/plugins/autoImport/_')['_merge']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
@@ -340,7 +341,7 @@ declare module 'vue' {
     readonly $msg: UnwrapRef<typeof import('../src/plugins/autoImport/$msg')['default']>
     readonly $notify: UnwrapRef<typeof import('../src/plugins/autoImport/$notify')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly _merge: UnwrapRef<typeof import('../src/plugins/autoImport/_')['_merge']>
+    readonly _: UnwrapRef<typeof import('../src/plugins/autoImport/_')['default']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>

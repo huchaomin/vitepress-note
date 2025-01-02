@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 18:18:43
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 14:01:01
+ * @LastEditTime : 2025-01-02 09:23:01
  * @Description  :
  */
 import {
@@ -36,8 +36,8 @@ export const configProviderProps: ConfigProviderProps = reactive({
   themeOverrides: computed(() => {
     const common = themeOverridesCommon
     return isDark.value
-      ? _merge({}, common, themeOverridesDark)
-      : _merge({}, common, themeOverridesLight)
+      ? _.merge({}, common, themeOverridesDark)
+      : _.merge({}, common, themeOverridesLight)
   }),
 })
 

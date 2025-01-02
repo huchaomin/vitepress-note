@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 14:23:20
+ * @LastEditTime : 2025-01-02 09:23:21
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -102,6 +102,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         dtsPath: resolveCwd('types/env.d.ts'),
       }),
       AutoImport({
+        defaultExportByFilename: true,
         dirs: [resolveCwd('src/plugins/autoImport'), resolveCwd('src/hooks')],
         dts: resolveCwd('types/auto-imports.d.ts'),
         imports: [
