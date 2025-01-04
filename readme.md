@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2024-12-31 14:03:19
+lastEditTime : 2025-01-04 23:40:58
 description  :
 ---
 # readme
@@ -42,6 +42,7 @@ description  :
 - 参考一下大神：<https://github.com/jynba/jynba.github.io>
 - 浏览器 event loop
 - bundle 分析 有多种模式
+- $confirm
 
 ## threejs
 
