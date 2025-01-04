@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 10:35:34
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-30 18:17:24
+ * @LastEditTime : 2025-01-04 23:22:11
  * @Description  :
  */
 import { login as loginMethod } from '@/api/root'
@@ -27,9 +27,8 @@ export default defineStore(
     function showLoginModal(): Promise<void> {
       const loginInstance = ref<InstanceType<typeof Login> | null>(null)
       return new Promise((resolve) => {
-        $modal({
+        $dialog(() => h(Login, { ref: loginInstance }), {
           closable: false,
-          content: () => h(Login, { ref: loginInstance }),
           negativeText: undefined,
           onPositiveClick: async () => {
             await loginInstance.value!.handleSubmit()
