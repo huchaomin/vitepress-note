@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const $dialog: typeof import('../src/plugins/autoImport/$dialog')['default']
   const $loading: typeof import('../src/plugins/autoImport/$loading')['default']
   const $modal: typeof import('../src/plugins/autoImport/$modal')['default']
   const $msg: typeof import('../src/plugins/autoImport/$msg')['default']
@@ -336,6 +337,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
+    readonly $dialog: UnwrapRef<typeof import('../src/plugins/autoImport/$dialog')['default']>
     readonly $loading: UnwrapRef<typeof import('../src/plugins/autoImport/$loading')['default']>
     readonly $modal: UnwrapRef<typeof import('../src/plugins/autoImport/$modal')['default']>
     readonly $msg: UnwrapRef<typeof import('../src/plugins/autoImport/$msg')['default']>
