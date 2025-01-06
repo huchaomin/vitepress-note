@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-04 23:40:58
+lastEditTime : 2025-01-06 10:03:06
 description  :
 ---
 # readme
@@ -43,6 +43,7 @@ description  :
 - 浏览器 event loop
 - bundle 分析 有多种模式
 - $confirm
+- 使用class 封装 工具类
 
 ## threejs
 
