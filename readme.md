@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-06 10:03:06
+lastEditTime : 2025-01-06 14:01:18
 description  :
 ---
 # readme
@@ -44,6 +44,8 @@ description  :
 - bundle 分析 有多种模式
 - $confirm
 - 使用class 封装 工具类
+- hash 不能识别 import.meta.url
+- 平板模式下 搜索 样式有问题
 
 ## threejs
 
