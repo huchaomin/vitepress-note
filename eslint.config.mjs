@@ -34,7 +34,7 @@ export default antfu(
       overrides: {
         'style/arrow-parens': ['error', 'always'], // 与 prettier 保持一致
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
-        'style/indent': 'off', // 与 prettier 保持一致
+        'style/indent': ['error', 2],
         'style/indent-binary-ops': 'off', // 与 prettier 保持一致
         'style/member-delimiter-style': [
           'error',
@@ -79,9 +79,6 @@ export default antfu(
       'antfu/consistent-chaining': 'off',
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      // 'perfectionist/sort-imports': 'off', // 有其他排序插件
-      // 'perfectionist/sort-named-imports': 'off', // 有其他排序插件
-      // 'perfectionist/sort-vue-attributes': 'off', // 有其他排序插件
       'prefer-promise-reject-errors': 'off',
       'prettier/prettier': ['error'],
       'vue/component-name-in-template-casing': [
