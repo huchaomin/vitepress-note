@@ -1,38 +1,38 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-04 09:57:29
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-19 11:36:30
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2025-01-10 11:10:49
  * @Description  :
 -->
 <script setup lang="ts">
-import ChartTitle from '../ChartTitle.vue'
-import bar_chart from '@/pages/bigScreen/assets/json/lottie/bar_chart.json?raw'
-import { use, type ComposeOption } from 'echarts/core'
-import VChart from 'vue-echarts'
-import {
-  GridComponent,
-  LegendComponent,
-  GraphicComponent,
-  type LegendComponentOption,
-  type GridComponentOption,
-  type GraphicComponentOption,
-} from 'echarts/components'
-import {
-  LineChart,
-  BarChart,
-  EffectScatterChart,
-  PictorialBarChart,
-  type EffectScatterSeriesOption,
-  type PictorialBarSeriesOption,
-  type BarSeriesOption,
-  type LineSeriesOption,
-} from 'echarts/charts'
-import { CanvasRenderer } from 'echarts/renderers'
-import { colors, chartFontFamily, chartFontSize } from '@/pages/bigScreen/utils/others'
-import dayjs from 'dayjs'
 import bar3d from '@/pages/bigScreen/assets/img/bar_3d.png?url'
 import line from '@/pages/bigScreen/assets/img/line.png?url'
+import bar_chart from '@/pages/bigScreen/assets/json/lottie/bar_chart.json?raw'
+import { chartFontFamily, chartFontSize, colors } from '@/pages/bigScreen/utils/others'
+import {
+  BarChart,
+  type BarSeriesOption,
+  EffectScatterChart,
+  type EffectScatterSeriesOption,
+  LineChart,
+  type LineSeriesOption,
+  PictorialBarChart,
+  type PictorialBarSeriesOption,
+} from 'echarts/charts'
+import {
+  GraphicComponent,
+  type GraphicComponentOption,
+  GridComponent,
+  type GridComponentOption,
+  LegendComponent,
+  type LegendComponentOption,
+} from 'echarts/components'
+import { type ComposeOption, use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import VChart from 'vue-echarts'
+
+import ChartTitle from '../ChartTitle.vue'
 
 use([
   GridComponent,
@@ -120,7 +120,7 @@ const option = computed<
             fontFamily: chartFontFamily,
             fontSize,
             lineHeight: fontSize + useDynamicPx(3).value,
-            text: '回款额(千万元)',
+            text: '还款额(千万元)',
           },
           top: fontSize * 2.5,
           type: 'text',
@@ -132,7 +132,7 @@ const option = computed<
             fontFamily: chartFontFamily,
             fontSize,
             lineHeight: fontSize + useDynamicPx(3).value,
-            text: '回款人数(万个)',
+            text: '还款人数(万个)',
             textAlign: 'right',
           },
           top: fontSize * 2.5,
@@ -152,11 +152,11 @@ const option = computed<
       data: [
         {
           icon: `image://${bar3d}`,
-          name: '回款额',
+          name: '还款额',
         },
         {
           icon: `image://${line}`,
-          name: '回款人数',
+          name: '还款人数',
         },
       ],
       itemHeight: (bottomEffectScatterWidth * 1.8 * 62) / 114,
@@ -180,7 +180,7 @@ const option = computed<
         lineStyle: {
           color: colors.lineHover,
         },
-        name: '回款人数',
+        name: '还款人数',
         symbol: 'circle',
         symbolSize,
         type: 'line',
@@ -225,7 +225,7 @@ const option = computed<
           },
           value: item.repayAmt,
         })),
-        name: '回款额',
+        name: '还款额',
         type: 'bar',
         z: 2,
       },
@@ -318,7 +318,7 @@ const option = computed<
 
 <template>
   <div class="refund_trend_wrapper absolute flex flex-col">
-    <ChartTitle :data="bar_chart" title="回款趋势"></ChartTitle>
+    <ChartTitle :data="bar_chart" title="还款趋势"></ChartTitle>
     <VChart
       ref="vChartRef"
       :option="option"

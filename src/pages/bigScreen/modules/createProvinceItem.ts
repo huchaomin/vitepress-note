@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-23 14:48:09
  * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-12-04 14:56:43
+ * @LastEditTime : 2025-01-10 11:01:14
  * @Description  :
  */
 import type { labelInstance } from '@/components/three/utils/Label3d'
@@ -71,7 +71,7 @@ function addLabelBadge(_this: CanvasRenderType, position: Vector3): labelInstanc
     `<div class="badges_label">
       <p class="name"></p>
       <p>
-        回款：<span class="amt"></span>元
+        还款：<span class="amt"></span>元
       </p>
     </div>`,
     position,

@@ -6,15 +6,17 @@
  * @Description  :
 -->
 <script setup lang="ts">
-import gsap from 'gsap'
-import RefundScroll from './refundScroll/Index.vue'
-import RefundRate from './refundRate/Index.vue'
-import AssetDistribution from './assetDistribution/Index.vue'
-import AssetTrend from './assetTrend/Index.vue'
-import RefundTrend from './refundTrend/Index.vue'
-import RefundTotal from './refundTotal/Index.vue'
-import AssetSize from './assetSize/Index.vue'
 import { cameraPositionStartKey } from '@/pages/bigScreen/utils/others'
+import gsap from 'gsap'
+
+import AssetDistribution from './assetDistribution/Index.vue'
+import AssetSize from './assetSize/Index.vue'
+import AssetTrend from './assetTrend/Index.vue'
+import DiscountTotal from './discountTotal/Index.vue'
+import RefundRate from './refundRate/Index.vue'
+import RefundScroll from './refundScroll/Index.vue'
+import RefundTotal from './refundTotal/Index.vue'
+import RefundTrend from './refundTrend/Index.vue'
 
 const refundScrollRef = ref<InstanceType<typeof RefundScroll> | null>(null)
 const refundRateRef = ref<InstanceType<typeof RefundRate> | null>(null)
@@ -23,6 +25,7 @@ const assetTrendRef = ref<InstanceType<typeof AssetTrend> | null>(null)
 const refundTrendRef = ref<InstanceType<typeof RefundTrend> | null>(null)
 const refundTotalRef = ref<InstanceType<typeof RefundTotal> | null>(null)
 const assetSizeRef = ref<InstanceType<typeof AssetSize> | null>(null)
+const discountTotalRef = ref<InstanceType<typeof DiscountTotal> | null>(null)
 
 const cameraPositionStartBus = useEventBus(cameraPositionStartKey)
 
@@ -85,6 +88,15 @@ cameraPositionStartBus.on(() => {
     }),
     'head',
   )
+  tl.add(
+    gsap.to(discountTotalRef.value!.$el, {
+      duration: 2,
+      ease: 'power2.out',
+      opacity: 1,
+      translateY: 0,
+    }),
+    'head',
+  )
 })
 </script>
 
@@ -97,6 +109,7 @@ cameraPositionStartBus.on(() => {
     <RefundScroll ref="refundScrollRef"></RefundScroll>
     <RefundTotal ref="refundTotalRef"></RefundTotal>
     <AssetSize ref="assetSizeRef"></AssetSize>
+    <DiscountTotal ref="discountTotalRef"></DiscountTotal>
   </div>
 </template>
 
@@ -128,7 +141,7 @@ cameraPositionStartBus.on(() => {
 
   .refund_total_wrapper,
   .asset_size_wrapper {
-    top: 6.2vw;
+    top: 5.2vw;
     font-size: 1.67vw;
   }
 
@@ -136,6 +149,7 @@ cameraPositionStartBus.on(() => {
     left: calc(var(--x-padding) + 4vw);
   }
 
+  .discount_total_wrapper,
   .refund_total_wrapper {
     right: var(--x-padding);
   }

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-23 09:59:50
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-31 13:50:46
+ * @LastEditTime : 2025-01-10 13:50:06
  * @Description  :
  */
 
@@ -44,12 +44,21 @@ export default (win: typeof globalThis & Window) => {
       } else if (
         event.target instanceof HTMLScriptElement ||
         event.target instanceof HTMLLinkElement ||
-        event.target instanceof HTMLImageElement
+        event.target instanceof HTMLImageElement ||
+        event.target instanceof HTMLAudioElement ||
+        event.target instanceof HTMLVideoElement ||
+        event.target instanceof HTMLTrackElement
       ) {
         $notify.error(
-          `资源加载错误: ${
-            (event.target as HTMLImageElement | HTMLScriptElement).src ??
-            (event.target as HTMLLinkElement).href
+          `${event.target.tagName}标签资源加载错误: ${
+            (
+              event.target as
+                | HTMLAudioElement
+                | HTMLImageElement
+                | HTMLScriptElement
+                | HTMLTrackElement
+                | HTMLVideoElement
+            ).src ?? (event.target as HTMLLinkElement).href
           }`,
           notifyConfig,
         )

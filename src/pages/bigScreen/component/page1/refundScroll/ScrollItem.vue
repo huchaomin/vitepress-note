@@ -38,7 +38,7 @@ const time = ref(dayjs().format('HH:mm:ss'))
           <span class="ml-3">{{ item.clientName }}</span>
         </div>
         <div class="mt-1_5">
-          回款:
+          还款:
           <span
             :class="{
               'text-yellow': index === 0,

@@ -1,8 +1,8 @@
 <!--
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-18 17:28:28
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-11-27 10:13:34
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2025-01-10 10:53:32
  * @Description  :
 -->
 <script setup lang="ts">
@@ -22,6 +22,7 @@ import HeaderBar from './component/header/Index.vue'
 import Page1 from './component/page1/Index.vue'
 import Page2 from './component/page2/Index.vue'
 import Page3 from './component/page3/Index.vue'
+import Page4 from './component/page4/Index.vue'
 import CanvasRender from './index'
 
 const queryFlayMap = {
@@ -166,7 +167,7 @@ cameraPositionStartBus.on(() => {
   })
 })
 
-const bottomBtnText = ['智能数据大屏', '业务模式', '核心亮点']
+const bottomBtnText = ['数据大屏', 'AI亮点', '化债模式', '智法介绍']
 
 const carouselIndex = ref(0)
 function handleCarouselIndexChange(index: number) {
@@ -203,6 +204,11 @@ function handleCarouselIndexChange(index: number) {
               active: carouselIndex === 2,
             }"
           ></Page3>
+          <Page4
+            :class="{
+              active: carouselIndex === 3,
+            }"
+          ></Page4>
           <template #dots="{ total, currentIndex, to }">
             <div ref="bottomMenuRef" class="bottom_menu absolute flex w-full justify-center">
               <NButton

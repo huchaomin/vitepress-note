@@ -13,7 +13,8 @@ import { DotLottieVue, type DotLottieVueInstance } from '@lottiefiles/dotlottie-
 const shareData: Record<string, any> = inject('shareData')!
 const initialTotal = computed(() => {
   return (
-    shareData.mainData.totalRepayAmt -
+    shareData.mainData.totalRepayAmt +
+    shareData.mainData.totalDiscountAmt -
     shareData.repayDataList.reduce((acc: number, item: any) => {
       return acc + item.repayAmt
     }, 0)
@@ -74,7 +75,7 @@ onMounted(() => {
       class="icon absolute"
       :data="refund_gather"
     ></DotLottieVue>
-    累计回款：
+    化债总额：
     <NNumberAnimation
       :from="startEnd[0]"
       :to="startEnd[1]"
@@ -89,6 +90,7 @@ onMounted(() => {
 
 <style scoped>
 .refund_total_wrapper {
+  font-size: 1.3vw;
   opacity: 0;
   transform: translateY(1.67vw);
 }

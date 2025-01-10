@@ -49,7 +49,7 @@ onMounted(() => {
 <template>
   <div class="refund_scroll_wrapper absolute">
     <StreamerBorder style="padding: 1vw 0.3vw;" class="flex h-full flex-col">
-      <h3 class="ml-8">回款实时监控</h3>
+      <h3 class="ml-8">还款实时监控</h3>
       <div ref="scrollWrapperRef" class="mt-2 flex-1 overflow-hidden">
         <ScrollItem
           v-for="(item, index) in scrollItems"
