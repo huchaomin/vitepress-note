@@ -1,14 +1,14 @@
 ---
 uuid         : 13526969-fd51-47c0-8f3f-ae1db46283c0
-order        : 1
+order        : 2
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-24 09:20:23
-lastEditTime : 2024-12-25 16:57:37
+lastEditTime : 2025-01-11 13:35:29
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 
-# Mutation Observer API
+# Mutation Observer
 
 ## 概述
 

@@ -3,12 +3,12 @@ uuid         : d0361a18-6a61-483c-8924-49626cd12080
 order        : 0
 author       : huchaomin iisa_peter@163.com
 date         : 2024-12-25 17:30:33
-lastEditTime : 2024-12-31 21:51:29
+lastEditTime : 2025-01-11 13:35:25
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 
-# Intersection Observer API
+# Intersection Observer
 
 ## 概述
 
