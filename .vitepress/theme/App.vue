@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-28 12:18:47
+ * @LastEditTime : 2025-01-11 11:14:56
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -64,7 +64,7 @@ function scrollAnchorIntoView(): void {
             behavior: 'smooth',
           })
         }
-      }, 400) // 翻页动画执行完毕
+      }, 500) // 翻页动画执行完毕
     })
   }
 }
