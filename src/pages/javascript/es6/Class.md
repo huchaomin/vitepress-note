@@ -3,12 +3,12 @@ uuid         : 1fb611c9-1601-4cd9-956c-c018f3c26f53
 order        : 0
 author       : huchaomin iisa_peter@163.com
 date         : 2025-01-06 10:22:33
-lastEditTime : 2025-01-06 14:47:08
+lastEditTime : 2025-01-10 18:02:18
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 
-# Class 的基本用法
+# Class
 
 ## 前言
 
@@ -459,7 +459,7 @@ class Rectangle {
   }
 
   static getDoubleStaticWidth() {
-   return this.staticWidth * 2 // this表示类构造函数
+    return this.staticWidth * 2 // this表示类构造函数
   }
 
   // 原型链上的方法
@@ -468,7 +468,7 @@ class Rectangle {
   }
 
   getDoublePrototypeWidth() {
-   return this.prototypeWidth * 2 // this表示类实例，此时prototypeWidth从原型链继承过来
+    return this.prototypeWidth * 2 // this表示类实例，此时prototypeWidth从原型链继承过来
   }
 }
 // 原型的数据属性（必须定义在类定义的外面）
