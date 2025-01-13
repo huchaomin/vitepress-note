@@ -64,6 +64,10 @@
 
   .n-alert {
     @apply my-4;
+
+    .n-alert-body .n-alert-body__title + .n-alert-body__content{
+      @apply !mt-4;
+    }
   }
 
   /* https://web.dev/articles/css-marker-pseudo-element?hl=zh-cn */
@@ -84,9 +88,7 @@
   }
 
   .n-p {
-    @apply !my-1.5;
-    line-height: 1.5;
-
+    @apply !my-2.5;
     &:first-child {
       @apply !mt-0;
     }

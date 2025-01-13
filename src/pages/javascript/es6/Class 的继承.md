@@ -3,7 +3,7 @@ uuid         : 6bbbad82-493e-40fe-9ded-fe5e985358cc
 order        : 1
 author       : huchaomin iisa_peter@163.com
 date         : 2025-01-10 16:07:12
-lastEditTime : 2025-01-13 10:22:12
+lastEditTime : 2025-01-13 11:09:01
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -109,12 +109,25 @@ Class 作为构造函数的语法糖，同时有 `prototype` 属性和 `__proto_
 - 子类的 `__proto__` 属性，表示**构造函数**的继承，总是指向父类 <n-tag type="info" size="small">与 es5 的不同</n-tag>
 - 子类的 `prototype` 属性的 `__proto__` 属性，表示方法的继承，总是指向父类的 `prototype` 属性
 
-## `Object.getPrototypeOf()`
+```js
+class A {
+}
+
+class B extends A {
+}
+
+B.__proto__ === A // true
+B.prototype.__proto__ === A.prototype // true
+```
+
+::: tip 这两条继承链，可以这样理解
+作为一个对象，子类B的原型(__proto__属性)是父类A
+
+作为一个构造函数，子类B的原型对象(prototype属性)是父类的原型对象(prototype属性)的实例
+:::
 
 ```js
 class Point { /* ... */ }
-
 class ColorPoint extends Point { /* ... */ }
-
 Object.getPrototypeOf(ColorPoint) === Point // TODO true
 ```

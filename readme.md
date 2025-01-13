@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-13 10:06:27
+lastEditTime : 2025-01-13 10:44:42
 description  :
 ---
 # readme
@@ -47,6 +47,7 @@ description  :
 - hash 不能识别 import.meta.url
 - 平板模式下 搜索 样式有问题
 - valueOf 与 toString
+- Function.prototype
 
 ## threejs
 

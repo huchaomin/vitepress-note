@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CForm: typeof import('./../src/components/autoImport/CForm.vue')['default']
     CInput: typeof import('./../src/components/autoImport/CInput.vue')['default']
+    Demo: typeof import('./../.vitepress/theme/components/autoImport/Demo.vue')['default']
     FenceWrapper: typeof import('./../.vitepress/theme/components/autoImport/FenceWrapper.vue')['default']
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     ICustomAaa: typeof import('~icons/custom/aaa')['default']
