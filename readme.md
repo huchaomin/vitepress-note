@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-13 10:44:42
+lastEditTime : 2025-01-14 11:00:39
 description  :
 ---
 # readme
@@ -48,6 +48,7 @@ description  :
 - 平板模式下 搜索 样式有问题
 - valueOf 与 toString
 - Function.prototype
+- 声明提升
 
 ## threejs
 

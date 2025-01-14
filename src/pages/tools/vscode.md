@@ -3,7 +3,7 @@ uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
 order        : 2
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditTime : 2024-12-31 11:13:47
+lastEditTime : 2025-01-13 14:42:32
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -39,6 +39,10 @@ description  :
 ```
 
 经过测试，没问题
+
+::: warning
+后面不知某个插件的某个版本更新后，这个问题不复存在了。上面的配置也不需要了。
+:::
 
 ### Toggle Quotes 插件 快捷键 `Ctrl + '` 无效
 
