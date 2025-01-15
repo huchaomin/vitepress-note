@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-04 11:31:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-06 10:12:21
+ * @LastEditTime : 2025-01-15 15:34:13
  * @Description  :
  */
 
@@ -11,7 +11,7 @@ import type { DialogApi, DialogOptions } from 'naive-ui'
 import { useDialog } from '@/plugins/naive-ui/discreteApi'
 
 class DialogService {
-  private dialog: DialogApi
+  private readonly dialog: DialogApi
 
   constructor() {
     this.dialog = useDialog()
