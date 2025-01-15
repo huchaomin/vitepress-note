@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-15 15:42:28
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-15 17:35:46
+ * @LastEditTime : 2025-01-15 17:45:54
  * @Description  :
  */
 
@@ -71,23 +71,23 @@ class MessageService {
 
 const messageService = new MessageService()
 
+type CreateMessageType = CreateMessageDestroyAllType & CreateMessageFnType & CreateMessageMappedType
+
 function useMessageCreate(type: `${MessageCreateType}`, ...arg: Parameters<CreateMessageFnType>) {
   return messageService.create(type, ...arg)
 }
 
-const createMessage: CreateMessageFnType = function (...arg) {
+const createMessage: CreateMessageType = function (...arg) {
   return useMessageCreate('success', ...arg)
-}
+} as CreateMessageType
 
 Object.values(MessageCreateType).forEach((type) => {
-  ;(createMessage as unknown as CreateMessageMappedType)[type] = (...arg) => {
+  createMessage[type] = (...arg) => {
     return useMessageCreate(type, ...arg)
   }
 })
-;(createMessage as unknown as CreateMessageDestroyAllType).destroyAll = () => {
+createMessage.destroyAll = () => {
   return messageService.destroyAll()
 }
 
-export default createMessage as CreateMessageDestroyAllType &
-  CreateMessageFnType &
-  CreateMessageMappedType
+export default createMessage
