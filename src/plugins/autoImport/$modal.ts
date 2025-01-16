@@ -2,35 +2,48 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-11 09:24:19
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-03 17:45:03
+ * @LastEditTime : 2025-01-16 10:31:08
  * @Description  :
  */
-import type { ModalApi } from 'naive-ui'
+import type { ModalApi, ModalOptions } from 'naive-ui'
 
 import { useModal } from '@/plugins/naive-ui/discreteApi'
 
-type ModalApiCreate = ModalApi['create']
+class ModalService {
+  private readonly modal: ModalApi
 
-interface ModalApiDestroyAll {
-  destroyAll: () => void
+  constructor() {
+    this.modal = useModal()
+  }
+
+  create(options: ModalOptions) {
+    return this.modal.create({
+      autoFocus: false,
+      closeOnEsc: false,
+      draggable: true,
+      maskClosable: false,
+      preset: 'card',
+      style: {
+        width: '400px',
+      },
+      title: '提示',
+      ...options,
+    })
+  }
+
+  destroyAll() {
+    return this.modal.destroyAll()
+  }
 }
 
-const create: ModalApiCreate = (config) => {
-  return useModal().create({
-    autoFocus: false,
-    closeOnEsc: false,
-    maskClosable: false,
-    negativeText: '取消',
-    positiveText: '确认',
-    preset: 'dialog',
-    showIcon: false,
-    title: '提示',
-    ...(config ?? {}),
-  })
+const modalService = new ModalService()
+
+function createModal(options: ModalOptions) {
+  return modalService.create(options)
 }
 
-;(create as unknown as ModalApiDestroyAll).destroyAll = () => {
-  return useModal().destroyAll()
+createModal.destroyAll = () => {
+  return modalService.destroyAll()
 }
 
-export default create as ModalApiCreate & ModalApiDestroyAll
+export default createModal

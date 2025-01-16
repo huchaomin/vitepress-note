@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-14 11:00:39
+lastEditTime : 2025-01-16 10:16:16
 description  :
 ---
 # readme
@@ -49,6 +49,8 @@ description  :
 - valueOf 与 toString
 - Function.prototype
 - 声明提升
+- $confirm
+- h 函数
 
 ## threejs
 

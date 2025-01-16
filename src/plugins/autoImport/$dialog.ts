@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-04 11:31:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-15 15:34:13
+ * @LastEditTime : 2025-01-16 10:11:17
  * @Description  :
  */
 
@@ -20,7 +20,12 @@ class DialogService {
   create(options: DialogOptions) {
     const obj = {
       ...options,
+      negativeButtonProps: {
+        size: 'medium' as const,
+        ...(options.negativeButtonProps ?? {}),
+      },
       positiveButtonProps: {
+        size: 'medium' as const,
         type: 'primary' as const, // dialog success 时按钮不要为 success
         ...(options.positiveButtonProps ?? {}),
       },
@@ -28,6 +33,7 @@ class DialogService {
     return this.dialog.create({
       autoFocus: false,
       closeOnEsc: false,
+      draggable: true,
       maskClosable: false,
       negativeText: '取消',
       positiveText: '确认',
