@@ -7,3 +7,12 @@
     box-sizing: initial;
   }
 }
+
+.n-modal-mask:has(~ .loading_modal) {
+  cursor: wait;
+  background-color: rgb(0 0 0 / 0%);
+}
+
+.n-message-container--top:has(.n-message--loading-type) {
+  top: 50%;
+}
