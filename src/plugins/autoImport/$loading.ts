@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2023-11-05 11:29:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-16 15:37:49
+ * @LastEditTime : 2025-01-16 16:04:20
  * @Description  :
  */
 import type { LoadingBarApi, MessageReactive, ModalReactive } from 'naive-ui'
@@ -83,7 +83,8 @@ class LoadingService {
       return
     }
     LoadingService.content = options.content ?? LoadingService.content
-    LoadingService.lockScreen = options.lockScreen ?? LoadingService.lockScreen
+    LoadingService.lockScreen =
+      options.lockScreen ?? LoadingService.lockScreen ?? LoadingService.content !== undefined
     LoadingService.updateLoading(this, LoadingService.loadingCount + 1)
   }
 }
