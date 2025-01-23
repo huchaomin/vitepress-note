@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-18 09:56:13
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 11:44:54
+ * @LastEditTime : 2025-01-23 10:04:26
  * @Description  :
 -->
 <script setup lang="ts">
@@ -11,7 +11,7 @@ import { inBrowser, useData } from 'vitepress'
 
 const { frontmatter, isDark } = useData()
 
-const isProd = !import.meta.env.PROD
+const isProd = import.meta.env.PROD
 
 const showCommentInfoState = reactive({
   inView: false,
