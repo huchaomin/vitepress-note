@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-16 09:42:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-15 17:29:48
+ * @LastEditTime : 2025-01-24 14:16:25
  * @Description  : 主题颜色
 -->
 <script setup lang="ts">
@@ -83,7 +83,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <NLayout :position="isMobile ? 'static' : 'absolute'" class="root-layout">
+  <NLayout :position="isMobile ? 'static' : 'absolute'">
     <component :is="layoutMap[frontmatter.layout ?? 'default']"></component>
   </NLayout>
   <PWAReloadPrompt></PWAReloadPrompt>

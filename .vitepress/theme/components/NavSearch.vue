@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 15:20:47
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 20:57:00
+ * @LastEditTime : 2025-01-24 12:03:28
  * @Description  :
 -->
 
@@ -153,8 +153,7 @@ function poll() {
   body {
     &.DocSearch--active {
       #app {
-        height: 0;
-        overflow: hidden;
+        display: none;
       }
 
       .DocSearch-Container {

@@ -65,7 +65,7 @@
   .n-alert {
     @apply my-4;
 
-    .n-alert-body .n-alert-body__title + .n-alert-body__content{
+    .n-alert-body .n-alert-body__title + .n-alert-body__content {
       @apply !mt-4;
     }
   }
@@ -89,6 +89,7 @@
 
   .n-p {
     @apply !my-2.5;
+
     &:first-child {
       @apply !mt-0;
     }

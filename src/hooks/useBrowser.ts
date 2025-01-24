@@ -1,8 +1,8 @@
 /*
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 18:12:16
- * @LastEditors  : peter peter@qingcongai.com
- * @LastEditTime : 2024-10-16 11:13:10
+ * @LastEditors  : huchaomin iisa_peter@163.com
+ * @LastEditTime : 2025-01-24 14:42:35
  * @Description  :
  */
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -11,6 +11,6 @@ const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const isMobile = breakpoints.smaller('sm')
 
-const isTablet = breakpoints.between('sm', 'md')
+const isTablet = breakpoints.between('sm', 'lg')
 
 export { breakpointsTailwind, isMobile, isTablet }

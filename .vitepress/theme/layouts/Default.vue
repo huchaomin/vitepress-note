@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-15 17:26:56
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 09:42:07
+ * @LastEditTime : 2025-01-24 15:49:36
  * @Description  :
 -->
 <script setup lang="ts">
@@ -102,6 +102,7 @@ const contentClass = computed(() => {
 
 <template>
   <SiteHeader v-if="showHeader"></SiteHeader>
+  <!-- TODO content-class="flex" 保证右侧的 toc position sticky 生效 -->
   <NLayout
     id="doc-layout"
     :has-sider="!isTablet && !isMobile"
@@ -109,18 +110,13 @@ const contentClass = computed(() => {
     :style="{
       top: isMobile ? '' : 'var(--header-height)',
     }"
+    content-class="flex"
   >
     <!-- 左侧菜单 -->
     <LeftDrawer></LeftDrawer>
-    <!-- TODO document-scroll-container -->
-    <!-- position absolute 时，右侧的 toc position sticky 才会生效 -->
     <NLayout
       ref="nLayoutRef"
-      :scrollbar-props="{
-        containerClass: 'document-scroll-container',
-      }"
       :native-scrollbar="false"
-      :position="isTablet ? 'absolute' : 'static'"
       content-style="min-height: calc(var(--inner-height) - var(--header-height)); display: flex; flex-direction: column;"
     >
       <div :class="isMobile ? '' : 'flex'" class="flex-auto">
