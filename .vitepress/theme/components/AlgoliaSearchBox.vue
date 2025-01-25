@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-12-11 14:56:09
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-30 17:01:24
+ * @LastEditTime : 2025-01-25 21:33:59
  * @Description  :
 -->
 <script setup lang="ts">
@@ -51,6 +51,7 @@ function initialize(userOptions: DefaultTheme.AlgoliaSearchOptions) {
           const { pathname: hitPathname } = new URL(window.location.origin + itemUrl)
           // router doesn't handle same-page navigation so we use the native
           // browser location API for anchor navigation
+          // TODO vitepress 2.0 可解决 https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md#200-alpha2-2025-01-23
           if (route.path === hitPathname) {
             window.location.assign(window.location.origin + itemUrl)
           } else {

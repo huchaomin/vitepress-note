@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-12 14:40:58
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-02 09:23:21
+ * @LastEditTime : 2025-01-25 22:38:38
  * @Description  :
  */
 import type * as http from 'node:http'
@@ -149,7 +149,7 @@ export default defineConfig(({ command, isSsrBuild, mode }) => {
         ],
         dts: resolveCwd('types/components.d.ts'),
         extensions: ['vue', 'md'], // md文件也可以作为组件
-        include: [/\.vue$/, /\.vue\?vue/, /\.md$/], // md 文件中开始自动引入
+        include: [/\.(vue|md)($|\?)/], // md 文件中开始自动引入
         resolvers: [
           NaiveUiResolver(),
           IconsResolver({

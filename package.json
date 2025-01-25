@@ -84,7 +84,7 @@
     "vite-plugin-env-parse": "^1.0.15",
     "vite-plugin-font": "^4.0.0",
     "vite-plugin-inspect": "^0.8.9",
-    "vitepress": "^1.5.0",
+    "vitepress": "^1.6.3",
     "vitepress-sidebar": "^1.30.2",
     "workbox-window": "^7.3.0"
   },
