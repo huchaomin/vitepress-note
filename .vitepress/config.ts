@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-10-30 23:01:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 20:29:27
+ * @LastEditTime : 2025-01-25 17:55:10
  * @Description  :
  */
 import type { defineConfig as defineVitepressConfig } from 'vitepress'
@@ -228,6 +228,7 @@ export default withPwa(
           ],
         ]
         if (headArr.find((h) => h[0] === 'meta' && h[1].name === 'keywords') === undefined) {
+          // 不会随页面变化而变化
           arr.push(['meta', { content: keywords, name: 'keywords' }])
         }
         return arr
