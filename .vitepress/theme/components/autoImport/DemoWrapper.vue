@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-26 09:27:16
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-26 16:44:58
+ * @LastEditTime : 2025-01-26 17:11:07
  * @Description  :
 -->
 
@@ -40,7 +40,7 @@ const isDropdownMode = computed(() => {
   >
     <template v-if="isDropdownMode">
       <NButton tertiary block @click="showSource = !showSource">
-        <i-material-symbols:keyboard-double-arrow-down-rounded></i-material-symbols:keyboard-double-arrow-down-rounded>
+        <i-line-md:chevron-double-down></i-line-md:chevron-double-down>
       </NButton>
       <NCollapseTransition class="demo_fence_collapse" :show="showSource">
         <NScrollbar x-scrollable>

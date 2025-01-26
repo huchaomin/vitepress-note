@@ -13,6 +13,8 @@ declare module 'vue' {
     FenceWrapper: typeof import('./../.vitepress/theme/components/autoImport/FenceWrapper.vue')['default']
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     ICustomAaa: typeof import('~icons/custom/aaa')['default']
+    'ILineMd:chevronDoubleDown': typeof import('~icons/line-md/chevron-double-down')['default']
+    'ILineMd:documentCode': typeof import('~icons/line-md/document-code')['default']
     'ILineMd:playFilled': typeof import('~icons/line-md/play-filled')['default']
     'IMaterialSymbols:code': typeof import('~icons/material-symbols/code')['default']
     'IMaterialSymbols:contentCopyOutline': typeof import('~icons/material-symbols/content-copy-outline')['default']
