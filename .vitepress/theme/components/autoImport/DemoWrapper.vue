@@ -2,8 +2,8 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-26 09:27:16
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-26 17:11:07
- * @Description  :
+ * @LastEditTime : 2025-01-26 18:22:35
+ * @Description  : trap-focus: false, 否则会影响复制功能
 -->
 
 <script setup lang="ts">
@@ -43,9 +43,7 @@ const isDropdownMode = computed(() => {
         <i-line-md:chevron-double-down></i-line-md:chevron-double-down>
       </NButton>
       <NCollapseTransition class="demo_fence_collapse" :show="showSource">
-        <NScrollbar x-scrollable>
-          <slot name="source"></slot>
-        </NScrollbar>
+        <slot name="source"></slot>
       </NCollapseTransition>
     </template>
     <template v-else>
@@ -70,6 +68,7 @@ const isDropdownMode = computed(() => {
         }"
         preset="card"
         size="small"
+        :trap-focus="false"
         content-class="demo_fence_modal !p-0"
       >
         <NScrollbar ref="scrollbarRef" style="max-height: 90vh;">
