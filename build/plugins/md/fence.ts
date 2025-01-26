@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-23 10:49:38
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-01 23:35:01
+ * @LastEditTime : 2025-01-26 17:01:32
  * @Description  :
  */
 import { parse } from 'node-html-parser'
@@ -26,7 +26,7 @@ export default (md: MarkdownIt) => {
       prev = `<n-tab-pane name="${tabName}" tab="${tabName}">`
       post = '</n-tab-pane>'
     }
-    return `${prev}<FenceWrapper :inCodeGroup=${!!tabName} content="${md.utils
+    return `${prev}<FenceWrapper content="${md.utils
       .escapeHtml(tokens[idx].content)
       .replace(/\/\/ \[!code .*\]/g, '')
       .trim()}">${root.outerHTML}</FenceWrapper>${post}`

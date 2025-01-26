@@ -2,18 +2,15 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-26 11:32:37
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-01 23:18:10
+ * @LastEditTime : 2025-01-26 17:01:23
  * @Description  :
 -->
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
     content: string
-    inCodeGroup?: boolean
   }>(),
-  {
-    inCodeGroup: false,
-  },
+  {},
 )
 
 const source = computed(() => props.content)
@@ -21,13 +18,7 @@ const { copied, copy, isSupported } = useClipboard({ legacy: true, source })
 </script>
 
 <template>
-  <NCard
-    class="fence_card"
-    :class="isMobile && !inCodeGroup ? '-mx-3 !w-auto' : ''"
-    embedded
-    :bordered="false"
-    content-class="!p-0"
-  >
+  <NCard class="fence_card" embedded :bordered="false" content-class="!p-0">
     <NTooltip>
       <template #trigger>
         <NButton quaternary class="copy_btn !absolute" @click="copy(source)">

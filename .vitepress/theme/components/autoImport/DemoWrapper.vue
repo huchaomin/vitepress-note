@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-26 09:27:16
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-26 15:56:11
+ * @LastEditTime : 2025-01-26 16:44:58
  * @Description  :
 -->
 
@@ -43,7 +43,9 @@ const isDropdownMode = computed(() => {
         <i-material-symbols:keyboard-double-arrow-down-rounded></i-material-symbols:keyboard-double-arrow-down-rounded>
       </NButton>
       <NCollapseTransition class="demo_fence_collapse" :show="showSource">
-        <slot name="source"></slot>
+        <NScrollbar x-scrollable>
+          <slot name="source"></slot>
+        </NScrollbar>
       </NCollapseTransition>
     </template>
     <template v-else>
