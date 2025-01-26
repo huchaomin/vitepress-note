@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2025-01-25 12:28:02
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-25 17:25:01
+ * @LastEditTime : 2025-01-26 10:49:46
  * @Description  :
  */
 
@@ -41,18 +41,29 @@ export default (md: MarkdownIt) => {
       tagOpen: '<script setup lang="ts">',
       type: 'script',
     }
+
     const importStr = scriptObj.contentStripped.includes('defineClientComponent')
       ? ''
       : "import { defineClientComponent } from 'vitepress'"
     const statementArr: string[] = []
     demoArr.forEach((demo, index) => {
+      const compoName = `Demo${index}`
+      const compoSrc = demo.getAttribute('src')
       statementArr.push(
-        `const Demo${index} = defineClientComponent(() => {
-          return import('${demo.getAttribute('src')}')
+        `const ${compoName} = defineClientComponent(() => {
+          return import('${compoSrc}')
         })`,
       )
-      demo.tagName = `Demo${index}`
+      demo.tagName = compoName
       demo.removeAttribute('src')
+      demo.replaceWith(`<DemoWrapper>
+          <template #source>
+            ${md.render(`<<< ${compoSrc}\n`, args[1])}
+          </template>
+          <template #default>
+            ${demo.outerHTML}
+          </template>
+        </DemoWrapper>`)
     })
     const statementStr = statementArr.join('\n')
     scriptObj.contentStripped = `${importStr}\n${scriptObj.contentStripped}\n${statementStr}`

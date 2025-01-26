@@ -35,11 +35,11 @@
   pre {
     position: relative;
     z-index: 1;
+    display: inline-flex;
     margin: 0;
+    background: transparent;
 
     @apply py-5;
-
-    background: transparent;
   }
 
   code {
