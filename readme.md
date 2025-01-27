@@ -2,7 +2,7 @@
 author       : peter peter@qingcongai.com
 date         : 2024-12-02 09:08:46
 lastEditors  : huchaomin iisa_peter@163.com
-lastEditTime : 2025-01-24 11:43:53
+lastEditTime : 2025-01-27 15:58:07
 description  :
 ---
 # readme
@@ -32,7 +32,7 @@ description  :
 - [onUpdateXxx](https://www.naiveui.com/zh-CN/light/docs/common-issues)
 - [受控模式与非受控模式](https://www.naiveui.com/zh-CN/light/docs/controlled-uncontrolled)
 - [package.json 中的 resolution](https://blog.csdn.net/qq_43592064/article/details/132427625)
-- npm install --save-dev seemly
+- npm install --save-dev seemly / import { repeat } from 'seemly'
 - <https://vitepress.yiov.top/plugin.html>
 - chokidar 文件系统监听器
 - vite 组件开发 [参考](https://sugarat.top/technology/works/vitepress-plugin-announcement.html)

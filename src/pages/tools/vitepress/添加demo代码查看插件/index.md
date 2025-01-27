@@ -3,7 +3,7 @@ uuid         : ab93388b-7587-4be4-857f-c551dece1e07
 order        : 5
 author       : huchaomin iisa_peter@163.com
 date         : 2025-01-27 09:14:27
-lastEditTime : 2025-01-27 10:29:37
+lastEditTime : 2025-01-27 11:02:24
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -24,7 +24,7 @@ description  :
 
 ## 效果
 
-<Demo src="./demo.vue"></Demo>
+<Demo src="./Demo.vue"></Demo>
 
 ## 参考
 

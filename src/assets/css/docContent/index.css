@@ -104,6 +104,10 @@
     &:last-child {
       @apply !mb-0;
     }
+
+    li > & {
+      @apply !m-0;
+    }
   }
 }
 
