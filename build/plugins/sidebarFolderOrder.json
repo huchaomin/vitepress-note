@@ -6,6 +6,7 @@
   "/tools/github": 3,
   "/tools/vitepress": 4,
   "/微信/公众号": 0,
+  "/框架/vue3": 0,
   "/html": 0,
   "/css": 1,
   "/javascript": 2,
@@ -13,5 +14,6 @@
   "/tools": 4,
   "/utils": 5,
   "/微信": 6,
-  "/杂谈": 7
+  "/杂谈": 7,
+  "/框架": 8
 }
