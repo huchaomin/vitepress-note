@@ -3,13 +3,13 @@ uuid         : 2697c899-d635-40f0-8e50-5e04d1c9a800
 order        : 1
 author       : huchaomin iisa_peter@163.com
 date         : 2025-01-11 11:50:46
-lastEditTime : 2025-01-27 18:28:59
+lastEditTime : 2025-02-06 13:44:08
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 # startViewTransition
 
-是一种用于在不同视图 `same-document transitions (SPAs)` 之间进行平滑过渡的技术。它可以增强用户体验，使页面切换更加流畅和自然
+是一种用于在不同视图之间进行平滑过渡的技术。它可以增强用户体验，使页面切换更加流畅和自然
 
 ## 兼容性
 
@@ -65,23 +65,23 @@ ViewTransition 对象实例
 
 ```ts
 document.startViewTransition(() => {
-  const aaa = document.querySelector('#aaa')!
+  const el = document.querySelector('#el')!
   // 1. 直接删除, ok
-  aaa.remove()
+  el.remove()
   // 2. resolve, ok
   Promise.resolve().then(() => {
-    aaa.remove()
+    el.remove()
   })
   // 3. setTimeout, 不行
   setTimeout(() => {
-    aaa.remove()
+    el.remove()
   })
   // 4.把这个写道最后都不影响上面3种情况, TODO 是不是可以这么理解：一个微任务队列里面的操作dom动作，都可以被捕捉到
   return Promise.resolve()
   // 5. 返回一个Promise, ok
   return new Promise<void>((resolve) => {
     setTimeout(() => {
-      aaa.remove()
+      el.remove()
       resolve()
     }, 2000)
   })
@@ -93,6 +93,10 @@ document.startViewTransition(() => {
 - `::view-transition`: 是视图过渡叠加层的根元素，它包含所有视图过渡且位于所有其他页面内容的顶部。
 - `::view-transition-old`: 是旧页面视图的屏幕截图
 - `::view-transition-new`: 是新页面视图的屏幕截图
+
+## view-transition-name与局部动画
+
+参考[zhangxinxu](https://www.zhangxinxu.com/wordpress/2024/08/view-transitions-api/)
 
 <Demo src="./Demo.vue"></Demo>
 

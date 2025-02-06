@@ -135,7 +135,7 @@
       width: var(--width);
       color: var(--vp-c-text-3);
       text-align: center;
-      background-color: var(--n-color-embedded);
+      background-color: var(--n-color-embedded-modal);
 
       /* rtl:ignore */
       border-right: 1px solid var(--vp-c-gutter);

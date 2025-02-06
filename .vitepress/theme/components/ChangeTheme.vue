@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-30 17:36:03
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2025-01-01 20:37:30
+ * @LastEditTime : 2025-02-06 14:04:57
  * @Description  :
 -->
 <script setup lang="ts">
@@ -21,12 +21,37 @@ watchEffect(() => {
 
 const dotLottieVueRef = ref<DotLottieVueInstance | null>(null)
 
-function changeTheme() {
+async function changeTheme({ clientX: x, clientY: y }: MouseEvent) {
   const instance = dotLottieVueRef.value?.getDotLottieInstance()
   if (instance) {
     if (!instance.isPlaying) {
       instance.play()
-      isDark.value = !isDark.value
+      if (!enableTransitions()) {
+        isDark.value = !isDark.value
+        return
+      }
+
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${Math.hypot(
+          Math.max(x, innerWidth - x),
+          Math.max(y, innerHeight - y),
+        )}px at ${x}px ${y}px)`,
+      ]
+
+      await document.startViewTransition(async () => {
+        isDark.value = !isDark.value
+        await nextTick()
+      }).ready
+
+      document.documentElement.animate(
+        { clipPath: isDark.value ? clipPath.reverse() : clipPath },
+        {
+          duration: 300,
+          easing: 'ease-in',
+          pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
+        },
+      )
     }
   }
 }
@@ -36,6 +61,13 @@ function dotLottieMounted() {
   instance!.addEventListener('complete', () => {
     instance!.setMode(isDark.value ? 'reverse' : 'forward')
   })
+}
+
+function enableTransitions() {
+  return (
+    'startViewTransition' in document &&
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  )
 }
 
 if (inBrowser) {
@@ -83,5 +115,23 @@ if (inBrowser) {
       transition: background-color 0.3s var(--n-bezier);
     }
   }
+}
+</style>
+
+<style>
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation: none;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
 }
 </style>
