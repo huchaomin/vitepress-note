@@ -3,7 +3,7 @@ uuid         : 5e784826-cb4a-4bdb-8803-649a3e4a8df1
 order        : 0
 author       : huchaomin iisa_peter@163.com
 date         : 2025-02-06 17:01:26
-lastEditTime : 2025-02-06 18:24:15
+lastEditTime : 2025-02-07 09:27:39
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -38,9 +38,9 @@ function render() {
 }
 ```
 
-## 事件修饰符
+## 修饰符
 
-### `.passive`、`.capture` 和 `.once`
+### `.passive`、`.capture` 和 `.once` 事件修饰符
 
 ```ts
 h('input', {
@@ -56,7 +56,7 @@ h('input', {
 })
 ```
 
-### 对于事件和按键修饰符，可以使用 withModifiers 函数
+### 对于其他事件和按键修饰符，可以使用 withModifiers 函数
 
 ```ts
 import { withModifiers } from 'vue'

@@ -2,7 +2,7 @@
  * @Author       : huchaomin iisa_peter@163.com
  * @Date         : 2024-12-16 09:29:08
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-22 23:00:47
+ * @LastEditTime : 2025-02-07 09:56:27
  * @Description  :
 -->
 <script setup lang="ts">
@@ -72,7 +72,8 @@ const lvl0TextPrefix = computed(() => {
   return arr.map((k) => findSidebarItemByKey(sidebar.value, k)!.text).join(' / ')
 })
 
-function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
+function renderLabel(isHidden: boolean, { option: op }: { option: TreeOption }) {
+  const option = op as unknown as SidebarItem
   const isTheClosestParent = option.key === currentKeys.value.at(-1)
   const ellipsis = h(
     NEllipsis,
@@ -94,9 +95,7 @@ function renderLabel(isHidden: boolean, { option }: { option: TreeOption }) {
         href: option.link,
         style: { height: 'var(--n-node-content-height)' },
       },
-      {
-        default: () => [ellipsis],
-      },
+      ellipsis,
     )
   } else {
     return ellipsis
