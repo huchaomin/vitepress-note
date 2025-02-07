@@ -23,6 +23,12 @@ export default {
   rules: {
     '@stylistic/declaration-block-trailing-semicolon': ['always'],
     '@stylistic/string-quotes': 'single', // 兼容prettier
+    'at-rule-no-deprecated': [
+      true,
+      {
+        ignoreAtRules: ['apply'],
+      },
+    ],
     'csstools/use-nesting': [
       'always',
       {
