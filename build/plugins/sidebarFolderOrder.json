@@ -1,8 +1,9 @@
 {
   "/css/@rules": 2,
-  "/javascript/BOM": 0,
-  "/javascript/DOM": 1,
-  "/javascript/es6": 2,
+  "/javascript/Array": 0,
+  "/javascript/BOM": 1,
+  "/javascript/DOM": 2,
+  "/javascript/es6": 3,
   "/tools/github": 3,
   "/tools/vitepress": 4,
   "/微信/公众号": 0,
