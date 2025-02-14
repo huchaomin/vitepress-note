@@ -2,7 +2,7 @@
  * @Author       : huchaomin
  * @Date         : 2024-07-23 17:47:23
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-24 14:05:09
+ * @LastEditTime : 2025-02-14 10:22:34
  * @Description  :
  */
 import type { Theme } from 'vitepress'
@@ -29,7 +29,7 @@ export default {
       $loading.show()
     }
     router.onAfterPageLoad = () => {}
-    router.onAfterRouteChanged = (to: string) => {
+    router.onAfterRouteChange = (to: string) => {
       $loading.hide()
       if (inBrowser) {
         if (window._hmt) {

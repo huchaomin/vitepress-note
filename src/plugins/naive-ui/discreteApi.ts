@@ -2,7 +2,7 @@
  * @Author       : peter peter@qingcongai.com
  * @Date         : 2024-11-08 17:53:52
  * @LastEditors  : huchaomin iisa_peter@163.com
- * @LastEditTime : 2024-12-25 10:38:51
+ * @LastEditTime : 2025-02-14 11:15:17
  * @Description  :
  */
 import {
@@ -69,7 +69,7 @@ function getApi<T extends DiscreteApiType>(name: T): GetApiReturnType<T> {
   脱离上下文的 API 不会受 n-xxx-provider 的影响，并且和应用上下文中对应组件会使用不同的 DOM 容器。
   如果需要的话，你需要手动同步这些信息。并且最好不要混用两类 API。
   不要在 setup 中调用 createDiscreteApi，可能会有一些意外的问题出现。
-  router.onBeforeRouteChange 里面的  $loading.show() 保证了第一次不是在 setup 中调用。
+  这里用的不是非 setup 的 API，n-xxx-provider 其实可以删掉
  */
 function isInSetup() {
   // return getCurrentInstance() !== null
