@@ -3,7 +3,7 @@ uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
 order        : 5
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditTime : 2025-03-03 11:40:57
+lastEditTime : 2025-03-03 17:29:05
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -20,6 +20,14 @@ description  :
 | `Ctrl + Shift + T` | 切换单词命名方式 |
 | `Ctrl + Shift + C` | macros.copyWithoutNewLine |
 | `Ctrl + Shift + /` | 切换块注释 |
+
+## command
+
+| command | 描述 |
+| --- | --- |
+| `/// to-function` | 将箭头函数转换为普通函数 |
+| `/// to-arrow` | 将普通函数转换为箭头函数 |
+| *** | [更多请参考](https://eslint-plugin-command.antfu.me/commands/hoist-regexp) |
 
 ## 问题
 
