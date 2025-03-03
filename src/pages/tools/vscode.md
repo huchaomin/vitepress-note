@@ -3,11 +3,23 @@ uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
 order        : 5
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditTime : 2025-01-13 14:42:32
+lastEditTime : 2025-03-03 11:40:57
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
 # vscode 使用经验
+
+## 快捷键
+
+| 快捷键 | 描述 |
+| --- | --- |
+| `Ctrl + ;` | toggle quote |
+| `Ctrl + M` | 添加函数注释 |
+| `Ctrl + Win + I` | koro1FileHeader 文件头部注释 |
+| `Ctrl + Shift + E` | 在资源管理器视图中显示活动文件 |
+| `Ctrl + Shift + T` | 切换单词命名方式 |
+| `Ctrl + Shift + C` | macros.copyWithoutNewLine |
+| `Ctrl + Shift + /` | 切换块注释 |
 
 ## 问题
 
