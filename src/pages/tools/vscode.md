@@ -29,6 +29,31 @@ description  :
 | `/// to-arrow` | 将普通函数转换为箭头函数 |
 | *** | [更多请参考](https://eslint-plugin-command.antfu.me/commands/hoist-regexp) |
 
+
+## 拓展
+
+### geddski.macros 添加宏命令
+
+#### VSCode复制并粘贴1行而无需添加换行符
+1. setting.json
+    ```json
+      "macros": {
+        "copyWithoutNewLine": [
+          "cursorHome",
+          "cursorEndSelect",
+          "editor.action.clipboardCopyAction",
+          "cancelSelection"
+        ]
+      },
+    ```
+2. keybindings.json
+    ```json
+      {
+        "key": "ctrl+shift+c",
+        "command": "macros.copyWithoutNewLine"
+      },
+    ```
+
 ## 问题
 
 ### TSServer exited. Code: null. Signal: SIGTERM
