@@ -53,6 +53,29 @@ description  :
         "command": "macros.copyWithoutNewLine"
       },
     ```
+### be5invis.vscode-custom-css vscode 中插入自定义 css 和 js
+1. vscode.css
+    ```css
+    :root {
+      --vscode-font-family: 'Maple Mono NL Light', 'Maple Mono CN Light', consolas, 'Courier New', monospace;
+    }
+
+    .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > .label-name,
+    .monaco-icon-label::after,
+    .monaco-pane-view .pane > .pane-header h3.title {
+      font-weight: normal;
+    }
+
+    .windows:lang(zh-Hans) {
+      font-family: var(--vscode-font-family);
+    }
+    ```
+2. setting.json
+    ```json
+    "vscode_custom_css.imports": ["file:///E:/code/vscode.css"]
+    ```
+3. 运行命令 `Enable Custom Css and Js`
+
 
 ## 问题
 
