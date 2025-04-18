@@ -3,7 +3,7 @@ uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
 order        : 5
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditTime : 2025-04-18 16:34:43
+lastEditTime : 2025-04-18 16:58:06
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -21,7 +21,16 @@ description  :
 | `Ctrl + Shift + C` | macros.copyWithoutNewLine |
 | `Ctrl + Shift + /` | 切换块注释 |
 
-## command
+## 命令面板
+
+| 模块 | 命令 | 描述 |
+| developer | show running extensions | 查看正在运行的插件 |
+| help | start extension bisect | 开启组件二等分 |
+| vue | find file references via vue language server | 查看当前文件被引用的地方 |
+| vue | restart vue and ts servers | 重启vue和ts服务 |
+
+
+## 注释命令
 
 | command | 描述 |
 | --- | --- |
