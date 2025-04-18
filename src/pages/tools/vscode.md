@@ -3,7 +3,7 @@ uuid         : 5187e96b-78c1-4302-ac44-311528a12cbb
 order        : 5
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:23:03
-lastEditTime : 2025-03-03 17:29:05
+lastEditTime : 2025-04-18 16:27:52
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -75,6 +75,16 @@ description  :
     "vscode_custom_css.imports": ["file:///E:/code/vscode.css"]
     ```
 3. 运行命令 `Enable Custom Css and Js`
+
+### Shan.code-settings-sync
+
+由于切换到cursor,怎么同步设置成了一个大问题，还好有这个插件
+
+- Sync: Advanced Options --> 打开设置
+    - 忽略文件夹里面添加 `History` 和 `globalStorage`
+    - 左边除了'静默同步'没有勾选，其他都勾选了
+- `shift + alt + u`: 上传配置
+- `shift + alt + d`: 下载配置
 
 
 ## 问题
