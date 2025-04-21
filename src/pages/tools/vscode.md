@@ -24,6 +24,7 @@ description  :
 ## 命令面板
 
 | 模块 | 命令 | 描述 |
+| --- | --- |
 | developer | show running extensions | 查看正在运行的插件 |
 | help | start extension bisect | 开启组件二等分 |
 | vue | find file references via vue language server | 查看当前文件被引用的地方 |
@@ -90,7 +91,7 @@ description  :
 由于切换到cursor,怎么同步设置成了一个大问题，还好有这个插件
 
 - Sync: Advanced Options --> 打开设置
-    - 忽略文件夹里面添加 `History` 和 `globalStorage`
+    - 忽略文件夹里面添加 `History` 和 `globalStorage`、`profiles`
     - 左边除了'静默同步'没有勾选，其他都勾选了
 - `shift + alt + u`: 上传配置
 - `shift + alt + d`: 下载配置
