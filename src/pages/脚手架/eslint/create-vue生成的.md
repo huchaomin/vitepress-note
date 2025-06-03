@@ -1,3 +1,13 @@
+---
+uuid         : ec5e604f-4763-4812-88af-69eef3ed5fb4
+order        : 0
+author       : huchaomin iisa_peter@163.com
+date         : 2025-05-29 10:45:46
+lastEditTime : 2025-05-29 10:46:19
+lastEditors  : huchaomin iisa_peter@163.com
+description  :
+---
+
 # create-vue生成的 eslint 配置
 
 ## 安装的依赖

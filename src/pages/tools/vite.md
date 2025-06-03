@@ -3,7 +3,7 @@ uuid         : 331bfebc-1d1d-497a-ad64-3a9ac7c0bb52
 order        : 2
 author       : peter peter@qingcongai.com
 date         : 2024-11-25 14:25:34
-lastEditTime : 2024-12-20 11:31:03
+lastEditTime : 2025-05-22 16:33:29
 lastEditors  : huchaomin iisa_peter@163.com
 description  :
 ---
@@ -41,7 +41,7 @@ const module = await import(`./dir/${file}.js`)
 与 `MODE` 的没有丝毫关系，是两个不同的概念
 会影响 `PROD` 和 `DEV` 的行为
 
-| Command              | import.meta.env.PROD | import.meta.env.DEV |
+| Command              | `import.meta.env.PROD` | `import.meta.env.DEV` |
 | -------------------- | -------------------- | ------------------- |
 | NODE_ENV=production  | true                 | false               |
 | NODE_ENV=development | false                | true                |
