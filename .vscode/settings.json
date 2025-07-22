@@ -90,6 +90,10 @@
     //     "fixable": true
     //   }
   ],
+  "fileheader.customMade": {
+    "Author": "git config user.name",
+    "LastEditors": "git config user.name",
+  },
   // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",

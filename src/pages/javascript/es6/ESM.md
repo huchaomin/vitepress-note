@@ -3,8 +3,8 @@ uuid         : d8264a2b-75f1-4b5b-9bd3-2fd6816e17e6
 order        : 1
 author       : huchaomin iisa_peter@163.com
 date         : 2025-05-29 11:45:36
-lastEditTime : 2025-06-03 09:36:21
-lastEditors  : huchaomin iisa_peter@163.com
+lastEditTime : 2025-07-22 16:06:25
+lastEditors  : huchaomin
 description  :
 ---
 
@@ -20,10 +20,10 @@ ECMAScript 模块（ES Modules，简称 ESM）是在 ES6（ECMAScript 2015） �
 
 ```ts
 {
-  dirname: 'E:\\code\\qc-ui\\node_modules\\.vite-temp',
-  filename: 'E:\\code\\qc-ui\\node_modules\\.vite-temp\\vite.config.ts.timestamp-1748489784747-2ed1685b2947d.mjs',
+  dirname: 'E:\\code\\**\\node_modules\\.vite-temp',
+  filename: 'E:\\code\\**\\node_modules\\.vite-temp\\vite.config.ts.timestamp-1748489784747-2ed1685b2947d.mjs',
   resolve: [Function: resolve],
-  url: 'file:///E:/code/qc-ui/node_modules/.vite-temp/vite.config.ts.timestamp-1748489784747-2ed1685b2947d.mjs'
+  url: 'file:///E:/code/**/node_modules/.vite-temp/vite.config.ts.timestamp-1748489784747-2ed1685b2947d.mjs'
 }
 ```
 
